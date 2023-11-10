@@ -49,12 +49,18 @@ public class TurretController : MonoBehaviour
         newBullet.Initialize(_enemiesInRange[0].transform);
     }
 
+    private void RemoveEnemyFromTargets(EnemyController enemy)
+    {
+        _enemiesInRange.Remove(enemy);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         EnemyController enemy = other.GetComponent<EnemyController>();
         if (enemy)
         {
             _enemiesInRange.Add(enemy);
+            enemy.OnDeath += RemoveEnemyFromTargets;
         }
     }
 
@@ -63,7 +69,8 @@ public class TurretController : MonoBehaviour
         EnemyController enemy = other.GetComponent<EnemyController>();
         if (enemy && _enemiesInRange.Contains(enemy))
         {
-            _enemiesInRange.Remove(enemy);
+            RemoveEnemyFromTargets(enemy);
+            enemy.OnDeath -= RemoveEnemyFromTargets;
         }
     }
 }

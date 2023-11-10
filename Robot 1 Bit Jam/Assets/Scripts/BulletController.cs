@@ -10,6 +10,8 @@ public class BulletController : MonoBehaviour
     [SerializeField] private float lifetime = 5f;
     private float _lifeTimer;
 
+    [SerializeField] private int damage = 1;
+
     private void Update()
     {
         UpdateLogic();
@@ -47,6 +49,12 @@ public class BulletController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        HealthSystem healthSystem = collision.gameObject.GetComponent<HealthSystem>();
+        if (healthSystem)
+        {
+            healthSystem.TakeDamage(damage);
+        }
+
         Destroy(gameObject);
     }
 }

@@ -1,18 +1,29 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private HealthSystem _healthSystem;
+
+    public event Action<EnemyController> OnDeath;
+
+    private void Start()
     {
-        
+        Initialize();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Initialize()
     {
-        
+        _healthSystem = GetComponent<HealthSystem>();
+        _healthSystem.Initialize();
+        _healthSystem.OnDeath += Die;
+    }
+
+    private void Die()
+    {
+        OnDeath.Invoke(this);
+        Destroy(gameObject);
     }
 }
