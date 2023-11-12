@@ -7,12 +7,15 @@ public class PlayerController : MonoBehaviour
     private PlayerControls _playerControls;
     private Rigidbody _rb;
 
+    [Header("Movement")]
     [SerializeField] private float movementSpeed = 100f;
     private Vector3 _movementDirection;
 
+    [Header("Rotation")]
     [SerializeField] LayerMask groundLayer;
     private Vector3 _lookDirection;
 
+    [Header("Laser")]
     [SerializeField] private Transform laserFirePoint;
     [SerializeField] private float laserMaxDistance = 10f;
     [SerializeField] private Laser laserPrefab;
@@ -20,7 +23,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask obstacleLayer;
     [SerializeField] private int laserDamage = 15;
     [SerializeField] private float laserCooldown = 3f;
-    private float _laserTimer;
+    private float _laserCooldownTimer;
+
+    [Header("Dash")]
+    [SerializeField] private float dashSpeed = 1000f;
+    [SerializeField] private float dashTime = 0.1f;
+    [SerializeField] private float dashCooldown = 2f;
+    private float _dashTimer;
+    private bool _dashing;
+    private float _dashCooldownTimer;
+    private Vector3 _dashDirection;
 
     private void Start()
     {
@@ -42,10 +54,12 @@ public class PlayerController : MonoBehaviour
         _playerControls = new PlayerControls();
         _playerControls.InGame.Enable();
         _playerControls.InGame.Laser.performed += ctx => FireLaser();
+        _playerControls.InGame.Dash.performed += ctx => Dash();
 
         _rb = GetComponent<Rigidbody>();
 
-        _laserTimer = laserCooldown;
+        _laserCooldownTimer = laserCooldown;
+        _dashCooldownTimer = dashCooldown;
     }
 
     public void UpdateLogic()
@@ -55,9 +69,14 @@ public class PlayerController : MonoBehaviour
 
         Look();
 
-        if (_laserTimer < laserCooldown)
+        if (_laserCooldownTimer < laserCooldown)
         {
-            _laserTimer += Time.deltaTime;
+            _laserCooldownTimer += Time.deltaTime;
+        }
+
+        if (_dashCooldownTimer < dashCooldown)
+        {
+            _dashCooldownTimer += Time.deltaTime;
         }
     }
 
@@ -85,12 +104,27 @@ public class PlayerController : MonoBehaviour
 
     public void UpdatePhysics()
     {
-        _rb.velocity = movementSpeed * Time.fixedDeltaTime * _movementDirection;
+        if (!_dashing)
+        {
+            _rb.velocity = movementSpeed * Time.fixedDeltaTime * _movementDirection.normalized;
+        } else
+        {
+            _rb.velocity = dashSpeed * Time.fixedDeltaTime * _dashDirection.normalized;
+
+            if (_dashTimer < dashTime)
+            {
+                _dashTimer += Time.deltaTime;
+            } else
+            {
+                _dashing = false;
+                _dashCooldownTimer = 0f;
+            }
+        }
     }
 
     private void FireLaser()
     {
-        if (_laserTimer < laserCooldown) return;
+        if (_laserCooldownTimer < laserCooldown) return;
 
         //Physics
         Ray ray = new(laserFirePoint.position, transform.forward);
@@ -112,6 +146,15 @@ public class PlayerController : MonoBehaviour
         Laser newLaser = Instantiate(laserPrefab);
         newLaser.Initialize(laserFirePoint.position, laserFirePoint.position + transform.forward * rayDistance);
 
-        _laserTimer = 0f;
+        _laserCooldownTimer = 0f;
+    }
+
+    private void Dash()
+    {
+        if (_dashCooldownTimer < dashCooldown) return;
+
+        _dashTimer = 0f;
+        _dashDirection = _movementDirection;
+        _dashing = true;
     }
 }
