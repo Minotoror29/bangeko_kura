@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float laserMaxDistance = 10f;
     [SerializeField] private Laser laserPrefab;
     [SerializeField] private LayerMask enemyLayer;
+    [SerializeField] private LayerMask obstacleLayer;
     [SerializeField] private int laserDamage = 15;
     [SerializeField] private float laserCooldown = 3f;
     private float _laserTimer;
@@ -69,8 +70,7 @@ public class PlayerController : MonoBehaviour
     private void HandleLookInput()
     {
         Ray ray = Camera.main.ScreenPointToRay(_playerControls.InGame.MousePosition.ReadValue<Vector2>());
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, groundLayer))
+        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, groundLayer))
         {
             _lookDirection = hit.point;
 
@@ -92,15 +92,25 @@ public class PlayerController : MonoBehaviour
     {
         if (_laserTimer < laserCooldown) return;
 
-        Laser newLaser = Instantiate(laserPrefab);
-        newLaser.Initialize(laserFirePoint.position, laserFirePoint.position + transform.forward * laserMaxDistance);
-
+        //Physics
         Ray ray = new(laserFirePoint.position, transform.forward);
-        RaycastHit[] hits = Physics.RaycastAll(ray, laserMaxDistance, enemyLayer);
+        float rayDistance = laserMaxDistance;
+        if (Physics.Raycast(ray, out RaycastHit obstacleHit, laserMaxDistance, obstacleLayer))
+        {
+            rayDistance = obstacleHit.distance;
+        }
+        RaycastHit[] hits = Physics.RaycastAll(ray, rayDistance, enemyLayer);
         foreach (RaycastHit hit in hits)
         {
-            hit.collider.GetComponent<HealthSystem>().TakeDamage(laserDamage);
+            if (hit.collider.TryGetComponent<HealthSystem>(out var healthSystem))
+            {
+                healthSystem.TakeDamage(laserDamage);
+            }
         }
+
+        //Visuals
+        Laser newLaser = Instantiate(laserPrefab);
+        newLaser.Initialize(laserFirePoint.position, laserFirePoint.position + transform.forward * rayDistance);
 
         _laserTimer = 0f;
     }
