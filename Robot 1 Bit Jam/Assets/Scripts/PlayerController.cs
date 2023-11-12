@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Laser laserPrefab;
     [SerializeField] private LayerMask enemyLayer;
     [SerializeField] private int laserDamage = 15;
+    [SerializeField] private float laserCooldown = 3f;
+    private float _laserTimer;
 
     private void Start()
     {
@@ -41,6 +43,8 @@ public class PlayerController : MonoBehaviour
         _playerControls.InGame.Laser.performed += ctx => FireLaser();
 
         _rb = GetComponent<Rigidbody>();
+
+        _laserTimer = laserCooldown;
     }
 
     public void UpdateLogic()
@@ -49,6 +53,11 @@ public class PlayerController : MonoBehaviour
         HandleLookInput();
 
         Look();
+
+        if (_laserTimer < laserCooldown)
+        {
+            _laserTimer += Time.deltaTime;
+        }
     }
 
     private void HandleMovementInput()
@@ -81,14 +90,18 @@ public class PlayerController : MonoBehaviour
 
     private void FireLaser()
     {
+        if (_laserTimer < laserCooldown) return;
+
         Laser newLaser = Instantiate(laserPrefab);
         newLaser.Initialize(laserFirePoint.position, laserFirePoint.position + transform.forward * laserMaxDistance);
 
-        Ray ray = new Ray(laserFirePoint.position, transform.forward);
+        Ray ray = new(laserFirePoint.position, transform.forward);
         RaycastHit[] hits = Physics.RaycastAll(ray, laserMaxDistance, enemyLayer);
         foreach (RaycastHit hit in hits)
         {
             hit.collider.GetComponent<HealthSystem>().TakeDamage(laserDamage);
         }
+
+        _laserTimer = 0f;
     }
 }
