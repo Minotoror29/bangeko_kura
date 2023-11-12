@@ -13,6 +13,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] LayerMask groundLayer;
     private Vector3 _lookDirection;
 
+    [SerializeField] private Transform laserFirePoint;
+    [SerializeField] private float laserMaxDistance = 10f;
+    [SerializeField] private Laser laserPrefab;
+    [SerializeField] private LayerMask enemyLayer;
+    [SerializeField] private int laserDamage = 15;
+
     private void Start()
     {
         Initialize();
@@ -32,6 +38,7 @@ public class PlayerController : MonoBehaviour
     {
         _playerControls = new PlayerControls();
         _playerControls.InGame.Enable();
+        _playerControls.InGame.Laser.performed += ctx => FireLaser();
 
         _rb = GetComponent<Rigidbody>();
     }
@@ -70,5 +77,18 @@ public class PlayerController : MonoBehaviour
     public void UpdatePhysics()
     {
         _rb.velocity = movementSpeed * Time.fixedDeltaTime * _movementDirection;
+    }
+
+    private void FireLaser()
+    {
+        Laser newLaser = Instantiate(laserPrefab);
+        newLaser.Initialize(laserFirePoint.position, laserFirePoint.position + transform.forward * laserMaxDistance);
+
+        Ray ray = new Ray(laserFirePoint.position, transform.forward);
+        RaycastHit[] hits = Physics.RaycastAll(ray, laserMaxDistance, enemyLayer);
+        foreach (RaycastHit hit in hits)
+        {
+            hit.collider.GetComponent<HealthSystem>().TakeDamage(laserDamage);
+        }
     }
 }

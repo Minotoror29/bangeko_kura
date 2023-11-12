@@ -23,7 +23,7 @@ public class EnemyController : MonoBehaviour
 
     private void Die()
     {
-        OnDeath.Invoke(this);
+        OnDeath?.Invoke(this);
         Destroy(gameObject);
     }
 }

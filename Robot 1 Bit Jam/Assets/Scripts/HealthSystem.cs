@@ -20,7 +20,7 @@ public class HealthSystem : MonoBehaviour
         _currentHealth -= damage;
         if (_currentHealth <= 0)
         {
-            OnDeath.Invoke();
+            OnDeath?.Invoke();
         }
     }
 }

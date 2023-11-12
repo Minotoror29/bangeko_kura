@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class TurretController : MonoBehaviour
 {
-    public List<EnemyController> _enemiesInRange;
+    private List<EnemyController> _enemiesInRange;
 
     [SerializeField] private Transform firePoint;
     [Tooltip("Projectiles per second"), SerializeField] private float fireRate = 1f;
