@@ -29,6 +29,7 @@ public class BulletController : MonoBehaviour
         _lifeTimer = 0f;
 
         transform.LookAt(target);
+        transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
     }
 
     public void UpdateLogic()

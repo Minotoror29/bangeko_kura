@@ -8,7 +8,7 @@ public class TurretController : MonoBehaviour
     private List<EnemyController> _enemiesInRange;
 
     [SerializeField] private Transform firePoint;
-    [Tooltip("Projectiles per second"), SerializeField] private float fireRate = 1f;
+    [Tooltip("Projectiles per second"), SerializeField] private float fireRate = 1.5f;
     [SerializeField] private BulletController bulletPrefab;
     private float _fireTimer;
 
