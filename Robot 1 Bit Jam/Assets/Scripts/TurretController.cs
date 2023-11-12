@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class TurretController : MonoBehaviour
 {
-    private List<EnemyController> _enemiesInRange;
+    public List<EnemyController> _enemiesInRange;
 
     [SerializeField] private Transform firePoint;
-    [SerializeField] private float fireRate = 1f;
+    [Tooltip("Projectiles per second"), SerializeField] private float fireRate = 1f;
     [SerializeField] private BulletController bulletPrefab;
     private float _fireTimer;
 
@@ -30,7 +31,9 @@ public class TurretController : MonoBehaviour
 
     public void UpdateLogic()
     {
-        if (_fireTimer < fireRate)
+        SortEnemiesInRange();
+
+        if (_fireTimer < 1f / fireRate)
         {
             _fireTimer += Time.deltaTime;
         } else
@@ -41,6 +44,20 @@ public class TurretController : MonoBehaviour
                 _fireTimer = 0f;
             }
         }
+    }
+
+    private void SortEnemiesInRange()
+    {
+        if (_enemiesInRange.Count == 0) return;
+
+        _enemiesInRange.Sort(CompareDistanceToPlayer);
+    }
+
+    private int CompareDistanceToPlayer(EnemyController a, EnemyController b)
+    {
+        float distanceA = (a.transform.position - transform.position).sqrMagnitude;
+        float distanceB = (b.transform.position - transform.position).sqrMagnitude;
+        return distanceA.CompareTo(distanceB);
     }
 
     private void Fire()
