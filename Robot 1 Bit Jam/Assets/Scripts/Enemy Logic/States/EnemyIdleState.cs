@@ -14,7 +14,6 @@ public class EnemyIdleState : EnemyState
 
     public override void Enter()
     {
-        Controller.StopMovement();
         _timer = 0f;
     }
 
@@ -24,6 +23,8 @@ public class EnemyIdleState : EnemyState
 
     public override void UpdateLogic()
     {
+        Controller.StopMovement();
+
         if (_time > 0f)
         {
             if (_timer < _time)

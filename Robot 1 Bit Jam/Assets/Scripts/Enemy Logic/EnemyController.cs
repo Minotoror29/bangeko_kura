@@ -10,8 +10,11 @@ public class EnemyController : MonoBehaviour
     private Rigidbody _rb;
     private HealthSystem _healthSystem;
 
+    [Header("Idle")]
     [SerializeField] private float minIdleTime = 3f;
     [SerializeField] private float maxIdleTime = 7f;
+
+    [Header("Patrol")]
     [SerializeField] private float patrolRadius = 5f;
     [SerializeField] private float movementSpeed = 250f;
 
@@ -77,9 +80,9 @@ public class EnemyController : MonoBehaviour
         _rb.velocity = Vector3.zero;
     }
 
-    public void MoveTo(Vector3 target)
+    public void MoveTowards(Vector3 direction)
     {
-        _rb.velocity = movementSpeed * Time.fixedDeltaTime * (target - transform.position).normalized;
+        _rb.velocity = movementSpeed * Time.fixedDeltaTime * direction.normalized;
     }
 
     private void OnDrawGizmos()

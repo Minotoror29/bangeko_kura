@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class EnemyPatrolState : EnemyState
 {
-    private Vector3 _target;
+    private Vector3 _direction;
+    private float _patrolTimer;
 
     public EnemyPatrolState(EnemyController controller) : base(controller)
     {
@@ -12,10 +13,20 @@ public class EnemyPatrolState : EnemyState
 
     public override void Enter()
     {
+        //_direction = Random.insideUnitSphere + Controller.transform.position;
+        //_direction.y = 0f;
+        //_direction = _direction.normalized;
+        //_direction *= Controller.PatrolRadius;
+
         float randomAngle = Random.Range(0f, 360f);
-        float x = Controller.transform.position.x + Controller.PatrolRadius * Mathf.Cos(randomAngle);
-        float z = Controller.transform.position.z + Controller.PatrolRadius * Mathf.Sin(randomAngle);
-        _target = new Vector3(x, 0f, z);
+        //Debug.Log(randomAngle);
+        float x = Controller.transform.position.x * Mathf.Cos(randomAngle);
+        float z = Controller.transform.position.z * Mathf.Sin(randomAngle);
+        _direction = new Vector3(x, 0f, z);
+
+        //Debug.Log(Controller.gameObject.name + " : " + _direction);
+
+        _patrolTimer = 0f;
     }
 
     public override void Exit()
@@ -24,7 +35,9 @@ public class EnemyPatrolState : EnemyState
 
     public override void UpdateLogic()
     {
-        if ((_target - Controller.transform.position).magnitude < 0.01f)
+        _patrolTimer += Time.deltaTime;
+
+        if (_patrolTimer >= 4f)
         {
             Controller.ChangeState(new EnemyIdleState(Controller, Controller.GetRandomIdleTime()));
         }
@@ -32,6 +45,6 @@ public class EnemyPatrolState : EnemyState
 
     public override void UpdatePhysics()
     {
-        Controller.MoveTo(_target);
+        Controller.MoveTowards(_direction);
     }
 }
