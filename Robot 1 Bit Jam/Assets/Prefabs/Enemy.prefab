@@ -92,7 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8462960372658825839}
-  - component: {fileID: 8462960372658825841}
+  - component: {fileID: 6154815642166271129}
   - component: {fileID: 6019434145944017564}
   - component: {fileID: 7418881099147549903}
   - component: {fileID: 630051959923096080}
@@ -120,7 +120,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8462960372658825841
+--- !u!114 &6154815642166271129
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -129,13 +129,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 8462960372658825842}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6cff686ebb8ffc40865f7118051a949, type: 3}
+  m_Script: {fileID: 11500000, guid: 15b4b5532d4694e4594f3100d73549e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minIdleTime: 3
+  minIdleTime: 10
   maxIdleTime: 7
-  patrolRadius: 10
+  patrolTime: 4
   movementSpeed: 250
+  fleeingZoneRadius: 10
 --- !u!114 &6019434145944017564
 MonoBehaviour:
   m_ObjectHideFlags: 0

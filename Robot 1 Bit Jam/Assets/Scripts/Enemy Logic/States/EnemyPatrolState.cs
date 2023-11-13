@@ -13,20 +13,12 @@ public class EnemyPatrolState : EnemyState
 
     public override void Enter()
     {
-        //_direction = Random.insideUnitSphere + Controller.transform.position;
-        //_direction.y = 0f;
-        //_direction = _direction.normalized;
-        //_direction *= Controller.PatrolRadius;
-
         float randomAngle = Random.Range(0f, 360f);
-        //Debug.Log(randomAngle);
         float x = Controller.transform.position.x * Mathf.Cos(randomAngle);
         float z = Controller.transform.position.z * Mathf.Sin(randomAngle);
         _direction = new Vector3(x, 0f, z);
 
-        //Debug.Log(Controller.gameObject.name + " : " + _direction);
-
-        _patrolTimer = 0f;
+        _patrolTimer = Controller.PatrolTime;
     }
 
     public override void Exit()
@@ -35,9 +27,9 @@ public class EnemyPatrolState : EnemyState
 
     public override void UpdateLogic()
     {
-        _patrolTimer += Time.deltaTime;
+        _patrolTimer -= Time.deltaTime;
 
-        if (_patrolTimer >= 4f)
+        if (_patrolTimer <= 0f)
         {
             Controller.ChangeState(new EnemyIdleState(Controller, Controller.GetRandomIdleTime()));
         }

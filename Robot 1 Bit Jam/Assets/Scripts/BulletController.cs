@@ -5,6 +5,7 @@ using UnityEngine;
 public class BulletController : MonoBehaviour
 {
     private Rigidbody _rb;
+    private Transform _source;
 
     [SerializeField] private float speed = 500f;
     [SerializeField] private float lifetime = 5f;
@@ -22,9 +23,10 @@ public class BulletController : MonoBehaviour
         UpdatePhysics();
     }
 
-    public void Initialize(Transform target)
+    public void Initialize(Transform target, Transform source)
     {
         _rb = GetComponent<Rigidbody>();
+        _source = source;
 
         _lifeTimer = 0f;
 
@@ -48,12 +50,12 @@ public class BulletController : MonoBehaviour
         _rb.velocity = speed * Time.fixedDeltaTime * transform.forward;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        HealthSystem healthSystem = collision.gameObject.GetComponent<HealthSystem>();
+        HealthSystem healthSystem = other.gameObject.GetComponent<HealthSystem>();
         if (healthSystem)
         {
-            healthSystem.TakeDamage(damage);
+            healthSystem.TakeDamage(damage, _source);
         }
 
         Destroy(gameObject);

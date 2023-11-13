@@ -34,6 +34,10 @@ public class PlayerController : MonoBehaviour
     private float _dashCooldownTimer;
     private Vector3 _dashDirection;
 
+    [Header("Weapons")]
+    [SerializeField] private SwordController sword;
+    [SerializeField] private TurretController turret;
+
     private void Start()
     {
         Initialize();
@@ -60,10 +64,15 @@ public class PlayerController : MonoBehaviour
 
         _laserCooldownTimer = laserCooldown;
         _dashCooldownTimer = dashCooldown;
+
+        sword.Initialize(this);
+        turret.Initialize(this);
     }
 
     public void UpdateLogic()
     {
+        turret.UpdateLogic();
+
         HandleMovementInput();
         HandleLookInput();
 
@@ -138,7 +147,7 @@ public class PlayerController : MonoBehaviour
         {
             if (hit.collider.TryGetComponent(out HealthSystem healthSystem))
             {
-                healthSystem.TakeDamage(laserDamage);
+                healthSystem.TakeDamage(laserDamage, transform);
             }
         }
 

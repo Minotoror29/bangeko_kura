@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public abstract class EnemyController : MonoBehaviour
 {
+    private EnemiesManager _enemiesManager;
+
     private EnemyState _currentState;
 
     private Rigidbody _rb;
@@ -15,30 +17,18 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float maxIdleTime = 7f;
 
     [Header("Patrol")]
-    [SerializeField] private float patrolRadius = 5f;
+    [SerializeField] private float patrolTime = 4f;
     [SerializeField] private float movementSpeed = 250f;
 
-    public float PatrolRadius { get { return patrolRadius; } }
+    public EnemiesManager EnemiesManager { get { return _enemiesManager; } }
+    public float PatrolTime { get { return patrolTime; } }
 
-    public event Action<EnemyController> OnDeath;
+    public event Action<EnemyController, Transform> OnDeath;
 
-    private void Start()
+    public virtual void Initialize(EnemiesManager enemiesManager)
     {
-        Initialize();
-    }
+        _enemiesManager = enemiesManager;
 
-    private void Update()
-    {
-        UpdateLogic();
-    }
-
-    private void FixedUpdate()
-    {
-        UpdatePhysics();
-    }
-
-    public void Initialize()
-    {
         _rb = GetComponent<Rigidbody>();
         _healthSystem = GetComponent<HealthSystem>();
         _healthSystem.Initialize();
@@ -59,9 +49,10 @@ public class EnemyController : MonoBehaviour
         return UnityEngine.Random.Range(minIdleTime, maxIdleTime);
     }
 
-    private void Die()
+    public virtual void Die(Transform deathSource)
     {
-        OnDeath?.Invoke(this);
+        OnDeath?.Invoke(this, deathSource);
+        _enemiesManager.RemoveEnemy(this);
         Destroy(gameObject);
     }
 
@@ -85,9 +76,5 @@ public class EnemyController : MonoBehaviour
         _rb.velocity = movementSpeed * Time.fixedDeltaTime * direction.normalized;
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, patrolRadius);
-    }
+    public abstract void EnemyDiedClose(Transform source);
 }
