@@ -136,7 +136,7 @@ public class PlayerController : MonoBehaviour
         RaycastHit[] hits = Physics.RaycastAll(ray, rayDistance, enemyLayer);
         foreach (RaycastHit hit in hits)
         {
-            if (hit.collider.TryGetComponent<HealthSystem>(out var healthSystem))
+            if (hit.collider.TryGetComponent(out HealthSystem healthSystem))
             {
                 healthSystem.TakeDamage(laserDamage);
             }
@@ -151,7 +151,7 @@ public class PlayerController : MonoBehaviour
 
     private void Dash()
     {
-        if (_dashCooldownTimer < dashCooldown) return;
+        if (_dashCooldownTimer < dashCooldown || _movementDirection.magnitude == 0f) return;
 
         _dashTimer = 0f;
         _dashDirection = _movementDirection;
