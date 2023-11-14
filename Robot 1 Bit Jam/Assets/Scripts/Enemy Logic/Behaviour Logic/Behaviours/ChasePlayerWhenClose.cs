@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Enemy Behaviour/Chase Player When Close")]
-public class ChasePlayerWhenClose : EnemyBehaviourData
+public class ChasePlayerWhenClose : EnemyBehaviour
 {
-    public float chasingDistance;
+    private float _chasingDistance;
+
+    public ChasePlayerWhenClose(float chasingDistance)
+    {
+        _chasingDistance = chasingDistance;
+    }
 
     public override void SubscribeEvents(EnemyState state)
     {
@@ -19,7 +23,7 @@ public class ChasePlayerWhenClose : EnemyBehaviourData
 
     private void EnterChasingDistance(EnemyController controller)
     {
-        if (controller.DistanceToPlayer <= chasingDistance)
+        if (controller.DistanceToPlayer <= _chasingDistance)
         {
             controller.ChangeState(new EnemyChasingState(controller));
         }

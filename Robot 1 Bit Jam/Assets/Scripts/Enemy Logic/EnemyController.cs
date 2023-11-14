@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class EnemyController : MonoBehaviour
+public class EnemyController : MonoBehaviour
 {
     private EnemiesManager _enemiesManager;
 
@@ -35,6 +35,7 @@ public abstract class EnemyController : MonoBehaviour
     public List<EnemyBehaviourData> Behaviours { get { return behaviours; } }
 
     public event Action<EnemyController, Transform> OnDeath;
+    public event Action<EnemyController, Transform> OnAllyDiedClose;
 
     public virtual void Initialize(EnemiesManager enemiesManager, PlayerController player)
     {
@@ -69,19 +70,15 @@ public abstract class EnemyController : MonoBehaviour
     public void Die(HealthSystem healthSystem, Transform deathSource)
     {
         OnDeath?.Invoke(this, deathSource);
-        CreateFleeingZone(deathSource);
-        _enemiesManager.RemoveEnemy(this);
 
-        Destroy(gameObject);
-        //gameObject.SetActive(false);
-    }
-
-    private void CreateFleeingZone(Transform deathSource)
-    {
         foreach (EnemyController enemy in EnemiesManager.EnemiesCloseTo(this, fleeingZoneRadius))
         {
             enemy.EnemyDiedClose(deathSource);
         }
+
+        _enemiesManager.RemoveEnemy(this);
+
+        Destroy(gameObject);
     }
 
     public virtual void UpdateLogic()
@@ -113,7 +110,10 @@ public abstract class EnemyController : MonoBehaviour
         _rb.velocity = movementSpeed * Time.fixedDeltaTime * direction.normalized;
     }
 
-    public virtual void EnemyDiedClose(Transform source) { }
+    public virtual void EnemyDiedClose(Transform deathSource)
+    {
+        OnAllyDiedClose?.Invoke(this, deathSource);
+    }
 
     private void OnCollisionEnter(Collision collision)
     {

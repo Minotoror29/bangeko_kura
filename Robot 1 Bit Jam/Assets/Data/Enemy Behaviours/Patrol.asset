@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d09e6691f3ec1849a58ab0b5224fa6a, type: 3}
-  m_Name: Chase Player When Close
+  m_Script: {fileID: 11500000, guid: 11eb748d489932d478da3428531b6408, type: 3}
+  m_Name: Patrol
   m_EditorClassIdentifier: 
-  states: 0100000002000000
-  chasingDistance: 15
+  states: 01000000

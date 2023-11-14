@@ -9,6 +9,8 @@ public abstract class EnemyState : State
 
     private EnemyStateId _id;
 
+    private List<EnemyBehaviour> _behaviours;
+
     public EnemyController Controller { get { return _controller; } }
     public EnemyStateId Id { set { _id = value; } }
 
@@ -21,23 +23,26 @@ public abstract class EnemyState : State
 
     public override void Enter()
     {
+        _behaviours = new();
+
         foreach (EnemyBehaviourData behaviour in Controller.Behaviours)
         {
-            if (behaviour.states.Contains(_id))
+            if (behaviour.states.Contains(_id) || behaviour.states.Contains(EnemyStateId.All))
             {
-                behaviour.SubscribeEvents(this);
+                //behaviour.SubscribeEvents(this);
+
+                EnemyBehaviour newBehaviour = behaviour.Behaviour();
+                newBehaviour.SubscribeEvents(this);
+                _behaviours.Add(newBehaviour);
             }
         }
     }
 
     public override void Exit()
     {
-        foreach (EnemyBehaviourData behaviour in Controller.Behaviours)
+        foreach (EnemyBehaviour behaviour in _behaviours)
         {
-            if (behaviour.states.Contains(_id))
-            {
-                behaviour.UnsubscribeEvents(this);
-            }
+             behaviour.UnsubscribeEvents(this);
         }
     }
 

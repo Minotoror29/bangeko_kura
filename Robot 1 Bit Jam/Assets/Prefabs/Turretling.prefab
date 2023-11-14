@@ -144,7 +144,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a181abf599934c64abc82a4efab57da5, type: 2}
+  - {fileID: 2100000, guid: bd260d9db514eef43b0381b948165c66, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -175,12 +175,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8462960372658825839}
-  - component: {fileID: 5191520952281865432}
+  - component: {fileID: 4431964041137539610}
   - component: {fileID: 6019434145944017564}
   - component: {fileID: 7418881099147549903}
   - component: {fileID: 630051959923096080}
   m_Layer: 9
-  m_Name: Fodder A
+  m_Name: Turretling
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -204,7 +204,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5191520952281865432
+--- !u!114 &4431964041137539610
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -220,8 +220,7 @@ MonoBehaviour:
   maxIdleTime: 7
   patrolTime: 4
   movementSpeed: 250
-  behaviours:
-  - {fileID: 11400000, guid: c208081a280cd1248abb24a8f8c60ccd, type: 2}
+  behaviours: []
   fleeingZoneRadius: 10
   weapons: []
 --- !u!114 &6019434145944017564
@@ -328,7 +327,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a181abf599934c64abc82a4efab57da5, type: 2}
+  - {fileID: 2100000, guid: bd260d9db514eef43b0381b948165c66, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
