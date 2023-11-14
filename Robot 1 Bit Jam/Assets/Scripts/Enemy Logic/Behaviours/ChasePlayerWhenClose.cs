@@ -24,12 +24,4 @@ public class ChasePlayerWhenClose : EnemyBehaviourData
             controller.ChangeState(new EnemyChasingState(controller));
         }
     }
-
-    private void ExitChasingDistance(EnemyController controller)
-    {
-        if (controller.DistanceToPlayer > chasingDistance)
-        {
-            controller.ChangeState(new EnemyIdleState(controller, controller.GetRandomIdleTime()));
-        }
-    }
 }

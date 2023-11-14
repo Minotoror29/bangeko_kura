@@ -24,6 +24,7 @@ public abstract class EnemyController : MonoBehaviour
     [SerializeField] private float movementSpeed = 250f;
 
     [SerializeField] private List<EnemyBehaviourData> behaviours;
+    [SerializeField] private float fleeingZoneRadius = 10f;
 
     public EnemiesManager EnemiesManager { get { return _enemiesManager; } }
     public PlayerController Player { get { return _player; } }
@@ -63,6 +64,16 @@ public abstract class EnemyController : MonoBehaviour
         OnDeath?.Invoke(this, deathSource);
         _enemiesManager.RemoveEnemy(this);
         Destroy(gameObject);
+
+        CreateFleeingZone(deathSource);
+    }
+
+    private void CreateFleeingZone(Transform deathSource)
+    {
+        foreach (EnemyController enemy in EnemiesManager.EnemiesCloseTo(this, fleeingZoneRadius))
+        {
+            enemy.EnemyDiedClose(deathSource);
+        }
     }
 
     public virtual void UpdateLogic()
@@ -92,5 +103,11 @@ public abstract class EnemyController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         _currentState.OnCollisionEnter(collision);
+    }
+
+    private void OnDrawGizmos()
+    {
+        //Gizmos.color = Color.blue;
+        //Gizmos.DrawWireSphere(transform.position, fleeingZoneRadius);
     }
 }
