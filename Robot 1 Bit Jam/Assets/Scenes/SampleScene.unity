@@ -318,7 +318,7 @@ PrefabInstance:
     - target: {fileID: 8462960372658825839, guid: 4605dcf73ed493644b07a8e533f712bc,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.4753666
+      value: -7.2253666
       objectReference: {fileID: 0}
     - target: {fileID: 8462960372658825839, guid: 4605dcf73ed493644b07a8e533f712bc,
         type: 3}
@@ -328,7 +328,7 @@ PrefabInstance:
     - target: {fileID: 8462960372658825839, guid: 4605dcf73ed493644b07a8e533f712bc,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.4578438
+      value: 14.457844
       objectReference: {fileID: 0}
     - target: {fileID: 8462960372658825839, guid: 4605dcf73ed493644b07a8e533f712bc,
         type: 3}
@@ -1612,7 +1612,7 @@ GameObject:
   - component: {fileID: 1487840487}
   m_Layer: 7
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1713,6 +1713,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 200
+  _currentHealth: 0
 --- !u!1 &1558735781
 GameObject:
   m_ObjectHideFlags: 0
@@ -2025,7 +2026,7 @@ GameObject:
   - component: {fileID: 1890340952}
   - component: {fileID: 1890340954}
   - component: {fileID: 1890340953}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2060,6 +2061,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: -1
+  cooldown: 1
 --- !u!136 &1890340954
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2074,6 +2076,80 @@ CapsuleCollider:
   m_Height: 5
   m_Direction: 1
   m_Center: {x: 0, y: 1.25, z: 0}
+--- !u!1001 &1908042313
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8462960372658825839, guid: 4605dcf73ed493644b07a8e533f712bc,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: 4605dcf73ed493644b07a8e533f712bc,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.9753666
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: 4605dcf73ed493644b07a8e533f712bc,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: 4605dcf73ed493644b07a8e533f712bc,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 14.957844
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: 4605dcf73ed493644b07a8e533f712bc,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: 4605dcf73ed493644b07a8e533f712bc,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: 4605dcf73ed493644b07a8e533f712bc,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: 4605dcf73ed493644b07a8e533f712bc,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: 4605dcf73ed493644b07a8e533f712bc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: 4605dcf73ed493644b07a8e533f712bc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: 4605dcf73ed493644b07a8e533f712bc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825842, guid: 4605dcf73ed493644b07a8e533f712bc,
+        type: 3}
+      propertyPath: m_Name
+      value: Swordling (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825842, guid: 4605dcf73ed493644b07a8e533f712bc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4605dcf73ed493644b07a8e533f712bc, type: 3}
 --- !u!1 &2000383003
 GameObject:
   m_ObjectHideFlags: 0
@@ -2222,7 +2298,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2124977177
 Transform:
   m_ObjectHideFlags: 0

@@ -48,7 +48,7 @@ public abstract class EnemyController : MonoBehaviour
 
         foreach (Weapon weapon in weapons)
         {
-            weapon.Initialize(transform);
+            weapon.Initialize(transform, _healthSystem);
         }
 
         ChangeState(new EnemyIdleState(this, GetRandomIdleTime()));
@@ -66,13 +66,14 @@ public abstract class EnemyController : MonoBehaviour
         return UnityEngine.Random.Range(minIdleTime, maxIdleTime);
     }
 
-    public virtual void Die(Transform deathSource)
+    public void Die(HealthSystem healthSystem, Transform deathSource)
     {
         OnDeath?.Invoke(this, deathSource);
         _enemiesManager.RemoveEnemy(this);
-        Destroy(gameObject);
-
         CreateFleeingZone(deathSource);
+
+        Destroy(gameObject);
+        //gameObject.SetActive(false);
     }
 
     private void CreateFleeingZone(Transform deathSource)

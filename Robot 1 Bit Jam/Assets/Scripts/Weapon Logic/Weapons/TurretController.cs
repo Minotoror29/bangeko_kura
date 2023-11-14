@@ -12,9 +12,9 @@ public class TurretController : Weapon
     [SerializeField] private BulletController bulletPrefab;
     private float _fireTimer;
 
-    public override void Initialize(Transform controller)
+    public override void Initialize(Transform controller, HealthSystem healthSystem)
     {
-        base.Initialize(controller);
+        base.Initialize(controller, healthSystem);
 
         _enemiesInRange = new();
 

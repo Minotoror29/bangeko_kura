@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
 
         foreach (Weapon weapon in weapons)
         {
-            weapon.Initialize(transform);
+            weapon.Initialize(transform, _healthSystem);
         }
     }
 

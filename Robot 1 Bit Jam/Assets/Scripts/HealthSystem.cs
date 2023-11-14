@@ -8,7 +8,7 @@ public class HealthSystem : MonoBehaviour
     [SerializeField] private int maxHealth;
     public int _currentHealth;
 
-    public event Action<Transform> OnDeath;
+    public event Action<HealthSystem, Transform> OnDeath;
 
     public void Initialize()
     {
@@ -20,12 +20,12 @@ public class HealthSystem : MonoBehaviour
         _currentHealth -= damage;
         if (_currentHealth <= 0)
         {
-            OnDeath?.Invoke(damageSource);
+            Die(damageSource);
         }
     }
 
     public void Die(Transform deathSource)
     {
-        OnDeath?.Invoke(deathSource);
+        OnDeath?.Invoke(this, deathSource);
     }
 }

@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 1339311377006690178}
   - component: {fileID: 8956319111331097603}
   - component: {fileID: 6223773336350088953}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,7 +291,7 @@ GameObject:
   - component: {fileID: 630051959923096080}
   m_Layer: 9
   m_Name: Swordling
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -472,7 +472,7 @@ GameObject:
   - component: {fileID: 5909566607877842218}
   - component: {fileID: 3638752954364044242}
   - component: {fileID: 3746577387900129256}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
