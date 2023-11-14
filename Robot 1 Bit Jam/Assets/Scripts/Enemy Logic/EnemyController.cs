@@ -69,8 +69,8 @@ public abstract class EnemyController : MonoBehaviour
     public void Die(HealthSystem healthSystem, Transform deathSource)
     {
         OnDeath?.Invoke(this, deathSource);
-        _enemiesManager.RemoveEnemy(this);
         CreateFleeingZone(deathSource);
+        _enemiesManager.RemoveEnemy(this);
 
         Destroy(gameObject);
         //gameObject.SetActive(false);

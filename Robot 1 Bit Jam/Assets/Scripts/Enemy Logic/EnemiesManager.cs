@@ -39,7 +39,13 @@ public class EnemiesManager : MonoBehaviour
 
     public void UpdateLogic()
     {
+        List<EnemyController> enemies = new();
         foreach (EnemyController enemy in _enemies)
+        {
+            enemies.Add(enemy);
+        }
+
+        foreach (EnemyController enemy in enemies)
         {
             enemy.UpdateLogic();
         }

@@ -63,8 +63,6 @@ public class SwordController : Weapon
 
     private void RemoveTarget(HealthSystem target, Transform deathSource)
     {
-        Debug.Log(Controller.gameObject.name + " remove " + target.gameObject.name + " from sword targets");
-
         if (target.gameObject.CompareTag(Controller.gameObject.tag))
         {
             _alliesInRange.Remove(target);
