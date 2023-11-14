@@ -9,14 +9,12 @@ public class EnemyPatrolState : EnemyState
 
     public EnemyPatrolState(EnemyController controller) : base(controller)
     {
+        Id = EnemyStateId.Patrol;
     }
 
     public override void Enter()
     {
-        //float randomAngle = Random.Range(0f, 360f);
-        //float x = Controller.transform.position.x * Mathf.Cos(randomAngle);
-        //float z = Controller.transform.position.z * Mathf.Sin(randomAngle);
-        //_direction = new Vector3(x, 0f, z);
+        base.Enter();
 
         _direction = Random.insideUnitSphere;
         _direction.y = 0f;
@@ -26,6 +24,7 @@ public class EnemyPatrolState : EnemyState
 
     public override void Exit()
     {
+        base.Exit();
     }
 
     public override void OnCollisionEnter(Collision collision)
@@ -38,6 +37,8 @@ public class EnemyPatrolState : EnemyState
 
     public override void UpdateLogic()
     {
+        base.UpdateLogic();
+
         _patrolTimer -= Time.deltaTime;
 
         if (_patrolTimer <= 0f)

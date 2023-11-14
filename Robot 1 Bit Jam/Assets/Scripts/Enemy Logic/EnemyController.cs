@@ -23,9 +23,13 @@ public abstract class EnemyController : MonoBehaviour
     [SerializeField] private float patrolTime = 4f;
     [SerializeField] private float movementSpeed = 250f;
 
+    [SerializeField] private List<EnemyBehaviourData> behaviours;
+
     public EnemiesManager EnemiesManager { get { return _enemiesManager; } }
+    public PlayerController Player { get { return _player; } }
     public float DistanceToPlayer { get { return _distanceToPlayer; } }
     public float PatrolTime { get { return patrolTime; } }
+    public List<EnemyBehaviourData> Behaviours { get { return behaviours; } }
 
     public event Action<EnemyController, Transform> OnDeath;
 
@@ -63,9 +67,9 @@ public abstract class EnemyController : MonoBehaviour
 
     public virtual void UpdateLogic()
     {
-        _currentState.UpdateLogic();
-
         _distanceToPlayer = (_player.transform.position - transform.position).magnitude;
+
+        _currentState.UpdateLogic();
     }
 
     public void UpdatePhysics()

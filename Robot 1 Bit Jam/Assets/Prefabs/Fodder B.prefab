@@ -136,6 +136,9 @@ MonoBehaviour:
   maxIdleTime: 7
   patrolTime: 4
   movementSpeed: 250
+  behaviours:
+  - {fileID: 11400000, guid: 5519ae41a5bb9a14198ea39ea5ed8f4a, type: 2}
+  chasingDistance: 15
 --- !u!114 &6019434145944017564
 MonoBehaviour:
   m_ObjectHideFlags: 0

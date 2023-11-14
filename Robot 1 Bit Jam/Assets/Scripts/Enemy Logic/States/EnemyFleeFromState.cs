@@ -10,18 +10,20 @@ public class EnemyFleeFromState : EnemyState
 
     public EnemyFleeFromState(EnemyController controller, Transform target) : base(controller)
     {
+        Id = EnemyStateId.Fleeing;
         _target = target;
     }
 
     public override void Enter()
     {
-        Debug.Log(Controller.gameObject.name + " is fleeing");
+        base.Enter();
 
         _fleeingTimer = 5f;
     }
 
     public override void Exit()
     {
+        base.Exit();
     }
 
     public override void OnCollisionEnter(Collision collision)
@@ -30,6 +32,8 @@ public class EnemyFleeFromState : EnemyState
 
     public override void UpdateLogic()
     {
+        base.UpdateLogic();
+
         _fleeingTimer -= Time.deltaTime;
         if (_fleeingTimer <= 0 )
         {

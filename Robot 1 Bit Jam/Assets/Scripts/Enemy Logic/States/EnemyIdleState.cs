@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,16 +10,20 @@ public class EnemyIdleState : EnemyState
 
     public EnemyIdleState(EnemyController controller, float time) : base(controller)
     {
+        Id = EnemyStateId.Idle;
         _time = time;
     }
 
     public override void Enter()
     {
+        base.Enter();
+
         _timer = 0f;
     }
 
     public override void Exit()
     {
+        base.Exit();
     }
 
     public override void OnCollisionEnter(Collision collision)
@@ -27,6 +32,8 @@ public class EnemyIdleState : EnemyState
 
     public override void UpdateLogic()
     {
+        base.UpdateLogic();
+
         Controller.StopMovement();
 
         if (_time > 0f)
@@ -43,5 +50,6 @@ public class EnemyIdleState : EnemyState
 
     public override void UpdatePhysics()
     {
+
     }
 }
