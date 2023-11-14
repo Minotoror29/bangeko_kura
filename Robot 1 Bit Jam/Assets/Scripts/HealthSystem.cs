@@ -6,7 +6,7 @@ using UnityEngine;
 public class HealthSystem : MonoBehaviour
 {
     [SerializeField] private int maxHealth;
-    private int _currentHealth;
+    public int _currentHealth;
 
     public event Action<Transform> OnDeath;
 

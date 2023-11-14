@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class TurretController : MonoBehaviour
+public class TurretController : Weapon
 {
-    private PlayerController _player;
-
     private List<EnemyController> _enemiesInRange;
 
     [SerializeField] private Transform firePoint;
@@ -14,17 +12,19 @@ public class TurretController : MonoBehaviour
     [SerializeField] private BulletController bulletPrefab;
     private float _fireTimer;
 
-    public void Initialize(PlayerController player)
+    public override void Initialize(Transform controller)
     {
-        _player = player;
+        base.Initialize(controller);
 
         _enemiesInRange = new();
 
         _fireTimer = 0f;
     }
 
-    public void UpdateLogic()
+    public override void UpdateLogic()
     {
+        base.UpdateLogic();
+
         SortEnemiesInRange();
 
         if (_fireTimer < 1f / fireRate)
@@ -57,7 +57,7 @@ public class TurretController : MonoBehaviour
     private void Fire()
     {
         BulletController newBullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
-        newBullet.Initialize(_enemiesInRange[0].transform, _player.transform);
+        newBullet.Initialize(_enemiesInRange[0].transform, Controller);
     }
 
     private void RemoveEnemyFromTargets(EnemyController enemy, Transform deathSource)
@@ -80,7 +80,7 @@ public class TurretController : MonoBehaviour
         EnemyController enemy = other.GetComponent<EnemyController>();
         if (enemy && _enemiesInRange.Contains(enemy))
         {
-            RemoveEnemyFromTargets(enemy, _player.transform);
+            RemoveEnemyFromTargets(enemy, Controller);
             enemy.OnDeath -= RemoveEnemyFromTargets;
         }
     }

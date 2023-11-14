@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     private PlayerControls _playerControls;
     private Rigidbody _rb;
+    private HealthSystem _healthSystem;
 
     [Header("Movement")]
     [SerializeField] private float movementSpeed = 100f;
@@ -35,8 +36,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 _dashDirection;
 
     [Header("Weapons")]
-    [SerializeField] private SwordController sword;
-    [SerializeField] private TurretController turret;
+    [SerializeField] private List<Weapon> weapons;
 
     private void Start()
     {
@@ -61,17 +61,24 @@ public class PlayerController : MonoBehaviour
         _playerControls.InGame.Dash.performed += ctx => Dash();
 
         _rb = GetComponent<Rigidbody>();
+        _healthSystem = GetComponent<HealthSystem>();
+        _healthSystem.Initialize();
 
         _laserCooldownTimer = laserCooldown;
         _dashCooldownTimer = dashCooldown;
 
-        sword.Initialize(this);
-        turret.Initialize(this);
+        foreach (Weapon weapon in weapons)
+        {
+            weapon.Initialize(transform);
+        }
     }
 
     public void UpdateLogic()
     {
-        turret.UpdateLogic();
+        foreach (Weapon weapon in weapons)
+        {
+            weapon.UpdateLogic();
+        }
 
         HandleMovementInput();
         HandleLookInput();

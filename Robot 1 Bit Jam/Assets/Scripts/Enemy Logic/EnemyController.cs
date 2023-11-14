@@ -26,6 +26,8 @@ public abstract class EnemyController : MonoBehaviour
     [SerializeField] private List<EnemyBehaviourData> behaviours;
     [SerializeField] private float fleeingZoneRadius = 10f;
 
+    [SerializeField] private List<Weapon> weapons;
+
     public EnemiesManager EnemiesManager { get { return _enemiesManager; } }
     public PlayerController Player { get { return _player; } }
     public float DistanceToPlayer { get { return _distanceToPlayer; } }
@@ -43,6 +45,11 @@ public abstract class EnemyController : MonoBehaviour
         _healthSystem = GetComponent<HealthSystem>();
         _healthSystem.Initialize();
         _healthSystem.OnDeath += Die;
+
+        foreach (Weapon weapon in weapons)
+        {
+            weapon.Initialize(transform);
+        }
 
         ChangeState(new EnemyIdleState(this, GetRandomIdleTime()));
     }
@@ -80,7 +87,14 @@ public abstract class EnemyController : MonoBehaviour
     {
         _distanceToPlayer = (_player.transform.position - transform.position).magnitude;
 
+        foreach (Weapon weapon in weapons)
+        {
+            weapon.UpdateLogic();
+        }
+
         _currentState.UpdateLogic();
+
+        transform.LookAt(_rb.velocity.normalized + transform.position);
     }
 
     public void UpdatePhysics()
