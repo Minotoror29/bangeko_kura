@@ -23,4 +23,9 @@ public class HealthSystem : MonoBehaviour
             OnDeath?.Invoke(damageSource);
         }
     }
+
+    public void Die(Transform deathSource)
+    {
+        OnDeath?.Invoke(deathSource);
+    }
 }

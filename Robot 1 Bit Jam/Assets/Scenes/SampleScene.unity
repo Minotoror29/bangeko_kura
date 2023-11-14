@@ -1781,7 +1781,7 @@ PrefabInstance:
     - target: {fileID: 8462960372658825839, guid: 2e962c991e9f24847a48adc07b7827a5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -25
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 8462960372658825839, guid: 2e962c991e9f24847a48adc07b7827a5,
         type: 3}
@@ -1791,7 +1791,7 @@ PrefabInstance:
     - target: {fileID: 8462960372658825839, guid: 2e962c991e9f24847a48adc07b7827a5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.5
+      value: -1.25
       objectReference: {fileID: 0}
     - target: {fileID: 8462960372658825839, guid: 2e962c991e9f24847a48adc07b7827a5,
         type: 3}
@@ -1956,7 +1956,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1890340952
 Transform:
   m_ObjectHideFlags: 0
@@ -1984,7 +1984,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f34d275282b623846baeef885476fdea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
 --- !u!136 &1890340954
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2147,7 +2146,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2124977177
 Transform:
   m_ObjectHideFlags: 0

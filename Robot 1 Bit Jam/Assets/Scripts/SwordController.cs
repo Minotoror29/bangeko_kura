@@ -6,8 +6,6 @@ public class SwordController : MonoBehaviour
 {
     private PlayerController _player;
 
-    [SerializeField] private int damage = 5;
-
     public void Initialize(PlayerController player)
     {
         _player = player;
@@ -17,7 +15,7 @@ public class SwordController : MonoBehaviour
     {
         if (other.TryGetComponent(out HealthSystem healthSystem))
         {
-            healthSystem.TakeDamage(damage, _player.transform);
+            healthSystem.Die(_player.transform);
         }
     }
 }
