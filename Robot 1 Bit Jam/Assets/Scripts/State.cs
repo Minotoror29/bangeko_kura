@@ -8,4 +8,5 @@ public abstract class State
     public abstract void Exit();
     public abstract void UpdateLogic();
     public abstract void UpdatePhysics();
+    public abstract void OnCollisionEnter(Collision collision);
 }

@@ -24,6 +24,10 @@ public class EnemyFleeFromState : EnemyState
     {
     }
 
+    public override void OnCollisionEnter(Collision collision)
+    {
+    }
+
     public override void UpdateLogic()
     {
         _fleeingTimer -= Time.deltaTime;

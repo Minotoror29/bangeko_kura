@@ -21,6 +21,10 @@ public class EnemyIdleState : EnemyState
     {
     }
 
+    public override void OnCollisionEnter(Collision collision)
+    {
+    }
+
     public override void UpdateLogic()
     {
         Controller.StopMovement();

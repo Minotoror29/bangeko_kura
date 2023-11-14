@@ -25,6 +25,14 @@ public class EnemyPatrolState : EnemyState
     {
     }
 
+    public override void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            Controller.ChangeState(new EnemyIdleState(Controller, Controller.GetRandomIdleTime()));
+        }
+    }
+
     public override void UpdateLogic()
     {
         _patrolTimer -= Time.deltaTime;

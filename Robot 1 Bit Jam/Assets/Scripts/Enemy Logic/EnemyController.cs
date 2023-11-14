@@ -77,4 +77,9 @@ public abstract class EnemyController : MonoBehaviour
     }
 
     public abstract void EnemyDiedClose(Transform source);
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        _currentState.OnCollisionEnter(collision);
+    }
 }
