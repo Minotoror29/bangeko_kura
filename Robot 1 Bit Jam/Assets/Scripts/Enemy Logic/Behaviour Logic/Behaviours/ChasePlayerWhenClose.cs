@@ -6,7 +6,7 @@ public class ChasePlayerWhenClose : EnemyBehaviour
 {
     private float _chasingDistance;
 
-    public ChasePlayerWhenClose(float chasingDistance)
+    public ChasePlayerWhenClose(EnemyController controller, float chasingDistance) : base(controller)
     {
         _chasingDistance = chasingDistance;
     }
@@ -21,11 +21,11 @@ public class ChasePlayerWhenClose : EnemyBehaviour
         state.OnUpdate -= EnterChasingDistance;
     }
 
-    private void EnterChasingDistance(EnemyController controller)
+    private void EnterChasingDistance()
     {
-        if (controller.DistanceToPlayer <= _chasingDistance)
+        if (Controller.DistanceToPlayer <= _chasingDistance)
         {
-            controller.ChangeState(new EnemyChasingState(controller));
+            Controller.ChangeState(new EnemyChasingState(Controller));
         }
     }
 }

@@ -35,7 +35,7 @@ public class EnemyController : MonoBehaviour
     public List<EnemyBehaviourData> Behaviours { get { return behaviours; } }
 
     public event Action<EnemyController, Transform> OnDeath;
-    public event Action<EnemyController, Transform> OnAllyDiedClose;
+    public event Action<Transform> OnAllyDiedClose;
 
     public virtual void Initialize(EnemiesManager enemiesManager, PlayerController player)
     {
@@ -52,7 +52,7 @@ public class EnemyController : MonoBehaviour
             weapon.Initialize(transform, _healthSystem);
         }
 
-        ChangeState(new EnemyIdleState(this, GetRandomIdleTime()));
+        ChangeState(new EnemyIdleState(this));
     }
 
     public void ChangeState(EnemyState nextState)
@@ -112,7 +112,7 @@ public class EnemyController : MonoBehaviour
 
     public virtual void EnemyDiedClose(Transform deathSource)
     {
-        OnAllyDiedClose?.Invoke(this, deathSource);
+        OnAllyDiedClose?.Invoke(deathSource);
     }
 
     private void OnCollisionEnter(Collision collision)

@@ -7,8 +7,8 @@ public class ChasePlayerWhenCloseData : EnemyBehaviourData
 {
     public float chasingDistance;
 
-    public override EnemyBehaviour Behaviour()
+    public override EnemyBehaviour Behaviour(EnemyController controller)
     {
-        return new ChasePlayerWhenClose(chasingDistance);
+        return new ChasePlayerWhenClose(controller, chasingDistance);
     }
 }

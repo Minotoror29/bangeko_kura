@@ -5,8 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Enemy Behaviour/Flees When Ally Dies Close")]
 public class FleeWhenAllyDieCloseData : EnemyBehaviourData
 {
-    public override EnemyBehaviour Behaviour()
+    public override EnemyBehaviour Behaviour(EnemyController controller)
     {
-        return new FleeWhenAllyDieClose();
+        return new FleeWhenAllyDieClose(controller);
     }
 }

@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class FleeWhenAllyDieClose : EnemyBehaviour
 {
+    public FleeWhenAllyDieClose(EnemyController controller) : base(controller)
+    {
+    }
+
     public override void SubscribeEvents(EnemyState state)
     {
         state.Controller.OnAllyDiedClose += Flee;
@@ -14,8 +18,8 @@ public class FleeWhenAllyDieClose : EnemyBehaviour
         state.Controller.OnAllyDiedClose -= Flee;
     }
 
-    private void Flee(EnemyController controller, Transform deathSource)
+    private void Flee(Transform deathSource)
     {
-        controller.ChangeState(new EnemyFleeFromState(controller, deathSource));
+        Controller.ChangeState(new EnemyFleeFromState(Controller, deathSource));
     }
 }

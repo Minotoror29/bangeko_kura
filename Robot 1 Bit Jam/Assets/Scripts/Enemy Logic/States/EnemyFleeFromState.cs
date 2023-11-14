@@ -37,7 +37,7 @@ public class EnemyFleeFromState : EnemyState
         _fleeingTimer -= Time.deltaTime;
         if (_fleeingTimer <= 0 )
         {
-            Controller.ChangeState(new EnemyIdleState(Controller, Controller.GetRandomIdleTime()));
+            Controller.ChangeState(new EnemyIdleState(Controller));
         }
     }
 

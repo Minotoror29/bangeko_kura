@@ -31,7 +31,7 @@ public class EnemyPatrolState : EnemyState
     {
         if (collision.gameObject.CompareTag("Obstacle"))
         {
-            Controller.ChangeState(new EnemyIdleState(Controller, Controller.GetRandomIdleTime()));
+            Controller.ChangeState(new EnemyIdleState(Controller));
         }
     }
 
@@ -43,7 +43,7 @@ public class EnemyPatrolState : EnemyState
 
         if (_patrolTimer <= 0f)
         {
-            Controller.ChangeState(new EnemyIdleState(Controller, Controller.GetRandomIdleTime()));
+            Controller.ChangeState(new EnemyIdleState(Controller));
         }
     }
 

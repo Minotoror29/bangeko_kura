@@ -14,7 +14,7 @@ public abstract class EnemyState : State
     public EnemyController Controller { get { return _controller; } }
     public EnemyStateId Id { set { _id = value; } }
 
-    public event Action<EnemyController> OnUpdate;
+    public event Action OnUpdate;
 
     public EnemyState(EnemyController controller)
     {
@@ -29,9 +29,7 @@ public abstract class EnemyState : State
         {
             if (behaviour.states.Contains(_id) || behaviour.states.Contains(EnemyStateId.All))
             {
-                //behaviour.SubscribeEvents(this);
-
-                EnemyBehaviour newBehaviour = behaviour.Behaviour();
+                EnemyBehaviour newBehaviour = behaviour.Behaviour(_controller);
                 newBehaviour.SubscribeEvents(this);
                 _behaviours.Add(newBehaviour);
             }
@@ -48,6 +46,6 @@ public abstract class EnemyState : State
 
     public override void UpdateLogic()
     {
-        OnUpdate?.Invoke(Controller);
+        OnUpdate?.Invoke();
     }
 }

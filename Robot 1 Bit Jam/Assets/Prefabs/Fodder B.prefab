@@ -222,6 +222,7 @@ MonoBehaviour:
   movementSpeed: 250
   behaviours:
   - {fileID: 11400000, guid: 5519ae41a5bb9a14198ea39ea5ed8f4a, type: 2}
+  - {fileID: 11400000, guid: 47063c1bbf98d65459c3f920d991fc70, type: 2}
   fleeingZoneRadius: 10
   weapons: []
 --- !u!114 &6019434145944017564
