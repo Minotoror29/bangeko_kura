@@ -4,8 +4,15 @@ using UnityEngine;
 
 public class FodderBController : EnemyController
 {
-    public override void EnemyDiedClose(Transform source)
+    [SerializeField] private float chasingDistance = 15f;
+
+    public override void UpdateLogic()
     {
-        ChangeState(new EnemyFleeFromState(this, source));
+        base.UpdateLogic();
+
+        if (DistanceToPlayer <= chasingDistance)
+        {
+            ChangeState(new EnemyChasingState(this));
+        }
     }
 }

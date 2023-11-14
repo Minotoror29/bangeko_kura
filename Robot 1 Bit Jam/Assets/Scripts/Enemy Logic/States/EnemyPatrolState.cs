@@ -13,10 +13,13 @@ public class EnemyPatrolState : EnemyState
 
     public override void Enter()
     {
-        float randomAngle = Random.Range(0f, 360f);
-        float x = Controller.transform.position.x * Mathf.Cos(randomAngle);
-        float z = Controller.transform.position.z * Mathf.Sin(randomAngle);
-        _direction = new Vector3(x, 0f, z);
+        //float randomAngle = Random.Range(0f, 360f);
+        //float x = Controller.transform.position.x * Mathf.Cos(randomAngle);
+        //float z = Controller.transform.position.z * Mathf.Sin(randomAngle);
+        //_direction = new Vector3(x, 0f, z);
+
+        _direction = Random.insideUnitSphere;
+        _direction.y = 0f;
 
         _patrolTimer = Controller.PatrolTime;
     }

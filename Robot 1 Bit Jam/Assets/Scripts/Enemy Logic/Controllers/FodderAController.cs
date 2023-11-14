@@ -6,9 +6,9 @@ public class FodderAController : EnemyController
 {
     [SerializeField] private float fleeingZoneRadius = 10f;
 
-    public override void Initialize(EnemiesManager enemiesManager)
+    public override void Initialize(EnemiesManager enemiesManager, PlayerController player)
     {
-        base.Initialize(enemiesManager);
+        base.Initialize(enemiesManager, player);
 
         OnDeath += CreateFleeingZone;
     }
@@ -23,6 +23,8 @@ public class FodderAController : EnemyController
 
     public override void EnemyDiedClose(Transform source)
     {
+        base.EnemyDiedClose(source);
+
         ChangeState(new EnemyFleeFromState(this, source));
     }
 

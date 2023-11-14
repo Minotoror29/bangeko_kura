@@ -7,6 +7,9 @@ public abstract class EnemyController : MonoBehaviour
 {
     private EnemiesManager _enemiesManager;
 
+    private PlayerController _player;
+    private float _distanceToPlayer;
+
     private EnemyState _currentState;
 
     private Rigidbody _rb;
@@ -21,13 +24,15 @@ public abstract class EnemyController : MonoBehaviour
     [SerializeField] private float movementSpeed = 250f;
 
     public EnemiesManager EnemiesManager { get { return _enemiesManager; } }
+    public float DistanceToPlayer { get { return _distanceToPlayer; } }
     public float PatrolTime { get { return patrolTime; } }
 
     public event Action<EnemyController, Transform> OnDeath;
 
-    public virtual void Initialize(EnemiesManager enemiesManager)
+    public virtual void Initialize(EnemiesManager enemiesManager, PlayerController player)
     {
         _enemiesManager = enemiesManager;
+        _player = player;
 
         _rb = GetComponent<Rigidbody>();
         _healthSystem = GetComponent<HealthSystem>();
@@ -56,9 +61,11 @@ public abstract class EnemyController : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void UpdateLogic()
+    public virtual void UpdateLogic()
     {
         _currentState.UpdateLogic();
+
+        _distanceToPlayer = (_player.transform.position - transform.position).magnitude;
     }
 
     public void UpdatePhysics()
@@ -76,7 +83,7 @@ public abstract class EnemyController : MonoBehaviour
         _rb.velocity = movementSpeed * Time.fixedDeltaTime * direction.normalized;
     }
 
-    public abstract void EnemyDiedClose(Transform source);
+    public virtual void EnemyDiedClose(Transform source) { }
 
     private void OnCollisionEnter(Collision collision)
     {

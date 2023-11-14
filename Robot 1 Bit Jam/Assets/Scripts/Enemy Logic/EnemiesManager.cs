@@ -6,6 +6,8 @@ public class EnemiesManager : MonoBehaviour
 {
     private List<EnemyController> _enemies;
 
+    [SerializeField] private PlayerController player;
+
     private void Start()
     {
         Initialize();
@@ -31,7 +33,7 @@ public class EnemiesManager : MonoBehaviour
 
         foreach (EnemyController enemy in _enemies)
         {
-            enemy.Initialize(this);
+            enemy.Initialize(this, player);
         }
     }
 

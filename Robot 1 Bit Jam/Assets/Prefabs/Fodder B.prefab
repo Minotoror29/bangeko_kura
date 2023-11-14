@@ -92,7 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8462960372658825839}
-  - component: {fileID: 6154815642166271129}
+  - component: {fileID: 8471859646342632084}
   - component: {fileID: 6019434145944017564}
   - component: {fileID: 7418881099147549903}
   - component: {fileID: 630051959923096080}
@@ -111,7 +111,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8462960372658825842}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.25, y: 0, z: 5}
+  m_LocalPosition: {x: 0, y: 0, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -120,7 +120,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6154815642166271129
+--- !u!114 &8471859646342632084
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -129,14 +129,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8462960372658825842}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15b4b5532d4694e4594f3100d73549e3, type: 3}
+  m_Script: {fileID: 11500000, guid: 9130942bf7bc4d548ab989bd25f5935a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minIdleTime: 10
+  minIdleTime: 3
   maxIdleTime: 7
   patrolTime: 4
   movementSpeed: 250
-  fleeingZoneRadius: 10
 --- !u!114 &6019434145944017564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,7 +240,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a181abf599934c64abc82a4efab57da5, type: 2}
+  - {fileID: 2100000, guid: 975a1f64810f02d448fb79e26a26ec6d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
