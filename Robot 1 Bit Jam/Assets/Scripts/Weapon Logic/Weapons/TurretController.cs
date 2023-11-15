@@ -8,9 +8,13 @@ public class TurretController : Weapon
     private List<HealthSystem> _enemiesInRange;
 
     [SerializeField] private Transform firePoint;
-    [Tooltip("Projectiles per second"), SerializeField] private float fireRate = 1.5f;
+    [SerializeField] private int salvo = 1;
+    [SerializeField] private float salvoRate = 1f;
+    [SerializeField] private float fireRate = 1.5f;
     [SerializeField] private BulletController bulletPrefab;
+    private float _salvoTimer;
     private float _fireTimer;
+    private int _bulletsFired;
 
     public override void Initialize(Transform controller, HealthSystem healthSystem)
     {
@@ -18,7 +22,9 @@ public class TurretController : Weapon
 
         _enemiesInRange = new();
 
+        _salvoTimer = 0f;
         _fireTimer = 0f;
+        _bulletsFired = 0;
     }
 
     public override void UpdateLogic()
@@ -27,15 +33,27 @@ public class TurretController : Weapon
 
         SortEnemiesInRange();
 
-        if (_fireTimer < 1f / fireRate)
+        if (_salvoTimer < salvoRate)
         {
-            _fireTimer += Time.deltaTime;
+            _salvoTimer += Time.deltaTime;
         } else
         {
-            if (_enemiesInRange.Count > 0)
+            if (_fireTimer < fireRate)
             {
-                Fire();
-                _fireTimer = 0f;
+                _fireTimer += Time.deltaTime;
+            } else
+            {
+                if (_enemiesInRange.Count > 0)
+                {
+                    Fire();
+                    _fireTimer = 0f;
+
+                    if (_bulletsFired == salvo)
+                    {
+                        _salvoTimer = 0f;
+                        _bulletsFired = 0;
+                    }
+                }
             }
         }
     }
@@ -58,6 +76,7 @@ public class TurretController : Weapon
     {
         BulletController newBullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
         newBullet.Initialize(_enemiesInRange[0].transform, Controller);
+        _bulletsFired++;
     }
 
     private void RemoveEnemyFromTargets(HealthSystem enemy, Transform deathSource)
