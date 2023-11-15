@@ -27,12 +27,10 @@ public class EnemyIdleState : EnemyState
     public override void UpdateLogic()
     {
         base.UpdateLogic();
-
-        Controller.StopMovement();
     }
 
     public override void UpdatePhysics()
     {
-
+        Controller.StopMovement();
     }
 }

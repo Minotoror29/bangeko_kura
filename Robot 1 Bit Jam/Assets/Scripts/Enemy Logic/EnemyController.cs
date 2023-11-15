@@ -34,7 +34,6 @@ public class EnemyController : MonoBehaviour
     public float PatrolTime { get { return patrolTime; } }
     public List<EnemyBehaviourData> Behaviours { get { return behaviours; } }
 
-    public event Action<EnemyController, Transform> OnDeath;
     public event Action<Transform> OnAllyDiedClose;
 
     public virtual void Initialize(EnemiesManager enemiesManager, PlayerController player)
@@ -69,8 +68,6 @@ public class EnemyController : MonoBehaviour
 
     public void Die(HealthSystem healthSystem, Transform deathSource)
     {
-        OnDeath?.Invoke(this, deathSource);
-
         foreach (EnemyController enemy in EnemiesManager.EnemiesCloseTo(this, fleeingZoneRadius))
         {
             enemy.EnemyDiedClose(deathSource);

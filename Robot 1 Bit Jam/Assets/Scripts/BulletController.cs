@@ -52,12 +52,16 @@ public class BulletController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        HealthSystem healthSystem = other.gameObject.GetComponent<HealthSystem>();
-        if (healthSystem)
+        if (other.TryGetComponent(out HealthSystem healthSystem))
         {
-            healthSystem.TakeDamage(damage, _source);
+            if (_source != other.transform)
+            {
+                healthSystem.TakeDamage(damage, _source);
+                Destroy(gameObject);
+            }
+        } else if (other.gameObject.CompareTag("Obstacle"))
+        {
+            Destroy(gameObject);
         }
-
-        Destroy(gameObject);
     }
 }
