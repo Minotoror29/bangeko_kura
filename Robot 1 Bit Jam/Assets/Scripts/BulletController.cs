@@ -59,6 +59,12 @@ public class BulletController : MonoBehaviour
                 healthSystem.TakeDamage(damage, _source);
                 Destroy(gameObject);
             }
+        } else if (other.TryGetComponent(out ShieldController shield))
+        {
+            if (shield.TakeDamage(_source))
+            {
+                Destroy(gameObject);
+            }
         } else if (other.gameObject.CompareTag("Obstacle"))
         {
             Destroy(gameObject);
