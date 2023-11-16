@@ -61,8 +61,9 @@ public class BulletController : MonoBehaviour
             }
         } else if (other.TryGetComponent(out ShieldController shield))
         {
-            if (shield.TakeDamage(_source))
+            if (_source != shield.Controller.transform)
             {
+                shield.TakeDamage(_source);
                 Destroy(gameObject);
             }
         } else if (other.gameObject.CompareTag("Obstacle"))
