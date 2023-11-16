@@ -16,4 +16,7 @@ public abstract class Controller : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         _dashing = false;
     }
+
+    public abstract void UpdateLogic();
+    public abstract void UpdatePhysics();
 }

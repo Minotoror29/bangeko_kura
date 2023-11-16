@@ -78,7 +78,7 @@ public class EnemyController : Controller
         Destroy(gameObject);
     }
 
-    public virtual void UpdateLogic()
+    public override void UpdateLogic()
     {
         _distanceToPlayer = (_player.transform.position - transform.position).magnitude;
 
@@ -92,7 +92,7 @@ public class EnemyController : Controller
         transform.LookAt(Rb.velocity.normalized + transform.position);
     }
 
-    public void UpdatePhysics()
+    public override void UpdatePhysics()
     {
         foreach (Weapon weapon in weapons)
         {

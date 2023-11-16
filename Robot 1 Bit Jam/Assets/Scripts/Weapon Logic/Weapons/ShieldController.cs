@@ -25,7 +25,7 @@ public class ShieldController : Weapon
 
     public bool TakeDamage(Transform damageSource)
     {
-        if (damageSource == Controller)
+        if (damageSource == Controller.transform)
         {
             return false;
         } else

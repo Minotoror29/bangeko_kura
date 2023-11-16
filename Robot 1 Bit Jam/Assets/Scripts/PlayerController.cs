@@ -72,7 +72,7 @@ public class PlayerController : Controller
         }
     }
 
-    public void UpdateLogic()
+    public override void UpdateLogic()
     {
         foreach (Weapon weapon in weapons)
         {
@@ -130,7 +130,7 @@ public class PlayerController : Controller
         transform.LookAt(_lookDirection);
     }
 
-    public void UpdatePhysics()
+    public override void UpdatePhysics()
     {
         foreach (Weapon weapon in weapons)
         {
