@@ -13,7 +13,7 @@ public class ShieldController : Weapon
 
     private ShieldState _currentState;
 
-    public override void Initialize(Transform controller, HealthSystem healthSystem)
+    public override void Initialize(Controller controller, HealthSystem healthSystem)
     {
         base.Initialize(controller, healthSystem);
 

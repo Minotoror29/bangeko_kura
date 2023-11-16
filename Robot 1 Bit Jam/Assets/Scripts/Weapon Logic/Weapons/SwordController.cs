@@ -11,7 +11,7 @@ public class SwordController : Weapon
     private List<HealthSystem> _enemiesInRange;
     private List<HealthSystem> _alliesInRange;
 
-    public override void Initialize(Transform controller, HealthSystem healthSystem)
+    public override void Initialize(Controller controller, HealthSystem healthSystem)
     {
         base.Initialize(controller, healthSystem);
 
@@ -48,11 +48,11 @@ public class SwordController : Weapon
                 {
                     if (damage > 0)
                     {
-                        enemy.TakeDamage(damage, Controller);
+                        enemy.TakeDamage(damage, Controller.transform);
                     }
                     else if (damage == -1)
                     {
-                        enemy.Die(Controller);
+                        enemy.Die(Controller.transform);
                     }
                 }
 

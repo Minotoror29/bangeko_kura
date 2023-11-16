@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : Controller
 {
     private EnemiesManager _enemiesManager;
 
@@ -12,7 +12,6 @@ public class EnemyController : MonoBehaviour
 
     private EnemyState _currentState;
 
-    private Rigidbody _rb;
     private HealthSystem _healthSystem;
 
     [Header("Idle")]
@@ -38,17 +37,18 @@ public class EnemyController : MonoBehaviour
 
     public virtual void Initialize(EnemiesManager enemiesManager, PlayerController player)
     {
+        base.Initialize();
+
         _enemiesManager = enemiesManager;
         _player = player;
 
-        _rb = GetComponent<Rigidbody>();
         _healthSystem = GetComponent<HealthSystem>();
         _healthSystem.Initialize();
         _healthSystem.OnDeath += Die;
 
         foreach (Weapon weapon in weapons)
         {
-            weapon.Initialize(transform, _healthSystem);
+            weapon.Initialize(this, _healthSystem);
         }
 
         ChangeState(new EnemyIdleState(this));
@@ -89,22 +89,30 @@ public class EnemyController : MonoBehaviour
 
         _currentState.UpdateLogic();
 
-        transform.LookAt(_rb.velocity.normalized + transform.position);
+        transform.LookAt(Rb.velocity.normalized + transform.position);
     }
 
     public void UpdatePhysics()
     {
+        foreach (Weapon weapon in weapons)
+        {
+            weapon.UpdatePhysics();
+        }
+
         _currentState.UpdatePhysics();
     }
 
     public void StopMovement()
     {
-        _rb.velocity = Vector3.zero;
+        Rb.velocity = Vector3.zero;
     }
 
     public void MoveTowards(Vector3 direction)
     {
-        _rb.velocity = movementSpeed * Time.fixedDeltaTime * direction.normalized;
+        if (!Dashing)
+        {
+            Rb.velocity = movementSpeed * Time.fixedDeltaTime * direction.normalized;
+        }
     }
 
     public virtual void EnemyDiedClose(Transform deathSource)

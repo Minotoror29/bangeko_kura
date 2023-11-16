@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Controller
 {
     private PlayerControls _playerControls;
-    private Rigidbody _rb;
     private HealthSystem _healthSystem;
 
     [Header("Movement")]
@@ -31,7 +30,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float dashTime = 0.1f;
     [SerializeField] private float dashCooldown = 2f;
     private float _dashTimer;
-    private bool _dashing;
     private float _dashCooldownTimer;
     private Vector3 _dashDirection;
 
@@ -53,14 +51,15 @@ public class PlayerController : MonoBehaviour
         UpdatePhysics();
     }
 
-    public void Initialize()
+    public override void Initialize()
     {
+        base.Initialize();
+
         _playerControls = new PlayerControls();
         _playerControls.InGame.Enable();
         _playerControls.InGame.Laser.performed += ctx => FireLaser();
         _playerControls.InGame.Dash.performed += ctx => Dash();
 
-        _rb = GetComponent<Rigidbody>();
         _healthSystem = GetComponent<HealthSystem>();
         _healthSystem.Initialize();
 
@@ -69,7 +68,7 @@ public class PlayerController : MonoBehaviour
 
         foreach (Weapon weapon in weapons)
         {
-            weapon.Initialize(transform, _healthSystem);
+            weapon.Initialize(this, _healthSystem);
         }
     }
 
@@ -93,6 +92,19 @@ public class PlayerController : MonoBehaviour
         if (_dashCooldownTimer < dashCooldown)
         {
             _dashCooldownTimer += Time.deltaTime;
+        }
+
+        if (Dashing)
+        {
+            if (_dashTimer < dashTime)
+            {
+                _dashTimer += Time.deltaTime;
+            }
+            else
+            {
+                Dashing = false;
+                _dashCooldownTimer = 0f;
+            }
         }
     }
 
@@ -120,21 +132,17 @@ public class PlayerController : MonoBehaviour
 
     public void UpdatePhysics()
     {
-        if (!_dashing)
+        foreach (Weapon weapon in weapons)
         {
-            _rb.velocity = movementSpeed * Time.fixedDeltaTime * _movementDirection.normalized;
+            weapon.UpdatePhysics();
+        }
+
+        if (!Dashing)
+        {
+            Rb.velocity = movementSpeed * Time.fixedDeltaTime * _movementDirection.normalized;
         } else
         {
-            _rb.velocity = dashSpeed * Time.fixedDeltaTime * _dashDirection.normalized;
-
-            if (_dashTimer < dashTime)
-            {
-                _dashTimer += Time.deltaTime;
-            } else
-            {
-                _dashing = false;
-                _dashCooldownTimer = 0f;
-            }
+            Rb.velocity = dashSpeed * Time.fixedDeltaTime * _dashDirection.normalized;
         }
     }
 
@@ -171,6 +179,6 @@ public class PlayerController : MonoBehaviour
 
         _dashTimer = 0f;
         _dashDirection = _movementDirection;
-        _dashing = true;
+        Dashing = true;
     }
 }

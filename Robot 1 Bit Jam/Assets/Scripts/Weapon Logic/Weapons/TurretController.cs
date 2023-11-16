@@ -16,7 +16,7 @@ public class TurretController : Weapon
     private float _fireTimer;
     private int _bulletsFired;
 
-    public override void Initialize(Transform controller, HealthSystem healthSystem)
+    public override void Initialize(Controller controller, HealthSystem healthSystem)
     {
         base.Initialize(controller, healthSystem);
 
@@ -75,7 +75,7 @@ public class TurretController : Weapon
     private void Fire()
     {
         BulletController newBullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
-        newBullet.Initialize(_enemiesInRange[0].transform, Controller);
+        newBullet.Initialize(_enemiesInRange[0].transform, Controller.transform);
         _bulletsFired++;
     }
 
@@ -100,7 +100,7 @@ public class TurretController : Weapon
     {
         if (other.TryGetComponent(out HealthSystem enemy) && _enemiesInRange.Contains(enemy))
         {
-            RemoveEnemyFromTargets(enemy, Controller);
+            RemoveEnemyFromTargets(enemy, Controller.transform);
             enemy.OnDeath -= RemoveEnemyFromTargets;
         }
     }

@@ -4,19 +4,24 @@ using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour
 {
-    private Transform _controller;
+    private Controller _controller;
     private HealthSystem _healthSystem;
 
-    public Transform Controller { get { return _controller; } }
+    public Controller Controller { get { return _controller; } }
     public HealthSystem HealthSystem { get { return _healthSystem; } }
 
-    public virtual void Initialize(Transform controller, HealthSystem healthSystem)
+    public virtual void Initialize(Controller controller, HealthSystem healthSystem)
     {
         _controller = controller;
         _healthSystem = healthSystem;
     }
 
     public virtual void UpdateLogic()
+    {
+
+    }
+
+    public virtual void UpdatePhysics()
     {
 
     }
