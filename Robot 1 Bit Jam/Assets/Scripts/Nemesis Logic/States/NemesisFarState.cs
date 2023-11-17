@@ -36,6 +36,6 @@ public class NemesisFarState : NemesisState
 
     public override void UpdatePhysics()
     {
-        Controller.Rb.velocity = Vector3.zero;
+        Controller.StopMovement();
     }
 }

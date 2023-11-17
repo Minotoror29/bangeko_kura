@@ -40,6 +40,10 @@ public class DashController : Weapon
             {
                 if ((_target.position - Controller.transform.position).magnitude >= distanceToDash)
                 {
+                    if (Controller.Animator != null)
+                    {
+                        Controller.Animator.SetBool("Dashing", true);
+                    }
                     Controller.Dashing = true;
                     _dashDirection = (_target.position - Controller.transform.position).normalized;
                     _dashCooldownTimer = 0f;
@@ -52,6 +56,10 @@ public class DashController : Weapon
                 _dashTimer += Time.deltaTime;
             } else
             {
+                if (Controller.Animator != null)
+                {
+                    Controller.Animator.SetBool("Dashing", false);
+                }
                 Controller.Dashing = false;
                 _dashTimer = 0f;
             }

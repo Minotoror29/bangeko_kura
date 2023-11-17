@@ -109,6 +109,10 @@ public class PlayerController : Controller
             }
             else
             {
+                if (Animator != null)
+                {
+                    Animator.SetBool("Dashing", false);
+                }
                 Dashing = false;
                 _dashCooldownTimer = 0f;
             }
@@ -119,6 +123,18 @@ public class PlayerController : Controller
     {
         _movementDirection.x = _playerControls.InGame.Movement.ReadValue<Vector2>().x;
         _movementDirection.z = _playerControls.InGame.Movement.ReadValue<Vector2>().y;
+
+        if (Animator != null)
+        {
+            if (_movementDirection.magnitude > 0)
+            {
+                Animator.SetBool("Walking", true);
+            }
+            else
+            {
+                Animator.SetBool("Walking", false);
+            }
+        }
     }
 
     private void HandleLookInput()
@@ -184,6 +200,10 @@ public class PlayerController : Controller
     {
         if (_dashCooldownTimer < dashCooldown || _movementDirection.magnitude == 0f) return;
 
+        if (Animator != null)
+        {
+            Animator.SetBool("Dashing", true);
+        }
         _dashTimer = 0f;
         _dashDirection = _movementDirection;
         Dashing = true;

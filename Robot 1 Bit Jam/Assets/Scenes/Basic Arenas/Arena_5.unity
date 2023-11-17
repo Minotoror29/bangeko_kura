@@ -846,10 +846,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3cb733b4f388924c991c0923ee4ce32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   movementSpeed: 250
   groundLayer:
     serializedVersion: 2
-    m_Bits: 576
+    m_Bits: 64
   laserFirePoint: {fileID: 7876023681080842734}
   laserMaxDistance: 1000
   laserPrefab: {fileID: 5168047291316246020, guid: 27b14fae9d065cb4a8df3f240af1b7d3,

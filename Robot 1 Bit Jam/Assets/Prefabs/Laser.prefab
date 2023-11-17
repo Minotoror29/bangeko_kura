@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 728a1c624b661424ea0305519b5d10d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 0.5
+  lifeTime: 0.1
 --- !u!120 &5183516080315772203
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -98,7 +98,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.15
+        value: 0.1
         inSlope: 0
         outSlope: 0
         tangentMode: 0

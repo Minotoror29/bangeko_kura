@@ -58,6 +58,8 @@ public class NemesisController : Controller
             weapon.UpdateLogic();
         }
 
+        transform.LookAt(_player.transform.position);
+
         _currentState.UpdateLogic();
     }
 
@@ -73,9 +75,18 @@ public class NemesisController : Controller
 
     public void MoveTowards(Vector3 direction)
     {
+        Animator.SetBool("Walking", true);
+
         if (!Dashing)
         {
             Rb.velocity = movementSpeed * Time.fixedDeltaTime * direction.normalized;
         }
+    }
+
+    public void StopMovement()
+    {
+        Animator.SetBool("Walking", false);
+
+        Rb.velocity = Vector3.zero;
     }
 }
