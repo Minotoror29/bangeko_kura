@@ -28,6 +28,10 @@ public class EnemyFleeFromState : EnemyState
 
     public override void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            Controller.ChangeState(new EnemyIdleState(Controller));
+        }
     }
 
     public override void UpdateLogic()

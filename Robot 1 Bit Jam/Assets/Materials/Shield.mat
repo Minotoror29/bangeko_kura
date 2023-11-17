@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Cell Shading Test
-  m_Shader: {fileID: -6465566751694194690, guid: 9190be3371c619148b0c605c0979489b,
+  m_Name: Shield
+  m_Shader: {fileID: -6465566751694194690, guid: 2044b4fcfe27c83488a28896de6c858b,
     type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -102,7 +102,7 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EnvironmentReflections: 1
-    - _Fresnel_Power: 1.87
+    - _Fresnel_Power: 1
     - _Fresnel_Threshold: 0.5
     - _GlossMapScale: 0
     - _Glossiness: 0
