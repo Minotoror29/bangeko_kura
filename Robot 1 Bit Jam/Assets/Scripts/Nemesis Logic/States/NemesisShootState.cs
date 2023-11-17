@@ -13,7 +13,6 @@ public class NemesisShootState : NemesisState
 
     public override void Enter()
     {
-        Debug.Log("Shoot");
     }
 
     public override void Exit()

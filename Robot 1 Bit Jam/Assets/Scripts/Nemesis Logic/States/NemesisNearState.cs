@@ -10,7 +10,6 @@ public class NemesisNearState : NemesisState
 
     public override void Enter()
     {
-        Debug.Log("Near");
     }
 
     public override void Exit()

@@ -13,7 +13,6 @@ public class NemesisMoveState : NemesisState
 
     public override void Enter()
     {
-        Debug.Log("Move");
     }
 
     public override void Exit()

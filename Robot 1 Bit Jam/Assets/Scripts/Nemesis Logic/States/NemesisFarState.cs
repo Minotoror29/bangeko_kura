@@ -10,8 +10,6 @@ public class NemesisFarState : NemesisState
 
     public override void Enter()
     {
-        Debug.Log("Far");
-
         int randomBehaviour = Random.Range(0, 2);
         if (randomBehaviour == 0)
         {
