@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using FMOD.Studio;
+using FMODUnity;
 
 public class PlayerController : Controller
 {
@@ -36,6 +38,9 @@ public class PlayerController : Controller
 
     [Header("Weapons")]
     [SerializeField] private List<Weapon> weapons;
+
+    //Audio
+    private EventInstance _laserSound;
 
     private void Start()
     {
@@ -72,6 +77,9 @@ public class PlayerController : Controller
         {
             weapon.Initialize(this, _healthSystem);
         }
+
+        //Initialize audio
+        _laserSound = RuntimeManager.CreateInstance("event:/Weapons/Laser");
     }
 
     private void Die(HealthSystem healthSystem, Transform deathSource)
@@ -192,6 +200,9 @@ public class PlayerController : Controller
         //Visuals
         Laser newLaser = Instantiate(laserPrefab);
         newLaser.Initialize(laserFirePoint.position, laserFirePoint.position + transform.forward * rayDistance);
+
+        //Audio
+        _laserSound.start();
 
         _laserCooldownTimer = 0f;
     }

@@ -1,5 +1,32 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8989245735669741913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Weapons/Turret
+  m_EditorClassIdentifier: 
+  Path: event:/Weapons/Turret
+  Guid:
+    Data1: 1888880378
+    Data2: 1152362337
+    Data3: -979705710
+    Data4: -59840618
+  Banks:
+  - {fileID: 1589832365939916333}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 136
 --- !u!114 &-8444015178581215183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27,6 +54,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 25413
+--- !u!114 &-6386284670042277513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Weapons/Laser
+  m_EditorClassIdentifier: 
+  Path: event:/Weapons/Laser
+  Guid:
+    Data1: -300842522
+    Data2: 1090920485
+    Data3: -368744265
+    Data4: 1620364445
+  Banks:
+  - {fileID: 1589832365939916333}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 179
 --- !u!114 &-4548694274812268718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,7 +123,7 @@ MonoBehaviour:
   Path: Assets/Sound/1bit_jam/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638358590244537785
+  lastModified: 638358622065838333
   FileSizes:
   - Name: Desktop
     Value: 1703904
@@ -117,16 +171,19 @@ MonoBehaviour:
   - {fileID: 905448090654457532}
   - {fileID: 780826937757828281}
   - {fileID: -4443212541527653608}
+  - {fileID: 1589832365939916333}
   EditorEvents:
   - {fileID: -4548694274812268718}
   - {fileID: -684441980847567428}
   - {fileID: -8444015178581215183}
+  - {fileID: -6386284670042277513}
+  - {fileID: -8989245735669741913}
   EditorParameters: []
   MasterBanks:
   - {fileID: 780826937757828281}
   StringsBanks:
   - {fileID: 905448090654457532}
-  cacheTime: 638358590244537785
+  cacheTime: 638358622066034142
   cacheVersion: 131609
 --- !u!114 &780826937757828281
 MonoBehaviour:
@@ -143,7 +200,7 @@ MonoBehaviour:
   Path: Assets/Sound/1bit_jam/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638358590240400519
+  lastModified: 638358622065426750
   FileSizes:
   - Name: Desktop
     Value: 1036
@@ -163,8 +220,28 @@ MonoBehaviour:
   Path: Assets/Sound/1bit_jam/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638358590240415539
+  lastModified: 638358622065441755
   FileSizes:
   - Name: Desktop
-    Value: 920
+    Value: 1072
+  Exists: 1
+--- !u!114 &1589832365939916333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/SFX.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/Sound/1bit_jam/Build/Desktop/SFX.bank
+  Name: SFX
+  StudioPath: bank:/SFX
+  lastModified: 638358622066034142
+  FileSizes:
+  - Name: Desktop
+    Value: 17152
   Exists: 1

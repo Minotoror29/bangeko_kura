@@ -1,3 +1,5 @@
+using FMOD.Studio;
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +18,9 @@ public class TurretController : Weapon
     private float _fireTimer;
     private int _bulletsFired;
 
+    //Audio
+    private EventInstance _fireSound;
+
     public override void Initialize(Controller controller, HealthSystem healthSystem)
     {
         base.Initialize(controller, healthSystem);
@@ -25,6 +30,8 @@ public class TurretController : Weapon
         _salvoTimer = 0f;
         _fireTimer = 0f;
         _bulletsFired = 0;
+
+        _fireSound = RuntimeManager.CreateInstance("event:/Weapons/Turret");
     }
 
     public override void UpdateLogic()
@@ -77,6 +84,8 @@ public class TurretController : Weapon
         BulletController newBullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
         newBullet.Initialize(_enemiesInRange[0].transform, Controller.transform);
         _bulletsFired++;
+
+        _fireSound.start();
     }
 
     private void RemoveEnemyFromTargets(HealthSystem enemy, Transform deathSource)
