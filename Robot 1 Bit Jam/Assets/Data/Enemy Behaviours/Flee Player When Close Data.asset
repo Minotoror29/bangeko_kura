@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c6aa469cee449a4a8e87cd75ad1d4e4, type: 3}
   m_Name: Flee Player When Close Data
   m_EditorClassIdentifier: 
-  states: 
-  fleeingDistance: 0
+  states: 00000000
+  fleeingDistance: 10
+  fleeingTime: 3

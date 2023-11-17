@@ -140,7 +140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &175164589
 Transform:
   m_ObjectHideFlags: 0
@@ -184,6 +184,150 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldown: 7
   protectionTime: 1
+--- !u!1001 &227025856
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 338863812}
+    m_Modifications:
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825842, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_Name
+      value: Dashing Swordling (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e5ae211aff5d83744b76eda94a41f55d, type: 3}
+--- !u!4 &258591619 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+    type: 3}
+  m_PrefabInstance: {fileID: 686414284}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &300357961
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 338863812}
+    m_Modifications:
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -19.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -16
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825842, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_Name
+      value: Dashing Swordling (6)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e5ae211aff5d83744b76eda94a41f55d, type: 3}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,7 +474,21 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1992488517}
+  - {fileID: 504035314}
+  - {fileID: 2054521796}
+  - {fileID: 1369588302}
+  - {fileID: 1464966245}
+  - {fileID: 258591619}
+  - {fileID: 2050326458}
+  - {fileID: 514102439}
+  - {fileID: 659015246}
+  - {fileID: 1970327167}
+  - {fileID: 548443630}
+  - {fileID: 593341275}
+  - {fileID: 1103277441}
+  - {fileID: 1736122066}
+  - {fileID: 1909045684}
+  - {fileID: 1982552055}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -532,6 +690,99 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+--- !u!4 &504035314 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1377991117}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &514102439 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+    type: 3}
+  m_PrefabInstance: {fileID: 300357961}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &548443630 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1087481085}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &593341275 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1374150194}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &613174089
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 338863812}
+    m_Modifications:
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -22.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825842, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_Name
+      value: Dashing Swordling (3)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e5ae211aff5d83744b76eda94a41f55d, type: 3}
 --- !u!1 &655535100
 GameObject:
   m_ObjectHideFlags: 0
@@ -577,6 +828,81 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &659015246 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+    type: 3}
+  m_PrefabInstance: {fileID: 2124304102}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &686414284
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 338863812}
+    m_Modifications:
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -22.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825842, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_Name
+      value: Dashing Swordling (4)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e5ae211aff5d83744b76eda94a41f55d, type: 3}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -626,6 +952,75 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &878960948
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 338863812}
+    m_Modifications:
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -7.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825842, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_Name
+      value: Dashing Swordling (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e5ae211aff5d83744b76eda94a41f55d, type: 3}
 --- !u!95 &968170535
 Animator:
   serializedVersion: 5
@@ -647,6 +1042,300 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1001 &1063342756
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 338863812}
+    m_Modifications:
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -17.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 16.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825842, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_Name
+      value: Dashing Swordling (12)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e5ae211aff5d83744b76eda94a41f55d, type: 3}
+--- !u!1001 &1087481085
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 338863812}
+    m_Modifications:
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 19.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -21.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825842, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_Name
+      value: Dashing Swordling (9)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e5ae211aff5d83744b76eda94a41f55d, type: 3}
+--- !u!4 &1103277441 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1727905562}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1369588302 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+    type: 3}
+  m_PrefabInstance: {fileID: 227025856}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1374150194
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 338863812}
+    m_Modifications:
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 20.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825842, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_Name
+      value: Dashing Swordling (10)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e5ae211aff5d83744b76eda94a41f55d, type: 3}
+--- !u!1001 &1377991117
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 338863812}
+    m_Modifications:
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825842, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_Name
+      value: Dashing Swordling
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e5ae211aff5d83744b76eda94a41f55d, type: 3}
+--- !u!4 &1464966245 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+    type: 3}
+  m_PrefabInstance: {fileID: 613174089}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1487840483
 GameObject:
   m_ObjectHideFlags: 0
@@ -679,7 +1368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3cb733b4f388924c991c0923ee4ce32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 500
+  movementSpeed: 250
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -695,10 +1384,12 @@ MonoBehaviour:
     m_Bits: 256
   laserDamage: 15
   laserCooldown: 3
-  dashSpeed: 1000
-  dashTime: 0.1
+  dashSpeed: 500
+  dashTime: 0.25
   dashCooldown: 2
-  weapons: []
+  weapons:
+  - {fileID: 2124977179}
+  - {fileID: 175164591}
 --- !u!4 &1487840485
 Transform:
   m_ObjectHideFlags: 0
@@ -761,6 +1452,219 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 200
+--- !u!1001 &1549574596
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 338863812}
+    m_Modifications:
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -19
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -23
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825842, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_Name
+      value: Dashing Swordling (5)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e5ae211aff5d83744b76eda94a41f55d, type: 3}
+--- !u!1001 &1713305380
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 338863812}
+    m_Modifications:
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825842, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_Name
+      value: Dashing Swordling (13)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e5ae211aff5d83744b76eda94a41f55d, type: 3}
+--- !u!1001 &1727905562
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 338863812}
+    m_Modifications:
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 16.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 17.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825842, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_Name
+      value: Dashing Swordling (11)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e5ae211aff5d83744b76eda94a41f55d, type: 3}
+--- !u!4 &1736122066 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1063342756}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1825337805
 GameObject:
   m_ObjectHideFlags: 0
@@ -852,7 +1756,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1825337805}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.15, z: 0}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 20, y: 20, z: 20}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -920,91 +1824,243 @@ CapsuleCollider:
   m_Height: 5
   m_Direction: 1
   m_Center: {x: 0, y: 1.25, z: 0}
---- !u!1001 &1992488516
+--- !u!1001 &1894316215
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 338863812}
     m_Modifications:
-    - target: {fileID: 7457153679794556480, guid: f16050f384b93d8438e3871dfa519237,
-        type: 3}
-      propertyPath: m_Name
-      value: Nemesis
-      objectReference: {fileID: 0}
-    - target: {fileID: 7457153679794556483, guid: f16050f384b93d8438e3871dfa519237,
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 14
       objectReference: {fileID: 0}
-    - target: {fileID: 7457153679794556483, guid: f16050f384b93d8438e3871dfa519237,
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 21
+      value: 5.75
       objectReference: {fileID: 0}
-    - target: {fileID: 7457153679794556483, guid: f16050f384b93d8438e3871dfa519237,
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7457153679794556483, guid: f16050f384b93d8438e3871dfa519237,
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 15.25
       objectReference: {fileID: 0}
-    - target: {fileID: 7457153679794556483, guid: f16050f384b93d8438e3871dfa519237,
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
         type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7457153679794556483, guid: f16050f384b93d8438e3871dfa519237,
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7457153679794556483, guid: f16050f384b93d8438e3871dfa519237,
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7457153679794556483, guid: f16050f384b93d8438e3871dfa519237,
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7457153679794556483, guid: f16050f384b93d8438e3871dfa519237,
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7457153679794556483, guid: f16050f384b93d8438e3871dfa519237,
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7457153679794556483, guid: f16050f384b93d8438e3871dfa519237,
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7457153680269765080, guid: f16050f384b93d8438e3871dfa519237,
+    - target: {fileID: 8462960372658825842, guid: e5ae211aff5d83744b76eda94a41f55d,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 54b2c77e181232e408ce77d442f89369, type: 2}
-    - target: {fileID: 7457153680298560730, guid: f16050f384b93d8438e3871dfa519237,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
+      propertyPath: m_Name
+      value: Dashing Swordling (14)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: f16050f384b93d8438e3871dfa519237, type: 3}
---- !u!4 &1992488517 stripped
+  m_SourcePrefab: {fileID: 100100000, guid: e5ae211aff5d83744b76eda94a41f55d, type: 3}
+--- !u!4 &1909045684 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 7457153679794556483, guid: f16050f384b93d8438e3871dfa519237,
+  m_CorrespondingSourceObject: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
     type: 3}
-  m_PrefabInstance: {fileID: 1992488516}
+  m_PrefabInstance: {fileID: 1713305380}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1963997745
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 338863812}
+    m_Modifications:
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 11.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -13.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825842, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_Name
+      value: Dashing Swordling (8)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e5ae211aff5d83744b76eda94a41f55d, type: 3}
+--- !u!4 &1970327167 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1963997745}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1982552055 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1894316215}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2050326458 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1549574596}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2054521796 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+    type: 3}
+  m_PrefabInstance: {fileID: 878960948}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2124304102
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 338863812}
+    m_Modifications:
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -15.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825839, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462960372658825842, guid: e5ae211aff5d83744b76eda94a41f55d,
+        type: 3}
+      propertyPath: m_Name
+      value: Dashing Swordling (7)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e5ae211aff5d83744b76eda94a41f55d, type: 3}
 --- !u!1 &2124977176
 GameObject:
   m_ObjectHideFlags: 0
@@ -1022,7 +2078,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2124977177
 Transform:
   m_ObjectHideFlags: 0
@@ -1153,7 +2209,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132149081555415}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -1.02, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1424,7 +2480,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &2514083502347210160
 GameObject:
   m_ObjectHideFlags: 0
@@ -1612,7 +2668,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &4059497675816874698
 GameObject:
   m_ObjectHideFlags: 0
@@ -1660,7 +2716,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4466702640799550954
 Transform:
   m_ObjectHideFlags: 0
@@ -2021,7 +3077,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6112365233148265723
 Transform:
   m_ObjectHideFlags: 0
@@ -2175,7 +3231,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6579365916263022501
 Transform:
   m_ObjectHideFlags: 0
@@ -2647,7 +3703,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &8420096780973358110
 GameObject:
   m_ObjectHideFlags: 0
@@ -2714,7 +3770,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &8609551562215106721
 GameObject:
   m_ObjectHideFlags: 0
@@ -2763,7 +3819,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8879528567449209843
 Transform:
   m_ObjectHideFlags: 0
