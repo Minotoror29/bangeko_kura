@@ -3439,7 +3439,7 @@ MonoBehaviour:
   movementSpeed: 500
   groundLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 576
   laserFirePoint: {fileID: 7876023681080842734}
   laserMaxDistance: 1000
   laserPrefab: {fileID: 5168047291316246020, guid: 27b14fae9d065cb4a8df3f240af1b7d3,

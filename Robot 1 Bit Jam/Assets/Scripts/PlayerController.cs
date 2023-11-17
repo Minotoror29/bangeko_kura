@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : Controller
 {
@@ -62,6 +63,7 @@ public class PlayerController : Controller
 
         _healthSystem = GetComponent<HealthSystem>();
         _healthSystem.Initialize();
+        _healthSystem.OnDeath += Die;
 
         _laserCooldownTimer = laserCooldown;
         _dashCooldownTimer = dashCooldown;
@@ -70,6 +72,11 @@ public class PlayerController : Controller
         {
             weapon.Initialize(this, _healthSystem);
         }
+    }
+
+    private void Die(HealthSystem healthSystem, Transform deathSource)
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public override void UpdateLogic()

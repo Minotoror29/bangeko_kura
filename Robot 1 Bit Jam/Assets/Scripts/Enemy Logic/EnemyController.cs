@@ -104,11 +104,21 @@ public class EnemyController : Controller
 
     public void StopMovement()
     {
+        if (Animator != null)
+        {
+            Animator.SetBool("Walking", false);
+        }
+
         Rb.velocity = Vector3.zero;
     }
 
     public void MoveTowards(Vector3 direction)
     {
+        if (Animator != null)
+        {
+            Animator.SetBool("Walking", true);
+        }
+
         if (!Dashing)
         {
             Rb.velocity = movementSpeed * Time.fixedDeltaTime * direction.normalized;

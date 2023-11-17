@@ -294,7 +294,7 @@ MonoBehaviour:
   minIdleTime: 3
   maxIdleTime: 7
   patrolTime: 4
-  movementSpeed: 250
+  movementSpeed: 200
   behaviours:
   - {fileID: 11400000, guid: ed761c27d8e87ea4493de0c5eb67a1f5, type: 2}
   fleeingZoneRadius: 10

@@ -159,10 +159,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6cff686ebb8ffc40865f7118051a949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 8592407444188792641}
   minIdleTime: 3
   maxIdleTime: 7
   patrolTime: 4
-  movementSpeed: 250
+  movementSpeed: 200
   behaviours:
   - {fileID: 11400000, guid: 5519ae41a5bb9a14198ea39ea5ed8f4a, type: 2}
   fleeingZoneRadius: 10
@@ -332,3 +333,30 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7351294645974700424}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7693382202016443609 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c2a01da99a8024742aecab4d2506af82,
+    type: 3}
+  m_PrefabInstance: {fileID: 7351294645974700424}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &8592407444188792641
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7693382202016443609}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 22af135162994b54fb03f4a529f65468, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

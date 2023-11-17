@@ -33,6 +33,11 @@ public class SwordController : Weapon
         {
             if (_enemiesInRange.Count > 0)
             {
+                if (Controller.Animator != null)
+                {
+                    Controller.Animator.SetTrigger("Sword");
+                }
+
                 List<HealthSystem> targets = new(); ;
                 foreach (HealthSystem enemy in _enemiesInRange)
                 {
