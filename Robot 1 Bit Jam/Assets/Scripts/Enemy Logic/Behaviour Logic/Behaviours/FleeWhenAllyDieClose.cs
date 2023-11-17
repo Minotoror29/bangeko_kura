@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class FleeWhenAllyDieClose : EnemyBehaviour
 {
-    public FleeWhenAllyDieClose(EnemyController controller) : base(controller)
+    private float _fleeingTime;
+
+    public FleeWhenAllyDieClose(EnemyController controller, float fleeingTime) : base(controller)
     {
+        _fleeingTime = fleeingTime;
     }
 
     public override void SubscribeEvents(EnemyState state)
@@ -20,6 +23,6 @@ public class FleeWhenAllyDieClose : EnemyBehaviour
 
     private void Flee(Transform deathSource)
     {
-        Controller.ChangeState(new EnemyFleeFromState(Controller, deathSource));
+        Controller.ChangeState(new EnemyFleeFromState(Controller, deathSource, _fleeingTime));
     }
 }

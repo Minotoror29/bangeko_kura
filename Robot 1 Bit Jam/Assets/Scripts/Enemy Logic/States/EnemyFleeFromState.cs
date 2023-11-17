@@ -8,17 +8,16 @@ public class EnemyFleeFromState : EnemyState
 
     private float _fleeingTimer;
 
-    public EnemyFleeFromState(EnemyController controller, Transform target) : base(controller)
+    public EnemyFleeFromState(EnemyController controller, Transform target, float fleeingTime) : base(controller)
     {
         Id = EnemyStateId.Fleeing;
         _target = target;
+        _fleeingTimer = fleeingTime;
     }
 
     public override void Enter()
     {
         base.Enter();
-
-        _fleeingTimer = 5f;
     }
 
     public override void Exit()

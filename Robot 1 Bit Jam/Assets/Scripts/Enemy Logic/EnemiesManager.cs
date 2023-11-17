@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemiesManager : MonoBehaviour
 {
@@ -65,6 +66,16 @@ public class EnemiesManager : MonoBehaviour
         {
             _enemies.Remove(enemy);
         }
+
+        if (_enemies.Count == 0)
+        {
+            EndLevel();
+        }
+    }
+
+    private void EndLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public List<EnemyController> EnemiesCloseTo(EnemyController source, float distance)
