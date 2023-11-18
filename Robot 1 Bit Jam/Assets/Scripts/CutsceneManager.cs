@@ -32,7 +32,10 @@ public class CutsceneManager : MonoBehaviour
         _frameTimer = 0f;
         _currentFrameindex = 0;
 
-        _sound = RuntimeManager.CreateInstance(soundPath);
+        if (soundPath != "")
+        {
+            _sound = RuntimeManager.CreateInstance(soundPath);
+        }
 
         if (soundIndex == 0)
         {
@@ -45,7 +48,7 @@ public class CutsceneManager : MonoBehaviour
         frames[_currentFrameindex].gameObject.SetActive(false);
         _currentFrameindex++;
 
-        if (soundIndex == _currentFrameindex)
+        if (soundIndex == _currentFrameindex && soundPath != "")
         {
             _sound.start();
         }
