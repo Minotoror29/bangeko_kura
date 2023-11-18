@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{ddc8303e-15a1-4266-a8ad-9b30e11f0ec6}">
+		<property name="assetPath">
+			<value>Marche3.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.48278911564625848</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{d9f36d8b-17e2-4d18-a73b-11da721f2eff}</destination>
+		</relationship>
+	</object>
+</objects>

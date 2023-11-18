@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{fb4203c0-a75b-4e74-8620-4c937d9c991f}">
+		<property name="assetPath">
+			<value>Ennemi détruit.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.81818594104308395</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{d9f36d8b-17e2-4d18-a73b-11da721f2eff}</destination>
+		</relationship>
+	</object>
+</objects>

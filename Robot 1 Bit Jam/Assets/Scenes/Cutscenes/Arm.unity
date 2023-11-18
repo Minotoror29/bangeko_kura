@@ -644,6 +644,8 @@ MonoBehaviour:
   - {fileID: 2096845184}
   - {fileID: 1849573579}
   frameTime: 3
+  soundIndex: 2
+  soundPath: event:/Cutscenes/Arm
 --- !u!4 &1402055242
 Transform:
   m_ObjectHideFlags: 0

@@ -1,3 +1,5 @@
+using FMOD.Studio;
+using FMODUnity;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,6 +14,8 @@ public class NemesisController : Controller
     [SerializeField] private List<Weapon> weapons;
 
     private NemesisState _currentState;
+
+    private EventInstance _deathSound;
 
     private void Start()
     {
@@ -42,6 +46,8 @@ public class NemesisController : Controller
             weapon.Initialize(this, _healthSystem);
         }
 
+        _deathSound = RuntimeManager.CreateInstance("event:/Boss Death");
+
         ChangeState(new NemesisFarState(this, _player));
     }
 
@@ -54,6 +60,8 @@ public class NemesisController : Controller
 
     private void Die(HealthSystem healthSystem, Transform deathSource)
     {
+        _deathSound.start();
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 

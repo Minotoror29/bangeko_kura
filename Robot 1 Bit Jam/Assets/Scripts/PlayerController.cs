@@ -41,6 +41,9 @@ public class PlayerController : Controller
 
     //Audio
     private EventInstance _laserSound;
+    private EventInstance _laserReloadSound;
+    private EventInstance _dashSound;
+    private EventInstance _rollSound;
 
     private void Start()
     {
@@ -80,6 +83,9 @@ public class PlayerController : Controller
 
         //Initialize audio
         _laserSound = RuntimeManager.CreateInstance("event:/Weapons/Laser");
+        _laserReloadSound = RuntimeManager.CreateInstance("event:/Weapons/Laser reload");
+        _dashSound = RuntimeManager.CreateInstance("event:/Movement/Dash");
+        _rollSound = RuntimeManager.CreateInstance("event:/Movement/Roll");
     }
 
     private void Die(HealthSystem healthSystem, Transform deathSource)
@@ -102,6 +108,11 @@ public class PlayerController : Controller
         if (_laserCooldownTimer < laserCooldown)
         {
             _laserCooldownTimer += Time.deltaTime;
+
+            if (_laserCooldownTimer >= laserCooldown)
+            {
+                _laserReloadSound.start();
+            }
         }
 
         if (_dashCooldownTimer < dashCooldown)
@@ -218,5 +229,13 @@ public class PlayerController : Controller
         _dashTimer = 0f;
         _dashDirection = _movementDirection;
         Dashing = true;
+
+        if (dashSpeed == 1500f)
+        {
+            _dashSound.start();
+        } else if (dashSpeed > 0f)
+        {
+            _rollSound.start();
+        }
     }
 }

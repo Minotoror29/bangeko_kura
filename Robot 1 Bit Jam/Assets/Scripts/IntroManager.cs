@@ -1,3 +1,5 @@
+using FMOD.Studio;
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -18,6 +20,8 @@ public class IntroManager : MonoBehaviour
     private float _fadeTimer;
 
     private Color _textColor;
+
+    private EventInstance _startSound;
 
     private void Start()
     {
@@ -43,6 +47,8 @@ public class IntroManager : MonoBehaviour
 
         playButtonText.color = _textColor;
         playButton.gameObject.SetActive(false);
+
+        _startSound = RuntimeManager.CreateInstance("event:/Game Start");
     }
 
     public void UpdateLogic()
@@ -85,6 +91,8 @@ public class IntroManager : MonoBehaviour
 
     public void Play()
     {
+        _startSound.start();
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

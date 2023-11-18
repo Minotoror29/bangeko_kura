@@ -1,3 +1,5 @@
+using FMOD.Studio;
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +17,8 @@ public class DashController : Weapon
     private Transform _target;
     private Vector3 _dashDirection;
 
+    private EventInstance _dashSound;
+
     public override void Initialize(Controller controller, HealthSystem healthSystem)
     {
         base.Initialize(controller, healthSystem);
@@ -24,6 +28,8 @@ public class DashController : Weapon
         _dashCooldownTimer = 0f;
         _dashTimer = 0f;
         Controller.Dashing = false;
+
+        _dashSound = RuntimeManager.CreateInstance("event:/Movement/Dash");
     }
 
     public override void UpdateLogic()
@@ -38,7 +44,7 @@ public class DashController : Weapon
             }
             else
             {
-                if ((_target.position - Controller.transform.position).magnitude >= distanceToDash)
+                if ((_target.position - Controller.transform.position).magnitude >= distanceToDash && Controller.Rb.velocity.magnitude > 0)
                 {
                     if (Controller.Animator != null)
                     {
@@ -47,6 +53,8 @@ public class DashController : Weapon
                     Controller.Dashing = true;
                     _dashDirection = (_target.position - Controller.transform.position).normalized;
                     _dashCooldownTimer = 0f;
+
+                    _dashSound.start();
                 }
             }
         } else

@@ -800,6 +800,8 @@ MonoBehaviour:
   - {fileID: 430008147}
   - {fileID: 935137103}
   frameTime: 3
+  soundIndex: 4
+  soundPath: event:/Cutscenes/Turret
 --- !u!4 &1402055242
 Transform:
   m_ObjectHideFlags: 0

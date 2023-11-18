@@ -646,6 +646,8 @@ MonoBehaviour:
   - {fileID: 1849573579}
   - {fileID: 1443815512}
   frameTime: 3
+  soundIndex: 2
+  soundPath: event:/Cutscenes/Laser
 --- !u!4 &1402055242
 Transform:
   m_ObjectHideFlags: 0

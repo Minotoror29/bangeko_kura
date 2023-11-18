@@ -726,6 +726,8 @@ MonoBehaviour:
   - {fileID: 544370379}
   - {fileID: 1410614208}
   frameTime: 3
+  soundIndex: 3
+  soundPath: event:/Cutscenes/Head
 --- !u!4 &1402055242
 Transform:
   m_ObjectHideFlags: 0

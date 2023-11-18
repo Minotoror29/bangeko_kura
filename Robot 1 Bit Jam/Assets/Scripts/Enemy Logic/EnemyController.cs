@@ -1,3 +1,5 @@
+using FMOD.Studio;
+using FMODUnity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -27,6 +29,8 @@ public class EnemyController : Controller
 
     [SerializeField] private List<Weapon> weapons;
 
+    private EventInstance _deathSound;
+
     public EnemiesManager EnemiesManager { get { return _enemiesManager; } }
     public PlayerController Player { get { return _player; } }
     public float DistanceToPlayer { get { return _distanceToPlayer; } }
@@ -51,6 +55,8 @@ public class EnemyController : Controller
             weapon.Initialize(this, _healthSystem);
         }
 
+        _deathSound = RuntimeManager.CreateInstance("event:/Enemy Death");
+
         ChangeState(new EnemyIdleState(this));
     }
 
@@ -74,6 +80,8 @@ public class EnemyController : Controller
         }
 
         _enemiesManager.RemoveEnemy(this);
+
+        _deathSound.start();
 
         Destroy(gameObject);
     }
