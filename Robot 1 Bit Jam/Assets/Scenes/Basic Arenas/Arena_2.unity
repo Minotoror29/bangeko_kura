@@ -1551,7 +1551,17 @@ PrefabInstance:
       propertyPath: weapons.Array.data[1]
       value: 
       objectReference: {fileID: 1824287500}
+    - target: {fileID: 1534466202423219595, guid: f4207aff66d075143baae99334c3227f,
+        type: 3}
+      propertyPath: maxHealth
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 1534466203094196532, guid: f4207aff66d075143baae99334c3227f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3111483577752209733, guid: f4207aff66d075143baae99334c3227f,
         type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1562,6 +1572,11 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7445511290223719640, guid: f4207aff66d075143baae99334c3227f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8619293252689044606, guid: f4207aff66d075143baae99334c3227f,
         type: 3}
       propertyPath: m_IsActive
       value: 0
