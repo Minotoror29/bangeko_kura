@@ -1,3 +1,5 @@
+using FMOD.Studio;
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +13,8 @@ public class SwordController : Weapon
     private List<HealthSystem> _enemiesInRange;
     private List<HealthSystem> _alliesInRange;
 
+    private EventInstance _swordSound;
+
     public override void Initialize(Controller controller, HealthSystem healthSystem)
     {
         base.Initialize(controller, healthSystem);
@@ -20,6 +24,8 @@ public class SwordController : Weapon
         _alliesInRange = new();
 
         HealthSystem.OnDeath += RemoveFromOthersTargets;
+
+        _swordSound = RuntimeManager.CreateInstance("event:/Weapons/Sword");
     }
 
     public override void UpdateLogic()
@@ -62,6 +68,8 @@ public class SwordController : Weapon
                 }
 
                 _cooldownTimer = 0f;
+
+                _swordSound.start();
             }
         }
     }

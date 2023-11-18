@@ -81,6 +81,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 179
+--- !u!114 &-5044475388306123958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Weapons/Sword
+  m_EditorClassIdentifier: 
+  Path: event:/Weapons/Sword
+  Guid:
+    Data1: -1101055885
+    Data2: 1163618604
+    Data3: -1295570777
+    Data4: 1713090879
+  Banks:
+  - {fileID: 1589832365939916333}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 477
 --- !u!114 &-4548694274812268718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,11 +150,38 @@ MonoBehaviour:
   Path: Assets/Sound/1bit_jam/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638358622065838333
+  lastModified: 638359034559467240
   FileSizes:
   - Name: Desktop
     Value: 1703904
   Exists: 1
+--- !u!114 &-3966551579621473177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Weapons/Shield
+  m_EditorClassIdentifier: 
+  Path: event:/Weapons/Shield
+  Guid:
+    Data1: 61824004
+    Data2: 1263571681
+    Data3: 690026389
+    Data4: 1007740961
+  Banks:
+  - {fileID: 1589832365939916333}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 272
 --- !u!114 &-684441980847567428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,12 +232,14 @@ MonoBehaviour:
   - {fileID: -8444015178581215183}
   - {fileID: -6386284670042277513}
   - {fileID: -8989245735669741913}
+  - {fileID: -3966551579621473177}
+  - {fileID: -5044475388306123958}
   EditorParameters: []
   MasterBanks:
   - {fileID: 780826937757828281}
   StringsBanks:
   - {fileID: 905448090654457532}
-  cacheTime: 638358622066034142
+  cacheTime: 638359034559881573
   cacheVersion: 131609
 --- !u!114 &780826937757828281
 MonoBehaviour:
@@ -200,7 +256,7 @@ MonoBehaviour:
   Path: Assets/Sound/1bit_jam/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638358622065426750
+  lastModified: 638359034558861882
   FileSizes:
   - Name: Desktop
     Value: 1036
@@ -220,10 +276,10 @@ MonoBehaviour:
   Path: Assets/Sound/1bit_jam/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638358622065441755
+  lastModified: 638359034558876894
   FileSizes:
   - Name: Desktop
-    Value: 1072
+    Value: 1156
   Exists: 1
 --- !u!114 &1589832365939916333
 MonoBehaviour:
@@ -240,8 +296,8 @@ MonoBehaviour:
   Path: Assets/Sound/1bit_jam/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638358622066034142
+  lastModified: 638359034559881573
   FileSizes:
   - Name: Desktop
-    Value: 17152
+    Value: 33312
   Exists: 1

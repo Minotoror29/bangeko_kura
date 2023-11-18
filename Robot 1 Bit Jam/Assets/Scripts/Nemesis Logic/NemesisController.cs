@@ -1,6 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NemesisController : Controller
 {
@@ -34,6 +34,7 @@ public class NemesisController : Controller
 
         _healthSystem = GetComponent<HealthSystem>();
         _healthSystem.Initialize();
+        _healthSystem.OnDeath += Die;
         _player = FindObjectOfType<PlayerController>();
 
         foreach (Weapon weapon in weapons)
@@ -49,6 +50,11 @@ public class NemesisController : Controller
         _currentState?.Exit();
         _currentState = nextState;
         _currentState.Enter();
+    }
+
+    private void Die(HealthSystem healthSystem, Transform deathSource)
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public override void UpdateLogic()

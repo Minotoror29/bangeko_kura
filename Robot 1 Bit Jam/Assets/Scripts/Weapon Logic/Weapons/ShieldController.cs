@@ -1,3 +1,5 @@
+using FMOD.Studio;
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +15,8 @@ public class ShieldController : Weapon
 
     private ShieldState _currentState;
 
+    private EventInstance _shieldSound;
+
     public override void Initialize(Controller controller, HealthSystem healthSystem)
     {
         base.Initialize(controller, healthSystem);
@@ -22,6 +26,8 @@ public class ShieldController : Weapon
 
         _currentState = ShieldState.Active;
         healthSystem.OnDamage += TakeDamage;
+
+        _shieldSound = RuntimeManager.CreateInstance("event:/Weapons/Shield");
     }
 
     public void TakeDamage(Transform damageSource)
@@ -49,6 +55,7 @@ public class ShieldController : Weapon
                 _currentState = ShieldState.Inactive;
                 _protectionTimer = 0f;
                 gameObject.SetActive(false);
+                _shieldSound.start();
             }
         } else if (_currentState == ShieldState.Inactive)
         {

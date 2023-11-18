@@ -10,6 +10,7 @@ public class HealthSystem : MonoBehaviour
 
     private bool _preventedDamage;
 
+    public int CurrentHealth { get { return _currentHealth; } }
     public bool PreventedDamage { set { _preventedDamage = value; } }
 
     public event Action<Transform> OnDamage;
