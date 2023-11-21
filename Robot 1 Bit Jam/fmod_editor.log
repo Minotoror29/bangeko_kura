@@ -9,7 +9,7 @@
 [LOG] DownMix::init                            : done.
 [LOG] Thread::initThread                       : Init FMOD stream thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFB, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Affinity: 0x4000000000000001, Priority: 0xFFFF7FFA, Stack Size: 81920, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 00000243CFA96418 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 0000027C16A2E408 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
@@ -18,12 +18,47 @@
 [LOG] Manager::init                            : done.
 [LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
 [LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
-[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
 [LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
 [LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
 [LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
-[LOG] SoundI::release                          :  (00000243974E7238)
-[LOG] SoundI::release                          :     Arrachage Laser.wav (0000024044805798)
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000027AF71C4368, queue head = 0000027B3C0BA128, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000027AF71C4368
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000027AF71C4368
+[LOG] SoundI::release                          : CombatLoop (0000027AF71C3E58)
+[LOG] SoundI::release                          :     CombatLoop (0000027C161B78F8)
+[LOG] SoundI::release                          :     CombatLoop (0000027AF71C4368)
+[LOG] SoundI::release                          :  (0000027C0E5EE278)
+[LOG] SoundI::release                          :     Bouclier (0000027C0E05EAC8)
+[LOG] SoundI::release                          :  (0000027C0E5EDB48)
+[LOG] SoundI::release                          :     Roulade1 (0000027AFBBFE408)
+[LOG] SoundI::release                          :  (0000027C0E5EE3E8)
+[LOG] SoundI::release                          :     Roulade2 (0000027AF9E1EDD8)
+[LOG] SoundI::release                          :  (0000027C0E5EE108)
+[LOG] SoundI::release                          :     Epée1 (0000027AFBBFE8E8)
+[LOG] SoundI::release                          :  (0000027C3B6B8E18)
+[LOG] SoundI::release                          :     Epée2 (0000027C3B2E3918)
+[LOG] SoundI::release                          :  (0000027C3B4C8188)
+[LOG] SoundI::release                          :     Ennemi détruit (0000027C0E05EFA8)
+[LOG] SoundI::release                          :  (0000027C0E5ED9D8)
+[LOG] SoundI::release                          :     Laser 1 (0000027C0E05E928)
+[LOG] SoundI::release                          :  (0000027C0E5EE6C8)
+[LOG] SoundI::release                          :     Laser 2 (0000027C0E05EE08)
+[LOG] SoundI::release                          :  (0000027C0E5EDCB8)
+[LOG] SoundI::release                          :     Laser 3 (0000027AF9E1E758)
+[LOG] SoundI::release                          :  (0000027C3B6B8F88)
+[LOG] SoundI::release                          :     Laser reload (0000027AFBBFEA88)
+[LOG] SoundI::release                          :  (0000027B2E0FA668)
+[LOG] SoundI::release                          :     Dash1 (0000027C161B7758)
+[LOG] SoundI::release                          :  (0000027C0E5EE558)
+[LOG] SoundI::release                          :     Dash2 (0000027AFBBFE268)
+[LOG] SoundI::release                          :  (0000027C3B3DDF18)
+[LOG] SoundI::release                          :     Tourelle1 (0000027AFBBFE748)
+[LOG] SoundI::release                          :  (0000027C0E5EDF98)
+[LOG] SoundI::release                          :     Tourelle2 (0000027AF9E1E418)
+[LOG] SoundI::release                          :  (0000027C0E5EDE28)
+[LOG] SoundI::release                          :     Tourelle3 (0000027AF9E1EC38)
+[LOG] SoundI::release                          :  (0000027B2E0FA4F8)
+[LOG] SoundI::release                          :     Tourelle4 (0000027C161B7A98)
 [LOG] Thread::callback                         : FMOD Studio update thread finished.
 [LOG] Thread::callback                         : FMOD Studio bank load thread finished.
 [LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
@@ -41,3 +76,5 @@
 [LOG] Thread::callback                         : FMOD stream thread finished.
 [LOG] Thread::callback                         : FMOD mixer thread finished.
 [LOG] SystemI::close                           : Closed.
+[LOG] Thread::callback                         : FMOD nonblocking thread (0) finished.
+[LOG] Thread::callback                         : FMOD file thread finished.
