@@ -97,7 +97,7 @@ public class EnemyController : Controller
 
         _currentState.UpdateLogic();
 
-        transform.LookAt(Rb.velocity.normalized + transform.position);
+        transform.LookAt(Rb.velocity.normalized + (Vector2)transform.position);
     }
 
     public override void UpdatePhysics()

@@ -101,9 +101,9 @@ public class PlayerController : Controller
         }
 
         HandleMovementInput();
-        HandleLookInput();
+        //HandleLookInput();
 
-        Look();
+        //Look();
 
         if (_laserCooldownTimer < laserCooldown)
         {
@@ -140,20 +140,19 @@ public class PlayerController : Controller
 
     private void HandleMovementInput()
     {
-        _movementDirection.x = _playerControls.InGame.Movement.ReadValue<Vector2>().x;
-        _movementDirection.z = _playerControls.InGame.Movement.ReadValue<Vector2>().y;
+        _movementDirection = _playerControls.InGame.Movement.ReadValue<Vector2>();
 
-        if (Animator != null)
-        {
-            if (_movementDirection.magnitude > 0)
-            {
-                Animator.SetBool("Walking", true);
-            }
-            else
-            {
-                Animator.SetBool("Walking", false);
-            }
-        }
+        //if (Animator != null)
+        //{
+        //    if (_movementDirection.magnitude > 0)
+        //    {
+        //        Animator.SetBool("Walking", true);
+        //    }
+        //    else
+        //    {
+        //        Animator.SetBool("Walking", false);
+        //    }
+        //}
     }
 
     private void HandleLookInput()
