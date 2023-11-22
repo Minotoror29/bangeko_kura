@@ -16,8 +16,10 @@ public class EnemyPatrolState : EnemyState
     {
         base.Enter();
 
-        _direction = Random.insideUnitSphere;
-        _direction.y = 0f;
+        //_direction = Random.insideUnitSphere;
+        //_direction.y = 0f;
+
+        _direction = Random.insideUnitCircle;
 
         _patrolTimer = Controller.PatrolTime;
     }
@@ -27,7 +29,7 @@ public class EnemyPatrolState : EnemyState
         base.Exit();
     }
 
-    public override void OnCollisionEnter(Collision collision)
+    public override void OnCollisionEnter(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Obstacle"))
         {

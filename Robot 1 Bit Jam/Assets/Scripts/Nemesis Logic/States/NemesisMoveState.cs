@@ -19,7 +19,7 @@ public class NemesisMoveState : NemesisState
     {
     }
 
-    public override void OnCollisionEnter(Collision collision)
+    public override void OnCollisionEnter(Collision2D collision)
     {
     }
 

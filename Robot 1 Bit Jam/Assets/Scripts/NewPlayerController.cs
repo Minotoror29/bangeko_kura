@@ -21,6 +21,9 @@ public class NewPlayerController : MonoBehaviour
     private bool _dashing = false;
     private Vector2 _dashOrigin;
 
+    [SerializeField] private Transform mesh;
+    private Vector2 _lookDirection;
+
     private void Start()
     {
         Initialize();
@@ -43,6 +46,7 @@ public class NewPlayerController : MonoBehaviour
         _controls = new PlayerControls();
         _controls.InGame.Enable();
         _controls.InGame.Dash.performed += ctx => Dash();
+        _controls.InGame.Laser.performed += ctx => Laser();
 
         _dashCooldownTimer = dashCooldown;
     }
@@ -56,9 +60,15 @@ public class NewPlayerController : MonoBehaviour
         _dashing = true;
     }
 
+    private void Laser()
+    {
+
+    }
+
     public void UpdateLogic()
     {
         HandleMovementInput();
+        HandleRotationInput();
 
         if (_dashCooldownTimer < dashCooldown)
         {
@@ -69,6 +79,15 @@ public class NewPlayerController : MonoBehaviour
     private void HandleMovementInput()
     {
         _movementDirection = _controls.InGame.Movement.ReadValue<Vector2>();
+    }
+
+    private void HandleRotationInput()
+    {
+        _lookDirection = Camera.main.ScreenToWorldPoint(_controls.InGame.MousePosition.ReadValue<Vector2>()) - transform.position;
+
+        //mesh.LookAt(new Vector3(_lookDirection.x, 0f, _lookDirection.y));
+        Quaternion meshRotation = Quaternion.LookRotation(new Vector3(_lookDirection.x, 0f, _lookDirection.y), mesh.up);
+        mesh.localRotation = Quaternion.Euler(new Vector3(0f, meshRotation.eulerAngles.y, 0f));
     }
 
     public void UpdatePhysics()

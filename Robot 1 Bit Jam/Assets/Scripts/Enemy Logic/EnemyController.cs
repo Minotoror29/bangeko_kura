@@ -9,7 +9,7 @@ public class EnemyController : Controller
 {
     private EnemiesManager _enemiesManager;
 
-    private PlayerController _player;
+    private NewPlayerController _player;
     private float _distanceToPlayer;
 
     private EnemyState _currentState;
@@ -32,14 +32,14 @@ public class EnemyController : Controller
     private EventInstance _deathSound;
 
     public EnemiesManager EnemiesManager { get { return _enemiesManager; } }
-    public PlayerController Player { get { return _player; } }
+    public NewPlayerController Player { get { return _player; } }
     public float DistanceToPlayer { get { return _distanceToPlayer; } }
     public float PatrolTime { get { return patrolTime; } }
     public List<EnemyBehaviourData> Behaviours { get { return behaviours; } }
 
     public event Action<Transform> OnAllyDiedClose;
 
-    public virtual void Initialize(EnemiesManager enemiesManager, PlayerController player)
+    public virtual void Initialize(EnemiesManager enemiesManager, NewPlayerController player)
     {
         base.Initialize();
 
@@ -97,7 +97,7 @@ public class EnemyController : Controller
 
         _currentState.UpdateLogic();
 
-        transform.LookAt(Rb.velocity.normalized + (Vector2)transform.position);
+        //transform.LookAt(Rb.velocity.normalized + (Vector2)transform.position);
     }
 
     public override void UpdatePhysics()
@@ -120,7 +120,7 @@ public class EnemyController : Controller
         Rb.velocity = Vector3.zero;
     }
 
-    public void MoveTowards(Vector3 direction)
+    public void MoveTowards(Vector2 direction)
     {
         if (Animator != null)
         {
@@ -138,7 +138,7 @@ public class EnemyController : Controller
         OnAllyDiedClose?.Invoke(deathSource);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         _currentState.OnCollisionEnter(collision);
     }
