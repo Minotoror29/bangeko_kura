@@ -945,6 +945,18 @@ MonoBehaviour:
   dashSpeed: 1000
   dashDistance: 5
   dashCooldown: 2
+  laserFirePoint: {fileID: 3874377432475053878}
+  laserMaxDistance: 50
+  laserPrefab: {fileID: 5168047291316246020, guid: 27b14fae9d065cb4a8df3f240af1b7d3,
+    type: 3}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  laserDamage: 15
+  laserCooldown: 3
   mesh: {fileID: 4488480235465560332}
 --- !u!1 &1825337805
 GameObject:
@@ -1820,7 +1832,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &2337698275799975206
 GameObject:
   m_ObjectHideFlags: 0
@@ -2356,7 +2368,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2278820478210677575}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.992, z: 0.234}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

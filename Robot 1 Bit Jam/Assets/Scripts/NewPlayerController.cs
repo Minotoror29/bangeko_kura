@@ -21,8 +21,18 @@ public class NewPlayerController : MonoBehaviour
     private bool _dashing = false;
     private Vector2 _dashOrigin;
 
+    [Header("Laser")]
+    [SerializeField] private Transform laserFirePoint;
+    [SerializeField] private float laserMaxDistance = 10f;
+    [SerializeField] private Laser laserPrefab;
+    [SerializeField] private LayerMask enemyLayer;
+    [SerializeField] private LayerMask obstacleLayer;
+    [SerializeField] private int laserDamage = 15;
+    [SerializeField] private float laserCooldown = 3f;
     [SerializeField] private Transform mesh;
+    private float _laserCooldownTimer;
     private Vector2 _lookDirection;
+    private Vector2 _mousePosition;
 
     private void Start()
     {
@@ -46,9 +56,11 @@ public class NewPlayerController : MonoBehaviour
         _controls = new PlayerControls();
         _controls.InGame.Enable();
         _controls.InGame.Dash.performed += ctx => Dash();
-        _controls.InGame.Laser.performed += ctx => Laser();
+        _controls.InGame.Laser.performed += ctx => FireLaser();
 
         _dashCooldownTimer = dashCooldown;
+
+        _laserCooldownTimer = laserCooldown;
     }
 
     private void Dash()
@@ -60,9 +72,31 @@ public class NewPlayerController : MonoBehaviour
         _dashing = true;
     }
 
-    private void Laser()
+    private void FireLaser()
     {
+        if (_laserCooldownTimer < laserCooldown) return;
 
+        //Physics
+        Ray ray = new(laserFirePoint.position, transform.forward);
+        float rayDistance = laserMaxDistance;
+        //if (Physics.Raycast(ray, out RaycastHit obstacleHit, laserMaxDistance, obstacleLayer))
+        //{
+        //    rayDistance = obstacleHit.distance;
+        //}
+        //RaycastHit[] hits = Physics.RaycastAll(ray, rayDistance, enemyLayer);
+        //foreach (RaycastHit hit in hits)
+        //{
+        //    if (hit.collider.TryGetComponent(out HealthSystem healthSystem))
+        //    {
+        //        healthSystem.TakeDamage(laserDamage, transform);
+        //    }
+        //}
+
+        ////Visuals
+        Laser newLaser = Instantiate(laserPrefab);
+        newLaser.Initialize(laserFirePoint.position, (Vector2)laserFirePoint.position + (_mousePosition - (Vector2)laserFirePoint.position).normalized * laserMaxDistance);
+
+        _laserCooldownTimer = 0f;
     }
 
     public void UpdateLogic()
@@ -70,9 +104,16 @@ public class NewPlayerController : MonoBehaviour
         HandleMovementInput();
         HandleRotationInput();
 
+        Rotate();
+
         if (_dashCooldownTimer < dashCooldown)
         {
             _dashCooldownTimer += Time.deltaTime;
+        }
+
+        if (_laserCooldownTimer < laserCooldown)
+        {
+            _laserCooldownTimer += Time.deltaTime;
         }
     }
 
@@ -83,9 +124,12 @@ public class NewPlayerController : MonoBehaviour
 
     private void HandleRotationInput()
     {
-        _lookDirection = Camera.main.ScreenToWorldPoint(_controls.InGame.MousePosition.ReadValue<Vector2>()) - transform.position;
+        _mousePosition = Camera.main.ScreenToWorldPoint(_controls.InGame.MousePosition.ReadValue<Vector2>());
+        _lookDirection = _mousePosition - (Vector2)laserFirePoint.localPosition - (Vector2)transform.position;
+    }
 
-        //mesh.LookAt(new Vector3(_lookDirection.x, 0f, _lookDirection.y));
+    private void Rotate()
+    {
         Quaternion meshRotation = Quaternion.LookRotation(new Vector3(_lookDirection.x, 0f, _lookDirection.y), mesh.up);
         mesh.localRotation = Quaternion.Euler(new Vector3(0f, meshRotation.eulerAngles.y, 0f));
     }
