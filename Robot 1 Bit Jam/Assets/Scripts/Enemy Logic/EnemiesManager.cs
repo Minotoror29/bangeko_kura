@@ -66,7 +66,7 @@ public class EnemiesManager : MonoBehaviour
 
         if (_enemies.Count == 0)
         {
-            EndLevel();
+            //EndLevel();
         }
     }
 

@@ -77,24 +77,25 @@ public class NewPlayerController : MonoBehaviour
         if (_laserCooldownTimer < laserCooldown) return;
 
         //Physics
-        Ray ray = new(laserFirePoint.position, transform.forward);
+        Ray2D ray = new(laserFirePoint.position, _mousePosition - (Vector2)laserFirePoint.position);
         float rayDistance = laserMaxDistance;
-        //if (Physics.Raycast(ray, out RaycastHit obstacleHit, laserMaxDistance, obstacleLayer))
-        //{
-        //    rayDistance = obstacleHit.distance;
-        //}
-        //RaycastHit[] hits = Physics.RaycastAll(ray, rayDistance, enemyLayer);
-        //foreach (RaycastHit hit in hits)
-        //{
-        //    if (hit.collider.TryGetComponent(out HealthSystem healthSystem))
-        //    {
-        //        healthSystem.TakeDamage(laserDamage, transform);
-        //    }
-        //}
+        RaycastHit2D obstacleHit = Physics2D.Raycast(ray.origin, ray.direction, rayDistance, obstacleLayer);
+        if (obstacleHit.collider != null)
+        {
+            rayDistance = obstacleHit.distance;
+        }
+        RaycastHit2D[] hits = Physics2D.RaycastAll(ray.origin, ray.direction, rayDistance, enemyLayer);
+        foreach (RaycastHit2D enemyHit in hits)
+        {
+            if (enemyHit.collider.TryGetComponent(out HealthSystem healthSystem))
+            {
+                healthSystem.TakeDamage(laserDamage, transform);
+            }
+        }
 
         ////Visuals
         Laser newLaser = Instantiate(laserPrefab);
-        newLaser.Initialize(laserFirePoint.position, (Vector2)laserFirePoint.position + (_mousePosition - (Vector2)laserFirePoint.position).normalized * laserMaxDistance);
+        newLaser.Initialize(laserFirePoint.position, (Vector2)laserFirePoint.position + (_mousePosition - (Vector2)laserFirePoint.position).normalized * rayDistance);
 
         _laserCooldownTimer = 0f;
     }
