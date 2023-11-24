@@ -38,7 +38,7 @@ public class TurretController : Weapon
     {
         base.UpdateLogic();
 
-        SortEnemiesInRange();
+        SortEnemiesByDistance();
 
         if (_salvoTimer < salvoRate)
         {
@@ -65,7 +65,7 @@ public class TurretController : Weapon
         }
     }
 
-    private void SortEnemiesInRange()
+    private void SortEnemiesByDistance()
     {
         if (_enemiesInRange.Count == 0) return;
 
@@ -93,11 +93,11 @@ public class TurretController : Weapon
         _enemiesInRange.Remove(enemy);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.TryGetComponent(out HealthSystem enemy))
+        if (collision.TryGetComponent(out HealthSystem enemy))
         {
-            if (!other.gameObject.CompareTag(Controller.gameObject.tag))
+            if (!collision.gameObject.CompareTag(Controller.gameObject.tag))
             {
                 _enemiesInRange.Add(enemy);
                 enemy.OnDeath += RemoveEnemyFromTargets;
@@ -105,9 +105,9 @@ public class TurretController : Weapon
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        if (other.TryGetComponent(out HealthSystem enemy) && _enemiesInRange.Contains(enemy))
+        if (collision.TryGetComponent(out HealthSystem enemy) && _enemiesInRange.Contains(enemy))
         {
             RemoveEnemyFromTargets(enemy, Controller.transform);
             enemy.OnDeath -= RemoveEnemyFromTargets;

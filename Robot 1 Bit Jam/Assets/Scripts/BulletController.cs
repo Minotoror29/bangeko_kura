@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
-    private Rigidbody _rb;
+    private Rigidbody2D _rb;
     private Transform _source;
 
     [SerializeField] private float speed = 500f;
@@ -25,13 +25,12 @@ public class BulletController : MonoBehaviour
 
     public void Initialize(Transform target, Transform source)
     {
-        _rb = GetComponent<Rigidbody>();
+        _rb = GetComponent<Rigidbody2D>();
         _source = source;
 
         _lifeTimer = 0f;
 
-        transform.LookAt(target);
-        transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
+        transform.rotation = Quaternion.LookRotation(transform.forward, target.position - transform.position);
     }
 
     public void UpdateLogic()
@@ -47,26 +46,28 @@ public class BulletController : MonoBehaviour
 
     public void UpdatePhysics()
     {
-        _rb.velocity = speed * Time.fixedDeltaTime * transform.forward;
+        _rb.velocity = speed * Time.fixedDeltaTime * transform.up;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.TryGetComponent(out HealthSystem healthSystem))
+        if (collision.TryGetComponent(out HealthSystem healthSystem))
         {
-            if (_source != other.transform)
+            if (_source != collision.transform)
             {
                 healthSystem.TakeDamage(damage, _source);
                 Destroy(gameObject);
             }
-        } else if (other.TryGetComponent(out ShieldController shield))
+        }
+        else if (collision.TryGetComponent(out ShieldController shield))
         {
             if (_source != shield.Controller.transform)
             {
                 shield.TakeDamage(_source);
                 Destroy(gameObject);
             }
-        } else if (other.gameObject.CompareTag("Obstacle"))
+        }
+        else if (collision.gameObject.CompareTag("Obstacle"))
         {
             Destroy(gameObject);
         }
