@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 8462960372658825839}
   - component: {fileID: 5191520952281865432}
   - component: {fileID: 6019434145944017564}
-  - component: {fileID: 7418881099147549903}
-  - component: {fileID: 630051959923096080}
+  - component: {fileID: 2258044929586182837}
+  - component: {fileID: 5820088486749555142}
   m_Layer: 9
   m_Name: Fodder A
   m_TagString: Enemy
@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6cff686ebb8ffc40865f7118051a949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   minIdleTime: 3
   maxIdleTime: 7
   patrolTime: 4
@@ -70,36 +71,43 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 3
---- !u!136 &7418881099147549903
-CapsuleCollider:
+--- !u!70 &2258044929586182837
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8462960372658825842}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 3
-  m_Direction: 1
-  m_Center: {x: 0, y: 1.5, z: 0}
---- !u!54 &630051959923096080
-Rigidbody:
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.5}
+  m_Size: {x: 1, y: 2}
+  m_Direction: 0
+--- !u!50 &5820088486749555142
+Rigidbody2D:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8462960372658825842}
-  serializedVersion: 2
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
   m_Mass: 1
-  m_Drag: 0
+  m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_Constraints: 116
+  m_SleepingMode: 1
   m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!1001 &1668924521567271476
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -135,7 +143,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: d1d46d48a440450439d2f636ac66cd9d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d1d46d48a440450439d2f636ac66cd9d,
         type: 3}

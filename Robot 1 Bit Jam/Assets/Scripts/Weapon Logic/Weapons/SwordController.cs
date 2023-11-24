@@ -44,7 +44,7 @@ public class SwordController : Weapon
                     Controller.Animator.SetTrigger("Sword");
                 }
 
-                List<HealthSystem> targets = new(); ;
+                List<HealthSystem> targets = new();
                 foreach (HealthSystem enemy in _enemiesInRange)
                 {
                     targets.Add(enemy);
@@ -55,15 +55,15 @@ public class SwordController : Weapon
                     targets.Add(ally);
                 }
 
-                foreach (HealthSystem enemy in targets)
+                foreach (HealthSystem target in targets)
                 {
                     if (damage > 0)
                     {
-                        enemy.TakeDamage(damage, Controller.transform);
+                        target.TakeDamage(damage, Controller.transform);
                     }
                     else if (damage == -1)
                     {
-                        enemy.Die(Controller.transform);
+                        target.Die(Controller.transform);
                     }
                 }
 
@@ -99,14 +99,15 @@ public class SwordController : Weapon
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.TryGetComponent(out HealthSystem healthSystem))
+        if (collision.TryGetComponent(out HealthSystem healthSystem))
         {
-            if (healthSystem.gameObject.CompareTag(Controller.gameObject.tag))
+            if (healthSystem.gameObject.CompareTag(Controller.gameObject.tag) && healthSystem != HealthSystem)
             {
                 _alliesInRange.Add(healthSystem);
-            } else
+            }
+            else
             {
                 _enemiesInRange.Add(healthSystem);
             }
@@ -114,9 +115,9 @@ public class SwordController : Weapon
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        if (other.TryGetComponent(out HealthSystem healthSystem))
+        if (collision.TryGetComponent(out HealthSystem healthSystem))
         {
             RemoveTarget(healthSystem, Controller.transform);
             healthSystem.OnDeath -= RemoveTarget;

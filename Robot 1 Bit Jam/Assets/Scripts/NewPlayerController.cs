@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements.Experimental;
 
-public class NewPlayerController : MonoBehaviour
+public class NewPlayerController : Controller
 {
-    private Rigidbody2D _rb;
     private PlayerControls _controls;
+    private HealthSystem _healthSystem;
 
     [Header("Movement")]
     [SerializeField] private float movementSpeed = 500f;
@@ -18,7 +19,6 @@ public class NewPlayerController : MonoBehaviour
     [SerializeField] private float dashCooldown = 2f;
     private float _dashCooldownTimer;
     private Vector3 _dashDirection;
-    private bool _dashing = false;
     private Vector2 _dashOrigin;
 
     [Header("Laser")]
@@ -33,6 +33,9 @@ public class NewPlayerController : MonoBehaviour
     private float _laserCooldownTimer;
     private Vector2 _lookDirection;
     private Vector2 _mousePosition;
+
+    [Header("Weapons")]
+    [SerializeField] private List<Weapon> weapons;
 
     private void Start()
     {
@@ -49,27 +52,36 @@ public class NewPlayerController : MonoBehaviour
         UpdatePhysics();
     }
 
-    public void Initialize()
+    public override void Initialize()
     {
-        _rb = GetComponent<Rigidbody2D>();
+        base.Initialize();
 
         _controls = new PlayerControls();
         _controls.InGame.Enable();
         _controls.InGame.Dash.performed += ctx => Dash();
         _controls.InGame.Laser.performed += ctx => FireLaser();
 
+        _healthSystem = GetComponent<HealthSystem>();
+        _healthSystem.Initialize();
+        _healthSystem.OnDeath += Die;
+
         _dashCooldownTimer = dashCooldown;
 
         _laserCooldownTimer = laserCooldown;
+
+        foreach (Weapon weapon in weapons)
+        {
+            weapon.Initialize(this, _healthSystem);
+        }
     }
 
     private void Dash()
     {
-        if (_dashing || _dashCooldownTimer < dashCooldown || _movementDirection.magnitude == 0f) return;
+        if (Dashing || _dashCooldownTimer < dashCooldown || _movementDirection.magnitude == 0f) return;
 
         _dashDirection = _movementDirection;
         _dashOrigin = transform.position;
-        _dashing = true;
+        Dashing = true;
     }
 
     private void FireLaser()
@@ -100,8 +112,18 @@ public class NewPlayerController : MonoBehaviour
         _laserCooldownTimer = 0f;
     }
 
-    public void UpdateLogic()
+    private void Die(HealthSystem healthSystem, Transform deathSource)
     {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public override void UpdateLogic()
+    {
+        foreach (Weapon weapon in weapons)
+        {
+            weapon.UpdateLogic();
+        }
+
         HandleMovementInput();
         HandleRotationInput();
 
@@ -135,23 +157,28 @@ public class NewPlayerController : MonoBehaviour
         mesh.localRotation = Quaternion.Euler(new Vector3(0f, meshRotation.eulerAngles.y, 0f));
     }
 
-    public void UpdatePhysics()
+    public override void UpdatePhysics()
     {
+        foreach (Weapon weapon in weapons)
+        {
+            weapon.UpdatePhysics();
+        }
+
         Move();
     }
 
     private void Move()
     {
-        if (!_dashing)
+        if (!Dashing)
         {
-            _rb.velocity = movementSpeed * Time.fixedDeltaTime * _movementDirection;
+            Rb.velocity = movementSpeed * Time.fixedDeltaTime * _movementDirection;
         } else
         {
-            _rb.velocity = dashSpeed * Time.fixedDeltaTime * _dashDirection;
+            Rb.velocity = dashSpeed * Time.fixedDeltaTime * _dashDirection;
 
             if (((Vector2)transform.position - _dashOrigin).magnitude >= dashDistance)
             {
-                _dashing = false;
+                Dashing = false;
                 _dashCooldownTimer = 0f;
             }
         }
