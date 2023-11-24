@@ -29,6 +29,8 @@ public class EnemyController : Controller
 
     [SerializeField] private List<Weapon> weapons;
 
+    [SerializeField] private Transform mesh;
+
     private EventInstance _deathSound;
 
     public EnemiesManager EnemiesManager { get { return _enemiesManager; } }
@@ -98,6 +100,11 @@ public class EnemyController : Controller
         _currentState.UpdateLogic();
 
         //transform.LookAt(Rb.velocity.normalized + (Vector2)transform.position);
+        if (Rb.velocity.magnitude > 0)
+        {
+            Quaternion meshRotation = Quaternion.LookRotation(new Vector3(Rb.velocity.x, 0f, Rb.velocity.y), mesh.up);
+            mesh.localRotation = Quaternion.Euler(new Vector3(0f, meshRotation.eulerAngles.y, 0f));
+        }
     }
 
     public override void UpdatePhysics()
