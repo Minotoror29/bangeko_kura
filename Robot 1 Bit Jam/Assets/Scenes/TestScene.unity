@@ -1167,7 +1167,7 @@ MonoBehaviour:
   movementSpeed: 500
   dashSpeed: 1000
   dashDistance: 5
-  dashCooldown: 2
+  dashCooldown: 0.5
   laserFirePoint: {fileID: 3874377432475053878}
   laserMaxDistance: 50
   laserPrefab: {fileID: 5168047291316246020, guid: 27b14fae9d065cb4a8df3f240af1b7d3,
@@ -1179,7 +1179,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   laserDamage: 15
-  laserCooldown: 3
+  laserCooldown: 2
   mesh: {fileID: 4488480235465560332}
   weapons:
   - {fileID: 1890340953}
@@ -1509,7 +1509,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 5860284608678764271}
   salvo: 1
-  salvoRate: 0.66
+  salvoRate: 0.33
   fireRate: 0
   bulletPrefab: {fileID: 7199141164039958287, guid: bf6020216f2ec9748ad2471864b7cc73,
     type: 3}
