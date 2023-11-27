@@ -26,6 +26,8 @@ public class EnemyChasingState : EnemyState
     public override void UpdateLogic()
     {
         base.UpdateLogic();
+
+        Controller.LookTowards(Controller.Player.transform.position - Controller.transform.position);
     }
 
     public override void UpdatePhysics()
