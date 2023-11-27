@@ -8,7 +8,7 @@
 [LOG] SystemI::init                            : Output requires a sample rate of 44100Hz, resampling will occur.
 [LOG] Thread::initThread                       : Init FMOD stream thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFB, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Affinity: 0x4000000000000001, Priority: 0xFFFF7FFA, Stack Size: 81920, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 0000023E9AFB4078 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 0000026DD4A935F8 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
@@ -21,30 +21,6 @@
 [LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
 [LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
 [LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
-[LOG] SoundI::release                          :  (0000023D71EE7368)
-[LOG] SoundI::release                          :     Ennemi détruit (0000023D71B7BB58)
-[LOG] SoundI::release                          :  (0000023D71EE7088)
-[LOG] SoundI::release                          :     Epée1 (0000023D71B7A978)
-[LOG] SoundI::release                          :  (0000023D71EE7C08)
-[LOG] SoundI::release                          :     Epée2 (0000023D71B7B338)
-[LOG] SoundI::release                          :  (0000023D71EE74D8)
-[LOG] SoundI::release                          :     Tourelle1 (0000023D71B7B4D8)
-[LOG] SoundI::release                          :  (0000023D71EE7D78)
-[LOG] SoundI::release                          :     Tourelle2 (0000023D71B7BCF8)
-[LOG] SoundI::release                          :  (0000023D71EE7928)
-[LOG] SoundI::release                          :     Tourelle3 (0000023D71B7B9B8)
-[LOG] SoundI::release                          :  (0000023E653D8988)
-[LOG] SoundI::release                          :     Tourelle4 (0000023D71B7A7D8)
-[LOG] Thread::callback                         : FMOD Studio update thread finished.
-[LOG] Thread::callback                         : FMOD Studio bank load thread finished.
-[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
-[LOG] Thread::callback                         : FMOD Studio sample load thread finished.
-[LOG] LiveUpdate::release                      : 
-[LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
-[LOG] Thread::callback                         : FMOD stream thread finished.
-[LOG] Thread::callback                         : FMOD mixer thread finished.
-[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
-[LOG] SystemI::close                           : Closed.
 [LOG] Thread::callback                         : FMOD Studio bank load thread finished.
 [LOG] Thread::callback                         : FMOD Studio sample load thread finished.
 [LOG] LiveUpdate::release                      : 
