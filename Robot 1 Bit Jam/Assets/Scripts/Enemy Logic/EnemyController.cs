@@ -98,11 +98,13 @@ public class EnemyController : Controller
         }
 
         _currentState.UpdateLogic();
+    }
 
-        //transform.LookAt(Rb.velocity.normalized + (Vector2)transform.position);
+    public void LookTowards(Vector2 direction)
+    {
         if (Rb.velocity.magnitude > 0)
         {
-            Quaternion meshRotation = Quaternion.LookRotation(new Vector3(Rb.velocity.x, 0f, Rb.velocity.y), mesh.up);
+            Quaternion meshRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.y), mesh.up);
             mesh.localRotation = Quaternion.Euler(new Vector3(0f, meshRotation.eulerAngles.y, 0f));
         }
     }

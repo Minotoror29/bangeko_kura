@@ -43,6 +43,8 @@ public class EnemyPatrolState : EnemyState
 
         _patrolTimer -= Time.deltaTime;
 
+        Controller.LookTowards(Controller.Rb.velocity);
+
         if (_patrolTimer <= 0f)
         {
             Controller.ChangeState(new EnemyIdleState(Controller));
