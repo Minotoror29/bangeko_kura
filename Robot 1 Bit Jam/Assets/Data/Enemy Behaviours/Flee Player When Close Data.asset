@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Flee Player When Close Data
   m_EditorClassIdentifier: 
   states: 00000000
-  fleeingDistance: 10
+  fleeingDistance: 5
   fleeingTime: 3
