@@ -6,7 +6,7 @@ public class NemesisMoveState : NemesisState
 {
     private float _timer;
 
-    public NemesisMoveState(NemesisController controller, PlayerController player) : base(controller, player)
+    public NemesisMoveState(NemesisController controller, NewPlayerController player) : base(controller, player)
     {
         _timer = 0f;
     }

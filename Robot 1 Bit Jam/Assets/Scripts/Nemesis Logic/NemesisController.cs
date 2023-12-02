@@ -7,11 +7,13 @@ using UnityEngine.SceneManagement;
 public class NemesisController : Controller
 {
     private HealthSystem _healthSystem;
-    private PlayerController _player;
+    private NewPlayerController _player;
 
     [SerializeField] private float movementSpeed = 1000f;
 
     [SerializeField] private List<Weapon> weapons;
+
+    [SerializeField] private Transform mesh;
 
     private NemesisState _currentState;
 
@@ -39,7 +41,7 @@ public class NemesisController : Controller
         _healthSystem = GetComponent<HealthSystem>();
         _healthSystem.Initialize();
         _healthSystem.OnDeath += Die;
-        _player = FindObjectOfType<PlayerController>();
+        _player = FindObjectOfType<NewPlayerController>();
 
         foreach (Weapon weapon in weapons)
         {
@@ -62,7 +64,7 @@ public class NemesisController : Controller
     {
         _deathSound.start();
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public override void UpdateLogic()
@@ -72,9 +74,16 @@ public class NemesisController : Controller
             weapon.UpdateLogic();
         }
 
-        transform.LookAt(_player.transform.position);
+        Rotate();
 
         _currentState.UpdateLogic();
+    }
+
+    private void Rotate()
+    {
+        Vector2 lookDirection = _player.transform.position - transform.position;
+        Quaternion meshRotation = Quaternion.LookRotation(new Vector3(lookDirection.x, 0f, lookDirection.y), mesh.up);
+        mesh.localRotation = Quaternion.Euler(new Vector3(0f, meshRotation.eulerAngles.y, 0f));
     }
 
     public override void UpdatePhysics()
@@ -101,6 +110,6 @@ public class NemesisController : Controller
     {
         Animator.SetBool("Walking", false);
 
-        Rb.velocity = Vector3.zero;
+        Rb.velocity = Vector2.zero;
     }
 }

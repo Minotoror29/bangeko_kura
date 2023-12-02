@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NemesisNearState : NemesisState
 {
-    public NemesisNearState(NemesisController controller, PlayerController player) : base(controller, player)
+    public NemesisNearState(NemesisController controller, NewPlayerController player) : base(controller, player)
     {
     }
 

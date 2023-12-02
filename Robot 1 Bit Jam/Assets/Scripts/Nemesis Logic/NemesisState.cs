@@ -6,12 +6,12 @@ public abstract class NemesisState : State
 {
     private NemesisController _controller;
 
-    private PlayerController _player;
+    private NewPlayerController _player;
 
     public NemesisController Controller { get { return _controller; } }
-    public PlayerController Player { get { return _player; } }
+    public NewPlayerController Player { get { return _player; } }
 
-    public NemesisState(NemesisController controller, PlayerController player)
+    public NemesisState(NemesisController controller, NewPlayerController player)
     {
         _controller = controller;
         _player = player;

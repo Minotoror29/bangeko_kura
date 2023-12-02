@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NemesisFarState : NemesisState
 {
-    public NemesisFarState(NemesisController controller, PlayerController player) : base(controller, player)
+    public NemesisFarState(NemesisController controller, NewPlayerController player) : base(controller, player)
     {
     }
 
