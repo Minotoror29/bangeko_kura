@@ -40,6 +40,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Arena
+    uniqueID: 2227834301
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
