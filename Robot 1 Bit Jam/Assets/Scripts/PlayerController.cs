@@ -209,7 +209,7 @@ public class PlayerController : Controller
 
         //Visuals
         Laser newLaser = Instantiate(laserPrefab);
-        newLaser.Initialize(laserFirePoint.position, laserFirePoint.position + transform.forward * rayDistance);
+        newLaser.Initialize(laserFirePoint.position, laserFirePoint.position + transform.forward * rayDistance, 1);
 
         //Audio
         _laserSound.start();

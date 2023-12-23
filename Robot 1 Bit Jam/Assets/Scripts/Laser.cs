@@ -14,12 +14,15 @@ public class Laser : MonoBehaviour
         UpdateLogic();
     }
 
-    public void Initialize(Vector3 startPosition, Vector3 endPosition)
+    public void Initialize(Vector3 startPosition, Vector3 endPosition, float width)
     {
         _lineRenderer = GetComponent<LineRenderer>();
 
         _lineRenderer.SetPosition(0, startPosition);
         _lineRenderer.SetPosition(1, endPosition);
+
+        _lineRenderer.startWidth = width;
+        _lineRenderer.endWidth = width;
 
         _lifeTimer = 0f;
     }

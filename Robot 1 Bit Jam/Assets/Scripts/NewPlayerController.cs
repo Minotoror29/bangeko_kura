@@ -24,6 +24,7 @@ public class NewPlayerController : Controller
     [Header("Laser")]
     [SerializeField] private Transform laserFirePoint;
     [SerializeField] private float laserMaxDistance = 10f;
+    [SerializeField] private float laserWidth;
     [SerializeField] private Laser laserPrefab;
     [SerializeField] private LayerMask enemyLayer;
     [SerializeField] private LayerMask obstacleLayer;
@@ -92,12 +93,15 @@ public class NewPlayerController : Controller
         //Physics
         Ray2D ray = new(laserFirePoint.position, _mousePosition - (Vector2)laserFirePoint.position);
         float rayDistance = laserMaxDistance;
+        //Checks obstacles
         RaycastHit2D obstacleHit = Physics2D.Raycast(ray.origin, ray.direction, rayDistance, obstacleLayer);
         if (obstacleHit.collider != null)
         {
             rayDistance = obstacleHit.distance;
         }
-        RaycastHit2D[] hits = Physics2D.RaycastAll(ray.origin, ray.direction, rayDistance, enemyLayer);
+        //Creates the damaging ray
+        RaycastHit2D[] hits = Physics2D.BoxCastAll(ray.origin, new Vector2(laserWidth, 1), mesh.rotation.eulerAngles.y, ray.direction, rayDistance, enemyLayer);
+        Debug.Log(Vector2.Angle(new Vector2(-5, 5), new Vector2(5, 5)));
         foreach (RaycastHit2D enemyHit in hits)
         {
             if (enemyHit.collider.TryGetComponent(out HealthSystem healthSystem))
@@ -108,7 +112,7 @@ public class NewPlayerController : Controller
 
         ////Visuals
         Laser newLaser = Instantiate(laserPrefab);
-        newLaser.Initialize(laserFirePoint.position, (Vector2)laserFirePoint.position + (_mousePosition - (Vector2)laserFirePoint.position).normalized * rayDistance);
+        newLaser.Initialize(laserFirePoint.position, (Vector2)laserFirePoint.position + (_mousePosition - (Vector2)laserFirePoint.position).normalized * rayDistance, laserWidth);
 
         _laserCooldownTimer = 0f;
     }
