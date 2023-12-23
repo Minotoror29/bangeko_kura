@@ -183,4 +183,16 @@ public class NewPlayerController : Controller
             }
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            if (Dashing)
+            {
+                Dashing = false;
+                _dashCooldownTimer = 0f;
+            }
+        }
+    }
 }
