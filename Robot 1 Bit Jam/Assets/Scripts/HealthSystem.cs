@@ -8,10 +8,10 @@ public class HealthSystem : MonoBehaviour
     [SerializeField] private int maxHealth;
     private int _currentHealth;
 
-    private bool _preventedDamage;
+    private bool _preventDamage;
 
     public int CurrentHealth { get { return _currentHealth; } }
-    public bool PreventedDamage { set { _preventedDamage = value; } }
+    public bool PreventDamage { get { return _preventDamage; } set { _preventDamage = value; } }
 
     public event Action<Transform> OnDamage;
     public event Action<HealthSystem, Transform> OnDeath;
@@ -20,16 +20,16 @@ public class HealthSystem : MonoBehaviour
     {
         _currentHealth = maxHealth;
 
-        _preventedDamage = false;
+        _preventDamage = false;
     }
 
     public void TakeDamage(int damage, Transform damageSource)
     {
         OnDamage?.Invoke(damageSource);
 
-        if (_preventedDamage)
+        if (_preventDamage)
         {
-            _preventedDamage = false;
+            _preventDamage = false;
             return;
         }
 

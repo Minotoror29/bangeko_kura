@@ -63,6 +63,7 @@ public class NewPlayerController : Controller
 
         _healthSystem = GetComponent<HealthSystem>();
         _healthSystem.Initialize();
+        _healthSystem.OnDamage += TakeDamage;
         _healthSystem.OnDeath += Die;
 
         _dashCooldownTimer = dashCooldown;
@@ -110,6 +111,14 @@ public class NewPlayerController : Controller
         newLaser.Initialize(laserFirePoint.position, (Vector2)laserFirePoint.position + (_mousePosition - (Vector2)laserFirePoint.position).normalized * rayDistance);
 
         _laserCooldownTimer = 0f;
+    }
+
+    private void TakeDamage(Transform damageSource)
+    {
+        if (Dashing)
+        {
+            _healthSystem.PreventDamage = true;
+        }
     }
 
     private void Die(HealthSystem healthSystem, Transform deathSource)

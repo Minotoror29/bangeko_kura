@@ -9,7 +9,7 @@ public enum ShieldState { Active, Protecting, Inactive }
 public class ShieldController : Weapon
 {
     [SerializeField] private float cooldown = 7f;
-    [SerializeField] private float protectionTime = 1f;
+    [SerializeField] private float protectionTime = 0.2f;
     private float _cooldownTimer;
     private float _protectionTimer;
 
@@ -32,7 +32,7 @@ public class ShieldController : Weapon
 
     public void TakeDamage(Transform damageSource)
     {
-        HealthSystem.PreventedDamage = true;
+        HealthSystem.PreventDamage = true;
 
         if (_currentState == ShieldState.Active)
         {
