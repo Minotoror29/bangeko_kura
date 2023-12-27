@@ -6,6 +6,7 @@ public abstract class Controller : MonoBehaviour
 {
     private Rigidbody2D _rb;
     [SerializeField] private Animator animator;
+    private HealthSystem _healthSystem;
 
     private bool _dashing;
 
@@ -13,11 +14,14 @@ public abstract class Controller : MonoBehaviour
 
     public Rigidbody2D Rb { get { return _rb; } }
     public Animator Animator { get { return animator; } }
+    public HealthSystem HealthSystem { get { return _healthSystem; } }
     public bool Dashing { get { return _dashing; } set { _dashing = value; } }
 
     public virtual void Initialize()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _healthSystem = GetComponentInChildren<HealthSystem>();
+        _healthSystem.Initialize(transform);
         _dashing = false;
         _grounds = new();
     }
@@ -42,7 +46,7 @@ public abstract class Controller : MonoBehaviour
 
         if (_grounds.Count == 0)
         {
-            Debug.Log("Fall");
+            _healthSystem.Die(null);
         }
     }
 }

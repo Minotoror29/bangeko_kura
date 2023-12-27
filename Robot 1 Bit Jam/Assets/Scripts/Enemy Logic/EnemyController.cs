@@ -14,8 +14,6 @@ public class EnemyController : Controller
 
     private EnemyState _currentState;
 
-    [SerializeField] private HealthSystem healthSystem;
-
     [Header("Idle")]
     [SerializeField] private float minIdleTime = 3f;
     [SerializeField] private float maxIdleTime = 7f;
@@ -48,12 +46,11 @@ public class EnemyController : Controller
         _enemiesManager = enemiesManager;
         _player = player;
 
-        healthSystem.Initialize(transform);
-        healthSystem.OnDeath += Die;
+        HealthSystem.OnDeath += Die;
 
         foreach (Weapon weapon in weapons)
         {
-            weapon.Initialize(this, healthSystem);
+            weapon.Initialize(this, HealthSystem);
         }
 
         _deathSound = RuntimeManager.CreateInstance("event:/Enemy Death");
@@ -143,6 +140,8 @@ public class EnemyController : Controller
 
     public virtual void EnemyDiedClose(Transform deathSource)
     {
+        if (deathSource == null) return;
+
         OnAllyDiedClose?.Invoke(deathSource);
     }
 

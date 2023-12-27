@@ -7,7 +7,6 @@ using UnityEngine.UIElements.Experimental;
 public class NewPlayerController : Controller
 {
     private PlayerControls _controls;
-    [SerializeField] private HealthSystem healthSystem;
 
     [Header("Movement")]
     [SerializeField] private float movementSpeed = 500f;
@@ -62,9 +61,8 @@ public class NewPlayerController : Controller
         _controls.InGame.Dash.performed += ctx => Dash();
         _controls.InGame.Laser.performed += ctx => FireLaser();
 
-        healthSystem.Initialize(transform);
-        healthSystem.OnDamage += TakeDamage;
-        healthSystem.OnDeath += Die;
+        HealthSystem.OnDamage += TakeDamage;
+        HealthSystem.OnDeath += Die;
 
         _dashCooldownTimer = dashCooldown;
 
@@ -72,7 +70,7 @@ public class NewPlayerController : Controller
 
         foreach (Weapon weapon in weapons)
         {
-            weapon.Initialize(this, healthSystem);
+            weapon.Initialize(this, HealthSystem);
         }
     }
 
@@ -122,7 +120,7 @@ public class NewPlayerController : Controller
     {
         if (Dashing)
         {
-            healthSystem.PreventDamage = true;
+            HealthSystem.PreventDamage = true;
         }
     }
 
