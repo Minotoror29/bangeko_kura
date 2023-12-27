@@ -48,7 +48,7 @@ public class EnemyController : Controller
         _enemiesManager = enemiesManager;
         _player = player;
 
-        healthSystem.Initialize();
+        healthSystem.Initialize(transform);
         healthSystem.OnDeath += Die;
 
         foreach (Weapon weapon in weapons)
@@ -84,7 +84,7 @@ public class EnemyController : Controller
 
         _deathSound.start();
 
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     public override void UpdateLogic()

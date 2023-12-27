@@ -26,7 +26,7 @@ public class NewPlayerController : Controller
     [SerializeField] private float laserMaxDistance = 10f;
     [SerializeField] private float laserWidth;
     [SerializeField] private Laser laserPrefab;
-    [SerializeField] private LayerMask enemyLayer;
+    [SerializeField] private LayerMask healthSystemLayer;
     [SerializeField] private LayerMask obstacleLayer;
     [SerializeField] private int laserDamage = 15;
     [SerializeField] private float laserCooldown = 3f;
@@ -62,7 +62,7 @@ public class NewPlayerController : Controller
         _controls.InGame.Dash.performed += ctx => Dash();
         _controls.InGame.Laser.performed += ctx => FireLaser();
 
-        healthSystem.Initialize();
+        healthSystem.Initialize(transform);
         healthSystem.OnDamage += TakeDamage;
         healthSystem.OnDeath += Die;
 
@@ -99,12 +99,15 @@ public class NewPlayerController : Controller
             rayDistance = obstacleHit.distance;
         }
         //Creates the damaging ray
-        RaycastHit2D[] hits = Physics2D.BoxCastAll(ray.origin, new Vector2(laserWidth, 1), mesh.rotation.eulerAngles.y, ray.direction, rayDistance, enemyLayer);
+        RaycastHit2D[] hits = Physics2D.BoxCastAll(ray.origin, new Vector2(laserWidth, 1), mesh.rotation.eulerAngles.y, ray.direction, rayDistance, healthSystemLayer);
         foreach (RaycastHit2D enemyHit in hits)
         {
             if (enemyHit.collider.TryGetComponent(out HealthSystem healthSystem))
             {
-                healthSystem.TakeDamage(laserDamage, transform);
+                if (healthSystem.Source != transform)
+                {
+                    healthSystem.TakeDamage(laserDamage, transform);
+                }
             }
         }
 

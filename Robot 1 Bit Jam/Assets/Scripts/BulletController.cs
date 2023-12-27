@@ -53,7 +53,7 @@ public class BulletController : MonoBehaviour
     {
         if (collision.TryGetComponent(out HealthSystem healthSystem))
         {
-            if (_source != collision.transform)
+            if (_source != healthSystem.Source)
             {
                 healthSystem.TakeDamage(damage, _source);
                 Destroy(gameObject);

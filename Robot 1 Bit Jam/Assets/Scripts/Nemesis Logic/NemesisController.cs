@@ -39,7 +39,7 @@ public class NemesisController : Controller
         base.Initialize();
 
         _healthSystem = GetComponent<HealthSystem>();
-        _healthSystem.Initialize();
+        _healthSystem.Initialize(transform);
         _healthSystem.OnDeath += Die;
         _player = FindObjectOfType<NewPlayerController>();
 

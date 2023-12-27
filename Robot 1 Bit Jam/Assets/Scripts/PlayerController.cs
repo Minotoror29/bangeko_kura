@@ -70,7 +70,7 @@ public class PlayerController : Controller
         _playerControls.InGame.Dash.performed += ctx => Dash();
 
         _healthSystem = GetComponent<HealthSystem>();
-        _healthSystem.Initialize();
+        _healthSystem.Initialize(transform);
         _healthSystem.OnDeath += Die;
 
         _laserCooldownTimer = laserCooldown;

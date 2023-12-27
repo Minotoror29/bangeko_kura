@@ -5,19 +5,23 @@ using UnityEngine;
 
 public class HealthSystem : MonoBehaviour
 {
+    private Transform _source;
+
     [SerializeField] private int maxHealth;
     private int _currentHealth;
 
     private bool _preventDamage;
 
+    public Transform Source { get { return _source; } }
     public int CurrentHealth { get { return _currentHealth; } }
     public bool PreventDamage { get { return _preventDamage; } set { _preventDamage = value; } }
 
     public event Action<Transform> OnDamage;
     public event Action<HealthSystem, Transform> OnDeath;
 
-    public void Initialize()
+    public void Initialize(Transform source)
     {
+        _source = source;
         _currentHealth = maxHealth;
 
         _preventDamage = false;
