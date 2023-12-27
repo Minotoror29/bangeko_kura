@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3374067823915141156}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1833340169687721473
 MonoBehaviour:
@@ -48,6 +48,68 @@ MonoBehaviour:
   dashTime: 0.1
   dashSpeed: 1500
   distanceToDash: 5
+--- !u!1 &3047188501597762053
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1256665156802774115}
+  - component: {fileID: 3797836427907288853}
+  - component: {fileID: 1550601309711252835}
+  m_Layer: 9
+  m_Name: Health System
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1256665156802774115
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3047188501597762053}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3374067823915141156}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3797836427907288853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3047188501597762053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caab90597b1af1043b07cbed6607480e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 5
+--- !u!70 &1550601309711252835
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3047188501597762053}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.8, y: 1.5}
+  m_Direction: 0
 --- !u!1 &3374067823915141177
 GameObject:
   m_ObjectHideFlags: 0
@@ -58,9 +120,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3374067823915141156}
   - component: {fileID: 4346779082478318415}
-  - component: {fileID: 587774895628843223}
   - component: {fileID: 587774895628843217}
-  - component: {fileID: 587774895628843216}
+  - component: {fileID: 6799554635350799074}
   m_Layer: 9
   m_Name: Dashing Swordling
   m_TagString: Enemy
@@ -80,6 +141,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1256665156802774115}
   - {fileID: 5275775408227196361}
   - {fileID: 1833340169687721472}
   - {fileID: 3860357899604616143}
@@ -99,6 +161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1833340168702309213}
+  healthSystem: {fileID: 3797836427907288853}
   minIdleTime: 3
   maxIdleTime: 7
   patrolTime: 4
@@ -110,19 +173,6 @@ MonoBehaviour:
   - {fileID: 2876214213304274504}
   - {fileID: 1833340169687721473}
   mesh: {fileID: 2232637898653029193}
---- !u!114 &587774895628843223
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3374067823915141177}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: caab90597b1af1043b07cbed6607480e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 5
 --- !u!50 &587774895628843217
 Rigidbody2D:
   serializedVersion: 4
@@ -144,8 +194,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!70 &587774895628843216
-CapsuleCollider2D:
+--- !u!58 &6799554635350799074
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -157,9 +207,9 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.8, y: 1.5}
-  m_Direction: 0
+  m_Offset: {x: 0, y: -1}
+  serializedVersion: 2
+  m_Radius: 0.6
 --- !u!1 &3860357899604616142
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,7 +240,7 @@ Transform:
   m_Children:
   - {fileID: 2232637898653029193}
   m_Father: {fileID: 3374067823915141156}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: -45, y: 0, z: 0}
 --- !u!1 &4657648718113354149
 GameObject:
@@ -223,7 +273,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3374067823915141156}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2876214213304274504
 MonoBehaviour:

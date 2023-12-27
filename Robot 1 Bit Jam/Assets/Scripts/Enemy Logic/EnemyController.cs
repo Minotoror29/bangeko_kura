@@ -14,7 +14,7 @@ public class EnemyController : Controller
 
     private EnemyState _currentState;
 
-    private HealthSystem _healthSystem;
+    [SerializeField] private HealthSystem healthSystem;
 
     [Header("Idle")]
     [SerializeField] private float minIdleTime = 3f;
@@ -48,13 +48,12 @@ public class EnemyController : Controller
         _enemiesManager = enemiesManager;
         _player = player;
 
-        _healthSystem = GetComponent<HealthSystem>();
-        _healthSystem.Initialize();
-        _healthSystem.OnDeath += Die;
+        healthSystem.Initialize();
+        healthSystem.OnDeath += Die;
 
         foreach (Weapon weapon in weapons)
         {
-            weapon.Initialize(this, _healthSystem);
+            weapon.Initialize(this, healthSystem);
         }
 
         _deathSound = RuntimeManager.CreateInstance("event:/Enemy Death");

@@ -7,7 +7,7 @@ using UnityEngine.UIElements.Experimental;
 public class NewPlayerController : Controller
 {
     private PlayerControls _controls;
-    private HealthSystem _healthSystem;
+    [SerializeField] private HealthSystem healthSystem;
 
     [Header("Movement")]
     [SerializeField] private float movementSpeed = 500f;
@@ -62,10 +62,9 @@ public class NewPlayerController : Controller
         _controls.InGame.Dash.performed += ctx => Dash();
         _controls.InGame.Laser.performed += ctx => FireLaser();
 
-        _healthSystem = GetComponent<HealthSystem>();
-        _healthSystem.Initialize();
-        _healthSystem.OnDamage += TakeDamage;
-        _healthSystem.OnDeath += Die;
+        healthSystem.Initialize();
+        healthSystem.OnDamage += TakeDamage;
+        healthSystem.OnDeath += Die;
 
         _dashCooldownTimer = dashCooldown;
 
@@ -73,7 +72,7 @@ public class NewPlayerController : Controller
 
         foreach (Weapon weapon in weapons)
         {
-            weapon.Initialize(this, _healthSystem);
+            weapon.Initialize(this, healthSystem);
         }
     }
 
@@ -101,7 +100,6 @@ public class NewPlayerController : Controller
         }
         //Creates the damaging ray
         RaycastHit2D[] hits = Physics2D.BoxCastAll(ray.origin, new Vector2(laserWidth, 1), mesh.rotation.eulerAngles.y, ray.direction, rayDistance, enemyLayer);
-        Debug.Log(Vector2.Angle(new Vector2(-5, 5), new Vector2(5, 5)));
         foreach (RaycastHit2D enemyHit in hits)
         {
             if (enemyHit.collider.TryGetComponent(out HealthSystem healthSystem))
@@ -121,7 +119,7 @@ public class NewPlayerController : Controller
     {
         if (Dashing)
         {
-            _healthSystem.PreventDamage = true;
+            healthSystem.PreventDamage = true;
         }
     }
 
