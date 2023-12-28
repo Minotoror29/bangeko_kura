@@ -38,6 +38,7 @@ public class NewPlayerController : Controller
     [SerializeField] private List<Weapon> weapons;
 
     public event Action OnDash;
+    public event Action OnTakeDamage;
 
     public PlayerControls Controls { get { return _controls; } }
     public float MovementSpeed { get { return movementSpeed; } }
@@ -79,7 +80,7 @@ public class NewPlayerController : Controller
             weapon.Initialize(this, HealthSystem);
         }
 
-        ChangeState(new PlayerIdleState(this));
+        ChangeState(new PlayerSpawnState(this));
     }
 
     public void ChangeState(PlayerState nextState)
@@ -132,14 +133,18 @@ public class NewPlayerController : Controller
 
     private void TakeDamage(Transform damageSource)
     {
-        if (Dashing)
-        {
-            HealthSystem.PreventDamage = true;
-        }
+        OnTakeDamage?.Invoke();
     }
 
-    private void Die(HealthSystem healthSystem, Transform deathSource)
+    public void Die(HealthSystem healthSystem, Transform deathSource)
     {
+        _controls.InGame.Dash.performed -= ctx => Dash();
+        _controls.InGame.Laser.performed -= ctx => FireLaser();
+        _controls.InGame.Disable();
+
+        HealthSystem.OnDamage -= TakeDamage;
+        HealthSystem.OnDeath -= Die;
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
@@ -198,13 +203,6 @@ public class NewPlayerController : Controller
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Obstacle"))
-        {
-            if (Dashing)
-            {
-                Dashing = false;
-                _dashCooldownTimer = 0f;
-            }
-        }
+        _currentState.OnCollisionEnter(collision);
     }
 }

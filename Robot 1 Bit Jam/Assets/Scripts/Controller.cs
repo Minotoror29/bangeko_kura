@@ -16,6 +16,7 @@ public abstract class Controller : MonoBehaviour
     public Animator Animator { get { return animator; } }
     public HealthSystem HealthSystem { get { return _healthSystem; } }
     public bool Dashing { get { return _dashing; } set { _dashing = value; } }
+    public List<GameObject> Grounds { get { return _grounds; } }
 
     public virtual void Initialize()
     {
@@ -31,7 +32,7 @@ public abstract class Controller : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground") && !_grounds.Contains(collision.gameObject))
         {
             _grounds.Add(collision.gameObject);
         }
@@ -42,11 +43,6 @@ public abstract class Controller : MonoBehaviour
         if (_grounds.Contains(collision.gameObject))
         {
             _grounds.Remove(collision.gameObject);
-        }
-
-        if (_grounds.Count == 0)
-        {
-            _healthSystem.Die(null);
         }
     }
 }

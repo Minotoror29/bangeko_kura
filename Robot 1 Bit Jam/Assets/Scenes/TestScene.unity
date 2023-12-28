@@ -1508,6 +1508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
+  startingGround: {fileID: 1521665031}
   movementSpeed: 500
   dashSpeed: 1000
   dashDistance: 5

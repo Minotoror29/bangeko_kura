@@ -27,6 +27,11 @@ public class PlayerIdleState : PlayerState
         {
             Controller.ChangeState(new PlayerWalkState(Controller));
         }
+
+        if (Controller.Grounds.Count == 0)
+        {
+            Controller.Die(Controller.HealthSystem, null);
+        }
     }
 
     public override void UpdatePhysics()

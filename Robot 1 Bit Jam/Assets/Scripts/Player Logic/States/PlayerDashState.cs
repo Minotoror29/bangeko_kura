@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements.Experimental;
 
 public class PlayerDashState : PlayerState
 {
@@ -14,15 +15,22 @@ public class PlayerDashState : PlayerState
 
     public override void Enter()
     {
+        Controller.OnTakeDamage += PreventDamage;
+
         _dashOrigin = Controller.transform.position;
     }
 
     public override void Exit()
     {
+        Controller.OnTakeDamage -= PreventDamage;
     }
 
     public override void OnCollisionEnter(Collision2D collision)
     {
+        if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            Controller.ChangeState(new PlayerIdleState(Controller));
+        }
     }
 
     public override void UpdateLogic()
@@ -36,5 +44,10 @@ public class PlayerDashState : PlayerState
     public override void UpdatePhysics()
     {
         Controller.Move(_dashDirection, Controller.DashSpeed);
+    }
+
+    private void PreventDamage()
+    {
+        Controller.HealthSystem.PreventDamage = true;
     }
 }
