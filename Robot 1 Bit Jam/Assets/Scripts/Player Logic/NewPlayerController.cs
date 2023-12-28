@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,17 +9,16 @@ public class NewPlayerController : Controller
 {
     private PlayerControls _controls;
 
+    private PlayerState _currentState;
+
     [Header("Movement")]
     [SerializeField] private float movementSpeed = 500f;
-    private Vector2 _movementDirection;
 
     [Header("Dash")]
     [SerializeField] private float dashSpeed = 1000f;
     [SerializeField] private float dashDistance = 5f;
     [SerializeField] private float dashCooldown = 2f;
     private float _dashCooldownTimer;
-    private Vector3 _dashDirection;
-    private Vector2 _dashOrigin;
 
     [Header("Laser")]
     [SerializeField] private Transform laserFirePoint;
@@ -36,6 +36,13 @@ public class NewPlayerController : Controller
 
     [Header("Weapons")]
     [SerializeField] private List<Weapon> weapons;
+
+    public event Action OnDash;
+
+    public PlayerControls Controls { get { return _controls; } }
+    public float MovementSpeed { get { return movementSpeed; } }
+    public float DashSpeed { get { return dashSpeed; } }
+    public float DashDistance { get { return dashDistance; } }
 
     private void Start()
     {
@@ -64,28 +71,35 @@ public class NewPlayerController : Controller
         HealthSystem.OnDamage += TakeDamage;
         HealthSystem.OnDeath += Die;
 
-        _dashCooldownTimer = dashCooldown;
-
-        _laserCooldownTimer = laserCooldown;
+        _dashCooldownTimer = 0f;
+        _laserCooldownTimer = 0f;
 
         foreach (Weapon weapon in weapons)
         {
             weapon.Initialize(this, HealthSystem);
         }
+
+        ChangeState(new PlayerIdleState(this));
+    }
+
+    public void ChangeState(PlayerState nextState)
+    {
+        _currentState?.Exit();
+        _currentState = nextState;
+        _currentState.Enter();
     }
 
     private void Dash()
     {
-        if (Dashing || _dashCooldownTimer < dashCooldown || _movementDirection.magnitude == 0f) return;
+        if (_dashCooldownTimer > 0f) return;
 
-        _dashDirection = _movementDirection;
-        _dashOrigin = transform.position;
-        Dashing = true;
+        OnDash?.Invoke();
+        _dashCooldownTimer = dashCooldown;
     }
 
     private void FireLaser()
     {
-        if (_laserCooldownTimer < laserCooldown) return;
+        if (_laserCooldownTimer > 0f) return;
 
         //Physics
         Ray2D ray = new(laserFirePoint.position, _mousePosition - (Vector2)laserFirePoint.position);
@@ -113,7 +127,7 @@ public class NewPlayerController : Controller
         Laser newLaser = Instantiate(laserPrefab);
         newLaser.Initialize(laserFirePoint.position, (Vector2)laserFirePoint.position + (_mousePosition - (Vector2)laserFirePoint.position).normalized * rayDistance, laserWidth);
 
-        _laserCooldownTimer = 0f;
+        _laserCooldownTimer = laserCooldown;
     }
 
     private void TakeDamage(Transform damageSource)
@@ -131,30 +145,26 @@ public class NewPlayerController : Controller
 
     public override void UpdateLogic()
     {
+        _currentState.UpdateLogic();
+
         foreach (Weapon weapon in weapons)
         {
             weapon.UpdateLogic();
         }
 
-        HandleMovementInput();
         HandleRotationInput();
 
         Rotate();
 
-        if (_dashCooldownTimer < dashCooldown)
+        if (_dashCooldownTimer > 0f)
         {
-            _dashCooldownTimer += Time.deltaTime;
+            _dashCooldownTimer -= Time.deltaTime;
         }
 
-        if (_laserCooldownTimer < laserCooldown)
+        if (_laserCooldownTimer > 0f)
         {
-            _laserCooldownTimer += Time.deltaTime;
+            _laserCooldownTimer -= Time.deltaTime;
         }
-    }
-
-    private void HandleMovementInput()
-    {
-        _movementDirection = _controls.InGame.Movement.ReadValue<Vector2>();
     }
 
     private void HandleRotationInput()
@@ -171,29 +181,19 @@ public class NewPlayerController : Controller
 
     public override void UpdatePhysics()
     {
+        _currentState.UpdatePhysics();
+
         foreach (Weapon weapon in weapons)
         {
             weapon.UpdatePhysics();
         }
 
-        Move();
+        //Move();
     }
 
-    private void Move()
+    public void Move(Vector2 direction, float speed)
     {
-        if (!Dashing)
-        {
-            Rb.velocity = movementSpeed * Time.fixedDeltaTime * _movementDirection;
-        } else
-        {
-            Rb.velocity = dashSpeed * Time.fixedDeltaTime * _dashDirection;
-
-            if (((Vector2)transform.position - _dashOrigin).magnitude >= dashDistance)
-            {
-                Dashing = false;
-                _dashCooldownTimer = 0f;
-            }
-        }
+        Rb.velocity = speed * Time.fixedDeltaTime * direction;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
