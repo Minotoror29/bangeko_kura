@@ -110,6 +110,10 @@ public class NewPlayerController : Controller
         if (obstacleHit.collider != null)
         {
             rayDistance = obstacleHit.distance;
+            if (obstacleHit.collider.TryGetComponent(out Switch s))
+            {
+                s.Activate();
+            }
         }
         //Creates the damaging ray
         RaycastHit2D[] hits = Physics2D.BoxCastAll(ray.origin, new Vector2(laserWidth, 1), mesh.rotation.eulerAngles.y, ray.direction, rayDistance, healthSystemLayer);
