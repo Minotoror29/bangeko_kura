@@ -18,6 +18,8 @@ public class PlayerDashState : PlayerState
         Controller.OnTakeDamage += PreventDamage;
 
         _dashOrigin = Controller.transform.position;
+
+        Controller.Animator.CrossFade("Player Dash", 0f);
     }
 
     public override void Exit()

@@ -22,6 +22,11 @@ public class Switch : MonoBehaviour
         }
     }
 
+    public void Activate()
+    {
+        SwitchState();
+    }
+
     private void SwitchState()
     {
         _switchState = !_switchState;
@@ -49,10 +54,5 @@ public class Switch : MonoBehaviour
                 platform.gameObject.SetActive(false);
             }
         }
-    }
-
-    public void Activate()
-    {
-        SwitchState();
     }
 }

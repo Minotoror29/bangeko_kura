@@ -11,6 +11,8 @@ public class PlayerWalkState : PlayerState
     public override void Enter()
     {
         Controller.OnDash += Dash;
+
+        Animator.CrossFade("Player Walk", 0f);
     }
 
     public override void Exit()

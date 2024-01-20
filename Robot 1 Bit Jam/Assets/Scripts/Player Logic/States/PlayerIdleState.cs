@@ -11,6 +11,8 @@ public class PlayerIdleState : PlayerState
     public override void Enter()
     {
         Rb.velocity = Vector2.zero;
+
+        Controller.Animator.CrossFade("Player Idle", 0f);
     }
 
     public override void Exit()

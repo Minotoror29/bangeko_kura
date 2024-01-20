@@ -174,6 +174,9 @@ public class NewPlayerController : Controller
         {
             _laserCooldownTimer -= Time.deltaTime;
         }
+
+        Animator.SetFloat("X Direction", mesh.transform.InverseTransformDirection(Rb.velocity).x);
+        Animator.SetFloat("Y Direction", mesh.transform.InverseTransformDirection(Rb.velocity).z);
     }
 
     private void HandleRotationInput()
