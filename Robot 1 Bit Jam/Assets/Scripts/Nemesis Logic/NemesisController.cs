@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class NemesisController : Controller
 {
-    private HealthSystem _healthSystem;
     private NewPlayerController _player;
 
     [SerializeField] private float movementSpeed = 1000f;
@@ -17,7 +16,22 @@ public class NemesisController : Controller
 
     private NemesisState _currentState;
 
+    [Header("Sword")]
+    [SerializeField] private float swordDistance = 1f;
+    [SerializeField] private float swordChargeTime = 1f;
+    [SerializeField] private float swordCooldown = 3f;
+    private float _swordCooldownTimer;
+
+    [SerializeField] private float walkDistance = 2f;
+    [SerializeField] private float shootDistance = 3f;
+    [SerializeField] private float dashDistance = 4f;
+
     private EventInstance _deathSound;
+
+    public NewPlayerController Player { get { return _player; } }
+    public float SwordDistance { get { return swordDistance; } }
+    public float SwordChargeTime { get { return swordChargeTime; } }
+    public float SwordCooldownTimer { get { return _swordCooldownTimer; } }
 
     private void Start()
     {
@@ -38,19 +52,17 @@ public class NemesisController : Controller
     {
         base.Initialize();
 
-        _healthSystem = GetComponent<HealthSystem>();
-        _healthSystem.Initialize(transform);
-        _healthSystem.OnDeath += Die;
+        HealthSystem.OnDeath += Die;
         _player = FindObjectOfType<NewPlayerController>();
 
         foreach (Weapon weapon in weapons)
         {
-            weapon.Initialize(this, _healthSystem);
+            weapon.Initialize(this, HealthSystem);
         }
 
         _deathSound = RuntimeManager.CreateInstance("event:/Boss Death");
 
-        ChangeState(new NemesisFarState(this, _player));
+        ChangeState(new NemesisIdleState(this));
     }
 
     public void ChangeState(NemesisState nextState)
@@ -76,7 +88,12 @@ public class NemesisController : Controller
 
         Rotate();
 
-        _currentState.UpdateLogic();
+        _currentState?.UpdateLogic();
+
+        if (_swordCooldownTimer > 0f)
+        {
+            _swordCooldownTimer -= Time.deltaTime;
+        }
     }
 
     private void Rotate()
@@ -93,7 +110,7 @@ public class NemesisController : Controller
             weapon.UpdatePhysics();
         }
 
-        _currentState.UpdatePhysics();
+        _currentState?.UpdatePhysics();
     }
 
     public void MoveTowards(Vector3 direction)
@@ -111,5 +128,17 @@ public class NemesisController : Controller
         Animator.SetBool("Walking", false);
 
         Rb.velocity = Vector2.zero;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, swordDistance);
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawWireSphere(transform.position, walkDistance);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, shootDistance);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, dashDistance);
     }
 }

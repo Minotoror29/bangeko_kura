@@ -6,7 +6,7 @@ public class NemesisShootState : NemesisState
 {
     private float _timer;
 
-    public NemesisShootState(NemesisController controller, NewPlayerController player) : base(controller, player)
+    public NemesisShootState(NemesisController controller) : base(controller)
     {
         _timer = 0f;
     }
@@ -32,10 +32,10 @@ public class NemesisShootState : NemesisState
         {
             if ((Player.transform.position - Controller.transform.position).magnitude > 1.5f)
             {
-                Controller.ChangeState(new NemesisFarState(Controller, Player));
+                Controller.ChangeState(new NemesisFarState(Controller));
             } else
             {
-                Controller.ChangeState(new NemesisNearState(Controller, Player));
+                Controller.ChangeState(new NemesisSwordState(Controller));
             }
         }
     }

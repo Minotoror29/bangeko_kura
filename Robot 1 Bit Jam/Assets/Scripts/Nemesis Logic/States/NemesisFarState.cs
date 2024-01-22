@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NemesisFarState : NemesisState
 {
-    public NemesisFarState(NemesisController controller, NewPlayerController player) : base(controller, player)
+    public NemesisFarState(NemesisController controller) : base(controller)
     {
     }
 
@@ -13,10 +13,10 @@ public class NemesisFarState : NemesisState
         int randomBehaviour = Random.Range(0, 2);
         if (randomBehaviour == 0)
         {
-            Controller.ChangeState(new NemesisMoveState(Controller, Player));
+            Controller.ChangeState(new NemesisMoveState(Controller));
         } else if (randomBehaviour == 1)
         {
-            Controller.ChangeState(new NemesisShootState(Controller, Player));
+            Controller.ChangeState(new NemesisShootState(Controller));
         }
     }
 

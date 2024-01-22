@@ -1225,9 +1225,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4959537511693886036}
   - component: {fileID: 4959537511693886034}
-  - component: {fileID: 4959537511693886037}
   - component: {fileID: 4959537511693886032}
-  - component: {fileID: 4959537511693886035}
+  - component: {fileID: 5833269496385568407}
   m_Layer: 9
   m_Name: Nemesis
   m_TagString: Enemy
@@ -1252,6 +1251,7 @@ Transform:
   - {fileID: 4959537513192801499}
   - {fileID: 4959537512563354547}
   - {fileID: 676971343978065870}
+  - {fileID: 1994614875051006961}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1275,19 +1275,11 @@ MonoBehaviour:
   - {fileID: 4959537513192801498}
   - {fileID: 4959537512563354546}
   mesh: {fileID: 4327113155201503577}
---- !u!114 &4959537511693886037
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4959537511693886039}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: caab90597b1af1043b07cbed6607480e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
+  swordDistance: 2
+  swordChargeTime: 1
+  walkDistance: 5
+  shootDistance: 10
+  dashDistance: 15
 --- !u!50 &4959537511693886032
 Rigidbody2D:
   serializedVersion: 4
@@ -1309,8 +1301,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!70 &4959537511693886035
-CapsuleCollider2D:
+--- !u!58 &5833269496385568407
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1322,9 +1314,9 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1.5, y: 2}
-  m_Direction: 0
+  m_Offset: {x: 0, y: -0.6}
+  serializedVersion: 2
+  m_Radius: 0.6
 --- !u!1 &4959537511860378625
 GameObject:
   m_ObjectHideFlags: 0
@@ -1336,7 +1328,7 @@ GameObject:
   - component: {fileID: 4959537511860378624}
   - component: {fileID: 4959537511860378654}
   - component: {fileID: 4959537511860378686}
-  m_Layer: 9
+  m_Layer: 14
   m_Name: Turret
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1404,7 +1396,7 @@ GameObject:
   - component: {fileID: 4959537512195989708}
   - component: {fileID: 4959537512195989706}
   - component: {fileID: 4959537512195989707}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1599,7 +1591,7 @@ GameObject:
   - component: {fileID: 4959537513192801499}
   - component: {fileID: 4959537513192801498}
   - component: {fileID: 4959537513192801496}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2348,3 +2340,65 @@ Transform:
   m_Father: {fileID: 4327113155201503577}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8090955788933098113
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1994614875051006961}
+  - component: {fileID: 402270901352640017}
+  - component: {fileID: 793551526647775210}
+  m_Layer: 13
+  m_Name: Health System
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1994614875051006961
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8090955788933098113}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4959537511693886036}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!70 &402270901352640017
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8090955788933098113}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1.5, y: 2}
+  m_Direction: 0
+--- !u!114 &793551526647775210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8090955788933098113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caab90597b1af1043b07cbed6607480e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
