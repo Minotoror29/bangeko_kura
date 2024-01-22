@@ -1277,9 +1277,11 @@ MonoBehaviour:
   mesh: {fileID: 4327113155201503577}
   swordDistance: 2
   swordChargeTime: 1
+  swordCooldown: 3
   walkDistance: 5
   shootDistance: 10
-  dashDistance: 15
+  dashDistance: 5
+  dashSpeed: 500
 --- !u!50 &4959537511693886032
 Rigidbody2D:
   serializedVersion: 4

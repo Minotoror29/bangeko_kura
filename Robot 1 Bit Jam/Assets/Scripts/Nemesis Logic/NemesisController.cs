@@ -8,8 +8,6 @@ public class NemesisController : Controller
 {
     private NewPlayerController _player;
 
-    [SerializeField] private float movementSpeed = 1000f;
-
     [SerializeField] private List<Weapon> weapons;
 
     [SerializeField] private Transform mesh;
@@ -22,16 +20,28 @@ public class NemesisController : Controller
     [SerializeField] private float swordCooldown = 3f;
     private float _swordCooldownTimer;
 
+    [Header("Walk")]
     [SerializeField] private float walkDistance = 2f;
+    [SerializeField] private float walkSpeed = 250f;
+
     [SerializeField] private float shootDistance = 3f;
-    [SerializeField] private float dashDistance = 4f;
+
+    [Header("Dash")]
+    [SerializeField] private float dashDistance = 5f;
+    [SerializeField] private float dashSpeed = 500f;
 
     private EventInstance _deathSound;
 
     public NewPlayerController Player { get { return _player; } }
     public float SwordDistance { get { return swordDistance; } }
     public float SwordChargeTime { get { return swordChargeTime; } }
-    public float SwordCooldownTimer { get { return _swordCooldownTimer; } }
+    public float SwordCooldown { get { return swordCooldown; } }
+    public float SwordCooldownTimer { get { return _swordCooldownTimer; } set { _swordCooldownTimer = value; } }
+    public float WalkDistance { get { return walkDistance; } }
+    public float WalkSpeed { get { return walkSpeed; } }
+    public float ShootDistance { get { return shootDistance; } }
+    public float DashDistance { get { return dashDistance; } }
+    public float DashSpeed { get { return dashSpeed; } }
 
     private void Start()
     {
@@ -113,14 +123,9 @@ public class NemesisController : Controller
         _currentState?.UpdatePhysics();
     }
 
-    public void MoveTowards(Vector3 direction)
+    public void MoveTowards(Vector3 direction, float speed)
     {
-        Animator.SetBool("Walking", true);
-
-        if (!Dashing)
-        {
-            Rb.velocity = movementSpeed * Time.fixedDeltaTime * direction.normalized;
-        }
+         Rb.velocity = speed * Time.fixedDeltaTime * direction.normalized;
     }
 
     public void StopMovement()
@@ -138,7 +143,5 @@ public class NemesisController : Controller
         Gizmos.DrawWireSphere(transform.position, walkDistance);
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, shootDistance);
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, dashDistance);
     }
 }

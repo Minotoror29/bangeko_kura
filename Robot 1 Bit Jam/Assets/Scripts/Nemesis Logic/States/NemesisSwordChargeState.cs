@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NemesisSwordChargeState : NemesisSwordSubstate
+public class NemesisSwordChargeState : NemesisState
 {
     private float _chargeTimer;
 
-    public NemesisSwordChargeState(NemesisController controller, NemesisSwordState superstate) : base(controller, superstate)
+    public NemesisSwordChargeState(NemesisController controller) : base(controller)
     {
         _chargeTimer = controller.SwordChargeTime;
     }
@@ -31,11 +31,12 @@ public class NemesisSwordChargeState : NemesisSwordSubstate
             _chargeTimer -= Time.deltaTime;
         } else
         {
-            Superstate.ChangeSubstate(new NemesisSwordAttackState(Controller, Superstate));
+            Controller.ChangeState(new NemesisSwordAttackState(Controller));
         }
     }
 
     public override void UpdatePhysics()
     {
+        Rb.velocity = Vector2.zero;
     }
 }

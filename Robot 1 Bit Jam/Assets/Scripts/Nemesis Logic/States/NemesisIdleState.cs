@@ -10,7 +10,6 @@ public class NemesisIdleState : NemesisState
 
     public override void Enter()
     {
-        Rb.velocity = Vector2.zero;
         Animator.CrossFade("Player Idle", 0f);
     }
 
@@ -24,13 +23,22 @@ public class NemesisIdleState : NemesisState
 
     public override void UpdateLogic()
     {
-        if ((Player.transform.position - Controller.transform.position).magnitude < Controller.SwordDistance && Controller.SwordCooldownTimer <= 0f)
+        if ((Player.transform.position - Controller.transform.position).magnitude <= Controller.SwordDistance && Controller.SwordCooldownTimer <= 0f)
         {
-            Controller.ChangeState(new NemesisSwordState(Controller));
+            Controller.ChangeState(new NemesisSwordChargeState(Controller));
+        }
+        else if ((Player.transform.position - Controller.transform.position).magnitude <= Controller.WalkDistance)
+        {
+            Controller.ChangeState(new NemesisWalkState(Controller, 3f));
+        }
+        else if ((Player.transform.position - Controller.transform.position).magnitude > Controller.ShootDistance)
+        {
+            Controller.ChangeState(new NemesisDashState(Controller));
         }
     }
 
     public override void UpdatePhysics()
     {
+        Rb.velocity = Vector2.zero;
     }
 }

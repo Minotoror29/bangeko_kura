@@ -35,7 +35,7 @@ public class NemesisShootState : NemesisState
                 Controller.ChangeState(new NemesisFarState(Controller));
             } else
             {
-                Controller.ChangeState(new NemesisSwordState(Controller));
+                Controller.ChangeState(new NemesisSwordChargeState(Controller));
             }
         }
     }

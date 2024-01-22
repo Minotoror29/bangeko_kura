@@ -13,7 +13,7 @@ public class NemesisFarState : NemesisState
         int randomBehaviour = Random.Range(0, 2);
         if (randomBehaviour == 0)
         {
-            Controller.ChangeState(new NemesisMoveState(Controller));
+            //Controller.ChangeState(new NemesisWalkState(Controller));
         } else if (randomBehaviour == 1)
         {
             Controller.ChangeState(new NemesisShootState(Controller));
