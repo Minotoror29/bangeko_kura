@@ -82,7 +82,7 @@ public class TurretController : Weapon
     private void Fire()
     {
         BulletController newBullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
-        newBullet.Initialize(_enemiesInRange[0].transform, Controller.transform);
+        newBullet.Initialize(_enemiesInRange[0].transform.position - firePoint.position, Controller.transform);
         _bulletsFired++;
 
         _fireSound.start();

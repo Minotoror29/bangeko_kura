@@ -23,14 +23,14 @@ public class BulletController : MonoBehaviour
         UpdatePhysics();
     }
 
-    public void Initialize(Transform target, Transform source)
+    public void Initialize(Vector2 direction, Transform source)
     {
         _rb = GetComponent<Rigidbody2D>();
         _source = source;
 
         _lifeTimer = 0f;
 
-        transform.rotation = Quaternion.LookRotation(transform.forward, target.position - transform.position);
+        transform.rotation = Quaternion.LookRotation(transform.forward, direction.normalized);
     }
 
     public void UpdateLogic()

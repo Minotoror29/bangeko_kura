@@ -24,7 +24,12 @@ public class NemesisController : Controller
     [SerializeField] private float walkDistance = 2f;
     [SerializeField] private float walkSpeed = 250f;
 
+    [Header("Shoot")]
     [SerializeField] private float shootDistance = 3f;
+    [SerializeField, Tooltip("Time between each projectile")] private float shootTime = 0.25f;
+    [SerializeField] private BulletController bulletPrefab;
+    [SerializeField] private Transform shootPoint;
+    [SerializeField] private float shootMaxRandomAngle = 5f;
 
     [Header("Dash")]
     [SerializeField] private float dashDistance = 5f;
@@ -40,6 +45,7 @@ public class NemesisController : Controller
     public float WalkDistance { get { return walkDistance; } }
     public float WalkSpeed { get { return walkSpeed; } }
     public float ShootDistance { get { return shootDistance; } }
+    public float ShootTime { get { return shootTime; } }
     public float DashDistance { get { return dashDistance; } }
     public float DashSpeed { get { return dashSpeed; } }
 
@@ -80,6 +86,16 @@ public class NemesisController : Controller
         _currentState?.Exit();
         _currentState = nextState;
         _currentState.Enter();
+    }
+
+    public void ShootBullet()
+    {
+        float randomAngle = Random.Range(-shootMaxRandomAngle, shootMaxRandomAngle);
+        Quaternion addedRotation = Quaternion.AngleAxis(randomAngle, Vector3.back);
+        Vector3 rotatedDirection = addedRotation * (_player.transform.position - shootPoint.position);
+
+        BulletController newBullet = Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);
+        newBullet.Initialize(rotatedDirection, transform);
     }
 
     private void Die(HealthSystem healthSystem, Transform deathSource)
@@ -137,11 +153,29 @@ public class NemesisController : Controller
 
     private void OnDrawGizmos()
     {
+        //Behaviour Zones
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, swordDistance);
         Gizmos.color = Color.magenta;
         Gizmos.DrawWireSphere(transform.position, walkDistance);
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, shootDistance);
+
+        //Shooting Angles
+        Vector2 direction = Vector2.zero;
+        if (_player == null)
+        {
+            direction = (((Vector2)shootPoint.position + Vector2.up - (Vector2)shootPoint.position) * 10f);
+        } else
+        {
+            direction = _player.transform.position - shootPoint.position;
+        }
+        Gizmos.color = Color.yellow;
+        Quaternion addedRotation = Quaternion.AngleAxis(shootMaxRandomAngle, Vector3.back);
+        Vector3 rotatedDirection = addedRotation * direction;
+        Gizmos.DrawRay(shootPoint.position, rotatedDirection);
+        addedRotation = Quaternion.AngleAxis(-shootMaxRandomAngle, Vector3.back);
+        rotatedDirection = addedRotation * direction;
+        Gizmos.DrawRay(shootPoint.position, rotatedDirection);
     }
 }

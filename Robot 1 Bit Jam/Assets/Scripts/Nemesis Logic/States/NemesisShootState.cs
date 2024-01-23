@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class NemesisShootState : NemesisState
 {
-    private float _timer;
+    private float _shootTimer;
+    private int _projectilesToShoot;
 
     public NemesisShootState(NemesisController controller) : base(controller)
     {
-        _timer = 0f;
     }
 
     public override void Enter()
     {
+        _shootTimer = Controller.ShootTime;
+        _projectilesToShoot = 3;
     }
 
     public override void Exit()
@@ -25,23 +27,26 @@ public class NemesisShootState : NemesisState
 
     public override void UpdateLogic()
     {
-        if (_timer < 2f)
+        if (_shootTimer > 0f)
         {
-            _timer += Time.deltaTime;
+            _shootTimer -= Time.deltaTime;
         } else
         {
-            if ((Player.transform.position - Controller.transform.position).magnitude > 1.5f)
+            Controller.ShootBullet();
+            _projectilesToShoot--;
+
+            if (_projectilesToShoot == 0)
             {
-                Controller.ChangeState(new NemesisFarState(Controller));
+                Controller.ChangeState(new NemesisWalkState(Controller, 2f));
             } else
             {
-                Controller.ChangeState(new NemesisSwordChargeState(Controller));
+                _shootTimer = Controller.ShootTime;
             }
         }
     }
 
     public override void UpdatePhysics()
     {
-        Controller.StopMovement();
+        Rb.velocity = Vector2.zero;
     }
 }
