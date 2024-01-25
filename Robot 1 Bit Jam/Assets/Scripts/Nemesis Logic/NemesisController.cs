@@ -8,7 +8,7 @@ public class NemesisController : Controller
 {
     private NewPlayerController _player;
 
-    [SerializeField] private List<Weapon> weapons;
+    [SerializeField] private ShieldController shield;
 
     [SerializeField] private Transform mesh;
 
@@ -78,10 +78,7 @@ public class NemesisController : Controller
         HealthSystem.OnDeath += Die;
         _player = FindObjectOfType<NewPlayerController>();
 
-        foreach (Weapon weapon in weapons)
-        {
-            weapon.Initialize(this, HealthSystem);
-        }
+        shield.Initialize(this, HealthSystem);
 
         _deathSound = RuntimeManager.CreateInstance("event:/Boss Death");
 
@@ -100,6 +97,7 @@ public class NemesisController : Controller
         if (HealthSystem.HealthRatio <= healthToPhase2)
         {
             ChangePhase(phase2.Phase(this));
+            shield.gameObject.SetActive(false);
         }
     }
 
@@ -127,10 +125,7 @@ public class NemesisController : Controller
 
     public override void UpdateLogic()
     {
-        foreach (Weapon weapon in weapons)
-        {
-            weapon.UpdateLogic();
-        }
+        shield.UpdateLogic();
 
         Rotate();
 
@@ -151,11 +146,6 @@ public class NemesisController : Controller
 
     public override void UpdatePhysics()
     {
-        foreach (Weapon weapon in weapons)
-        {
-            weapon.UpdatePhysics();
-        }
-
         _currentPhase?.UpdatePhysics();
     }
 

@@ -296,6 +296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8181f5244087f9f4d95acb79f92197b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mesh: {fileID: 341734390178793440}
   cooldown: 7
   protectionTime: 0.2
 --- !u!58 &341734390512315857

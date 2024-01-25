@@ -8,6 +8,7 @@ public enum ShieldState { Active, Protecting, Inactive }
 
 public class ShieldController : Weapon
 {
+    [SerializeField] private GameObject mesh;
     [SerializeField] private float cooldown = 7f;
     [SerializeField] private float protectionTime = 0.2f;
     private float _cooldownTimer;
@@ -44,6 +45,11 @@ public class ShieldController : Weapon
     {
         base.UpdateLogic();
 
+        if (!gameObject.activeSelf)
+        {
+            return;
+        }
+
         if (_currentState == ShieldState.Protecting)
         {
             if (_protectionTimer < protectionTime)
@@ -54,7 +60,7 @@ public class ShieldController : Weapon
                 HealthSystem.OnHit -= TakeDamage;
                 _currentState = ShieldState.Inactive;
                 _protectionTimer = 0f;
-                gameObject.SetActive(false);
+                mesh.SetActive(false);
                 _shieldSound.start();
             }
         } else if (_currentState == ShieldState.Inactive)
@@ -67,7 +73,7 @@ public class ShieldController : Weapon
                 HealthSystem.OnHit += TakeDamage;
                 _currentState = ShieldState.Active;
                 _cooldownTimer = 0f;
-                gameObject.SetActive(true);
+                mesh.SetActive(true);
             }
         }
     }

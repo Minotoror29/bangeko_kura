@@ -1265,8 +1265,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 5115820286444486631}
-  weapons:
-  - {fileID: 4959537512195989706}
+  shield: {fileID: 4959537512195989706}
   mesh: {fileID: 4327113155201503577}
   phase1: {fileID: 11400000, guid: c6a7507b41fcbaf49a3532e19fb992a6, type: 2}
   healthToPhase2: 75
@@ -1367,6 +1366,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8181f5244087f9f4d95acb79f92197b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mesh: {fileID: 4959537512300283377}
   cooldown: 8
   protectionTime: 0
 --- !u!58 &4959537512195989707

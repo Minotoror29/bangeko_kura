@@ -78,6 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8181f5244087f9f4d95acb79f92197b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mesh: {fileID: 428763622684271119}
   cooldown: 10
   protectionTime: 0
 --- !u!58 &428763622425737632
@@ -705,7 +706,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
-  healthSystem: {fileID: 452346906086555635}
   minIdleTime: 3
   maxIdleTime: 7
   patrolTime: 4
