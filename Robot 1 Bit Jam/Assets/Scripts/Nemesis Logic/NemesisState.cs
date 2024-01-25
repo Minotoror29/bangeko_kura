@@ -4,22 +4,25 @@ using UnityEngine;
 
 public abstract class NemesisState : State
 {
+    private NemesisPhase _phase;
     private NemesisController _controller;
     private Rigidbody2D _rb;
     private Animator _animator;
     private NewPlayerController _player;
 
+    public NemesisPhase Phase { get { return _phase; } }
     public NemesisController Controller { get { return _controller; } }
     public Rigidbody2D Rb { get { return _rb; } }
     public Animator Animator { get { return _animator; } }
     public NewPlayerController Player { get { return _player; } }
 
-    public NemesisState(NemesisController controller)
+    public NemesisState(NemesisPhase phase)
     {
-        _controller = controller;
-        _rb = controller.Rb;
-        _animator = controller.Animator;
-        _player = controller.Player;
+        _phase = phase;
+        _controller = phase.Controller;
+        _rb = phase.Controller.Rb;
+        _animator = phase.Controller.Animator;
+        _player = phase.Controller.Player;
     }
 
     public virtual void TakeDamage()

@@ -6,7 +6,7 @@ public class NemesisWalkState : NemesisState
 {
     private float _walkTimer;
 
-    public NemesisWalkState(NemesisController controller, float walkTime) : base(controller)
+    public NemesisWalkState(NemesisPhase phase, float walkTime) : base(phase)
     {
         _walkTimer = walkTime;
     }
@@ -31,7 +31,7 @@ public class NemesisWalkState : NemesisState
             _walkTimer -= Time.deltaTime;
         } else
         {
-            Controller.ChangeState(new NemesisIdleState(Controller));
+            Phase.ChangeState(new NemesisIdleState(Phase));
         }
     }
 

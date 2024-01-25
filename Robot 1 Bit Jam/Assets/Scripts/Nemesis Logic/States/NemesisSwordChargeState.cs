@@ -6,13 +6,13 @@ public class NemesisSwordChargeState : NemesisState
 {
     private float _chargeTimer;
 
-    public NemesisSwordChargeState(NemesisController controller) : base(controller)
+    public NemesisSwordChargeState(NemesisPhase phase) : base(phase)
     {
-        _chargeTimer = controller.SwordChargeTime;
     }
 
     public override void Enter()
     {
+        _chargeTimer = Controller.SwordChargeTime;
         Rb.velocity = Vector2.zero;
     }
 
@@ -31,7 +31,7 @@ public class NemesisSwordChargeState : NemesisState
             _chargeTimer -= Time.deltaTime;
         } else
         {
-            Controller.ChangeState(new NemesisSwordAttackState(Controller));
+            Phase.ChangeState(new NemesisSwordAttackState(Phase));
         }
     }
 

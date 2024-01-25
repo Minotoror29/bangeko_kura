@@ -7,7 +7,7 @@ public class NemesisDashState : NemesisState
     private Vector2 _dashDirection;
     private Vector2 _dashOrigin;
 
-    public NemesisDashState(NemesisController controller) : base(controller)
+    public NemesisDashState(NemesisPhase phase) : base(phase)
     {
     }
 
@@ -33,10 +33,10 @@ public class NemesisDashState : NemesisState
         {
             if ((Player.transform.position - Controller.transform.position).magnitude <= Controller.SwordDistance)
             {
-                Controller.ChangeState(new NemesisSwordAttackState(Controller));
+                Phase.ChangeState(new NemesisSwordAttackState(Phase));
             } else
             {
-                Controller.ChangeState(new NemesisWalkState(Controller, 3f));
+                Phase.ChangeState(new NemesisWalkState(Phase, Phase.Data.pauseAfterDash));
             }
         }
     }
@@ -50,6 +50,6 @@ public class NemesisDashState : NemesisState
     {
         base.TakeDamage();
 
-        Controller.ChangeState(new NemesisStunState(Controller));
+        Phase.ChangeState(new NemesisStunState(Phase));
     }
 }

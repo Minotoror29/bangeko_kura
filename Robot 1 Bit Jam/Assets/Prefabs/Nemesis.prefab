@@ -1268,6 +1268,8 @@ MonoBehaviour:
   weapons:
   - {fileID: 4959537512195989706}
   mesh: {fileID: 4327113155201503577}
+  phase1: {fileID: 11400000, guid: c6a7507b41fcbaf49a3532e19fb992a6, type: 2}
+  phase2: {fileID: 0}
   swordDistance: 2
   swordChargeTime: 1
   swordCooldown: 3
@@ -1278,8 +1280,10 @@ MonoBehaviour:
   bulletPrefab: {fileID: 7199141164039958287, guid: bf6020216f2ec9748ad2471864b7cc73,
     type: 3}
   shootPoint: {fileID: 6789229648907626864}
+  shootMaxRandomAngle: 5
   dashDistance: 5
   dashSpeed: 500
+  stunTime: 5
 --- !u!50 &4959537511693886032
 Rigidbody2D:
   serializedVersion: 4

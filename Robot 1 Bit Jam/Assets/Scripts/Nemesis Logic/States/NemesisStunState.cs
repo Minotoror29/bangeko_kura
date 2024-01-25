@@ -6,7 +6,7 @@ public class NemesisStunState : NemesisState
 {
     private float _stunTimer;
 
-    public NemesisStunState(NemesisController controller) : base(controller)
+    public NemesisStunState(NemesisPhase phase) : base(phase)
     {
     }
 
@@ -31,7 +31,7 @@ public class NemesisStunState : NemesisState
             _stunTimer -= Time.deltaTime;
         } else
         {
-            Controller.ChangeState(new NemesisIdleState(Controller));
+            Phase.ChangeState(new NemesisIdleState(Phase));
         }
     }
 

@@ -6,7 +6,7 @@ public class NemesisSwordAttackState : NemesisState
 {
     private float _attackTimer = 0.458f;
 
-    public NemesisSwordAttackState(NemesisController controller) : base(controller)
+    public NemesisSwordAttackState(NemesisPhase phase) : base(phase)
     {
     }
 
@@ -31,7 +31,7 @@ public class NemesisSwordAttackState : NemesisState
         } else
         {
             Controller.SwordCooldownTimer = Controller.SwordCooldown;
-            Controller.ChangeState(new NemesisIdleState(Controller));
+            Phase.ChangeState(new NemesisIdleState(Phase));
         }
     }
 

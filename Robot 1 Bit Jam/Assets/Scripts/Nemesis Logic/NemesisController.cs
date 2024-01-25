@@ -14,6 +14,11 @@ public class NemesisController : Controller
 
     private NemesisState _currentState;
 
+    [Header("Phases")]
+    [SerializeField] private NemesisPhaseData phase1;
+    [SerializeField] private NemesisPhaseData phase2;
+    private NemesisPhase _currentPhase;
+
     [Header("Sword")]
     [SerializeField] private float swordDistance = 1f;
     [SerializeField] private float swordChargeTime = 1f;
@@ -83,7 +88,8 @@ public class NemesisController : Controller
 
         _deathSound = RuntimeManager.CreateInstance("event:/Boss Death");
 
-        ChangeState(new NemesisIdleState(this));
+        //ChangeState(new NemesisIdleState(this));
+        ChangePhase(phase1.Phase(this));
     }
 
     public void ChangeState(NemesisState nextState)
@@ -91,6 +97,13 @@ public class NemesisController : Controller
         _currentState?.Exit();
         _currentState = nextState;
         _currentState.Enter();
+    }
+
+    public void ChangePhase(NemesisPhase nextPhase)
+    {
+        _currentPhase?.Exit();
+        _currentPhase = nextPhase;
+        _currentPhase.Enter();
     }
 
     public void ShootBullet()
@@ -105,7 +118,7 @@ public class NemesisController : Controller
 
     private void TakeDamage()
     {
-        _currentState.TakeDamage();
+        _currentPhase.TakeDamage();
     }
 
     private void Die(HealthSystem healthSystem, Transform deathSource)
@@ -124,7 +137,8 @@ public class NemesisController : Controller
 
         Rotate();
 
-        _currentState?.UpdateLogic();
+        //_currentState?.UpdateLogic();
+        _currentPhase?.UpdateLogic();
 
         if (_swordCooldownTimer > 0f)
         {
@@ -146,7 +160,8 @@ public class NemesisController : Controller
             weapon.UpdatePhysics();
         }
 
-        _currentState?.UpdatePhysics();
+        //_currentState?.UpdatePhysics();
+        _currentPhase?.UpdatePhysics();
     }
 
     public void MoveTowards(Vector3 direction, float speed)
@@ -172,7 +187,7 @@ public class NemesisController : Controller
         Gizmos.DrawWireSphere(transform.position, shootDistance);
 
         //Shooting Angles
-        Vector2 direction = Vector2.zero;
+        Vector2 direction;
         if (_player == null)
         {
             direction = (((Vector2)shootPoint.position + Vector2.up - (Vector2)shootPoint.position) * 10f);

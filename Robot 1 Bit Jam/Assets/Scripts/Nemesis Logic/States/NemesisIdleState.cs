@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NemesisIdleState : NemesisState
 {
-    public NemesisIdleState(NemesisController controller) : base(controller)
+    public NemesisIdleState(NemesisPhase phase) : base(phase)
     {
     }
 
@@ -25,19 +25,19 @@ public class NemesisIdleState : NemesisState
     {
         if ((Player.transform.position - Controller.transform.position).magnitude <= Controller.SwordDistance && Controller.SwordCooldownTimer <= 0f)
         {
-            Controller.ChangeState(new NemesisSwordChargeState(Controller));
+            Phase.ChangeState(new NemesisSwordChargeState(Phase));
         }
         else if ((Player.transform.position - Controller.transform.position).magnitude <= Controller.WalkDistance)
         {
-            Controller.ChangeState(new NemesisWalkState(Controller, 3f));
+            Phase.ChangeState(new NemesisWalkState(Phase, 3f));
         }
         else if ((Player.transform.position - Controller.transform.position).magnitude <= Controller.ShootDistance)
         {
-            Controller.ChangeState(new NemesisShootState(Controller));
+            Phase.ChangeState(new NemesisShootState(Phase));
         }
         else if ((Player.transform.position - Controller.transform.position).magnitude > Controller.ShootDistance)
         {
-            Controller.ChangeState(new NemesisDashState(Controller));
+            Phase.ChangeState(new NemesisDashState(Phase));
         }
     }
 

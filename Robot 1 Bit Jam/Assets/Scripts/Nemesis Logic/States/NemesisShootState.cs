@@ -7,14 +7,14 @@ public class NemesisShootState : NemesisState
     private float _shootTimer;
     private int _projectilesToShoot;
 
-    public NemesisShootState(NemesisController controller) : base(controller)
+    public NemesisShootState(NemesisPhase phase) : base(phase)
     {
     }
 
     public override void Enter()
     {
-        _shootTimer = Controller.ShootTime;
-        _projectilesToShoot = 3;
+        _shootTimer = Phase.Data.shootTime;
+        _projectilesToShoot = Random.Range(Phase.Data.minProjectilesPerSalvo, Phase.Data.maxProjectilesPerSalvo + 1);
     }
 
     public override void Exit()
@@ -37,10 +37,10 @@ public class NemesisShootState : NemesisState
 
             if (_projectilesToShoot == 0)
             {
-                Controller.ChangeState(new NemesisWalkState(Controller, 2f));
+                Phase.ChangeState(new NemesisWalkState(Phase, Phase.Data.pauseAfterShoot));
             } else
             {
-                _shootTimer = Controller.ShootTime;
+                _shootTimer = Phase.Data.shootTime;
             }
         }
     }
