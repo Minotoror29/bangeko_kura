@@ -35,6 +35,9 @@ public class NemesisController : Controller
     [SerializeField] private float dashDistance = 5f;
     [SerializeField] private float dashSpeed = 500f;
 
+    [Header("Stun")]
+    [SerializeField] private float stunTime = 5f;
+
     private EventInstance _deathSound;
 
     public NewPlayerController Player { get { return _player; } }
@@ -48,6 +51,7 @@ public class NemesisController : Controller
     public float ShootTime { get { return shootTime; } }
     public float DashDistance { get { return dashDistance; } }
     public float DashSpeed { get { return dashSpeed; } }
+    public float StunTime { get { return stunTime; } }
 
     private void Start()
     {
@@ -68,6 +72,7 @@ public class NemesisController : Controller
     {
         base.Initialize();
 
+        HealthSystem.OnDamage += TakeDamage;
         HealthSystem.OnDeath += Die;
         _player = FindObjectOfType<NewPlayerController>();
 
@@ -96,6 +101,11 @@ public class NemesisController : Controller
 
         BulletController newBullet = Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);
         newBullet.Initialize(rotatedDirection, transform);
+    }
+
+    private void TakeDamage()
+    {
+        _currentState.TakeDamage();
     }
 
     private void Die(HealthSystem healthSystem, Transform deathSource)

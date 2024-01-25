@@ -45,4 +45,11 @@ public class NemesisDashState : NemesisState
     {
         Controller.MoveTowards(_dashDirection, Controller.DashSpeed);
     }
+
+    public override void TakeDamage()
+    {
+        base.TakeDamage();
+
+        Controller.ChangeState(new NemesisStunState(Controller));
+    }
 }

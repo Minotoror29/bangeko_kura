@@ -25,7 +25,7 @@ public class ShieldController : Weapon
         _protectionTimer = 0f;
 
         _currentState = ShieldState.Active;
-        healthSystem.OnDamage += TakeDamage;
+        healthSystem.OnHit += TakeDamage;
 
         _shieldSound = RuntimeManager.CreateInstance("event:/Weapons/Shield");
     }
@@ -51,7 +51,7 @@ public class ShieldController : Weapon
                 _protectionTimer += Time.deltaTime;
             } else
             {
-                HealthSystem.OnDamage -= TakeDamage;
+                HealthSystem.OnHit -= TakeDamage;
                 _currentState = ShieldState.Inactive;
                 _protectionTimer = 0f;
                 gameObject.SetActive(false);
@@ -64,7 +64,7 @@ public class ShieldController : Weapon
                 _cooldownTimer += Time.deltaTime;
             } else
             {
-                HealthSystem.OnDamage += TakeDamage;
+                HealthSystem.OnHit += TakeDamage;
                 _currentState = ShieldState.Active;
                 _cooldownTimer = 0f;
                 gameObject.SetActive(true);

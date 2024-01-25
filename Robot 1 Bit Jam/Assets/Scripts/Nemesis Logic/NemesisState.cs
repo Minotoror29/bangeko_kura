@@ -21,4 +21,9 @@ public abstract class NemesisState : State
         _animator = controller.Animator;
         _player = controller.Player;
     }
+
+    public virtual void TakeDamage()
+    {
+
+    }
 }

@@ -69,7 +69,7 @@ public class NewPlayerController : Controller
         _controls.InGame.Dash.performed += ctx => Dash();
         _controls.InGame.Laser.performed += ctx => FireLaser();
 
-        HealthSystem.OnDamage += TakeDamage;
+        HealthSystem.OnHit += TakeDamage;
         HealthSystem.OnDeath += Die;
 
         _dashCooldownTimer = 0f;
@@ -146,7 +146,7 @@ public class NewPlayerController : Controller
         _controls.InGame.Laser.performed -= ctx => FireLaser();
         _controls.InGame.Disable();
 
-        HealthSystem.OnDamage -= TakeDamage;
+        HealthSystem.OnHit -= TakeDamage;
         HealthSystem.OnDeath -= Die;
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

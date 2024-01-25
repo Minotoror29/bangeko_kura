@@ -16,7 +16,8 @@ public class HealthSystem : MonoBehaviour
     public int CurrentHealth { get { return _currentHealth; } }
     public bool PreventDamage { get { return _preventDamage; } set { _preventDamage = value; } }
 
-    public event Action<Transform> OnDamage;
+    public event Action<Transform> OnHit;
+    public event Action OnDamage;
     public event Action<HealthSystem, Transform> OnDeath;
 
     public void Initialize(Transform source)
@@ -29,7 +30,7 @@ public class HealthSystem : MonoBehaviour
 
     public void TakeDamage(int damage, Transform damageSource)
     {
-        OnDamage?.Invoke(damageSource);
+        OnHit?.Invoke(damageSource);
 
         if (_preventDamage)
         {
@@ -37,6 +38,7 @@ public class HealthSystem : MonoBehaviour
             return;
         }
 
+        OnDamage?.Invoke();
         _currentHealth -= damage;
         if (_currentHealth <= 0)
         {
