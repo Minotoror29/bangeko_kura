@@ -6,7 +6,7 @@ using UnityEngine;
 public class NemesisPhaseData : ScriptableObject
 {
     public float pauseAfterDash;
-    public float shootTime;
+    [Tooltip("Time between each projectile")] public float shootTime;
     public int minProjectilesPerSalvo;
     public int maxProjectilesPerSalvo;
     public float pauseAfterShoot;

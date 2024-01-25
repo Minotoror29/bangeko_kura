@@ -54,5 +54,7 @@ public class NemesisPhase
     public void TakeDamage()
     {
         _currentState.TakeDamage();
+
+        _controller.CheckHealth();
     }
 }

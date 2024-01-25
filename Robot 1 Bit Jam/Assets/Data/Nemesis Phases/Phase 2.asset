@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 946f93eb6e26dcc40962cc6a6e316922, type: 3}
   m_Name: Phase 2
   m_EditorClassIdentifier: 
-  pauseAfterDash: 3
-  shootTime: 0.25
+  pauseAfterDash: 2
+  shootTime: 0.15
   minProjectilesPerSalvo: 3
-  maxProjectilesPerSalvo: 3
-  pauseAfterShoot: 2
+  maxProjectilesPerSalvo: 5
+  pauseAfterShoot: 1

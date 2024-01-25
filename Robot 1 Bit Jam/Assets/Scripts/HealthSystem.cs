@@ -15,6 +15,7 @@ public class HealthSystem : MonoBehaviour
     public Transform Source { get { return _source; } }
     public int CurrentHealth { get { return _currentHealth; } }
     public bool PreventDamage { get { return _preventDamage; } set { _preventDamage = value; } }
+    public int HealthRatio { get { return _currentHealth * 100 / maxHealth; } }
 
     public event Action<Transform> OnHit;
     public event Action OnDamage;
@@ -38,8 +39,8 @@ public class HealthSystem : MonoBehaviour
             return;
         }
 
-        OnDamage?.Invoke();
         _currentHealth -= damage;
+        OnDamage?.Invoke();
         if (_currentHealth <= 0)
         {
             Die(damageSource);

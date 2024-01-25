@@ -1269,14 +1269,14 @@ MonoBehaviour:
   - {fileID: 4959537512195989706}
   mesh: {fileID: 4327113155201503577}
   phase1: {fileID: 11400000, guid: c6a7507b41fcbaf49a3532e19fb992a6, type: 2}
-  phase2: {fileID: 0}
+  healthToPhase2: 75
+  phase2: {fileID: 11400000, guid: 8a86657ec951d944a88bc642d7ab2644, type: 2}
   swordDistance: 2
   swordChargeTime: 1
   swordCooldown: 3
   walkDistance: 5
   walkSpeed: 250
   shootDistance: 10
-  shootTime: 0.25
   bulletPrefab: {fileID: 7199141164039958287, guid: bf6020216f2ec9748ad2471864b7cc73,
     type: 3}
   shootPoint: {fileID: 6789229648907626864}

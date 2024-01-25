@@ -12,10 +12,9 @@ public class NemesisController : Controller
 
     [SerializeField] private Transform mesh;
 
-    private NemesisState _currentState;
-
     [Header("Phases")]
     [SerializeField] private NemesisPhaseData phase1;
+    [SerializeField, Range(0, 100), Tooltip("In percentage")] private int healthToPhase2 = 75;
     [SerializeField] private NemesisPhaseData phase2;
     private NemesisPhase _currentPhase;
 
@@ -31,7 +30,6 @@ public class NemesisController : Controller
 
     [Header("Shoot")]
     [SerializeField] private float shootDistance = 3f;
-    [SerializeField, Tooltip("Time between each projectile")] private float shootTime = 0.25f;
     [SerializeField] private BulletController bulletPrefab;
     [SerializeField] private Transform shootPoint;
     [SerializeField] private float shootMaxRandomAngle = 5f;
@@ -53,7 +51,6 @@ public class NemesisController : Controller
     public float WalkDistance { get { return walkDistance; } }
     public float WalkSpeed { get { return walkSpeed; } }
     public float ShootDistance { get { return shootDistance; } }
-    public float ShootTime { get { return shootTime; } }
     public float DashDistance { get { return dashDistance; } }
     public float DashSpeed { get { return dashSpeed; } }
     public float StunTime { get { return stunTime; } }
@@ -88,15 +85,7 @@ public class NemesisController : Controller
 
         _deathSound = RuntimeManager.CreateInstance("event:/Boss Death");
 
-        //ChangeState(new NemesisIdleState(this));
         ChangePhase(phase1.Phase(this));
-    }
-
-    public void ChangeState(NemesisState nextState)
-    {
-        _currentState?.Exit();
-        _currentState = nextState;
-        _currentState.Enter();
     }
 
     public void ChangePhase(NemesisPhase nextPhase)
@@ -104,6 +93,14 @@ public class NemesisController : Controller
         _currentPhase?.Exit();
         _currentPhase = nextPhase;
         _currentPhase.Enter();
+    }
+
+    public void CheckHealth()
+    {
+        if (HealthSystem.HealthRatio <= healthToPhase2)
+        {
+            ChangePhase(phase2.Phase(this));
+        }
     }
 
     public void ShootBullet()
@@ -137,7 +134,6 @@ public class NemesisController : Controller
 
         Rotate();
 
-        //_currentState?.UpdateLogic();
         _currentPhase?.UpdateLogic();
 
         if (_swordCooldownTimer > 0f)
@@ -160,7 +156,6 @@ public class NemesisController : Controller
             weapon.UpdatePhysics();
         }
 
-        //_currentState?.UpdatePhysics();
         _currentPhase?.UpdatePhysics();
     }
 
