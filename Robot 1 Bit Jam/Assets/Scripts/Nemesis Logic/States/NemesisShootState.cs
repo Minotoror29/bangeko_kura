@@ -13,6 +13,7 @@ public class NemesisShootState : NemesisState
 
     public override void Enter()
     {
+        Animator.CrossFade("Player Idle", 0f);
         _shootTimer = Phase.Data.shootTime;
         _projectilesToShoot = Random.Range(Phase.Data.minProjectilesPerSalvo, Phase.Data.maxProjectilesPerSalvo + 1);
     }

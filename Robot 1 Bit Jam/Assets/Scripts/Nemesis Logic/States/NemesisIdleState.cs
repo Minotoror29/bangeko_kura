@@ -37,7 +37,7 @@ public class NemesisIdleState : NemesisState
         }
         else if ((Player.transform.position - Controller.transform.position).magnitude > Controller.ShootDistance)
         {
-            Phase.ChangeState(new NemesisDashState(Phase));
+            Phase.ChangeState(new NemesisDashState(Phase, 1));
         }
     }
 

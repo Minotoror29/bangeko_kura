@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class NemesisDashState : NemesisState
 {
+    private int _dashNumber;
+
     private Vector2 _dashDirection;
     private Vector2 _dashOrigin;
 
-    public NemesisDashState(NemesisPhase phase) : base(phase)
+    public NemesisDashState(NemesisPhase phase, int dashNumber) : base(phase)
     {
+        _dashNumber = dashNumber;
     }
 
     public override void Enter()
@@ -31,12 +34,21 @@ public class NemesisDashState : NemesisState
     {
         if (((Vector2)Controller.transform.position - _dashOrigin).magnitude >= Controller.DashDistance)
         {
-            if ((Player.transform.position - Controller.transform.position).magnitude <= Controller.SwordDistance)
+            if ((Player.transform.position - Controller.transform.position).magnitude <= Controller.WalkDistance)
             {
                 Phase.ChangeState(new NemesisSwordAttackState(Phase));
+            } else if ((Player.transform.position - Controller.transform.position).magnitude <= Controller.ShootDistance)
+            {
+                Phase.ChangeState(new NemesisShootState(Phase));
             } else
             {
-                Phase.ChangeState(new NemesisWalkState(Phase, Phase.Data.pauseAfterDash));
+                if (_dashNumber == 1)
+                {
+                    Phase.ChangeState(new NemesisDashState(Phase, 2));
+                } else if (_dashNumber == 2)
+                {
+                    Phase.ChangeState(new NemesisShootState(Phase));
+                }
             }
         }
     }
