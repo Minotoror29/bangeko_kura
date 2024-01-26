@@ -33,6 +33,11 @@ public class ShieldController : Weapon
 
     public void TakeDamage(Transform damageSource)
     {
+        if (!gameObject.activeSelf)
+        {
+            return;
+        }
+
         HealthSystem.PreventDamage = true;
 
         if (_currentState == ShieldState.Active)

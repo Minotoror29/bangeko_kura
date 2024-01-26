@@ -13,6 +13,10 @@ public class NemesisSwordAttackState : NemesisState
     public override void Enter()
     {
         Animator.CrossFade("Player Sword", 0f);
+        if ((Player.transform.position - Controller.transform.position).magnitude <= Controller.WalkDistance)
+        {
+            Player.HealthSystem.TakeDamage(Controller.SwordDamage, Controller.transform);
+        }
     }
 
     public override void Exit()

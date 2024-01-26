@@ -22,6 +22,7 @@ public class NemesisController : Controller
     [SerializeField] private float swordDistance = 1f;
     [SerializeField] private float swordChargeTime = 1f;
     [SerializeField] private float swordCooldown = 3f;
+    [SerializeField] private int swordDamage = 10;
     private float _swordCooldownTimer;
 
     [Header("Walk")]
@@ -48,6 +49,7 @@ public class NemesisController : Controller
     public float SwordChargeTime { get { return swordChargeTime; } }
     public float SwordCooldown { get { return swordCooldown; } }
     public float SwordCooldownTimer { get { return _swordCooldownTimer; } set { _swordCooldownTimer = value; } }
+    public int SwordDamage { get { return swordDamage; } }
     public float WalkDistance { get { return walkDistance; } }
     public float WalkSpeed { get { return walkSpeed; } }
     public float ShootDistance { get { return shootDistance; } }
