@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,8 +7,11 @@ public class NemesisSwordChargeState : NemesisState
 {
     private float _chargeTimer;
 
-    public NemesisSwordChargeState(NemesisPhase phase) : base(phase)
+    private Action OnSwordEnd;
+
+    public NemesisSwordChargeState(NemesisPhase phase, Action onSwordEnd) : base(phase)
     {
+        OnSwordEnd = onSwordEnd;
     }
 
     public override void Enter()
@@ -31,7 +35,7 @@ public class NemesisSwordChargeState : NemesisState
             _chargeTimer -= Time.deltaTime;
         } else
         {
-            Phase.ChangeState(new NemesisSwordAttackState(Phase));
+            Phase.ChangeState(new NemesisSwordAttackState(Phase, OnSwordEnd));
         }
     }
 

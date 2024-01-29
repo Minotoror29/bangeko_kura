@@ -16,6 +16,8 @@ public class NemesisController : Controller
     [SerializeField] private NemesisPhaseData phase1;
     [SerializeField, Range(0, 100), Tooltip("In percentage")] private int healthToPhase2 = 75;
     [SerializeField] private NemesisPhaseData phase2;
+    [SerializeField, Range(0, 100), Tooltip("In percentage")] private int healthToPhase3 = 50;
+    [SerializeField] private NemesisPhaseData phase3;
     private NemesisPhase _currentPhase;
 
     [Header("Sword")]
@@ -41,6 +43,10 @@ public class NemesisController : Controller
 
     [Header("Stun")]
     [SerializeField] private float stunTime = 5f;
+
+    [Header("Arena Zones")]
+    [SerializeField] private Vector2 zone1;
+    [SerializeField] private Vector2 zone2;
 
     private EventInstance _deathSound;
 
@@ -84,7 +90,8 @@ public class NemesisController : Controller
 
         _deathSound = RuntimeManager.CreateInstance("event:/Boss Death");
 
-        ChangePhase(phase1.Phase(this));
+        //ChangePhase(phase1.Phase(this));
+        ChangePhase(new NemesisPhase1(phase1, this));
     }
 
     public void ChangePhase(NemesisPhase nextPhase)
@@ -189,5 +196,10 @@ public class NemesisController : Controller
         addedRotation = Quaternion.AngleAxis(-shootMaxRandomAngle, Vector3.back);
         rotatedDirection = addedRotation * direction;
         Gizmos.DrawRay(shootPoint.position, rotatedDirection);
+
+        //Arena zones
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireCube(Vector3.zero, new Vector3(zone1.x, zone1.y, 0f));
+        Gizmos.DrawWireCube(Vector3.zero, new Vector3(zone2.x, zone2.y, 0f));
     }
 }

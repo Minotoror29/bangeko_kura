@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,15 +8,18 @@ public class NemesisShootState : NemesisState
     private float _shootTimer;
     private int _projectilesToShoot;
 
-    public NemesisShootState(NemesisPhase phase) : base(phase)
+    private event Action OnShootEnd;
+
+    public NemesisShootState(NemesisPhase phase, Action onShootEnd) : base(phase)
     {
+        OnShootEnd += onShootEnd;
     }
 
     public override void Enter()
     {
         Animator.CrossFade("Player Idle", 0f);
         _shootTimer = Phase.Data.shootTime;
-        _projectilesToShoot = Random.Range(Phase.Data.minProjectilesPerSalvo, Phase.Data.maxProjectilesPerSalvo + 1);
+        _projectilesToShoot = UnityEngine.Random.Range(Phase.Data.minProjectilesPerSalvo, Phase.Data.maxProjectilesPerSalvo + 1);
     }
 
     public override void Exit()
@@ -38,7 +42,7 @@ public class NemesisShootState : NemesisState
 
             if (_projectilesToShoot == 0)
             {
-                Phase.ChangeState(new NemesisWalkState(Phase, Phase.Data.pauseAfterShoot));
+                OnShootEnd?.Invoke();
             } else
             {
                 _shootTimer = Phase.Data.shootTime;

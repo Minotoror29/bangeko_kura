@@ -1,11 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class NemesisIdleState : NemesisState
 {
-    public NemesisIdleState(NemesisPhase phase) : base(phase)
+    private event Action OnUpdate;
+
+    public NemesisIdleState(NemesisPhase phase, Action onUpdateAction) : base(phase)
     {
+        OnUpdate += onUpdateAction;
     }
 
     public override void Enter()
@@ -23,22 +27,7 @@ public class NemesisIdleState : NemesisState
 
     public override void UpdateLogic()
     {
-        if ((Player.transform.position - Controller.transform.position).magnitude <= Controller.SwordDistance && Controller.SwordCooldownTimer <= 0f)
-        {
-            Phase.ChangeState(new NemesisSwordChargeState(Phase));
-        }
-        else if ((Player.transform.position - Controller.transform.position).magnitude <= Controller.WalkDistance)
-        {
-            Phase.ChangeState(new NemesisWalkState(Phase, 3f));
-        }
-        else if ((Player.transform.position - Controller.transform.position).magnitude <= Controller.ShootDistance)
-        {
-            Phase.ChangeState(new NemesisShootState(Phase));
-        }
-        else if ((Player.transform.position - Controller.transform.position).magnitude > Controller.ShootDistance)
-        {
-            Phase.ChangeState(new NemesisDashState(Phase, 1));
-        }
+        OnUpdate?.Invoke();
     }
 
     public override void UpdatePhysics()

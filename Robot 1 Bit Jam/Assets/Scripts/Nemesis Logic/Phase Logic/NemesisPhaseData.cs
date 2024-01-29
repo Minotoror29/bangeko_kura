@@ -13,6 +13,6 @@ public class NemesisPhaseData : ScriptableObject
 
     public NemesisPhase Phase(NemesisController controller)
     {
-        return new NemesisPhase(this, controller);
+        return new NemesisPhase1(this, controller);
     }
 }

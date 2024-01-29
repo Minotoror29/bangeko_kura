@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,14 +7,17 @@ public class NemesisSwordAttackState : NemesisState
 {
     private float _attackTimer = 0.458f;
 
-    public NemesisSwordAttackState(NemesisPhase phase) : base(phase)
+    private event Action OnSwordEnd;
+
+    public NemesisSwordAttackState(NemesisPhase phase, Action onSwordEnd) : base(phase)
     {
+        OnSwordEnd += onSwordEnd;
     }
 
     public override void Enter()
     {
         Animator.CrossFade("Player Sword", 0f);
-        if ((Player.transform.position - Controller.transform.position).magnitude <= Controller.WalkDistance)
+        if ((Player.transform.position - Controller.transform.position).magnitude <= Controller.SwordDistance)
         {
             Player.HealthSystem.TakeDamage(Controller.SwordDamage, Controller.transform);
         }
@@ -35,7 +39,7 @@ public class NemesisSwordAttackState : NemesisState
         } else
         {
             Controller.SwordCooldownTimer = Controller.SwordCooldown;
-            Phase.ChangeState(new NemesisIdleState(Phase));
+            OnSwordEnd?.Invoke();
         }
     }
 

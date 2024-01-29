@@ -2,21 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NemesisPhase
+public abstract class NemesisPhase
 {
     private NemesisPhaseData _data;
 
     private NemesisController _controller;
+    private NewPlayerController _player;
 
     private NemesisState _currentState;
 
     public NemesisPhaseData Data { get { return _data; } }
     public NemesisController Controller { get { return _controller; } }
+    public NewPlayerController Player { get { return _player; } }
 
     public NemesisPhase(NemesisPhaseData data, NemesisController controller)
     {
         _data = data;
         _controller = controller;
+        _player = controller.Player;
     }
 
     public void ChangeState(NemesisState nextState)
@@ -26,10 +29,7 @@ public class NemesisPhase
         _currentState.Enter();
     }
 
-    public void Enter()
-    {
-        ChangeState(new NemesisIdleState(this));
-    }
+    public abstract void Enter();
 
     public void Exit()
     {
@@ -55,6 +55,6 @@ public class NemesisPhase
     {
         _currentState.TakeDamage();
 
-        _controller.CheckHealth();
+        //controller.CheckHealth();
     }
 }

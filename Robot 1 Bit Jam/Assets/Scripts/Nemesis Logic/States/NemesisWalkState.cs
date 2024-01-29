@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,9 +7,13 @@ public class NemesisWalkState : NemesisState
 {
     private float _walkTimer;
 
-    public NemesisWalkState(NemesisPhase phase, float walkTime) : base(phase)
+    private event Action OnWalkEnd;
+
+    public NemesisWalkState(NemesisPhase phase, float walkTime, Action onWalkEnd) : base(phase)
     {
         _walkTimer = walkTime;
+
+        OnWalkEnd += onWalkEnd;
     }
 
     public override void Enter()
@@ -31,7 +36,7 @@ public class NemesisWalkState : NemesisState
             _walkTimer -= Time.deltaTime;
         } else
         {
-            Phase.ChangeState(new NemesisIdleState(Phase));
+            OnWalkEnd?.Invoke();
         }
     }
 

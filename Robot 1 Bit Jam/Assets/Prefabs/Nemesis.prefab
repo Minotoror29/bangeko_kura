@@ -1273,6 +1273,7 @@ MonoBehaviour:
   swordDistance: 2
   swordChargeTime: 1
   swordCooldown: 3
+  swordDamage: 10
   walkDistance: 5
   walkSpeed: 250
   shootDistance: 10
@@ -1283,6 +1284,8 @@ MonoBehaviour:
   dashDistance: 5
   dashSpeed: 500
   stunTime: 5
+  zone1: {x: 12, y: 8}
+  zone2: {x: 35, y: 18}
 --- !u!50 &4959537511693886032
 Rigidbody2D:
   serializedVersion: 4

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,8 +7,11 @@ public class NemesisStunState : NemesisState
 {
     private float _stunTimer;
 
-    public NemesisStunState(NemesisPhase phase) : base(phase)
+    private event Action OnStunEnd;
+
+    public NemesisStunState(NemesisPhase phase, Action onStunEnd) : base(phase)
     {
+        OnStunEnd += onStunEnd;
     }
 
     public override void Enter()
@@ -31,7 +35,7 @@ public class NemesisStunState : NemesisState
             _stunTimer -= Time.deltaTime;
         } else
         {
-            Phase.ChangeState(new NemesisIdleState(Phase));
+            OnStunEnd?.Invoke();
         }
     }
 
