@@ -399,7 +399,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
-  healthSystem: {fileID: 6620688778406304580}
   minIdleTime: 3
   maxIdleTime: 7
   patrolTime: 4
@@ -767,7 +766,7 @@ GameObject:
   - component: {fileID: 2119430135552674668}
   m_Layer: 13
   m_Name: Health System
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
