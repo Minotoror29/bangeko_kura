@@ -12,7 +12,7 @@ public class PlayerWalkState : PlayerState
     {
         Controller.OnDash += Dash;
 
-        Animator.CrossFade("Player Walk", 0f);
+        Animator.CrossFade("Player Walk Forward", 0f);
     }
 
     public override void Exit()
