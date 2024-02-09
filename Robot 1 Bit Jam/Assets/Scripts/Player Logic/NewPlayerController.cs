@@ -44,6 +44,7 @@ public class NewPlayerController : Controller
     public float MovementSpeed { get { return movementSpeed; } }
     public float DashSpeed { get { return dashSpeed; } }
     public float DashDistance { get { return dashDistance; } }
+    public Transform Mesh { get { return mesh; } }
 
     private void Start()
     {
