@@ -2860,7 +2860,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 744610808}
-  movementSpeed: 500
+  movementSpeed: 325
   dashSpeed: 1000
   dashDistance: 5
   dashCooldown: 0.5

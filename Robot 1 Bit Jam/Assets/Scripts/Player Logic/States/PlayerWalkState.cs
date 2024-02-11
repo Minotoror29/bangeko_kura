@@ -32,7 +32,7 @@ public class PlayerWalkState : PlayerState
 
     public override void UpdateLogic()
     {
-        _walkAnimDirection = new Vector2(Controller.Mesh.transform.InverseTransformDirection(Rb.velocity).x, Controller.Mesh.transform.InverseTransformDirection(Rb.velocity).z).normalized;
+        _walkAnimDirection = new Vector2(Controller.Mesh.transform.InverseTransformDirection(Controls.InGame.Movement.ReadValue<Vector2>()).x, Controller.Mesh.transform.InverseTransformDirection(Controls.InGame.Movement.ReadValue<Vector2>()).z).normalized;
 
         if (_walkAnimDirection.y > 0.71f)
         {
