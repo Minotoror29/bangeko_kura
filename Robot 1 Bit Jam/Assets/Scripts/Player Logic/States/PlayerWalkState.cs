@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum WalkState { Forward, Back, Right, Left }
+public enum Direction { Forward, Back, Right, Left }
 
 public class PlayerWalkState : PlayerState
 {
     private Vector2 _walkAnimDirection;
-    private WalkState _currentState;
+    private Direction _currentState;
 
     public PlayerWalkState(NewPlayerController controller) : base(controller)
     {
@@ -17,7 +17,7 @@ public class PlayerWalkState : PlayerState
     {
         Controller.OnDash += Dash;
 
-        _currentState = WalkState.Forward;
+        _currentState = Direction.Forward;
         Animator.CrossFade("Player Walk Forward", 0.1f);
     }
 
@@ -36,30 +36,30 @@ public class PlayerWalkState : PlayerState
 
         if (_walkAnimDirection.y > 0.71f)
         {
-            if (_currentState != WalkState.Forward)
+            if (_currentState != Direction.Forward)
             {
-                _currentState = WalkState.Forward;
-                Animator.CrossFade("Player Walk Forward", 0.1f);
+                _currentState = Direction.Forward;
+                Animator.CrossFade("Player Walk Forward", 0.25f);
             }
         } else if (_walkAnimDirection.y < -0.71f)
         {
-            if (_currentState != WalkState.Back)
+            if (_currentState != Direction.Back)
             {
-                _currentState = WalkState.Back;
+                _currentState = Direction.Back;
                 Animator.CrossFade("Player Walk Back", 0.5f);
             }
         } else if (_walkAnimDirection.x > 0.71f)
         {
-            if (_currentState != WalkState.Right)
+            if (_currentState != Direction.Right)
             {
-                _currentState = WalkState.Right;
+                _currentState = Direction.Right;
                 Animator.CrossFade("Player Walk Right", 0.5f);
             }
         } else if (_walkAnimDirection.x < -0.71f)
         {
-            if (_currentState != WalkState.Left)
+            if (_currentState != Direction.Left)
             {
-                _currentState = WalkState.Left;
+                _currentState = Direction.Left;
                 Animator.CrossFade("Player Walk Left", 0.5f);
             }
         }
