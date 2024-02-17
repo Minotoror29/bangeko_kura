@@ -6,6 +6,7 @@ public class PlayerIdleState : PlayerState
 {
     private Vector2 _lookDirection;
     private Direction _currentState;
+    private float _turnTime = 0.733f;
     private float _turnTimer;
 
     public PlayerIdleState(NewPlayerController controller) : base(controller)
@@ -83,11 +84,11 @@ public class PlayerIdleState : PlayerState
                 if (_currentState == Direction.Right)
                 {
                     Animator.CrossFade("Player Turn Left", 0f);
-                    _turnTimer = 0.533f;
+                    _turnTimer = _turnTime;
                 } else if (_currentState == Direction.Left)
                 {
                     Animator.CrossFade("Player Turn Right", 0f);
-                    _turnTimer = 0.533f;
+                    _turnTimer = _turnTime;
                 }
                 _currentState = Direction.Forward;
             }
@@ -99,12 +100,12 @@ public class PlayerIdleState : PlayerState
                 if (_currentState == Direction.Right)
                 {
                     Animator.CrossFade("Player Turn Right", 0f);
-                    _turnTimer = 0.533f;
+                    _turnTimer = _turnTime;
                 }
                 else if (_currentState == Direction.Left)
                 {
                     Animator.CrossFade("Player Turn Left", 0f);
-                    _turnTimer = 0.533f;
+                    _turnTimer = _turnTime;
                 }
                 _currentState = Direction.Back;
             }
@@ -116,12 +117,12 @@ public class PlayerIdleState : PlayerState
                 if (_currentState == Direction.Forward)
                 {
                     Animator.CrossFade("Player Turn Right", 0f);
-                    _turnTimer = 0.533f;
+                    _turnTimer = _turnTime;
                 }
                 else if (_currentState == Direction.Back)
                 {
                     Animator.CrossFade("Player Turn Left", 0f);
-                    _turnTimer = 0.533f;
+                    _turnTimer = _turnTime;
                 }
                 _currentState = Direction.Right;
             }
@@ -133,12 +134,12 @@ public class PlayerIdleState : PlayerState
                 if (_currentState == Direction.Forward)
                 {
                     Animator.CrossFade("Player Turn Left", 0f);
-                    _turnTimer = 0.533f;
+                    _turnTimer = _turnTime;
                 }
                 else if (_currentState == Direction.Back)
                 {
                     Animator.CrossFade("Player Turn Right", 0f);
-                    _turnTimer = 0.533f;
+                    _turnTimer = _turnTime;
                 }
                 _currentState = Direction.Left;
             }
@@ -150,7 +151,7 @@ public class PlayerIdleState : PlayerState
 
             if (_turnTimer <= 0f)
             {
-                Animator.CrossFade("Player Idle", 0.2f);
+                Animator.CrossFade("Player Idle", 0f);
 
                 ChangeRotation();
             }
