@@ -30,9 +30,12 @@ public class NewPlayerController : Controller
     [SerializeField] private int laserDamage = 15;
     [SerializeField] private float laserCooldown = 3f;
     [SerializeField] private Transform mesh;
+    [SerializeField] private float rotationSpeed = 1f;
     private float _laserCooldownTimer;
     private Vector2 _lookDirection;
     private Vector2 _mousePosition;
+    private RotationDirection _rotationDirection;
+    private float _previousRotation;
 
     [Header("Weapons")]
     [SerializeField] private List<Weapon> weapons;
@@ -45,6 +48,7 @@ public class NewPlayerController : Controller
     public float DashSpeed { get { return dashSpeed; } }
     public float DashDistance { get { return dashDistance; } }
     public Transform Mesh { get { return mesh; } }
+    public RotationDirection RotationDirection { get { return _rotationDirection; } }
 
     private void Start()
     {
@@ -163,7 +167,7 @@ public class NewPlayerController : Controller
         }
 
         HandleRotationInput();
-        //Rotate();
+        Rotate();
 
         if (_dashCooldownTimer > 0f)
         {
@@ -185,7 +189,32 @@ public class NewPlayerController : Controller
     private void Rotate()
     {
         Quaternion meshRotation = Quaternion.LookRotation(new Vector3(_lookDirection.x, 0f, _lookDirection.y), mesh.up);
-        mesh.localRotation = Quaternion.Euler(new Vector3(0f, meshRotation.eulerAngles.y, 0f));
+        Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, meshRotation.eulerAngles.y, 0f));
+        mesh.localRotation = Quaternion.RotateTowards(mesh.localRotation, targetRotation, rotationSpeed * Time.deltaTime);
+
+        if (mesh.localRotation.eulerAngles.y > _previousRotation)
+        {
+            if (_previousRotation < 90f && mesh.localRotation.eulerAngles.y > 270f)
+            {
+                _rotationDirection = RotationDirection.Left;
+            } else
+            {
+                _rotationDirection = RotationDirection.Right;
+            }
+        } else if (mesh.localRotation.eulerAngles.y < _previousRotation)
+        {
+            if (_previousRotation > 270f && mesh.localRotation.eulerAngles.y < 90f)
+            {
+                _rotationDirection = RotationDirection.Right;
+            } else
+            {
+                _rotationDirection = RotationDirection.Left;
+            }
+        } else if (mesh.localRotation.eulerAngles.y == _previousRotation)
+        {
+            _rotationDirection = RotationDirection.Static;
+        }
+        _previousRotation = mesh.localRotation.eulerAngles.y;
     }
 
     public override void UpdatePhysics()
@@ -196,8 +225,6 @@ public class NewPlayerController : Controller
         {
             weapon.UpdatePhysics();
         }
-
-        //Move();
     }
 
     public void Move(Vector2 direction, float speed)

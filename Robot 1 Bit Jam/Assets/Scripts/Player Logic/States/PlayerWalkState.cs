@@ -64,8 +64,6 @@ public class PlayerWalkState : PlayerState
             }
         }
 
-        //Debug.Log(walkAnimDirection);
-
         if (Controls.InGame.Movement.ReadValue<Vector2>().magnitude == 0f)
         {
             Controller.ChangeState(new PlayerIdleState(Controller));

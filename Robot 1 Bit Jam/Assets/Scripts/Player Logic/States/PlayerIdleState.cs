@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum RotationDirection { Static, Left, Right };
+
 public class PlayerIdleState : PlayerState
 {
-    private Vector2 _lookDirection;
-    private Direction _currentState;
-    private float _turnTime = 0.733f;
-    private float _turnTimer;
+    private RotationDirection _currentRotationDirection;
 
     public PlayerIdleState(NewPlayerController controller) : base(controller)
     {
@@ -17,51 +16,7 @@ public class PlayerIdleState : PlayerState
     {
         Controller.Animator.CrossFade("Player Idle", 0.5f);
 
-        _lookDirection = Camera.main.ScreenToWorldPoint(Controls.InGame.MousePosition.ReadValue<Vector2>()) - Controller.transform.position;
-        _lookDirection.Normalize();
-
-        if (_lookDirection.y > 0.71f)
-        {
-            _currentState = Direction.Forward;
-        }
-        else if (_lookDirection.y < -0.71f)
-        {
-            _currentState = Direction.Back;
-        }
-        else if (_lookDirection.x > 0.71f)
-        {
-            _currentState = Direction.Right;
-        }
-        else if (_lookDirection.x < -0.71f)
-        {
-            _currentState = Direction.Left;
-        }
-
-        ChangeRotation();
-    }
-
-    private void ChangeRotation()
-    {
-        if (_currentState == Direction.Forward)
-        {
-            Quaternion meshRotation = Quaternion.LookRotation(Vector3.up, Controller.Mesh.up);
-            Controller.Mesh.localRotation = Quaternion.Euler(new Vector3(0f, meshRotation.eulerAngles.y, 0f));
-        }
-        else if (_currentState == Direction.Back)
-        {
-            Quaternion meshRotation = Quaternion.LookRotation(Vector3.down, Controller.Mesh.up);
-            Controller.Mesh.localRotation = Quaternion.Euler(new Vector3(0f, meshRotation.eulerAngles.y, 0f));
-        }
-        else if (_currentState == Direction.Right)
-        {
-            Quaternion meshRotation = Quaternion.LookRotation(Vector3.right, Controller.Mesh.up);
-            Controller.Mesh.localRotation = Quaternion.Euler(new Vector3(0f, meshRotation.eulerAngles.y, 0f));
-        }
-        else if (_currentState == Direction.Left)
-        {
-            Quaternion meshRotation = Quaternion.LookRotation(Vector3.left, Controller.Mesh.up);
-            Controller.Mesh.localRotation = Quaternion.Euler(new Vector3(0f, meshRotation.eulerAngles.y, 0f));
-        }
+        _currentRotationDirection = RotationDirection.Static;
     }
 
     public override void Exit()
@@ -74,86 +29,19 @@ public class PlayerIdleState : PlayerState
 
     public override void UpdateLogic()
     {
-        _lookDirection = Camera.main.ScreenToWorldPoint(Controls.InGame.MousePosition.ReadValue<Vector2>()) - Controller.transform.position;
-        _lookDirection.Normalize();
+        if (Controller.RotationDirection != _currentRotationDirection)
+        {
+            _currentRotationDirection = Controller.RotationDirection;
 
-        if (_lookDirection.y > 0.71f)
-        {
-            if (_currentState != Direction.Forward)
+            if (_currentRotationDirection == RotationDirection.Static)
             {
-                if (_currentState == Direction.Right)
-                {
-                    Animator.CrossFade("Player Turn Left", 0f);
-                    _turnTimer = _turnTime;
-                } else if (_currentState == Direction.Left)
-                {
-                    Animator.CrossFade("Player Turn Right", 0f);
-                    _turnTimer = _turnTime;
-                }
-                _currentState = Direction.Forward;
-            }
-        }
-        else if (_lookDirection.y < -0.71f)
-        {
-            if (_currentState != Direction.Back)
+                Controller.Animator.CrossFade("Player Idle", 0.25f);
+            } else if (_currentRotationDirection == RotationDirection.Left)
             {
-                if (_currentState == Direction.Right)
-                {
-                    Animator.CrossFade("Player Turn Right", 0f);
-                    _turnTimer = _turnTime;
-                }
-                else if (_currentState == Direction.Left)
-                {
-                    Animator.CrossFade("Player Turn Left", 0f);
-                    _turnTimer = _turnTime;
-                }
-                _currentState = Direction.Back;
-            }
-        }
-        else if (_lookDirection.x > 0.71f)
-        {
-            if (_currentState != Direction.Right)
+                Controller.Animator.CrossFade("Player Turn Left", 0f);
+            } else if (_currentRotationDirection == RotationDirection.Right)
             {
-                if (_currentState == Direction.Forward)
-                {
-                    Animator.CrossFade("Player Turn Right", 0f);
-                    _turnTimer = _turnTime;
-                }
-                else if (_currentState == Direction.Back)
-                {
-                    Animator.CrossFade("Player Turn Left", 0f);
-                    _turnTimer = _turnTime;
-                }
-                _currentState = Direction.Right;
-            }
-        }
-        else if (_lookDirection.x < -0.71f)
-        {
-            if (_currentState != Direction.Left)
-            {
-                if (_currentState == Direction.Forward)
-                {
-                    Animator.CrossFade("Player Turn Left", 0f);
-                    _turnTimer = _turnTime;
-                }
-                else if (_currentState == Direction.Back)
-                {
-                    Animator.CrossFade("Player Turn Right", 0f);
-                    _turnTimer = _turnTime;
-                }
-                _currentState = Direction.Left;
-            }
-        }
-
-        if (_turnTimer > 0f)
-        {
-            _turnTimer -= Time.deltaTime;
-
-            if (_turnTimer <= 0f)
-            {
-                Animator.CrossFade("Player Idle", 0f);
-
-                ChangeRotation();
+                Controller.Animator.CrossFade("Player Turn Right", 0f);
             }
         }
 
