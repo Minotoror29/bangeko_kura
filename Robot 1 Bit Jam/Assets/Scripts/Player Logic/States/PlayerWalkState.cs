@@ -7,7 +7,7 @@ public enum Direction { Forward, Back, Right, Left }
 public class PlayerWalkState : PlayerState
 {
     private Vector2 _walkAnimDirection;
-    private Direction _currentState;
+    private Direction _currentDirection;
 
     public PlayerWalkState(NewPlayerController controller) : base(controller)
     {
@@ -17,7 +17,7 @@ public class PlayerWalkState : PlayerState
     {
         Controller.OnDash += Dash;
 
-        _currentState = Direction.Forward;
+        _currentDirection = Direction.Forward;
         Animator.CrossFade("Player Walk Forward", 0.1f);
     }
 
@@ -36,30 +36,30 @@ public class PlayerWalkState : PlayerState
 
         if (_walkAnimDirection.y > 0.71f)
         {
-            if (_currentState != Direction.Forward)
+            if (_currentDirection != Direction.Forward)
             {
-                _currentState = Direction.Forward;
+                _currentDirection = Direction.Forward;
                 Animator.CrossFade("Player Walk Forward", 0.25f);
             }
         } else if (_walkAnimDirection.y < -0.71f)
         {
-            if (_currentState != Direction.Back)
+            if (_currentDirection != Direction.Back)
             {
-                _currentState = Direction.Back;
+                _currentDirection = Direction.Back;
                 Animator.CrossFade("Player Walk Back", 0.5f);
             }
         } else if (_walkAnimDirection.x > 0.71f)
         {
-            if (_currentState != Direction.Right)
+            if (_currentDirection != Direction.Right)
             {
-                _currentState = Direction.Right;
+                _currentDirection = Direction.Right;
                 Animator.CrossFade("Player Walk Right", 0.5f);
             }
         } else if (_walkAnimDirection.x < -0.71f)
         {
-            if (_currentState != Direction.Left)
+            if (_currentDirection != Direction.Left)
             {
-                _currentState = Direction.Left;
+                _currentDirection = Direction.Left;
                 Animator.CrossFade("Player Walk Left", 0.5f);
             }
         }
@@ -82,6 +82,6 @@ public class PlayerWalkState : PlayerState
 
     private void Dash()
     {
-        Controller.ChangeState(new PlayerDashState(Controller, Controls.InGame.Movement.ReadValue<Vector2>()));
+        Controller.ChangeState(new PlayerDashState(Controller, Controls.InGame.Movement.ReadValue<Vector2>(), _currentDirection));
     }
 }

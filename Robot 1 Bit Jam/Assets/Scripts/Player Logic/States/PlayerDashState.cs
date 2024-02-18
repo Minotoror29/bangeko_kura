@@ -7,10 +7,12 @@ public class PlayerDashState : PlayerState
 {
     private Vector2 _dashDirection;
     private Vector2 _dashOrigin;
+    private Direction _animationDirection;
 
-    public PlayerDashState(NewPlayerController controller, Vector2 dashDirection) : base(controller)
+    public PlayerDashState(NewPlayerController controller, Vector2 dashDirection, Direction animationDirection) : base(controller)
     {
         _dashDirection = dashDirection;
+        _animationDirection = animationDirection;
     }
 
     public override void Enter()
@@ -19,7 +21,19 @@ public class PlayerDashState : PlayerState
 
         _dashOrigin = Controller.transform.position;
 
-        Controller.Animator.CrossFade("Player Dash", 0f);
+        if (_animationDirection == Direction.Forward)
+        {
+            Controller.Animator.CrossFade("Player Dash Forward", 0f);
+        } else if (_animationDirection == Direction.Back)
+        {
+            Controller.Animator.CrossFade("Player Dash Back", 0f);
+        } else if (_animationDirection == Direction.Right)
+        {
+            Controller.Animator.CrossFade("Player Dash Right", 0f);
+        } else if (_animationDirection == Direction.Left)
+        {
+            Controller.Animator.CrossFade("Player Dash Left", 0f);
+        }
     }
 
     public override void Exit()
