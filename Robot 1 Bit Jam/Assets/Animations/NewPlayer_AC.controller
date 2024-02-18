@@ -74,22 +74,34 @@ AnimatorStateMachine:
     m_Position: {x: 420, y: 100, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2328545709107891742}
-    m_Position: {x: 420, y: 320, z: 0}
+    m_Position: {x: 640, y: 200, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4406452468088817875}
-    m_Position: {x: 420, y: 380, z: 0}
+    m_Position: {x: 640, y: 260, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8734719202947854827}
-    m_Position: {x: 420, y: 440, z: 0}
+    m_Position: {x: 640, y: 320, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -2165553154957761238}
-    m_Position: {x: 420, y: 500, z: 0}
+    m_Position: {x: 640, y: 380, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -2205390587644164547}
-    m_Position: {x: 650, y: 200, z: 0}
+    m_Position: {x: 860, y: 200, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1349023491215290274}
-    m_Position: {x: 650, y: 260, z: 0}
+    m_Position: {x: 860, y: 260, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -2287783302555430773}
+    m_Position: {x: 1080, y: 200, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 4372247837082941585}
+    m_Position: {x: 1080, y: 260, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -1421029027129483690}
+    m_Position: {x: 1080, y: 320, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 7293709423133280793}
+    m_Position: {x: 1080, y: 380, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -121,6 +133,33 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 0}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
+--- !u!1102 &-2287783302555430773
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Player Dash Back
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 1282512132493485526, guid: 12aae722fd3be8441bc77139605f001a,
+    type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -174,6 +213,33 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: -3533478369569579063, guid: 12aae722fd3be8441bc77139605f001a,
+    type: 3}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
+--- !u!1102 &-1421029027129483690
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Player Dash Right
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 9154053078652233762, guid: 12aae722fd3be8441bc77139605f001a,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -277,6 +343,60 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 915040681925208512, guid: 12aae722fd3be8441bc77139605f001a, type: 3}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
+--- !u!1102 &4372247837082941585
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Player Dash Forward
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: -4875280868774312145, guid: 12aae722fd3be8441bc77139605f001a,
+    type: 3}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
+--- !u!1102 &7293709423133280793
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Player Dash Left
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 4810108560140486502, guid: 12aae722fd3be8441bc77139605f001a,
+    type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
