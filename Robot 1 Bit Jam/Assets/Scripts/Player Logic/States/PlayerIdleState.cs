@@ -8,6 +8,9 @@ public class PlayerIdleState : PlayerState
 {
     private RotationDirection _currentRotationDirection;
 
+    private float _waitBeforeidleTime = 0.5f;
+    private float _waitBeforeIdleTimer;
+
     public PlayerIdleState(NewPlayerController controller) : base(controller)
     {
     }
@@ -29,20 +32,32 @@ public class PlayerIdleState : PlayerState
 
     public override void UpdateLogic()
     {
+        Controller.RotateSmooth();
+
+        if (_waitBeforeIdleTimer > 0f && _currentRotationDirection == RotationDirection.Static)
+        {
+            _waitBeforeIdleTimer -= Time.deltaTime;
+        }
+
         if (Controller.RotationDirection != _currentRotationDirection)
         {
             _currentRotationDirection = Controller.RotationDirection;
 
             if (_currentRotationDirection == RotationDirection.Static)
             {
-                Controller.Animator.CrossFade("Player Idle", 0.25f);
+                _waitBeforeIdleTimer = _waitBeforeidleTime;
             } else if (_currentRotationDirection == RotationDirection.Left)
             {
-                Controller.Animator.CrossFade("Player Turn Left", 0f);
+                Controller.Animator.CrossFade("Player Turn Left", 0.25f);
             } else if (_currentRotationDirection == RotationDirection.Right)
             {
-                Controller.Animator.CrossFade("Player Turn Right", 0f);
+                Controller.Animator.CrossFade("Player Turn Right", 0.25f);
             }
+        }
+
+        if (_currentRotationDirection == RotationDirection.Static && _waitBeforeIdleTimer <= 0f)
+        {
+            Controller.Animator.CrossFade("Player Idle", 0.25f);
         }
 
         if (Controls.InGame.Movement.ReadValue<Vector2>().magnitude > 0f)

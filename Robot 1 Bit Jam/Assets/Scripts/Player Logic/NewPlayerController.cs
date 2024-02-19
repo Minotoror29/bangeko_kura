@@ -167,7 +167,6 @@ public class NewPlayerController : Controller
         }
 
         HandleRotationInput();
-        Rotate();
 
         if (_dashCooldownTimer > 0f)
         {
@@ -186,7 +185,7 @@ public class NewPlayerController : Controller
         _lookDirection = _mousePosition - (Vector2)laserFirePoint.localPosition - (Vector2)transform.position;
     }
 
-    private void Rotate()
+    public void RotateSmooth()
     {
         Quaternion meshRotation = Quaternion.LookRotation(new Vector3(_lookDirection.x, 0f, _lookDirection.y), mesh.up);
         Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, meshRotation.eulerAngles.y, 0f));
@@ -215,6 +214,12 @@ public class NewPlayerController : Controller
             _rotationDirection = RotationDirection.Static;
         }
         _previousRotation = mesh.localRotation.eulerAngles.y;
+    }
+
+    public void Rotate()
+    {
+        Quaternion meshRotation = Quaternion.LookRotation(new Vector3(_lookDirection.x, 0f, _lookDirection.y), mesh.up);
+        mesh.localRotation = Quaternion.Euler(new Vector3(0f, meshRotation.eulerAngles.y, 0f));
     }
 
     public override void UpdatePhysics()

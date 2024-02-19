@@ -2861,8 +2861,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 214024135}
   movementSpeed: 325
-  dashSpeed: 1000
-  dashDistance: 5
+  dashSpeed: 1500
+  dashDistance: 6
   dashCooldown: 0.5
   laserFirePoint: {fileID: 3874377432475053878}
   laserMaxDistance: 50
@@ -2878,7 +2878,7 @@ MonoBehaviour:
   laserDamage: 15
   laserCooldown: 2
   mesh: {fileID: 214024133}
-  rotationSpeed: 250
+  rotationSpeed: 750
   weapons:
   - {fileID: 1890340953}
   - {fileID: 2124977179}

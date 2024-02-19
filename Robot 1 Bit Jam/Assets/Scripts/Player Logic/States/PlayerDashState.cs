@@ -19,6 +19,8 @@ public class PlayerDashState : PlayerState
     {
         Controller.OnTakeDamage += PreventDamage;
 
+        Controller.Rotate();
+
         _dashOrigin = Controller.transform.position;
 
         if (_animationDirection == Direction.Forward)
