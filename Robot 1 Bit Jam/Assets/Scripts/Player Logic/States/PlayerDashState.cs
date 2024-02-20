@@ -19,7 +19,7 @@ public class PlayerDashState : PlayerState
     {
         Controller.OnTakeDamage += PreventDamage;
 
-        Controller.Rotate();
+        Controller.RotateMesh();
 
         _dashOrigin = Controller.transform.position;
 

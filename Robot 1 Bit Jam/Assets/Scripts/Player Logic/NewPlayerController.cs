@@ -11,6 +11,8 @@ public class NewPlayerController : Controller
 
     private PlayerState _currentState;
 
+    [SerializeField] private Transform mesh;
+
     [Header("Movement")]
     [SerializeField] private float movementSpeed = 500f;
 
@@ -29,12 +31,11 @@ public class NewPlayerController : Controller
     [SerializeField] private LayerMask obstacleLayer;
     [SerializeField] private int laserDamage = 15;
     [SerializeField] private float laserCooldown = 3f;
-    [SerializeField] private Transform mesh;
+    [SerializeField] private Transform aim;
     [SerializeField] private float rotationSpeed = 1f;
     private float _laserCooldownTimer;
     private Vector2 _lookDirection;
     private Vector2 _mousePosition;
-    private RotationDirection _rotationDirection;
     private float _previousRotation;
 
     [Header("Weapons")]
@@ -44,11 +45,11 @@ public class NewPlayerController : Controller
     public event Action OnTakeDamage;
 
     public PlayerControls Controls { get { return _controls; } }
+    public Transform Mesh { get { return mesh; } }
     public float MovementSpeed { get { return movementSpeed; } }
     public float DashSpeed { get { return dashSpeed; } }
     public float DashDistance { get { return dashDistance; } }
-    public Transform Mesh { get { return mesh; } }
-    public RotationDirection RotationDirection { get { return _rotationDirection; } }
+    public Transform Aim { get { return aim; } }
 
     private void Start()
     {
@@ -121,7 +122,7 @@ public class NewPlayerController : Controller
             }
         }
         //Creates the damaging ray
-        RaycastHit2D[] hits = Physics2D.BoxCastAll(ray.origin, new Vector2(laserWidth, 1), mesh.rotation.eulerAngles.y, ray.direction, rayDistance, healthSystemLayer);
+        RaycastHit2D[] hits = Physics2D.BoxCastAll(ray.origin, new Vector2(laserWidth, 1), aim.rotation.eulerAngles.y, ray.direction, rayDistance, healthSystemLayer);
         foreach (RaycastHit2D enemyHit in hits)
         {
             if (enemyHit.collider.TryGetComponent(out HealthSystem healthSystem))
@@ -185,38 +186,13 @@ public class NewPlayerController : Controller
         _lookDirection = _mousePosition - (Vector2)laserFirePoint.localPosition - (Vector2)transform.position;
     }
 
-    public void RotateSmooth()
+    public void RotateAim()
     {
-        Quaternion meshRotation = Quaternion.LookRotation(new Vector3(_lookDirection.x, 0f, _lookDirection.y), mesh.up);
-        Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, meshRotation.eulerAngles.y, 0f));
-        mesh.localRotation = Quaternion.RotateTowards(mesh.localRotation, targetRotation, rotationSpeed * Time.deltaTime);
-
-        if (mesh.localRotation.eulerAngles.y > _previousRotation)
-        {
-            if (_previousRotation < 90f && mesh.localRotation.eulerAngles.y > 270f)
-            {
-                _rotationDirection = RotationDirection.Left;
-            } else
-            {
-                _rotationDirection = RotationDirection.Right;
-            }
-        } else if (mesh.localRotation.eulerAngles.y < _previousRotation)
-        {
-            if (_previousRotation > 270f && mesh.localRotation.eulerAngles.y < 90f)
-            {
-                _rotationDirection = RotationDirection.Right;
-            } else
-            {
-                _rotationDirection = RotationDirection.Left;
-            }
-        } else if (mesh.localRotation.eulerAngles.y == _previousRotation)
-        {
-            _rotationDirection = RotationDirection.Static;
-        }
-        _previousRotation = mesh.localRotation.eulerAngles.y;
+        Quaternion aimRotation = Quaternion.LookRotation(new Vector3(_lookDirection.x, 0f, _lookDirection.y), aim.up);
+        aim.localRotation = Quaternion.Euler(new Vector3(0f, aimRotation.eulerAngles.y, 0f));
     }
 
-    public void Rotate()
+    public void RotateMesh()
     {
         Quaternion meshRotation = Quaternion.LookRotation(new Vector3(_lookDirection.x, 0f, _lookDirection.y), mesh.up);
         mesh.localRotation = Quaternion.Euler(new Vector3(0f, meshRotation.eulerAngles.y, 0f));

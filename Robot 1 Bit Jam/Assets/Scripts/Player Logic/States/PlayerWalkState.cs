@@ -32,7 +32,8 @@ public class PlayerWalkState : PlayerState
 
     public override void UpdateLogic()
     {
-        Controller.RotateSmooth();
+        Controller.RotateMesh();
+        Controller.RotateAim();
 
         _walkAnimDirection = new Vector2(Controller.Mesh.transform.InverseTransformDirection(Controls.InGame.Movement.ReadValue<Vector2>()).x, Controller.Mesh.transform.InverseTransformDirection(Controls.InGame.Movement.ReadValue<Vector2>()).z).normalized;
 
