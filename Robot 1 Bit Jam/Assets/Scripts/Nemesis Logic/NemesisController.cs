@@ -16,7 +16,7 @@ public class NemesisController : Controller
     [SerializeField] private NemesisPhaseData phase1;
     [SerializeField, Range(0, 100), Tooltip("In percentage")] private int healthToPhase2 = 75;
     [SerializeField] private NemesisPhaseData phase2;
-    [SerializeField, Range(0, 100), Tooltip("In percentage")] private int healthToPhase3 = 50;
+    //[SerializeField, Range(0, 100), Tooltip("In percentage")] private int healthToPhase3 = 50;
     [SerializeField] private NemesisPhaseData phase3;
     private NemesisPhase _currentPhase;
 
@@ -65,7 +65,7 @@ public class NemesisController : Controller
 
     private void Start()
     {
-        Initialize();
+        //Initialize();
     }
 
     private void Update()
@@ -78,9 +78,9 @@ public class NemesisController : Controller
         UpdatePhysics();
     }
 
-    public override void Initialize()
+    public override void Initialize(ScreenManager screenManager)
     {
-        base.Initialize();
+        base.Initialize(screenManager);
 
         HealthSystem.OnDamage += TakeDamage;
         HealthSystem.OnDeath += Die;

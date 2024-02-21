@@ -47,7 +47,7 @@ public class PlayerController : Controller
 
     private void Start()
     {
-        Initialize();
+        //Initialize();
     }
 
     private void Update()
@@ -60,9 +60,9 @@ public class PlayerController : Controller
         UpdatePhysics();
     }
 
-    public override void Initialize()
+    public override void Initialize(ScreenManager screenManager)
     {
-        base.Initialize();
+        base.Initialize(screenManager);
 
         _playerControls = new PlayerControls();
         _playerControls.InGame.Enable();

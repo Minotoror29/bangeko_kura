@@ -74,7 +74,7 @@ public class PlayerWalkState : PlayerState
 
         if (Controller.Grounds.Count == 0)
         {
-            Controller.Die(Controller.HealthSystem, null);
+            Controller.ChangeState(new PlayerFallState(Controller));
         }
     }
 

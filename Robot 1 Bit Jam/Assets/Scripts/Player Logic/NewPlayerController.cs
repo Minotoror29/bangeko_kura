@@ -32,14 +32,15 @@ public class NewPlayerController : Controller
     [SerializeField] private int laserDamage = 15;
     [SerializeField] private float laserCooldown = 3f;
     [SerializeField] private Transform aim;
-    [SerializeField] private float rotationSpeed = 1f;
     private float _laserCooldownTimer;
     private Vector2 _lookDirection;
     private Vector2 _mousePosition;
-    private float _previousRotation;
 
     [Header("Weapons")]
     [SerializeField] private List<Weapon> weapons;
+
+    [Header("Fall")]
+    [SerializeField] private FallMesh fallmesh;
 
     public event Action OnDash;
     public event Action OnTakeDamage;
@@ -49,12 +50,8 @@ public class NewPlayerController : Controller
     public float MovementSpeed { get { return movementSpeed; } }
     public float DashSpeed { get { return dashSpeed; } }
     public float DashDistance { get { return dashDistance; } }
-    public Transform Aim { get { return aim; } }
-
-    private void Start()
-    {
-        Initialize();
-    }
+    public Vector2 LookDirection { get { return _lookDirection; } }
+    public FallMesh FallMesh { get { return fallmesh; } }
 
     private void Update()
     {
@@ -66,9 +63,9 @@ public class NewPlayerController : Controller
         UpdatePhysics();
     }
 
-    public override void Initialize()
+    public override void Initialize(ScreenManager screenManager)
     {
-        base.Initialize();
+        base.Initialize(screenManager);
 
         _controls = new PlayerControls();
         _controls.InGame.Enable();
@@ -85,8 +82,6 @@ public class NewPlayerController : Controller
         {
             weapon.Initialize(this, HealthSystem);
         }
-
-        ChangeState(new PlayerSpawnState(this));
     }
 
     public void ChangeState(PlayerState nextState)
@@ -148,14 +143,19 @@ public class NewPlayerController : Controller
 
     public void Die(HealthSystem healthSystem, Transform deathSource)
     {
-        _controls.InGame.Dash.performed -= ctx => Dash();
-        _controls.InGame.Laser.performed -= ctx => FireLaser();
+        //_controls.InGame.Dash.performed -= ctx => Dash();
+        //_controls.InGame.Laser.performed -= ctx => FireLaser();
+        //_controls.InGame.Disable();
+
+        //HealthSystem.OnHit -= TakeDamage;
+        //HealthSystem.OnDeath -= Die;
+
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
         _controls.InGame.Disable();
+        mesh.gameObject.SetActive(false);
 
-        HealthSystem.OnHit -= TakeDamage;
-        HealthSystem.OnDeath -= Die;
-
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        ScreenManager.PlayerDied();
     }
 
     public override void UpdateLogic()

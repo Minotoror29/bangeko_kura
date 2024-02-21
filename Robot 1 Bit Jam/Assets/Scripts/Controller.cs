@@ -4,6 +4,8 @@ using UnityEngine;
 
 public abstract class Controller : MonoBehaviour
 {
+    private ScreenManager _screenManager;
+
     private Rigidbody2D _rb;
     [SerializeField] private Animator animator;
     private HealthSystem _healthSystem;
@@ -12,14 +14,17 @@ public abstract class Controller : MonoBehaviour
 
     private List<GameObject> _grounds;
 
+    public ScreenManager ScreenManager { get { return _screenManager; } }
     public Rigidbody2D Rb { get { return _rb; } }
     public Animator Animator { get { return animator; } }
     public HealthSystem HealthSystem { get { return _healthSystem; } }
     public bool Dashing { get { return _dashing; } set { _dashing = value; } }
     public List<GameObject> Grounds { get { return _grounds; } }
 
-    public virtual void Initialize()
+    public virtual void Initialize(ScreenManager screenManager)
     {
+        _screenManager = screenManager;
+
         _rb = GetComponent<Rigidbody2D>();
         _healthSystem = GetComponentInChildren<HealthSystem>();
         _healthSystem.Initialize(transform);

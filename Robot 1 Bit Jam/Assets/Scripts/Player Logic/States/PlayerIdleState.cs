@@ -10,15 +10,23 @@ public class PlayerIdleState : PlayerState
 
     public override void Enter()
     {
+        Controller.OnDash += Dash;
+
         Controller.Animator.CrossFade("Player Idle", 0.1f);
     }
 
     public override void Exit()
     {
+        Controller.OnDash -= Dash;
     }
 
     public override void OnCollisionEnter(Collision2D collision)
     {
+    }
+
+    private void Dash()
+    {
+        Controller.ChangeState(new PlayerDashState(Controller, Controller.LookDirection.normalized, Direction.Forward));
     }
 
     public override void UpdateLogic()
@@ -32,7 +40,7 @@ public class PlayerIdleState : PlayerState
 
         if (Controller.Grounds.Count == 0)
         {
-            Controller.Die(Controller.HealthSystem, null);
+            Controller.ChangeState(new PlayerFallState(Controller));
         }
     }
 
