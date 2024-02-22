@@ -2,8 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum IdleState { Static, RotatingSlow, RotatingMedium, RotatingFast }
+
 public class PlayerIdleState : PlayerState
 {
+    private IdleState _currentState;
+    private Vector2 _bodyDirection;
+    private float _angle;
+    private Vector2 _targetDirection;
+    private float _slowRotationSeed = 250f;
+    private float _mediumRotationSeed = 500f;
+    private float _fastRotationSeed = 1000f;
+
     public PlayerIdleState(NewPlayerController controller) : base(controller)
     {
     }
@@ -12,6 +22,7 @@ public class PlayerIdleState : PlayerState
     {
         Controller.OnDash += Dash;
 
+        _currentState = IdleState.Static;
         Controller.Animator.CrossFade("Player Idle", 0.1f);
     }
 
@@ -31,6 +42,57 @@ public class PlayerIdleState : PlayerState
 
     public override void UpdateLogic()
     {
+        _bodyDirection = new Vector2((Quaternion.AngleAxis(45, Vector3.right) * Controller.Mesh.forward).x, (Quaternion.AngleAxis(45, Vector3.right) * Controller.Mesh.forward).z);
+        _angle = Vector2.Angle(_bodyDirection, Controller.LookDirection.normalized);
+
+        if (_angle > 135f)
+        {
+            if (_currentState == IdleState.Static || _currentState == IdleState.RotatingSlow || _currentState == IdleState.RotatingMedium)
+            {
+                _targetDirection = Controller.LookDirection.normalized;
+                Animator.CrossFade("Player Turn Left", 0.1f);
+                _currentState = IdleState.RotatingFast;
+            }
+        }
+        else if (_angle > 90f)
+        {
+            if (_currentState == IdleState.Static || _currentState == IdleState.RotatingSlow)
+            {
+                _targetDirection = Controller.LookDirection.normalized;
+                Animator.CrossFade("Player Turn Left", 0.1f);
+                _currentState = IdleState.RotatingMedium;
+            }
+        }
+        else if (_angle > 45f)
+        {
+            if (_currentState == IdleState.Static)
+            {
+                _targetDirection = Controller.LookDirection.normalized;
+                Animator.CrossFade("Player Turn Left", 0.1f);
+                _currentState = IdleState.RotatingSlow;
+            }
+        } 
+
+        if (_currentState == IdleState.RotatingSlow)
+        {
+            Controller.RotateMeshSmooth(_targetDirection, _slowRotationSeed);
+        } else if (_currentState == IdleState.RotatingMedium)
+        {
+            Controller.RotateMeshSmooth(_targetDirection, _mediumRotationSeed);
+        } else if (_currentState == IdleState.RotatingFast)
+        {
+            Controller.RotateMeshSmooth(_targetDirection, _fastRotationSeed);
+        }
+
+        if (_currentState != IdleState.Static)
+        {
+            if (Vector2.Angle(_bodyDirection, _targetDirection) == 0f)
+            {
+                Animator.CrossFade("Player Idle", 0.1f);
+                _currentState = IdleState.Static;
+            }
+        }
+
         Controller.RotateAim();
 
         if (Controls.InGame.Movement.ReadValue<Vector2>().magnitude > 0f)

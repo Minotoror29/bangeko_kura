@@ -198,6 +198,13 @@ public class NewPlayerController : Controller
         mesh.localRotation = Quaternion.Euler(new Vector3(0f, meshRotation.eulerAngles.y, 0f));
     }
 
+    public void RotateMeshSmooth(Vector3 direction, float speed)
+    {
+        Quaternion meshRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.y), mesh.up);
+        Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, meshRotation.eulerAngles.y, 0f));
+        mesh.localRotation = Quaternion.RotateTowards(mesh.localRotation, targetRotation, speed * Time.deltaTime);
+    }
+
     public override void UpdatePhysics()
     {
         _currentState.UpdatePhysics();
