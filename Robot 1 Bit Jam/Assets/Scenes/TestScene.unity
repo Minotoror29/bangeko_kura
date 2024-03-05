@@ -3409,6 +3409,8 @@ MonoBehaviour:
   - {fileID: 2124977179}
   - {fileID: 175164591}
   fallmesh: {fileID: 0}
+  landMeshPrefab: {fileID: 8119634437791927223, guid: 483dbf57321995147bcbbcfb9bb2ea4a,
+    type: 3}
 --- !u!58 &1487840492
 CircleCollider2D:
   m_ObjectHideFlags: 0

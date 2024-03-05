@@ -7,14 +7,18 @@ public class PlayerSpawnState : PlayerState
     private float _spawnTimer;
     private Vector2 _spawnPosition;
 
-    public PlayerSpawnState(NewPlayerController controller, Vector2 position) : base(controller)
+    public PlayerSpawnState(NewPlayerController controller, Vector2 spawnPosition) : base(controller)
     {
-        _spawnPosition = position;
+        _spawnPosition = spawnPosition;
     }
 
     public override void Enter()
     {
         Controller.transform.position = _spawnPosition;
+
+        Quaternion meshRotation = Quaternion.LookRotation(Vector3.right, Controller.Mesh.up);
+        Controller.Mesh.localRotation = Quaternion.Euler(new Vector3(0f, meshRotation.eulerAngles.y, 0f));
+
         Controls.InGame.Enable();
         Controller.Mesh.gameObject.SetActive(true);
         _spawnTimer = 0.1f;

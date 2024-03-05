@@ -69,6 +69,6 @@ public class ScreenManager : MonoBehaviour
         _controls.Spawn.Disable();
         Destroy(_spawnCursor.gameObject);
 
-        player.ChangeState(new PlayerSpawnState(player, _spawnPosition));
+        player.ChangeState(new PlayerLandState(player, _spawnPosition));
     }
 }
