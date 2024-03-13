@@ -14,7 +14,7 @@ public class PlayerFallState : PlayerState
     {
         Controller.Mesh.gameObject.SetActive(false);
         Controller.FallSprite.SetActive(true);
-        Controller.FallSprite.transform.position = (Vector2)Controller.Mesh.position + Vector2.up;
+        Controller.FallSprite.transform.position = (Vector2)Controller.Mesh.position + Vector2.up + Vector2.right * 0.5f + Rb.velocity.normalized * 0.5f;
     }
 
     public override void Exit()
