@@ -16,8 +16,8 @@ public class PlayerSpawnState : PlayerState
     {
         Controller.transform.position = _spawnPosition;
 
-        Quaternion meshRotation = Quaternion.LookRotation(Vector3.right, Controller.Mesh.up);
-        Controller.Mesh.localRotation = Quaternion.Euler(new Vector3(0f, meshRotation.eulerAngles.y, 0f));
+        //Quaternion meshRotation = Quaternion.LookRotation(Vector3.right, Controller.Mesh.up);
+        //Controller.Mesh.localRotation = Quaternion.Euler(new Vector3(0f, meshRotation.eulerAngles.y, 0f));
 
         Controls.InGame.Enable();
         Controller.Mesh.gameObject.SetActive(true);
