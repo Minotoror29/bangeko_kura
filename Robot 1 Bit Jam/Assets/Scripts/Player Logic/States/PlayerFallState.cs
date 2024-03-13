@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class PlayerFallState : PlayerState
 {
-    private float _fallTimer = 1f;
-    //private float _fallSpeed = 250f;
+    private float _fallTimer = 0.367f;
 
     public PlayerFallState(NewPlayerController controller) : base(controller)
     {
@@ -13,10 +12,9 @@ public class PlayerFallState : PlayerState
 
     public override void Enter()
     {
-        //Controller.Mesh.gameObject.SetActive(false);
-        //Controller.FallMesh.gameObject.SetActive(true);
-        //Controller.FallMesh.Initialize(Controller.Mesh.position, Controller.Mesh.localRotation);
-        Animator.CrossFade("Player Fall", 0.1f);
+        Controller.Mesh.gameObject.SetActive(false);
+        Controller.FallSprite.SetActive(true);
+        Controller.FallSprite.transform.position = Controller.Mesh.position;
     }
 
     public override void Exit()
@@ -34,7 +32,7 @@ public class PlayerFallState : PlayerState
             _fallTimer -= Time.deltaTime;
         } else
         {
-            //Controller.FallMesh.gameObject.SetActive(false);
+            Controller.FallSprite.SetActive(false);
             Controller.ChangeState(new PlayerDeathState(Controller));
         }
     }

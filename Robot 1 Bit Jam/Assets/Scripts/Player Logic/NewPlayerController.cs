@@ -41,7 +41,9 @@ public class NewPlayerController : Controller
 
     [Header("Fall")]
     [SerializeField] private FallMesh fallmesh;
+    [SerializeField] private GameObject fallSpritePrefab;
     [SerializeField] private GameObject landMeshPrefab;
+    private GameObject _fallSprite;
     private GameObject _landMesh;
 
     public event Action OnDash;
@@ -54,6 +56,7 @@ public class NewPlayerController : Controller
     public float DashDistance { get { return dashDistance; } }
     public Vector2 LookDirection { get { return _lookDirection; } }
     public FallMesh FallMesh { get { return fallmesh; } }
+    public GameObject FallSprite { get { return _fallSprite; } }
     public GameObject LandMesh { get { return _landMesh; } }
 
     private void Update()
@@ -86,6 +89,8 @@ public class NewPlayerController : Controller
             weapon.Initialize(this, HealthSystem);
         }
 
+        _fallSprite = Instantiate(fallSpritePrefab);
+        _fallSprite.SetActive(false);
         _landMesh = Instantiate(landMeshPrefab);
         _landMesh.SetActive(false);
     }
