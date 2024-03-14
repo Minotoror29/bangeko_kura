@@ -36,6 +36,8 @@ public class PlayerDashState : PlayerState
         {
             Controller.Animator.CrossFade("Player Dash Left", 0f);
         }
+
+        Controller.InstantiateEffect(Controller.DashEffect, Controller.transform.position, Quaternion.LookRotation(Vector3.forward, _dashDirection.normalized), 0.367f);
     }
 
     public override void Exit()

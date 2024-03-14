@@ -3390,6 +3390,8 @@ MonoBehaviour:
   dashSpeed: 1500
   dashDistance: 6
   dashCooldown: 0.5
+  dashEffect: {fileID: 812327942000203491, guid: fc67148725f210346b87012a70ff8cb9,
+    type: 3}
   laserFirePoint: {fileID: 3874377432475053878}
   laserMaxDistance: 50
   laserWidth: 0.5

@@ -20,6 +20,7 @@ public class NewPlayerController : Controller
     [SerializeField] private float dashSpeed = 1000f;
     [SerializeField] private float dashDistance = 5f;
     [SerializeField] private float dashCooldown = 2f;
+    [SerializeField] private GameObject dashEffect;
     private float _dashCooldownTimer;
 
     [Header("Laser")]
@@ -54,6 +55,7 @@ public class NewPlayerController : Controller
     public float MovementSpeed { get { return movementSpeed; } }
     public float DashSpeed { get { return dashSpeed; } }
     public float DashDistance { get { return dashDistance; } }
+    public GameObject DashEffect { get { return dashEffect; } }
     public Vector2 LookDirection { get { return _lookDirection; } }
     public FallMesh FallMesh { get { return fallmesh; } }
     public GameObject FallSprite { get { return _fallSprite; } }
@@ -167,6 +169,12 @@ public class NewPlayerController : Controller
         mesh.gameObject.SetActive(false);
 
         ScreenManager.PlayerDied();
+    }
+
+    public void InstantiateEffect(GameObject effect, Vector2 position, Quaternion rotation, float time)
+    {
+        GameObject newEffect = Instantiate(effect, position, rotation);
+        Destroy(newEffect, time);
     }
 
     public override void UpdateLogic()
