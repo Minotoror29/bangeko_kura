@@ -50,7 +50,7 @@ public class PlayerIdleState : PlayerState
             if (_currentState == IdleState.Static || _currentState == IdleState.RotatingSlow || _currentState == IdleState.RotatingMedium)
             {
                 _targetDirection = Controller.LookDirection.normalized;
-                Animator.CrossFade("Player Turn Left", 0.1f);
+                Animator.CrossFade("Player Turn 180", 0.1f);
                 _currentState = IdleState.RotatingFast;
             }
         }
@@ -68,7 +68,7 @@ public class PlayerIdleState : PlayerState
             if (_currentState == IdleState.Static)
             {
                 _targetDirection = Controller.LookDirection.normalized;
-                Animator.CrossFade("Player Turn Left", 0.1f);
+                Animator.CrossFade("Player Fast Turn Left", 0.1f);
                 _currentState = IdleState.RotatingSlow;
             }
         } 
