@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5307921919700816344}
   - component: {fileID: 5307921919700816350}
   m_Layer: 0
-  m_Name: Fall Sprite
+  m_Name: Fall Down Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,7 +43,7 @@ Animator:
   m_GameObject: {fileID: 5307921919700816351}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bf3bd2e7026f9444481c7e7860f6eb1c, type: 2}
+  m_Controller: {fileID: 9100000, guid: 63e1ba5d23ddc8c46a78e56853bbe9fc, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

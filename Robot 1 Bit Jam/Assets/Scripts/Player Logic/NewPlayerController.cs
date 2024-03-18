@@ -43,8 +43,10 @@ public class NewPlayerController : Controller
     [Header("Fall")]
     [SerializeField] private FallMesh fallmesh;
     [SerializeField] private GameObject fallSpritePrefab;
+    [SerializeField] private GameObject fallDownSpritePrefab;
     [SerializeField] private GameObject landMeshPrefab;
     private GameObject _fallSprite;
+    private GameObject _fallDownSprite;
     private GameObject _landMesh;
 
     public event Action OnDash;
@@ -59,6 +61,7 @@ public class NewPlayerController : Controller
     public Vector2 LookDirection { get { return _lookDirection; } }
     public FallMesh FallMesh { get { return fallmesh; } }
     public GameObject FallSprite { get { return _fallSprite; } }
+    public GameObject FallDownSprite { get { return _fallDownSprite; } }
     public GameObject LandMesh { get { return _landMesh; } }
 
     private void Update()
@@ -93,6 +96,8 @@ public class NewPlayerController : Controller
 
         _fallSprite = Instantiate(fallSpritePrefab);
         _fallSprite.SetActive(false);
+        _fallDownSprite = Instantiate(fallDownSpritePrefab);
+        _fallDownSprite.SetActive(false);
         _landMesh = Instantiate(landMeshPrefab);
         _landMesh.SetActive(false);
     }

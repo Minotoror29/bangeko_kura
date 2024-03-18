@@ -3413,6 +3413,8 @@ MonoBehaviour:
   fallmesh: {fileID: 0}
   fallSpritePrefab: {fileID: 5307921919700816351, guid: 16f2489f5664d994ab3017ebcdd38379,
     type: 3}
+  fallDownSpritePrefab: {fileID: 5307921919700816351, guid: 7e37e3c1685120a47912615b131b1964,
+    type: 3}
   landMeshPrefab: {fileID: 8119634437791927223, guid: 483dbf57321995147bcbbcfb9bb2ea4a,
     type: 3}
 --- !u!58 &1487840492
