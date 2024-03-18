@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum IdleState { Static, RotatingSlow, RotatingMedium, RotatingFast }
+public enum IdleState { Static, RotatingSlow, RotatingMedium, RotatingFast, FinishingRotation }
 
 public class PlayerIdleState : PlayerState
 {
@@ -49,7 +49,7 @@ public class PlayerIdleState : PlayerState
 
         if (_angle > 135f)
         {
-            if (_currentState == IdleState.Static || _currentState == IdleState.RotatingSlow || _currentState == IdleState.RotatingMedium)
+            if (_currentState == IdleState.Static || _currentState == IdleState.FinishingRotation || _currentState == IdleState.RotatingSlow || _currentState == IdleState.RotatingMedium)
             {
                 _targetDirection = Controller.LookDirection.normalized;
                 Animator.CrossFade("Player Turn 180", 0.1f);
@@ -58,7 +58,7 @@ public class PlayerIdleState : PlayerState
         }
         else if (_angle > 90f)
         {
-            if (_currentState == IdleState.Static || _currentState == IdleState.RotatingSlow)
+            if (_currentState == IdleState.Static || _currentState == IdleState.FinishingRotation || _currentState == IdleState.RotatingSlow)
             {
                 _targetDirection = Controller.LookDirection.normalized;
                 Animator.CrossFade("Player Turn Left", 0.1f);
@@ -67,7 +67,7 @@ public class PlayerIdleState : PlayerState
         }
         else if (_angle > 45f)
         {
-            if (_currentState == IdleState.Static)
+            if (_currentState == IdleState.Static || _currentState == IdleState.FinishingRotation)
             {
                 _targetDirection = Controller.LookDirection.normalized;
                 Animator.CrossFade("Player Fast Turn Left", 0.1f);
@@ -86,16 +86,16 @@ public class PlayerIdleState : PlayerState
             Controller.RotateMeshSmooth(_targetDirection, _fastRotationSeed);
         }
 
-        if (_currentState != IdleState.Static)
+        if (_currentState != IdleState.Static && _currentState != IdleState.FinishingRotation)
         {
             if (Vector2.Angle(_bodyDirection, _targetDirection) == 0f)
             {
                 _bufferTimer = 0.1f;
-                _currentState = IdleState.Static;
+                _currentState = IdleState.FinishingRotation;
             }
         }
 
-        if (_currentState == IdleState.Static)
+        if (_currentState == IdleState.FinishingRotation)
         {
             if (_bufferTimer > 0f)
             {
@@ -103,6 +103,7 @@ public class PlayerIdleState : PlayerState
             } else
             {
                 Animator.CrossFade("Player Idle", 0.1f);
+                _currentState = IdleState.Static;
             }
         }
 

@@ -83,7 +83,8 @@ public class NewPlayerController : Controller
         _controls.InGame.Dash.performed += ctx => Dash();
         _controls.InGame.Laser.performed += ctx => FireLaser();
 
-        HealthSystem.OnHit += TakeDamage;
+        HealthSystem.OnHit += TakeHit;
+        HealthSystem.OnDamage += TakeDamage;
         HealthSystem.OnDeath += Die;
 
         _dashCooldownTimer = 0f;
@@ -154,7 +155,7 @@ public class NewPlayerController : Controller
         _laserCooldownTimer = laserCooldown;
     }
 
-    private void TakeDamage(Transform damageSource)
+    private void TakeHit(Transform damageSource)
     {
         OnTakeDamage?.Invoke();
     }
@@ -180,6 +181,11 @@ public class NewPlayerController : Controller
     {
         GameObject newEffect = Instantiate(effect, position, rotation);
         Destroy(newEffect, time);
+    }
+
+    private void TakeDamage()
+    {
+
     }
 
     public override void UpdateLogic()
