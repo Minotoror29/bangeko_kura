@@ -50,4 +50,12 @@ public abstract class Controller : MonoBehaviour
             _grounds.Remove(collision.gameObject);
         }
     }
+
+    public void AddGround(GameObject ground)
+    {
+        if (ground.CompareTag("Ground") && !_grounds.Contains(ground))
+        {
+            _grounds.Add(ground);
+        }
+    }
 }

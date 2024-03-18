@@ -5,11 +5,12 @@ using UnityEngine;
 public class PlayerLandState : PlayerState
 {
     private Vector2 _spawnPosition;
-    private float _landTimer = 1.467f;
+    private float _landTimer = 1.333f;
 
-    public PlayerLandState(NewPlayerController controller, Vector2 spawnPosition) : base(controller)
+    public PlayerLandState(NewPlayerController controller, Vector2 spawnPosition, GameObject ground) : base(controller)
     {
         _spawnPosition = spawnPosition;
+        Controller.AddGround(ground);
     }
 
     public override void Enter()
@@ -21,6 +22,10 @@ public class PlayerLandState : PlayerState
     public override void Exit()
     {
         Controller.LandMesh.SetActive(false);
+
+        Controller.transform.position = _spawnPosition;
+
+        Controller.Mesh.gameObject.SetActive(true);
     }
 
     public override void OnCollisionEnter(Collision2D collision)
@@ -34,7 +39,16 @@ public class PlayerLandState : PlayerState
             _landTimer -= Time.deltaTime;
         } else
         {
-            Controller.ChangeState(new PlayerSpawnState(Controller, _spawnPosition));
+            Controller.ChangeState(new PlayerIdleState(Controller));
+        }
+
+        if (_landTimer < 0.633f)
+        {
+            Controls.InGame.Enable();
+            if (Controls.InGame.Movement.ReadValue<Vector2>().magnitude > 0f)
+            {
+                Controller.ChangeState(new PlayerWalkState(Controller));
+            }
         }
     }
 

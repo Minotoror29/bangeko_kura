@@ -18,6 +18,7 @@ public class ScreenManager : MonoBehaviour
 
     private Vector2 _spawnPosition;
     private Transform _spawnCursor;
+    private GameObject _ground;
 
     private void Start()
     {
@@ -57,6 +58,7 @@ public class ScreenManager : MonoBehaviour
             {
                 _spawnCursor.position = hit.point;
                 _spawnPosition = hit.point;
+                _ground = hit.collider.gameObject;
             }
 
             //_spawnPosition = Camera.main.ScreenToWorldPoint(_controls.Spawn.MousePosition.ReadValue<Vector2>());
@@ -69,6 +71,6 @@ public class ScreenManager : MonoBehaviour
         _controls.Spawn.Disable();
         Destroy(_spawnCursor.gameObject);
 
-        player.ChangeState(new PlayerLandState(player, _spawnPosition));
+        player.ChangeState(new PlayerLandState(player, _spawnPosition, _ground));
     }
 }
