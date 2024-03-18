@@ -14,6 +14,8 @@ public class PlayerIdleState : PlayerState
     private float _mediumRotationSeed = 500f;
     private float _fastRotationSeed = 1000f;
 
+    private float _bufferTimer = 0.1f;
+
     public PlayerIdleState(NewPlayerController controller) : base(controller)
     {
     }
@@ -88,8 +90,19 @@ public class PlayerIdleState : PlayerState
         {
             if (Vector2.Angle(_bodyDirection, _targetDirection) == 0f)
             {
-                Animator.CrossFade("Player Idle", 0.1f);
+                _bufferTimer = 0.1f;
                 _currentState = IdleState.Static;
+            }
+        }
+
+        if (_currentState == IdleState.Static)
+        {
+            if (_bufferTimer > 0f)
+            {
+                _bufferTimer -= Time.deltaTime;
+            } else
+            {
+                Animator.CrossFade("Player Idle", 0.1f);
             }
         }
 
