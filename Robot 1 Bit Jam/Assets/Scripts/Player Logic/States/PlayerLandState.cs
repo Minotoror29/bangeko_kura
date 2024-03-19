@@ -50,6 +50,21 @@ public class PlayerLandState : PlayerState
             {
                 Controller.InstantiateEffect(Controller.LandEffect, _spawnPosition, Quaternion.identity, Controller.LandEffectLifetime);
                 _landEffectSpawned = true;
+
+                List<Collider2D> results = new();
+                ContactFilter2D contactFilter = new() { useTriggers = true, layerMask = Controller.HealthSystemLayer };
+                Physics2D.OverlapCircle(_spawnPosition, Controller.LandDamageRadius, contactFilter, results);
+                foreach (Collider2D collider in results)
+                {
+                    if (collider.TryGetComponent(out HealthSystem hs))
+                    {
+                        if (hs.Source != Controller.transform)
+                        {
+                            hs.TakeDamage(Controller.LandDamage, Controller.transform);
+                        }
+                    }
+                    
+                }
             }
         }
 

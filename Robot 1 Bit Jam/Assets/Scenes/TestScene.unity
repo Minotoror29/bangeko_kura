@@ -3346,6 +3346,8 @@ MonoBehaviour:
   landEffect: {fileID: 4310220037457896771, guid: 70296c780681ce04c982d8ca3fe31e1a,
     type: 3}
   landEffectLifetime: 0.3
+  landDamage: 3
+  landDamageRadius: 2.25
 --- !u!58 &1487840492
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3829,7 +3831,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2124977177
 Transform:
   m_ObjectHideFlags: 0

@@ -47,6 +47,8 @@ public class NewPlayerController : Controller
     [SerializeField] private GameObject landMeshPrefab;
     [SerializeField] private GameObject landEffect;
     [SerializeField] private float landEffectLifetime = 0.3f;
+    [SerializeField] private int landDamage = 3;
+    [SerializeField] private float landDamageRadius = 2.25f;
     private GameObject _fallSprite;
     private GameObject _fallDownSprite;
     private GameObject _landMesh;
@@ -60,6 +62,7 @@ public class NewPlayerController : Controller
     public float DashSpeed { get { return dashSpeed; } }
     public float DashDistance { get { return dashDistance; } }
     public GameObject DashEffect { get { return dashEffect; } }
+    public LayerMask HealthSystemLayer { get { return healthSystemLayer; } }
     public Vector2 LookDirection { get { return _lookDirection; } }
     public List<Weapon> Weapons { get { return weapons; } }
     public FallMesh FallMesh { get { return fallmesh; } }
@@ -68,6 +71,8 @@ public class NewPlayerController : Controller
     public GameObject LandMesh { get { return _landMesh; } }
     public GameObject LandEffect { get { return landEffect; } }
     public float LandEffectLifetime { get { return landEffectLifetime; } }
+    public int LandDamage { get { return landDamage; } }
+    public float LandDamageRadius { get { return landDamageRadius; } }
 
     private void Update()
     {
