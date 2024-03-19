@@ -13,6 +13,14 @@ public class BulletController : MonoBehaviour
 
     [SerializeField] private int damage = 1;
 
+    [Header("Effects")]
+    [SerializeField] private List<GameObject> fireEffects;
+    [SerializeField] private float fireEffectLifetime = 0.1f;
+
+    [Space]
+    [SerializeField] private List<GameObject> impactEffects;
+    [SerializeField] private float impactEffectLifetime = 0.2f;
+
     private void Update()
     {
         UpdateLogic();
@@ -30,7 +38,12 @@ public class BulletController : MonoBehaviour
 
         _lifeTimer = 0f;
 
+        transform.position = (Vector2)transform.position + direction * 0.015f;
         transform.rotation = Quaternion.LookRotation(transform.forward, direction.normalized);
+
+        int randomFireEffect = Random.Range(0, fireEffects.Count);
+        GameObject newFireEffect = Instantiate(fireEffects[randomFireEffect], transform.position, transform.rotation);
+        Destroy(newFireEffect, fireEffectLifetime);
     }
 
     public void UpdateLogic()
@@ -55,6 +68,9 @@ public class BulletController : MonoBehaviour
         {
             if (_source != healthSystem.Source)
             {
+                int randomImpactEffect = Random.Range(0, impactEffects.Count);
+                GameObject newImpactEffect = Instantiate(impactEffects[randomImpactEffect], transform.position, Quaternion.identity);
+                Destroy(newImpactEffect, impactEffectLifetime);
                 healthSystem.TakeDamage(damage, _source);
                 Destroy(gameObject);
             }

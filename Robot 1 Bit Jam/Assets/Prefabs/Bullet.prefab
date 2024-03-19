@@ -135,6 +135,15 @@ MonoBehaviour:
   speed: 1000
   lifetime: 5
   damage: 1
+  fireEffects:
+  - {fileID: 3851610267540276633, guid: ddf7c4b9945e5c5448e8adbd730fe409, type: 3}
+  - {fileID: 3851610267540276633, guid: 41bfa9f1ea3069c4496cea7651426ff8, type: 3}
+  - {fileID: 3851610267540276633, guid: d65c8d050d3dab34ca72a2c68092358c, type: 3}
+  fireEffectLifetime: 0.1
+  impactEffects:
+  - {fileID: 2476454190481163344, guid: 3fd25ca02542e424fa03e06fed3168eb, type: 3}
+  - {fileID: 2476454190481163344, guid: 235b96f8ffb43494a9c280feda41bba0, type: 3}
+  impactEffectLifetime: 0.2
 --- !u!50 &5907398816516013800
 Rigidbody2D:
   serializedVersion: 4
