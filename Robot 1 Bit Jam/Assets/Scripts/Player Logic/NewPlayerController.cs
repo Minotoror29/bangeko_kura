@@ -45,6 +45,8 @@ public class NewPlayerController : Controller
     [SerializeField] private GameObject fallSpritePrefab;
     [SerializeField] private GameObject fallDownSpritePrefab;
     [SerializeField] private GameObject landMeshPrefab;
+    [SerializeField] private GameObject landEffect;
+    [SerializeField] private float landEffectLifetime = 0.3f;
     private GameObject _fallSprite;
     private GameObject _fallDownSprite;
     private GameObject _landMesh;
@@ -63,6 +65,8 @@ public class NewPlayerController : Controller
     public GameObject FallSprite { get { return _fallSprite; } }
     public GameObject FallDownSprite { get { return _fallDownSprite; } }
     public GameObject LandMesh { get { return _landMesh; } }
+    public GameObject LandEffect { get { return landEffect; } }
+    public float LandEffectLifetime { get { return landEffectLifetime; } }
 
     private void Update()
     {
@@ -162,15 +166,6 @@ public class NewPlayerController : Controller
 
     public void Die(HealthSystem healthSystem, Transform deathSource)
     {
-        //_controls.InGame.Dash.performed -= ctx => Dash();
-        //_controls.InGame.Laser.performed -= ctx => FireLaser();
-        //_controls.InGame.Disable();
-
-        //HealthSystem.OnHit -= TakeDamage;
-        //HealthSystem.OnDeath -= Die;
-
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
         _controls.InGame.Disable();
         mesh.gameObject.SetActive(false);
 

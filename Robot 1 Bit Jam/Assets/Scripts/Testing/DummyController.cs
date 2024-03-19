@@ -13,6 +13,7 @@ public class DummyController : MonoBehaviour
     {
         healthSystem.Initialize(transform);
         healthSystem.OnDamage += TakeDamage;
+        healthSystem.OnDeath += ResetHealth;
     }
 
     private void TakeDamage()
@@ -28,6 +29,11 @@ public class DummyController : MonoBehaviour
         }
 
         _changeColorTimer = changeColorTime;
+    }
+
+    private void ResetHealth(HealthSystem healthSYstem, Transform deathSource)
+    {
+        healthSystem.ResetHealth();
     }
 
     private void Update()

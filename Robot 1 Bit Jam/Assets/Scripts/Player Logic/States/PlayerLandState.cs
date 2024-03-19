@@ -7,6 +7,8 @@ public class PlayerLandState : PlayerState
     private Vector2 _spawnPosition;
     private float _landTimer = 1.333f;
 
+    private bool _landEffectSpawned = false;
+
     public PlayerLandState(NewPlayerController controller, Vector2 spawnPosition, GameObject ground) : base(controller)
     {
         _spawnPosition = spawnPosition;
@@ -40,6 +42,15 @@ public class PlayerLandState : PlayerState
         } else
         {
             Controller.ChangeState(new PlayerIdleState(Controller));
+        }
+
+        if (_landTimer < 0.75f)
+        {
+            if (!_landEffectSpawned)
+            {
+                Controller.InstantiateEffect(Controller.LandEffect, _spawnPosition, Quaternion.identity, Controller.LandEffectLifetime);
+                _landEffectSpawned = true;
+            }
         }
 
         if (_landTimer < 0.633f)

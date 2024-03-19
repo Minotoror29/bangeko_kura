@@ -47,6 +47,11 @@ public class HealthSystem : MonoBehaviour
         }
     }
 
+    public void ResetHealth()
+    {
+        _currentHealth = maxHealth;
+    }
+
     public void Die(Transform deathSource)
     {
         OnDeath?.Invoke(this, deathSource);

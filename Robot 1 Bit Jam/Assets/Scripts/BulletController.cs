@@ -48,6 +48,9 @@ public class BulletController : MonoBehaviour
         int randomFireEffect = Random.Range(0, fireEffects.Count);
         GameObject newFireEffect = Instantiate(fireEffects[randomFireEffect], transform.position, transform.rotation);
         Destroy(newFireEffect, fireEffectLifetime);
+
+        GameObject newSmokeEffect = Instantiate(smokeEffect, transform.position, transform.rotation);
+        Destroy(newSmokeEffect, smokeEffectLifetime);
     }
 
     public void UpdateLogic()
@@ -75,9 +78,6 @@ public class BulletController : MonoBehaviour
                 int randomImpactEffect = Random.Range(0, impactEffects.Count);
                 GameObject newImpactEffect = Instantiate(impactEffects[randomImpactEffect], transform.position, Quaternion.identity);
                 Destroy(newImpactEffect, impactEffectLifetime);
-
-                GameObject newSmokeEffect = Instantiate(smokeEffect, transform.position, transform.rotation);
-                Destroy(newSmokeEffect, impactEffectLifetime);
 
                 healthSystem.TakeDamage(damage, _source);
                 Destroy(gameObject);

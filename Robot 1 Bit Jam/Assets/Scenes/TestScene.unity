@@ -3343,6 +3343,9 @@ MonoBehaviour:
     type: 3}
   landMeshPrefab: {fileID: 8119634437791927223, guid: 483dbf57321995147bcbbcfb9bb2ea4a,
     type: 3}
+  landEffect: {fileID: 4310220037457896771, guid: 70296c780681ce04c982d8ca3fe31e1a,
+    type: 3}
+  landEffectLifetime: 0.3
 --- !u!58 &1487840492
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -4045,6 +4048,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dummy
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598296309240113872, guid: 3b3841b87cbc1334ba7efcd1183e8c37,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b3841b87cbc1334ba7efcd1183e8c37, type: 3}
