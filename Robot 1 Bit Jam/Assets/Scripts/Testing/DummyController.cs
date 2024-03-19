@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DummyController : MonoBehaviour
 {
+    [SerializeField] private Animator generalAnimator;
+
     [SerializeField] private HealthSystem healthSystem;
     [SerializeField] private List<SkinnedMeshRenderer> meshRenderers;
     [SerializeField] private float changeColorTime = 0.1f;
@@ -19,6 +21,7 @@ public class DummyController : MonoBehaviour
     private void TakeDamage()
     {
         ChangeColor();
+        Squish();
     }
 
     private void ChangeColor()
@@ -29,6 +32,11 @@ public class DummyController : MonoBehaviour
         }
 
         _changeColorTimer = changeColorTime;
+    }
+
+    private void Squish()
+    {
+        generalAnimator.SetTrigger("Squish");
     }
 
     private void ResetHealth(HealthSystem healthSYstem, Transform deathSource)

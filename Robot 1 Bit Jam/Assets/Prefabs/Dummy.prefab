@@ -323,6 +323,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6598296309240113869}
   - component: {fileID: 6598296309240113868}
+  - component: {fileID: 7985697866530997674}
   - component: {fileID: 9090157072141650276}
   - component: {fileID: 1744530338867601910}
   m_Layer: 9
@@ -361,10 +362,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27c5ed206f190ff40bbf78c2530c8947, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  generalAnimator: {fileID: 7985697866530997674}
   healthSystem: {fileID: 2348104351234627581}
   meshRenderers:
   - {fileID: 1472826614112404733}
   changeColorTime: 0.1
+--- !u!95 &7985697866530997674
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6598296309240113872}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3b51ca21cd4970a4eb0dd41584788432, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!50 &9090157072141650276
 Rigidbody2D:
   serializedVersion: 4
