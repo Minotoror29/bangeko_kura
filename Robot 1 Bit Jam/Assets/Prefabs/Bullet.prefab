@@ -144,6 +144,9 @@ MonoBehaviour:
   - {fileID: 2476454190481163344, guid: 3fd25ca02542e424fa03e06fed3168eb, type: 3}
   - {fileID: 2476454190481163344, guid: 235b96f8ffb43494a9c280feda41bba0, type: 3}
   impactEffectLifetime: 0.2
+  smokeEffect: {fileID: 1543596384095219198, guid: 9b967501143f93d49b7175d562aa85b7,
+    type: 3}
+  smokeEffectLifetime: 0.183
 --- !u!50 &5907398816516013800
 Rigidbody2D:
   serializedVersion: 4

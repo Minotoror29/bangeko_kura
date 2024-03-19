@@ -21,6 +21,10 @@ public class BulletController : MonoBehaviour
     [SerializeField] private List<GameObject> impactEffects;
     [SerializeField] private float impactEffectLifetime = 0.2f;
 
+    [Space]
+    [SerializeField] private GameObject smokeEffect;
+    [SerializeField] private float smokeEffectLifetime = 0.183f;
+
     private void Update()
     {
         UpdateLogic();
@@ -71,6 +75,10 @@ public class BulletController : MonoBehaviour
                 int randomImpactEffect = Random.Range(0, impactEffects.Count);
                 GameObject newImpactEffect = Instantiate(impactEffects[randomImpactEffect], transform.position, Quaternion.identity);
                 Destroy(newImpactEffect, impactEffectLifetime);
+
+                GameObject newSmokeEffect = Instantiate(smokeEffect, transform.position, transform.rotation);
+                Destroy(newSmokeEffect, impactEffectLifetime);
+
                 healthSystem.TakeDamage(damage, _source);
                 Destroy(gameObject);
             }
