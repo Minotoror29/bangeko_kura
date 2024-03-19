@@ -61,6 +61,7 @@ public class NewPlayerController : Controller
     public float DashDistance { get { return dashDistance; } }
     public GameObject DashEffect { get { return dashEffect; } }
     public Vector2 LookDirection { get { return _lookDirection; } }
+    public List<Weapon> Weapons { get { return weapons; } }
     public FallMesh FallMesh { get { return fallmesh; } }
     public GameObject FallSprite { get { return _fallSprite; } }
     public GameObject FallDownSprite { get { return _fallDownSprite; } }
@@ -186,11 +187,6 @@ public class NewPlayerController : Controller
     public override void UpdateLogic()
     {
         _currentState.UpdateLogic();
-
-        foreach (Weapon weapon in weapons)
-        {
-            weapon.UpdateLogic();
-        }
 
         HandleRotationInput();
 
