@@ -76,7 +76,7 @@ public class BulletController : MonoBehaviour
             if (_source != healthSystem.Source)
             {
                 int randomImpactEffect = Random.Range(0, impactEffects.Count);
-                GameObject newImpactEffect = Instantiate(impactEffects[randomImpactEffect], transform.position, Quaternion.identity);
+                GameObject newImpactEffect = Instantiate(impactEffects[randomImpactEffect], transform.position, transform.rotation);
                 Destroy(newImpactEffect, impactEffectLifetime);
 
                 healthSystem.TakeDamage(damage, _source);
