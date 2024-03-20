@@ -48,9 +48,11 @@ public class PlayerLandState : PlayerState
         {
             if (!_landEffectSpawned)
             {
+                //Effect
                 Controller.InstantiateEffect(Controller.LandEffect, _spawnPosition, Quaternion.identity, Controller.LandEffectLifetime);
                 _landEffectSpawned = true;
 
+                //Deal Damage
                 List<Collider2D> results = new();
                 ContactFilter2D contactFilter = new() { useTriggers = true, layerMask = Controller.HealthSystemLayer };
                 Physics2D.OverlapCircle(_spawnPosition, Controller.LandDamageRadius, contactFilter, results);
@@ -63,8 +65,10 @@ public class PlayerLandState : PlayerState
                             hs.TakeDamage(Controller.LandDamage, Controller.transform);
                         }
                     }
-                    
                 }
+
+                //Shake Camera
+                CameraManager.Instance.ShakeCamera(Controller.LandCameraShakeGain, Controller.LandCameraShakeTime);
             }
         }
 

@@ -41,7 +41,6 @@ public class NewPlayerController : Controller
     [SerializeField] private List<Weapon> weapons;
 
     [Header("Fall")]
-    [SerializeField] private FallMesh fallmesh;
     [SerializeField] private GameObject fallSpritePrefab;
     [SerializeField] private GameObject fallDownSpritePrefab;
     [SerializeField] private GameObject landMeshPrefab;
@@ -49,6 +48,8 @@ public class NewPlayerController : Controller
     [SerializeField] private float landEffectLifetime = 0.3f;
     [SerializeField] private int landDamage = 3;
     [SerializeField] private float landDamageRadius = 2.25f;
+    [SerializeField] private float landCameraShakeGain;
+    [SerializeField] private float landCameraShakeTime;
     private GameObject _fallSprite;
     private GameObject _fallDownSprite;
     private GameObject _landMesh;
@@ -65,7 +66,6 @@ public class NewPlayerController : Controller
     public LayerMask HealthSystemLayer { get { return healthSystemLayer; } }
     public Vector2 LookDirection { get { return _lookDirection; } }
     public List<Weapon> Weapons { get { return weapons; } }
-    public FallMesh FallMesh { get { return fallmesh; } }
     public GameObject FallSprite { get { return _fallSprite; } }
     public GameObject FallDownSprite { get { return _fallDownSprite; } }
     public GameObject LandMesh { get { return _landMesh; } }
@@ -73,6 +73,8 @@ public class NewPlayerController : Controller
     public float LandEffectLifetime { get { return landEffectLifetime; } }
     public int LandDamage { get { return landDamage; } }
     public float LandDamageRadius { get { return landDamageRadius; } }
+    public float LandCameraShakeGain { get { return landCameraShakeGain; } }
+    public float LandCameraShakeTime { get { return landCameraShakeTime; } }
 
     private void Update()
     {
