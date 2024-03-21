@@ -61,7 +61,10 @@ public class DummyController : MonoBehaviour
         newScrap.Initialize();
 
         int randomExplosion = Random.Range(0, explosionEffects.Count);
-        GameObject newExplosion = Instantiate(explosionEffects[randomExplosion], transform.position, Quaternion.identity);
+        float randomExplosionRotation = Random.Range(0f, 360f);
+        float randomExplosionScale = Random.Range(0.75f, 1f);
+        GameObject newExplosion = Instantiate(explosionEffects[randomExplosion], transform.position, Quaternion.Euler(0f, 0f, randomExplosionRotation));
+        newExplosion.transform.localScale = new Vector3(randomExplosionScale, randomExplosionScale, 1f);
         Destroy(newExplosion, 0.367f);
 
         gameObject.SetActive(false);

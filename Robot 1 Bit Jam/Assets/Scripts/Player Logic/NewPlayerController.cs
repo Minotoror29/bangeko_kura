@@ -167,6 +167,8 @@ public class NewPlayerController : Controller
 
         InstantiateEffect(laserOriginEffect, laserFirePoint.position, Quaternion.LookRotation(Vector3.forward, _lookDirection), 0.367f);
 
+        CameraManager.Instance.ShakeCamera(2f, 0.1f);
+
         _laserCooldownTimer = laserCooldown;
     }
 
