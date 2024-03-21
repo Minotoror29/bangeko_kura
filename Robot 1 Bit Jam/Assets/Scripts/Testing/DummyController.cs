@@ -7,15 +7,26 @@ public class DummyController : MonoBehaviour
     [SerializeField] private Animator generalAnimator;
 
     [SerializeField] private HealthSystem healthSystem;
+    [SerializeField] private bool indestructible = true;
     [SerializeField] private List<SkinnedMeshRenderer> meshRenderers;
     [SerializeField] private float changeColorTime = 0.1f;
     private float _changeColorTimer;
+
+    [Header("Effects")]
+    [SerializeField] private Scrap scrapPrefab;
+    [SerializeField] private List<GameObject> explosionEffects;
 
     private void Start()
     {
         healthSystem.Initialize(transform);
         healthSystem.OnDamage += TakeDamage;
-        healthSystem.OnDeath += ResetHealth;
+        if (indestructible)
+        {
+            healthSystem.OnDeath += ResetHealth;
+        } else
+        {
+            healthSystem.OnDeath += Die;
+        }
     }
 
     private void TakeDamage()
@@ -39,9 +50,21 @@ public class DummyController : MonoBehaviour
         generalAnimator.SetTrigger("Squish");
     }
 
-    private void ResetHealth(HealthSystem healthSYstem, Transform deathSource)
+    private void ResetHealth(HealthSystem healthSystem, Transform deathSource)
     {
-        healthSystem.ResetHealth();
+        this.healthSystem.ResetHealth();
+    }
+
+    private void Die(HealthSystem healthSystem, Transform deathSource)
+    {
+        Scrap newScrap = Instantiate(scrapPrefab, transform.position, Quaternion.identity);
+        newScrap.Initialize();
+
+        int randomExplosion = Random.Range(0, explosionEffects.Count);
+        GameObject newExplosion = Instantiate(explosionEffects[randomExplosion], transform.position, Quaternion.identity);
+        Destroy(newExplosion, 0.367f);
+
+        gameObject.SetActive(false);
     }
 
     private void Update()

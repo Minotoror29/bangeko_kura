@@ -364,9 +364,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   generalAnimator: {fileID: 7985697866530997674}
   healthSystem: {fileID: 2348104351234627581}
+  indestructible: 1
   meshRenderers:
   - {fileID: 1472826614112404733}
   changeColorTime: 0.1
+  scrapPrefab: {fileID: 375830838884171308, guid: e3b0b9b5b283651489d3f4d21f0b25b7,
+    type: 3}
+  explosionEffects:
+  - {fileID: 7688115154114750695, guid: b42ceb097a6a2a541ab82d88356387e6, type: 3}
+  - {fileID: 7688115154114750695, guid: c1ff6de5a538ecb4a98eef7badfa7d1a, type: 3}
 --- !u!95 &7985697866530997674
 Animator:
   serializedVersion: 5
