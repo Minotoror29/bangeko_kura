@@ -30,6 +30,13 @@ public class PlayerWalkState : PlayerState
     {
     }
 
+    public override bool CanAttackSword()
+    {
+        Controller.ChangeState(new PlayerSwordState(Controller));
+
+        return true;
+    }
+
     public override void UpdateLogic()
     {
         foreach (Weapon weapon in Controller.Weapons)

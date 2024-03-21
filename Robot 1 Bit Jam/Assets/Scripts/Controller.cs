@@ -35,6 +35,11 @@ public abstract class Controller : MonoBehaviour
     public abstract void UpdateLogic();
     public abstract void UpdatePhysics();
 
+    public virtual bool SwordAttack()
+    {
+        return false;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Ground") && !_grounds.Contains(collision.gameObject))

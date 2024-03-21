@@ -191,6 +191,11 @@ public class NewPlayerController : Controller
 
     }
 
+    public override bool SwordAttack()
+    {
+        return _currentState.CanAttackSword();
+    }
+
     public override void UpdateLogic()
     {
         _currentState.UpdateLogic();

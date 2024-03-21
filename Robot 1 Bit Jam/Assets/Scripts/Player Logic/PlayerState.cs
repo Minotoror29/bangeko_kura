@@ -21,4 +21,9 @@ public abstract class PlayerState : State
         _controls = controller.Controls;
         _animator = controller.Animator;
     }
+
+    public virtual bool CanAttackSword()
+    {
+        return false;
+    }
 }

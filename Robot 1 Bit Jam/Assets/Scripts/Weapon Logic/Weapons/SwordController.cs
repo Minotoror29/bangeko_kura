@@ -39,9 +39,16 @@ public class SwordController : Weapon
         {
             if (_enemiesInRange.Count > 0)
             {
+                if (!Controller.SwordAttack())
+                {
+                    return;
+                }
+
                 if (Controller.Animator != null)
                 {
-                    Controller.Animator.SetTrigger("Sword");
+                    //Controller.Animator.SetTrigger("Sword");
+                    //Controller.Animator.CrossFade("Player Sword", 0f);
+                    //Controller.SwordAttack();
                 }
 
                 List<HealthSystem> targets = new();
@@ -57,14 +64,7 @@ public class SwordController : Weapon
 
                 foreach (HealthSystem target in targets)
                 {
-                    if (damage > 0)
-                    {
-                        target.TakeDamage(damage, Controller.transform);
-                    }
-                    else if (damage == -1)
-                    {
-                        target.Die(Controller.transform);
-                    }
+                    target.TakeDamage(damage, Controller.transform);
                 }
 
                 _cooldownTimer = 0f;

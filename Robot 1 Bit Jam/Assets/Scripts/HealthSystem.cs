@@ -39,7 +39,13 @@ public class HealthSystem : MonoBehaviour
             return;
         }
 
-        _currentHealth -= damage;
+        if (damage >= 0)
+        {
+            _currentHealth -= damage;
+        } else if (damage < 0)
+        {
+            _currentHealth = 0;
+        }
         OnDamage?.Invoke();
         if (_currentHealth <= 0)
         {
