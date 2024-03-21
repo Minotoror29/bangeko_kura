@@ -33,6 +33,7 @@ public class NewPlayerController : Controller
     [SerializeField] private int laserDamage = 15;
     [SerializeField] private float laserCooldown = 3f;
     [SerializeField] private Transform aim;
+    [SerializeField] private GameObject laserOriginEffect;
     private float _laserCooldownTimer;
     private Vector2 _lookDirection;
     private Vector2 _mousePosition;
@@ -162,7 +163,9 @@ public class NewPlayerController : Controller
 
         ////Visuals
         Laser newLaser = Instantiate(laserPrefab);
-        newLaser.Initialize(laserFirePoint.position, (Vector2)laserFirePoint.position + (_mousePosition - (Vector2)laserFirePoint.position).normalized * rayDistance, laserWidth);
+        newLaser.Initialize((Vector2)laserFirePoint.position + _lookDirection.normalized * 0.75f, (Vector2)laserFirePoint.position + (_mousePosition - (Vector2)laserFirePoint.position).normalized * rayDistance, laserWidth);
+
+        InstantiateEffect(laserOriginEffect, laserFirePoint.position, Quaternion.LookRotation(Vector3.forward, _lookDirection), 0.367f);
 
         _laserCooldownTimer = laserCooldown;
     }

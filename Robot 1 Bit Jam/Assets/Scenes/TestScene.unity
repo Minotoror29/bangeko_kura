@@ -249,7 +249,7 @@ Transform:
   m_Children:
   - {fileID: 374466178}
   m_Father: {fileID: 1487840485}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &175164591
 MonoBehaviour:
@@ -3185,7 +3185,7 @@ Transform:
   - {fileID: 214024133}
   - {fileID: 994528603}
   m_Father: {fileID: 1487840485}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: -45, y: 0, z: 0}
 --- !u!1 &1012103690
 GameObject:
@@ -3532,7 +3532,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3874377432475053878}
   - {fileID: 175164589}
   - {fileID: 2124977177}
   - {fileID: 1890340952}
@@ -3584,7 +3583,7 @@ MonoBehaviour:
     type: 3}
   laserFirePoint: {fileID: 3874377432475053878}
   laserMaxDistance: 50
-  laserWidth: 0.5
+  laserWidth: 0.25
   laserPrefab: {fileID: 5168047291316246020, guid: 27b14fae9d065cb4a8df3f240af1b7d3,
     type: 3}
   healthSystemLayer:
@@ -3596,6 +3595,8 @@ MonoBehaviour:
   laserDamage: 15
   laserCooldown: 2
   aim: {fileID: 994528603}
+  laserOriginEffect: {fileID: 546793271799657349, guid: 4ba966aba2f38bb40b70d3ce6e63c979,
+    type: 3}
   weapons:
   - {fileID: 1890340953}
   - {fileID: 2124977179}
@@ -3789,7 +3790,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1487840485}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &1578485670
 CapsuleCollider2D:
@@ -3918,7 +3919,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1487840485}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1890340953
 MonoBehaviour:
@@ -4110,7 +4111,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1487840485}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2124977179
 MonoBehaviour:
@@ -4357,12 +4358,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2278820478210677575}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.75, z: 0}
+  m_LocalPosition: {x: -0.00016, y: 0.00169, z: 0.00132}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1487840485}
-  m_RootOrder: 0
+  m_Father: {fileID: 1508371149}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &4389833384008934745
 MeshRenderer:
