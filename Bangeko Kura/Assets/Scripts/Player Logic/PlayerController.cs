@@ -128,9 +128,9 @@ public class PlayerController : Controller
             }
             else
             {
-                if (Animator != null)
+                if (MeshAnimator != null)
                 {
-                    Animator.SetBool("Dashing", false);
+                    MeshAnimator.SetBool("Dashing", false);
                 }
                 Dashing = false;
                 _dashCooldownTimer = 0f;
@@ -221,9 +221,9 @@ public class PlayerController : Controller
     {
         if (_dashCooldownTimer < dashCooldown || _movementDirection.magnitude == 0f) return;
 
-        if (Animator != null)
+        if (MeshAnimator != null)
         {
-            Animator.SetBool("Dashing", true);
+            MeshAnimator.SetBool("Dashing", true);
         }
         _dashTimer = 0f;
         _dashDirection = _movementDirection;

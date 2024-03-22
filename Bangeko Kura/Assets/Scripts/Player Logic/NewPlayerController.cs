@@ -57,6 +57,11 @@ public class NewPlayerController : Controller
     private GameObject _fallDownSprite;
     private GameObject _landMesh;
 
+    [Space]
+    [SerializeField] private float changeColorTime;
+    [SerializeField] private Color damageColor;
+    private float _changeColorTimer = 0f;
+
     public event Action OnDash;
     public event Action OnTakeDamage;
 
@@ -196,7 +201,18 @@ public class NewPlayerController : Controller
 
     private void TakeDamage(int amount)
     {
+        GeneralAnimator.SetTrigger("Squish");
+        ChangeColor();
+    }
 
+    private void ChangeColor()
+    {
+        foreach (SkinnedMeshRenderer renderer in MeshRenderers)
+        {
+            renderer.material.SetColor("_Dark_Color", damageColor);
+        }
+
+        _changeColorTimer = changeColorTime;
     }
 
     public override bool SwordAttack()
@@ -218,6 +234,17 @@ public class NewPlayerController : Controller
         if (_laserCooldownTimer > 0f)
         {
             _laserCooldownTimer -= Time.deltaTime;
+        }
+
+        if (_changeColorTimer > 0f)
+        {
+            _changeColorTimer -= Time.deltaTime;
+        } else
+        {
+            foreach (SkinnedMeshRenderer renderer in MeshRenderers)
+            {
+                renderer.material.SetColor("_Dark_Color", Color.black);
+            }
         }
     }
 

@@ -7,9 +7,11 @@ public abstract class Controller : MonoBehaviour
     private ScreenManager _screenManager;
 
     private Rigidbody2D _rb;
-    [SerializeField] private Animator animator;
+    [SerializeField] private Animator generalAnimator;
+    [SerializeField] private Animator meshAnimator;
     private HealthSystem _healthSystem;
     [SerializeField] private Transform mesh;
+    [SerializeField] private List<SkinnedMeshRenderer> meshRenderers;
 
     private bool _dashing;
 
@@ -17,9 +19,11 @@ public abstract class Controller : MonoBehaviour
 
     public ScreenManager ScreenManager { get { return _screenManager; } }
     public Rigidbody2D Rb { get { return _rb; } }
-    public Animator Animator { get { return animator; } }
+    public Animator GeneralAnimator { get { return generalAnimator; } }
+    public Animator MeshAnimator { get { return meshAnimator; } }
     public HealthSystem HealthSystem { get { return _healthSystem; } }
     public Transform Mesh { get { return mesh; } }
+    public List<SkinnedMeshRenderer> MeshRenderers { get { return meshRenderers; } }
     public bool Dashing { get { return _dashing; } set { _dashing = value; } }
     public List<GameObject> Grounds { get { return _grounds; } }
 

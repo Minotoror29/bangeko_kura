@@ -21,7 +21,7 @@ public abstract class NemesisState : State
         _phase = phase;
         _controller = phase.Controller;
         _rb = phase.Controller.Rb;
-        _animator = phase.Controller.Animator;
+        _animator = phase.Controller.MeshAnimator;
         _player = phase.Controller.Player;
     }
 

@@ -10,7 +10,7 @@ public class NemesisController : Controller
 
     [SerializeField] private ShieldController shield;
 
-    [SerializeField] private Transform mesh;
+    //[SerializeField] private Transform mesh;
 
     [Header("Phases")]
     [SerializeField] private NemesisPhaseData phase1;
@@ -149,8 +149,8 @@ public class NemesisController : Controller
     private void Rotate()
     {
         Vector2 lookDirection = _player.transform.position - transform.position;
-        Quaternion meshRotation = Quaternion.LookRotation(new Vector3(lookDirection.x, 0f, lookDirection.y), mesh.up);
-        mesh.localRotation = Quaternion.Euler(new Vector3(0f, meshRotation.eulerAngles.y, 0f));
+        Quaternion meshRotation = Quaternion.LookRotation(new Vector3(lookDirection.x, 0f, lookDirection.y), Mesh.up);
+        Mesh.localRotation = Quaternion.Euler(new Vector3(0f, meshRotation.eulerAngles.y, 0f));
     }
 
     public override void UpdatePhysics()
@@ -165,7 +165,7 @@ public class NemesisController : Controller
 
     public void StopMovement()
     {
-        Animator.SetBool("Walking", false);
+        MeshAnimator.SetBool("Walking", false);
 
         Rb.velocity = Vector2.zero;
     }

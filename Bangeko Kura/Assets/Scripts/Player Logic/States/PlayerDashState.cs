@@ -25,16 +25,16 @@ public class PlayerDashState : PlayerState
 
         if (_animationDirection == Direction.Forward)
         {
-            Controller.Animator.CrossFade("Player Dash Forward", 0f);
+            Controller.MeshAnimator.CrossFade("Player Dash Forward", 0f);
         } else if (_animationDirection == Direction.Back)
         {
-            Controller.Animator.CrossFade("Player Dash Back", 0f);
+            Controller.MeshAnimator.CrossFade("Player Dash Back", 0f);
         } else if (_animationDirection == Direction.Right)
         {
-            Controller.Animator.CrossFade("Player Dash Right", 0f);
+            Controller.MeshAnimator.CrossFade("Player Dash Right", 0f);
         } else if (_animationDirection == Direction.Left)
         {
-            Controller.Animator.CrossFade("Player Dash Left", 0f);
+            Controller.MeshAnimator.CrossFade("Player Dash Left", 0f);
         }
 
         Controller.InstantiateEffect(Controller.DashEffect, Controller.transform.position, Quaternion.LookRotation(Vector3.forward, _dashDirection.normalized), 0.367f);

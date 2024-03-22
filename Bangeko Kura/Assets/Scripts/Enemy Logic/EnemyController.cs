@@ -117,9 +117,9 @@ public class EnemyController : Controller
 
     public void StopMovement()
     {
-        if (Animator != null)
+        if (MeshAnimator != null)
         {
-            Animator.SetBool("Walking", false);
+            MeshAnimator.SetBool("Walking", false);
         }
 
         Rb.velocity = Vector3.zero;
@@ -127,9 +127,9 @@ public class EnemyController : Controller
 
     public void MoveTowards(Vector2 direction)
     {
-        if (Animator != null)
+        if (MeshAnimator != null)
         {
-            Animator.SetBool("Walking", true);
+            MeshAnimator.SetBool("Walking", true);
         }
 
         if (!Dashing)

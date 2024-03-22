@@ -25,7 +25,7 @@ public class PlayerIdleState : PlayerState
         Controller.OnDash += Dash;
 
         _currentState = IdleState.Static;
-        Controller.Animator.CrossFade("Player Idle", 0.1f);
+        Controller.MeshAnimator.CrossFade("Player Idle", 0.1f);
     }
 
     public override void Exit()

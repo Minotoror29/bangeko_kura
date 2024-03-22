@@ -46,9 +46,9 @@ public class DashController : Weapon
             {
                 if ((_target.position - Controller.transform.position).magnitude >= distanceToDash && Controller.Rb.velocity.magnitude > 0)
                 {
-                    if (Controller.Animator != null)
+                    if (Controller.MeshAnimator != null)
                     {
-                        Controller.Animator.SetBool("Dashing", true);
+                        Controller.MeshAnimator.SetBool("Dashing", true);
                     }
                     Controller.Dashing = true;
                     _dashDirection = (_target.position - Controller.transform.position).normalized;
@@ -64,9 +64,9 @@ public class DashController : Weapon
                 _dashTimer += Time.deltaTime;
             } else
             {
-                if (Controller.Animator != null)
+                if (Controller.MeshAnimator != null)
                 {
-                    Controller.Animator.SetBool("Dashing", false);
+                    Controller.MeshAnimator.SetBool("Dashing", false);
                 }
                 Controller.Dashing = false;
                 _dashTimer = 0f;

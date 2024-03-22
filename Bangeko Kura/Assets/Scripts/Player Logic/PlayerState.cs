@@ -19,7 +19,7 @@ public abstract class PlayerState : State
         _controller = controller;
         _rb = controller.Rb;
         _controls = controller.Controls;
-        _animator = controller.Animator;
+        _animator = controller.MeshAnimator;
     }
 
     public virtual bool CanAttackSword()

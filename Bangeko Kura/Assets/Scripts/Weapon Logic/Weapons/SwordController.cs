@@ -67,7 +67,7 @@ public class SwordController : Weapon
                     return;
                 }
 
-                if (Controller.Animator != null)
+                if (Controller.MeshAnimator != null)
                 {
                     //Controller.Animator.SetTrigger("Sword");
                     //Controller.Animator.CrossFade("Player Sword", 0f);

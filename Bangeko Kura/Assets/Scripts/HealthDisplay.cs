@@ -32,7 +32,8 @@ public class HealthDisplay : MonoBehaviour
         {
             GameObject barToRemove = _bars[^1];
             _bars.Remove(barToRemove);
-            Destroy(barToRemove);
+            barToRemove.GetComponent<Animator>().CrossFade("TakeDamage", 0f);
+            //barToRemove.SetActive(false);
 
             if (_bars.Count == 0) break;
         }
