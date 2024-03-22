@@ -11,7 +11,7 @@ public class NewPlayerController : Controller
 
     private PlayerState _currentState;
 
-    [SerializeField] private Transform mesh;
+    //[SerializeField] private Transform mesh;
 
     [Header("Movement")]
     [SerializeField] private float movementSpeed = 500f;
@@ -59,7 +59,7 @@ public class NewPlayerController : Controller
     public event Action OnTakeDamage;
 
     public PlayerControls Controls { get { return _controls; } }
-    public Transform Mesh { get { return mesh; } }
+    //public Transform Mesh { get { return mesh; } }
     public float MovementSpeed { get { return movementSpeed; } }
     public float DashSpeed { get { return dashSpeed; } }
     public float DashDistance { get { return dashDistance; } }
@@ -180,7 +180,7 @@ public class NewPlayerController : Controller
     public void Die(HealthSystem healthSystem, Transform deathSource)
     {
         _controls.InGame.Disable();
-        mesh.gameObject.SetActive(false);
+        Mesh.gameObject.SetActive(false);
 
         ScreenManager.PlayerDied();
     }
@@ -232,15 +232,15 @@ public class NewPlayerController : Controller
 
     public void RotateMesh()
     {
-        Quaternion meshRotation = Quaternion.LookRotation(new Vector3(_lookDirection.x, 0f, _lookDirection.y), mesh.up);
-        mesh.localRotation = Quaternion.Euler(new Vector3(0f, meshRotation.eulerAngles.y, 0f));
+        Quaternion meshRotation = Quaternion.LookRotation(new Vector3(_lookDirection.x, 0f, _lookDirection.y), Mesh.up);
+        Mesh.localRotation = Quaternion.Euler(new Vector3(0f, meshRotation.eulerAngles.y, 0f));
     }
 
     public void RotateMeshSmooth(Vector3 direction, float speed)
     {
-        Quaternion meshRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.y), mesh.up);
+        Quaternion meshRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.y), Mesh.up);
         Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, meshRotation.eulerAngles.y, 0f));
-        mesh.localRotation = Quaternion.RotateTowards(mesh.localRotation, targetRotation, speed * Time.deltaTime);
+        Mesh.localRotation = Quaternion.RotateTowards(Mesh.localRotation, targetRotation, speed * Time.deltaTime);
     }
 
     public override void UpdatePhysics()

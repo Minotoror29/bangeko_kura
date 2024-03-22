@@ -27,7 +27,7 @@ public class EnemyController : Controller
 
     [SerializeField] private List<Weapon> weapons;
 
-    [SerializeField] private Transform mesh;
+    //[SerializeField] private Transform mesh;
 
     private EventInstance _deathSound;
 
@@ -100,8 +100,8 @@ public class EnemyController : Controller
     {
         if (Rb.velocity.magnitude > 0)
         {
-            Quaternion meshRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.y), mesh.up);
-            mesh.localRotation = Quaternion.Euler(new Vector3(0f, meshRotation.eulerAngles.y, 0f));
+            Quaternion meshRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.y), Mesh.up);
+            Mesh.localRotation = Quaternion.Euler(new Vector3(0f, meshRotation.eulerAngles.y, 0f));
         }
     }
 

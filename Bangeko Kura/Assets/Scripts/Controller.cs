@@ -9,6 +9,7 @@ public abstract class Controller : MonoBehaviour
     private Rigidbody2D _rb;
     [SerializeField] private Animator animator;
     private HealthSystem _healthSystem;
+    [SerializeField] private Transform mesh;
 
     private bool _dashing;
 
@@ -18,6 +19,7 @@ public abstract class Controller : MonoBehaviour
     public Rigidbody2D Rb { get { return _rb; } }
     public Animator Animator { get { return animator; } }
     public HealthSystem HealthSystem { get { return _healthSystem; } }
+    public Transform Mesh { get { return mesh; } }
     public bool Dashing { get { return _dashing; } set { _dashing = value; } }
     public List<GameObject> Grounds { get { return _grounds; } }
 

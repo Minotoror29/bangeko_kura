@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerSwordState : PlayerState
 {
-    private float _timer = 1.267f;
+    private float _timer = 0.633f;
 
     public PlayerSwordState(NewPlayerController controller) : base(controller)
     {

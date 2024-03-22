@@ -13,6 +13,11 @@ public class SwordController : Weapon
     private List<HealthSystem> _enemiesInRange;
     private List<HealthSystem> _alliesInRange;
 
+    [SerializeField] private GameObject swordEffectPrefab;
+    [SerializeField] private float swordEffectTime = 0.2f;
+    private GameObject _swordEffect;
+    private float _swordEffectTimer;
+
     private EventInstance _swordSound;
 
     public override void Initialize(Controller controller, HealthSystem healthSystem)
@@ -25,12 +30,30 @@ public class SwordController : Weapon
 
         HealthSystem.OnDeath += RemoveFromOthersTargets;
 
+        _swordEffect = Instantiate(swordEffectPrefab);
+        _swordEffect.SetActive(false);
+        _swordEffectTimer = 0f;
+
         _swordSound = RuntimeManager.CreateInstance("event:/Weapons/Sword");
     }
 
     public override void UpdateLogic()
     {
         base.UpdateLogic();
+
+        _swordEffect.transform.position = Controller.transform.position;
+        _swordEffect.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, Controller.Mesh.transform.rotation.eulerAngles.y));
+
+        if (_swordEffect.activeSelf)
+        {
+            if (_swordEffectTimer > 0f)
+            {
+                _swordEffectTimer -= Time.deltaTime;
+            } else
+            {
+                _swordEffect.SetActive(false);
+            }
+        }
 
         if (_cooldownTimer < cooldown)
         {
@@ -70,6 +93,9 @@ public class SwordController : Weapon
                 _cooldownTimer = 0f;
 
                 _swordSound.start();
+
+                _swordEffect.SetActive(true);
+                _swordEffectTimer = swordEffectTime;
             }
         }
     }
