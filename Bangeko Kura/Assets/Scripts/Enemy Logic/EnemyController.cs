@@ -86,6 +86,8 @@ public class EnemyController : Controller
 
     public override void UpdateLogic()
     {
+        base.UpdateLogic();
+
         _distanceToPlayer = (_player.transform.position - transform.position).magnitude;
 
         foreach (Weapon weapon in weapons)
