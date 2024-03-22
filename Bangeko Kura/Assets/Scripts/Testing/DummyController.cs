@@ -29,7 +29,7 @@ public class DummyController : MonoBehaviour
         }
     }
 
-    private void TakeDamage()
+    private void TakeDamage(int amount)
     {
         ChangeColor();
         Squish();

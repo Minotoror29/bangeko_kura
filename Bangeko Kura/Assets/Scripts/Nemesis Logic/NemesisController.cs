@@ -82,7 +82,7 @@ public class NemesisController : Controller
     {
         base.Initialize(screenManager);
 
-        HealthSystem.OnDamage += TakeDamage;
+        //HealthSystem.OnDamage += TakeDamage;
         HealthSystem.OnDeath += Die;
         _player = FindObjectOfType<NewPlayerController>();
 

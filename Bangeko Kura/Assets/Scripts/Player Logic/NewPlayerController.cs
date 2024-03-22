@@ -13,6 +13,8 @@ public class NewPlayerController : Controller
 
     //[SerializeField] private Transform mesh;
 
+    [SerializeField] private HealthDisplay healthDisplay;
+
     [Header("Movement")]
     [SerializeField] private float movementSpeed = 500f;
 
@@ -99,6 +101,7 @@ public class NewPlayerController : Controller
         HealthSystem.OnHit += TakeHit;
         HealthSystem.OnDamage += TakeDamage;
         HealthSystem.OnDeath += Die;
+        healthDisplay.Initialize(HealthSystem);
 
         _dashCooldownTimer = 0f;
         _laserCooldownTimer = 0f;
@@ -191,7 +194,7 @@ public class NewPlayerController : Controller
         Destroy(newEffect, time);
     }
 
-    private void TakeDamage()
+    private void TakeDamage(int amount)
     {
 
     }

@@ -5,11 +5,36 @@ using UnityEngine;
 
 public class HealthDisplay : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI health;
-    [SerializeField] private HealthSystem healthSystem;
+    private HealthSystem _healthSystem;
 
-    private void Update()
+    [SerializeField] private GameObject barPrefab;
+    [SerializeField] private Transform barsParent;
+    private List<GameObject> _bars;
+
+    public void Initialize(HealthSystem healthSystem)
     {
-        health.text = healthSystem.CurrentHealth.ToString();
+        _healthSystem = healthSystem;
+        _healthSystem.OnDamage += TakeDamage;
+
+        _bars = new();
+        for (int i = 0; i < healthSystem.CurrentHealth; i++)
+        {
+            GameObject newBar = Instantiate(barPrefab, barsParent);
+            _bars.Add(newBar);
+        }
+    }
+
+    public void TakeDamage(int amount)
+    {
+        if (_bars.Count == 0) return;
+
+        for (int i = 0; i < amount; i++)
+        {
+            GameObject barToRemove = _bars[^1];
+            _bars.Remove(barToRemove);
+            Destroy(barToRemove);
+
+            if (_bars.Count == 0) break;
+        }
     }
 }
