@@ -36,6 +36,13 @@ public class EnemyChasingState : EnemyState
     {
     }
 
+    public override bool CanAttackSword()
+    {
+        Controller.ChangeState(new EnemySwordState(Controller));
+
+        return true;
+    }
+
     public override void UpdateLogic()
     {
         base.UpdateLogic();

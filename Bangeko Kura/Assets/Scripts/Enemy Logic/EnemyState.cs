@@ -48,4 +48,9 @@ public abstract class EnemyState : State
     {
         OnUpdate?.Invoke();
     }
+
+    public virtual bool CanAttackSword()
+    {
+        return false;
+    }
 }

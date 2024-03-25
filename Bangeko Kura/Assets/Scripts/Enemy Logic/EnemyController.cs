@@ -74,9 +74,7 @@ public class EnemyController : Controller
 
     public override bool SwordAttack()
     {
-        ChangeState(new EnemySwordState(this));
-
-        return true;
+        return _currentState.CanAttackSword();
     }
 
     public void Die(HealthSystem healthSystem, Transform deathSource)
@@ -138,21 +136,11 @@ public class EnemyController : Controller
 
     public void StopMovement()
     {
-        //if (MeshAnimator != null)
-        //{
-        //    MeshAnimator.SetBool("Walking", false);
-        //}
-
         Rb.velocity = Vector3.zero;
     }
 
     public void MoveTowards(Vector2 direction)
     {
-        //if (MeshAnimator != null)
-        //{
-        //    MeshAnimator.SetBool("Walking", true);
-        //}
-
         if (!Dashing)
         {
             Rb.velocity = movementSpeed * Time.fixedDeltaTime * direction.normalized;
