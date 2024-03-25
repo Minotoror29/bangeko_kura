@@ -43,7 +43,7 @@ public class EnemyFleeFromState : EnemyState
     {
         base.UpdateLogic();
 
-        Controller.LookTowards(Controller.Rb.velocity);
+        Controller.LookTowards(Controller.Rb.velocity, false);
 
         _fleeingTimer -= Time.deltaTime;
         if (_fleeingTimer <= 0 )

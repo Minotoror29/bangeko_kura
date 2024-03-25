@@ -47,7 +47,7 @@ public class EnemyChasingState : EnemyState
     {
         base.UpdateLogic();
 
-        Controller.LookTowards(Controller.Player.transform.position - Controller.transform.position);
+        Controller.LookTowards(Controller.Player.transform.position - Controller.transform.position, false);
 
         if (_chasingTimer < _chasingTime)
         {

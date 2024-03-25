@@ -115,9 +115,9 @@ public class EnemyController : Controller
         _currentState.UpdateLogic();
     }
 
-    public void LookTowards(Vector2 direction)
+    public void LookTowards(Vector2 direction, bool idle)
     {
-        if (Rb.velocity.magnitude > 0)
+        if (Rb.velocity.magnitude > 0 || idle)
         {
             Quaternion meshRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.y), Mesh.up);
             Mesh.localRotation = Quaternion.Euler(new Vector3(0f, meshRotation.eulerAngles.y, 0f));

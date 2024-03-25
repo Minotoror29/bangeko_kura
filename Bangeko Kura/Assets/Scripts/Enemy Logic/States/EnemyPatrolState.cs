@@ -47,7 +47,7 @@ public class EnemyPatrolState : EnemyState
 
         _patrolTimer -= Time.deltaTime;
 
-        Controller.LookTowards(Controller.Rb.velocity);
+        Controller.LookTowards(Controller.Rb.velocity, false);
 
         if (_patrolTimer <= 0f)
         {
