@@ -72,6 +72,13 @@ public class EnemyController : Controller
         return UnityEngine.Random.Range(minIdleTime, maxIdleTime);
     }
 
+    public override bool SwordAttack()
+    {
+        ChangeState(new EnemySwordState(this));
+
+        return true;
+    }
+
     public void Die(HealthSystem healthSystem, Transform deathSource)
     {
         Scrap newScrap = Instantiate(scrapPrefab, transform.position, Quaternion.identity);
@@ -131,20 +138,20 @@ public class EnemyController : Controller
 
     public void StopMovement()
     {
-        if (MeshAnimator != null)
-        {
-            MeshAnimator.SetBool("Walking", false);
-        }
+        //if (MeshAnimator != null)
+        //{
+        //    MeshAnimator.SetBool("Walking", false);
+        //}
 
         Rb.velocity = Vector3.zero;
     }
 
     public void MoveTowards(Vector2 direction)
     {
-        if (MeshAnimator != null)
-        {
-            MeshAnimator.SetBool("Walking", true);
-        }
+        //if (MeshAnimator != null)
+        //{
+        //    MeshAnimator.SetBool("Walking", true);
+        //}
 
         if (!Dashing)
         {

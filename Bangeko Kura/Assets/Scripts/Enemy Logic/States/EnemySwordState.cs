@@ -1,25 +1,20 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyIdleState : EnemyState
+public class EnemySwordState : EnemyState
 {
-    public EnemyIdleState(EnemyController controller) : base(controller)
+    private float _timer = 0.958f;
+
+    public EnemySwordState(EnemyController controller) : base(controller)
     {
-        Id = EnemyStateId.Idle;
     }
 
     public override void Enter()
     {
         base.Enter();
 
-        Controller.MeshAnimator.CrossFade("Enemy Idle", 0f);
-    }
-
-    public override void Exit()
-    {
-        base.Exit();
+        Controller.MeshAnimator.CrossFade("Enemy Sword", 0f);
     }
 
     public override void OnCollisionEnter(Collision2D collision)
@@ -33,6 +28,15 @@ public class EnemyIdleState : EnemyState
     public override void UpdateLogic()
     {
         base.UpdateLogic();
+
+        if (_timer > 0f)
+        {
+            _timer -= Time.deltaTime;
+        }
+        else
+        {
+            Controller.ChangeState(new EnemyIdleState(Controller));
+        }
     }
 
     public override void UpdatePhysics()

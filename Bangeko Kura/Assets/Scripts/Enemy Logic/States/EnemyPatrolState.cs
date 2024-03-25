@@ -16,8 +16,7 @@ public class EnemyPatrolState : EnemyState
     {
         base.Enter();
 
-        //_direction = Random.insideUnitSphere;
-        //_direction.y = 0f;
+        Controller.MeshAnimator.CrossFade("Enemy Walk", 0f);
 
         _direction = Random.insideUnitCircle;
 

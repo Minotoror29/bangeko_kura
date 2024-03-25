@@ -19,6 +19,8 @@ public class EnemyChasingState : EnemyState
     public override void Enter()
     {
         base.Enter();
+
+        Controller.MeshAnimator.CrossFade("Enemy Walk", 0f);
     }
 
     public override void Exit()
