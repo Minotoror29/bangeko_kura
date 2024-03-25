@@ -30,6 +30,10 @@ public class EnemyChasingState : EnemyState
     {
     }
 
+    public override void OnCollisionStay(Collision2D collision)
+    {
+    }
+
     public override void UpdateLogic()
     {
         base.UpdateLogic();

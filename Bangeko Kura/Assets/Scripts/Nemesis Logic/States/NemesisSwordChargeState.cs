@@ -28,6 +28,10 @@ public class NemesisSwordChargeState : NemesisState
     {
     }
 
+    public override void OnCollisionStay(Collision2D collision)
+    {
+    }
+
     public override void UpdateLogic()
     {
         if (_chargeTimer > 0f)

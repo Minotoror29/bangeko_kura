@@ -21,6 +21,10 @@ public class PlayerDeathState : PlayerState
     {
     }
 
+    public override void OnCollisionStay(Collision2D collision)
+    {
+    }
+
     public override void UpdateLogic()
     {
     }

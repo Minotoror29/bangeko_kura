@@ -53,6 +53,10 @@ public class PlayerDashState : PlayerState
         }
     }
 
+    public override void OnCollisionStay(Collision2D collision)
+    {
+    }
+
     public override void UpdateLogic()
     {
         foreach (Weapon weapon in Controller.Weapons)

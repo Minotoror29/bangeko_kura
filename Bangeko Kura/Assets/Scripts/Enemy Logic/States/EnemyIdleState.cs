@@ -24,6 +24,10 @@ public class EnemyIdleState : EnemyState
     {
     }
 
+    public override void OnCollisionStay(Collision2D collision)
+    {
+    }
+
     public override void UpdateLogic()
     {
         base.UpdateLogic();

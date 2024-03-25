@@ -159,6 +159,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c208081a280cd1248abb24a8f8c60ccd, type: 2}
   fleeingZoneRadius: 10
   weapons: []
+  scrapPrefab: {fileID: 375830838884171308, guid: e3b0b9b5b283651489d3f4d21f0b25b7,
+    type: 3}
+  explosionEffects:
+  - {fileID: 7688115154114750695, guid: b42ceb097a6a2a541ab82d88356387e6, type: 3}
+  - {fileID: 7688115154114750695, guid: c1ff6de5a538ecb4a98eef7badfa7d1a, type: 3}
 --- !u!50 &5820088486749555142
 Rigidbody2D:
   serializedVersion: 4
@@ -193,7 +198,7 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.6}
+  m_Offset: {x: 0, y: -0.45}
   serializedVersion: 2
   m_Radius: 0.4
 --- !u!95 &3993889168560487937

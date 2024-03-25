@@ -27,7 +27,9 @@ public class EnemyController : Controller
 
     [SerializeField] private List<Weapon> weapons;
 
-    //[SerializeField] private Transform mesh;
+    [Header("Effects")]
+    [SerializeField] private Scrap scrapPrefab;
+    [SerializeField] private List<GameObject> explosionEffects;
 
     private EventInstance _deathSound;
 
@@ -72,6 +74,16 @@ public class EnemyController : Controller
 
     public void Die(HealthSystem healthSystem, Transform deathSource)
     {
+        Scrap newScrap = Instantiate(scrapPrefab, transform.position, Quaternion.identity);
+        newScrap.Initialize();
+
+        int randomExplosion = UnityEngine.Random.Range(0, explosionEffects.Count);
+        float randomExplosionRotation = UnityEngine.Random.Range(0f, 360f);
+        float randomExplosionScale = UnityEngine.Random.Range(0.75f, 1f);
+        GameObject newExplosion = Instantiate(explosionEffects[randomExplosion], transform.position, Quaternion.Euler(0f, 0f, randomExplosionRotation));
+        newExplosion.transform.localScale = new Vector3(randomExplosionScale, randomExplosionScale, 1f);
+        Destroy(newExplosion, 0.367f);
+
         foreach (EnemyController enemy in EnemiesManager.EnemiesCloseTo(this, fleeingZoneRadius))
         {
             enemy.EnemyDiedClose(deathSource);
@@ -150,6 +162,11 @@ public class EnemyController : Controller
     private void OnCollisionEnter2D(Collision2D collision)
     {
         _currentState.OnCollisionEnter(collision);
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        _currentState.OnCollisionStay(collision);
     }
 
     private void OnDrawGizmos()

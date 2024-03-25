@@ -99,4 +99,8 @@ public class PlayerWalkState : PlayerState
     {
         Controller.ChangeState(new PlayerDashState(Controller, Controls.InGame.Movement.ReadValue<Vector2>(), _currentDirection));
     }
+
+    public override void OnCollisionStay(Collision2D collision)
+    {
+    }
 }

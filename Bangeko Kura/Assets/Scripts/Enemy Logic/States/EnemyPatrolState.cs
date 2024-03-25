@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyPatrolState : EnemyState
 {
-    private Vector3 _direction;
+    private Vector2 _direction;
     private float _patrolTimer;
 
     public EnemyPatrolState(EnemyController controller) : base(controller)
@@ -31,9 +31,14 @@ public class EnemyPatrolState : EnemyState
 
     public override void OnCollisionEnter(Collision2D collision)
     {
+        
+    }
+
+    public override void OnCollisionStay(Collision2D collision)
+    {
         if (collision.gameObject.CompareTag("Obstacle"))
         {
-            Controller.ChangeState(new EnemyIdleState(Controller));
+            _direction += collision.GetContact(0).normal;
         }
     }
 

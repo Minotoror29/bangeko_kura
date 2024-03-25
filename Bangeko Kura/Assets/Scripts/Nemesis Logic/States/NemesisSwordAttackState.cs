@@ -47,4 +47,8 @@ public class NemesisSwordAttackState : NemesisState
     {
         Rb.velocity = Vector2.zero;
     }
+
+    public override void OnCollisionStay(Collision2D collision)
+    {
+    }
 }

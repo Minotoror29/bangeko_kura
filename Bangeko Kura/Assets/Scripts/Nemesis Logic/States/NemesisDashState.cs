@@ -56,4 +56,8 @@ public class NemesisDashState : NemesisState
 
         Phase.ChangeState(new NemesisStunState(Phase, OnStunEnd));
     }
+
+    public override void OnCollisionStay(Collision2D collision)
+    {
+    }
 }

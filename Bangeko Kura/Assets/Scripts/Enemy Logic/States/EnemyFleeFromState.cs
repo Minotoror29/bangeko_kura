@@ -33,9 +33,15 @@ public class EnemyFleeFromState : EnemyState
         }
     }
 
+    public override void OnCollisionStay(Collision2D collision)
+    {
+    }
+
     public override void UpdateLogic()
     {
         base.UpdateLogic();
+
+        Controller.LookTowards(Controller.Rb.velocity);
 
         _fleeingTimer -= Time.deltaTime;
         if (_fleeingTimer <= 0 )

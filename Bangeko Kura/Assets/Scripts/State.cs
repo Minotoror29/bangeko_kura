@@ -9,4 +9,5 @@ public abstract class State
     public abstract void UpdateLogic();
     public abstract void UpdatePhysics();
     public abstract void OnCollisionEnter(Collision2D collision);
+    public abstract void OnCollisionStay(Collision2D collision);
 }

@@ -34,6 +34,10 @@ public class PlayerLandState : PlayerState
     {
     }
 
+    public override void OnCollisionStay(Collision2D collision)
+    {
+    }
+
     public override void UpdateLogic()
     {
         if (_landTimer > 0f)

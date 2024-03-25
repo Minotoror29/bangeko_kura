@@ -44,4 +44,8 @@ public class NemesisWalkState : NemesisState
     {
         Controller.MoveTowards(Player.transform.position - Controller.transform.position, Controller.WalkSpeed);
     }
+
+    public override void OnCollisionStay(Collision2D collision)
+    {
+    }
 }
