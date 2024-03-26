@@ -94,7 +94,7 @@ MonoBehaviour:
   minIdleTime: 3
   maxIdleTime: 7
   patrolTime: 4
-  movementSpeed: 200
+  movementSpeed: 250
   behaviours:
   - {fileID: 11400000, guid: 5519ae41a5bb9a14198ea39ea5ed8f4a, type: 2}
   fleeingZoneRadius: 10
@@ -208,7 +208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caab90597b1af1043b07cbed6607480e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
+  maxHealth: 15
 --- !u!70 &5180359745245099326
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
