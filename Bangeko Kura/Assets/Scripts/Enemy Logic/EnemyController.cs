@@ -72,9 +72,9 @@ public class EnemyController : Controller
         return UnityEngine.Random.Range(minIdleTime, maxIdleTime);
     }
 
-    public override bool SwordAttack()
+    public override bool SwordAttack(float buildupTime)
     {
-        return _currentState.CanAttackSword();
+        return _currentState.CanAttackSword(buildupTime);
     }
 
     public void Die(HealthSystem healthSystem, Transform deathSource)

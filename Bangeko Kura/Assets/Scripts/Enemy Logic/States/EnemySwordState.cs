@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class EnemySwordState : EnemyState
 {
+    private float _buildupTimer;
+    private bool _buildingUp = false;
     private float _timer = 0.958f;
 
-    public EnemySwordState(EnemyController controller) : base(controller)
+    public EnemySwordState(EnemyController controller, float buildupTime) : base(controller)
     {
+        _buildupTimer = buildupTime;
     }
 
     public override void Enter()
     {
         base.Enter();
 
-        Controller.MeshAnimator.CrossFade("Enemy Sword", 0f);
+        _buildingUp = true;
+        Controller.MeshAnimator.CrossFade("Enemy Sword Buildup", 0f);
     }
 
     public override void OnCollisionEnter(Collision2D collision)
@@ -29,14 +33,26 @@ public class EnemySwordState : EnemyState
     {
         base.UpdateLogic();
 
-        if (_timer > 0f)
+        if (_buildupTimer > 0f)
         {
-            _timer -= Time.deltaTime;
-        }
-        else
+            _buildupTimer -= Time.deltaTime;
+        } else
         {
-            Controller.ChangeState(new EnemyIdleState(Controller));
-        }
+            if (_buildingUp)
+            {
+                Controller.MeshAnimator.CrossFade("Enemy Sword", 0f);
+                _buildingUp = false;
+            }
+
+            if (_timer > 0f)
+            {
+                _timer -= Time.deltaTime;
+            }
+            else
+            {
+                Controller.ChangeState(new EnemyIdleState(Controller));
+            }
+        }        
     }
 
     public override void UpdatePhysics()

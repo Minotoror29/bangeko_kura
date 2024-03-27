@@ -272,6 +272,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 5
   cooldown: 3
+  buildupTime: 0.5
   swordEffectPrefab: {fileID: 4396576707297930692, guid: e6e8944860d6eee4a90151795817cf2a,
     type: 3}
   swordEffectTime: 0.2

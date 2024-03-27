@@ -8,6 +8,7 @@ public class SwordController : Weapon
 {
     [Tooltip("Put -1 for instant kill"), SerializeField] private int damage;
     [SerializeField] private float cooldown = 1f;
+    [SerializeField] private float buildupTime;
     private float _cooldownTimer;
 
     private List<HealthSystem> _enemiesInRange;
@@ -62,42 +63,42 @@ public class SwordController : Weapon
         {
             if (_enemiesInRange.Count > 0)
             {
-                if (!Controller.SwordAttack())
+                if (!Controller.SwordAttack(buildupTime))
                 {
                     return;
                 }
 
-                if (Controller.MeshAnimator != null)
-                {
-                    //Controller.Animator.SetTrigger("Sword");
-                    //Controller.Animator.CrossFade("Player Sword", 0f);
-                    //Controller.SwordAttack();
-                }
-
-                List<HealthSystem> targets = new();
-                foreach (HealthSystem enemy in _enemiesInRange)
-                {
-                    targets.Add(enemy);
-                }
-
-                foreach (HealthSystem ally in _alliesInRange)
-                {
-                    targets.Add(ally);
-                }
-
-                foreach (HealthSystem target in targets)
-                {
-                    target.TakeDamage(damage, Controller.transform);
-                }
-
-                _cooldownTimer = 0f;
-
-                _swordSound.start();
-
-                _swordEffect.SetActive(true);
-                _swordEffectTimer = swordEffectTime;
+                StartCoroutine(Buildup());
             }
         }
+    }
+
+    private IEnumerator Buildup()
+    {
+        yield return new WaitForSeconds(buildupTime);
+
+        List<HealthSystem> targets = new();
+        foreach (HealthSystem enemy in _enemiesInRange)
+        {
+            targets.Add(enemy);
+        }
+
+        foreach (HealthSystem ally in _alliesInRange)
+        {
+            targets.Add(ally);
+        }
+
+        foreach (HealthSystem target in targets)
+        {
+            target.TakeDamage(damage, Controller.transform);
+        }
+
+        _cooldownTimer = 0f;
+
+        _swordSound.start();
+
+        _swordEffect.SetActive(true);
+        _swordEffectTimer = swordEffectTime;
     }
 
     private void RemoveTarget(HealthSystem target, Transform deathSource)

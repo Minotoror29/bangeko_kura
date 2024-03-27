@@ -210,7 +210,7 @@ public class NewPlayerController : Controller
     //    _changeColorTimer = changeColorTime;
     //}
 
-    public override bool SwordAttack()
+    public override bool SwordAttack(float builupTime)
     {
         return _currentState.CanAttackSword();
     }

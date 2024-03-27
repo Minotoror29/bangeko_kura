@@ -9,9 +9,6 @@ public class Switch : MonoBehaviour
     [SerializeField] private List<SwitchPlatform> platformsA;
     [SerializeField] private List<SwitchPlatform> platformsB;
 
-    [SerializeField] private float switchingTime = 2f;
-    private float _switchingTimer = 0f;
-
     private SwitchState _currentState;
 
     private void Start()
@@ -36,8 +33,6 @@ public class Switch : MonoBehaviour
 
     private void ChangeState()
     {
-        //_switchingTimer = switchingTime;
-
         if (_currentState == SwitchState.AState)
         {
             _currentState = SwitchState.SwitchingToB;
@@ -71,22 +66,5 @@ public class Switch : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         _currentState = stateToSwitchTo;
-    }
-
-    private void Update()
-    {
-        //if (_switchingTimer > 0f)
-        //{
-        //    _switchingTimer -= Time.deltaTime;
-        //} else
-        //{
-        //    if (_currentState == SwitchState.SwitchingToA)
-        //    {
-        //        _currentState = SwitchState.AState;
-        //    } else if (_currentState == SwitchState.SwitchingToB)
-        //    {
-        //        _currentState = SwitchState.BState;
-        //    }
-        //}
     }
 }

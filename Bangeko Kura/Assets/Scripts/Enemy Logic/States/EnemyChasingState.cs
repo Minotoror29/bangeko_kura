@@ -36,9 +36,9 @@ public class EnemyChasingState : EnemyState
     {
     }
 
-    public override bool CanAttackSword()
+    public override bool CanAttackSword(float buildupTime)
     {
-        Controller.ChangeState(new EnemySwordState(Controller));
+        Controller.ChangeState(new EnemySwordState(Controller, buildupTime));
 
         return true;
     }

@@ -61,7 +61,7 @@ public abstract class Controller : MonoBehaviour
 
     public abstract void UpdatePhysics();
 
-    public virtual bool SwordAttack()
+    public virtual bool SwordAttack(float buildupTime)
     {
         return false;
     }
