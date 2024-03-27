@@ -2974,6 +2974,16 @@ PrefabInstance:
       propertyPath: healthDisplay
       value: 
       objectReference: {fileID: 2091074028}
+    - target: {fileID: 83542728120134517, guid: 2da8cdec84a653c44b2b1f5b4cdc3d90,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 83542728120134517, guid: 2da8cdec84a653c44b2b1f5b4cdc3d90,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 83542728120134522, guid: 2da8cdec84a653c44b2b1f5b4cdc3d90,
         type: 3}
       propertyPath: m_Name
