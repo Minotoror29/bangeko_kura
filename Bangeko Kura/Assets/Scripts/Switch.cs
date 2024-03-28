@@ -6,6 +6,8 @@ public enum SwitchState { AState, BState, SwitchingToA, SwitchingToB }
 
 public class Switch : MonoBehaviour
 {
+    [SerializeField] private Animator animator;
+
     [SerializeField] private List<SwitchPlatform> platformsA;
     [SerializeField] private List<SwitchPlatform> platformsB;
 
@@ -33,6 +35,8 @@ public class Switch : MonoBehaviour
 
     private void ChangeState()
     {
+        animator.CrossFade("Totem Shake", 0f);
+
         if (_currentState == SwitchState.AState)
         {
             _currentState = SwitchState.SwitchingToB;
@@ -51,7 +55,7 @@ public class Switch : MonoBehaviour
             platform.Enter();
         }
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.604f);
 
         StartCoroutine(ExitPlatforms(stateToSwitchTo, platformsToExit));
     }
@@ -63,8 +67,10 @@ public class Switch : MonoBehaviour
             platform.Exit();
         }
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.604f);
 
         _currentState = stateToSwitchTo;
+
+        animator.CrossFade("Totem Idle", 0f);
     }
 }
