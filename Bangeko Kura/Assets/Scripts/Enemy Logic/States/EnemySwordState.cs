@@ -10,6 +10,8 @@ public class EnemySwordState : EnemyState
 
     public EnemySwordState(EnemyController controller, float buildupTime) : base(controller)
     {
+        Id = EnemyStateId.Sword;
+
         _buildupTimer = buildupTime;
     }
 

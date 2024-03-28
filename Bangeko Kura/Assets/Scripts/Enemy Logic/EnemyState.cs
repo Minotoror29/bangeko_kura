@@ -53,4 +53,9 @@ public abstract class EnemyState : State
     {
         return false;
     }
+
+    public virtual bool CanDash(float dashTime, float dashSpeed, Vector2 dashDirection)
+    {
+        return false;
+    }
 }

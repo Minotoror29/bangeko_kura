@@ -1,2 +1,2 @@
 
-public enum EnemyStateId { All, Idle, Patrol, Fleeing, Chasing }
+public enum EnemyStateId { All, Idle, Patrol, Fleeing, Chasing, Sword, Dash }

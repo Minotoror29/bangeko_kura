@@ -77,6 +77,11 @@ public class EnemyController : Controller
         return _currentState.CanAttackSword(buildupTime);
     }
 
+    public override bool Dash(float dashTime, float dashSpeed, Vector2 dashDirection)
+    {
+        return _currentState.CanDash(dashTime, dashSpeed, dashDirection);
+    }
+
     public void Die(HealthSystem healthSystem, Transform deathSource)
     {
         Scrap newScrap = Instantiate(scrapPrefab, transform.position, Quaternion.identity);

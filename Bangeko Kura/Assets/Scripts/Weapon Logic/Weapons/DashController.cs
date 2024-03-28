@@ -36,51 +36,49 @@ public class DashController : Weapon
     {
         base.UpdateLogic();
 
-        if (!Controller.Dashing)
-        {
-            if (_dashCooldownTimer < dashCooldown)
+        //if (!Controller.Dashing)
+        //{
+            if (_dashCooldownTimer > 0f)
             {
-                _dashCooldownTimer += Time.deltaTime;
+                _dashCooldownTimer -= Time.deltaTime;
             }
             else
             {
                 if ((_target.position - Controller.transform.position).magnitude >= distanceToDash && Controller.Rb.velocity.magnitude > 0)
                 {
-                    if (Controller.MeshAnimator != null)
-                    {
-                        Controller.MeshAnimator.SetBool("Dashing", true);
-                    }
-                    Controller.Dashing = true;
                     _dashDirection = (_target.position - Controller.transform.position).normalized;
-                    _dashCooldownTimer = 0f;
+                    if (!Controller.Dash(dashTime, dashSpeed, _dashDirection)) return;
 
-                    _dashSound.start();
+                    //Controller.Dashing = true;
+                    _dashCooldownTimer = dashCooldown;
+
+                    //_dashSound.start();
                 }
             }
-        } else
-        {
-            if (_dashTimer < dashTime)
-            {
-                _dashTimer += Time.deltaTime;
-            } else
-            {
-                if (Controller.MeshAnimator != null)
-                {
-                    Controller.MeshAnimator.SetBool("Dashing", false);
-                }
-                Controller.Dashing = false;
-                _dashTimer = 0f;
-            }
-        }
+        //} else
+        //{
+        //    if (_dashTimer < dashTime)
+        //    {
+        //        _dashTimer += Time.deltaTime;
+        //    } else
+        //    {
+        //        if (Controller.MeshAnimator != null)
+        //        {
+        //            Controller.MeshAnimator.SetBool("Dashing", false);
+        //        }
+        //        Controller.Dashing = false;
+        //        _dashTimer = 0f;
+        //    }
+        //}
     }
 
-    public override void UpdatePhysics()
-    {
-        base.UpdatePhysics();
+    //public override void UpdatePhysics()
+    //{
+    //    base.UpdatePhysics();
 
-        if (Controller.Dashing)
-        {
-            Controller.Rb.velocity = dashSpeed * Time.fixedDeltaTime * _dashDirection.normalized;
-        }
-    }
+    //    if (Controller.Dashing)
+    //    {
+    //        Controller.Rb.velocity = dashSpeed * Time.fixedDeltaTime * _dashDirection.normalized;
+    //    }
+    //}
 }

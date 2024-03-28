@@ -66,6 +66,11 @@ public abstract class Controller : MonoBehaviour
         return false;
     }
 
+    public virtual bool Dash(float dashTime, float dashSpeed, Vector2 dashDirection)
+    {
+        return false;
+    }
+
     private void TakeDamage(int amount)
     {
         GeneralAnimator.SetTrigger("Squish");

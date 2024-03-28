@@ -43,6 +43,13 @@ public class EnemyChasingState : EnemyState
         return true;
     }
 
+    public override bool CanDash(float dashTime, float dashSpeed, Vector2 dashDirection)
+    {
+        Controller.ChangeState(new EnemyDashState(Controller, dashTime, dashSpeed, dashDirection));
+
+        return true;
+    }
+
     public override void UpdateLogic()
     {
         base.UpdateLogic();
