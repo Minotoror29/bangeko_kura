@@ -182,10 +182,12 @@ public class NewPlayerController : Controller
 
     public void Die(HealthSystem healthSystem, Transform deathSource)
     {
-        _controls.InGame.Disable();
-        Mesh.gameObject.SetActive(false);
+        //_controls.InGame.Disable();
+        //Mesh.gameObject.SetActive(false);
 
-        ScreenManager.PlayerDied();
+        //ScreenManager.PlayerDied();
+
+        ChangeState(new PlayerDeathState(this));
     }
 
     public void InstantiateEffect(GameObject effect, Vector2 position, Quaternion rotation, float time)

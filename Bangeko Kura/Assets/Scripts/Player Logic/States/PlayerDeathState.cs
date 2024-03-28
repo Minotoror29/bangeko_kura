@@ -10,7 +10,16 @@ public class PlayerDeathState : PlayerState
 
     public override void Enter()
     {
-        Controller.Die(Controller.HealthSystem, null);
+        Controls.InGame.Disable();
+        
+        if (Controller.HealthSystem.CurrentHealth > 0)
+        {
+            Controller.Mesh.gameObject.SetActive(false);
+            Controller.ScreenManager.PlayerDied();
+        } else
+        {
+            Animator.CrossFade("Player Death", 0f);
+        }
     }
 
     public override void Exit()
