@@ -51,10 +51,8 @@ public class PlayerIdleState : PlayerState
 
     public override void UpdateLogic()
     {
-        foreach (Weapon weapon in Controller.Weapons)
-        {
-            weapon.UpdateLogic();
-        }
+        Controller.Turret.UpdateLogic();
+        Controller.Sword.UpdateLogic();
 
         _bodyDirection = new Vector2((Quaternion.AngleAxis(45, Vector3.right) * Controller.Mesh.forward).x, (Quaternion.AngleAxis(45, Vector3.right) * Controller.Mesh.forward).z);
         _angle = Vector2.Angle(_bodyDirection, Controller.LookDirection.normalized);

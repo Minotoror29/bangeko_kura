@@ -2,14 +2,18 @@ using FMOD.Studio;
 using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SwordController : Weapon
 {
+    [SerializeField] private bool automatic = true;
+
+    [Space]
     [Tooltip("Put -1 for instant kill"), SerializeField] private int damage;
     [SerializeField] private float cooldown = 1f;
     [SerializeField] private float buildupTime;
-    private float _cooldownTimer;
+    private float _cooldownTimer = 0f;
 
     private List<HealthSystem> _enemiesInRange;
     private List<HealthSystem> _alliesInRange;
@@ -25,7 +29,6 @@ public class SwordController : Weapon
     {
         base.Initialize(controller, healthSystem);
 
-        _cooldownTimer = cooldown;
         _enemiesInRange = new();
         _alliesInRange = new();
 
@@ -56,10 +59,10 @@ public class SwordController : Weapon
             }
         }
 
-        if (_cooldownTimer < cooldown)
+        if (_cooldownTimer > 0f)
         {
-            _cooldownTimer += Time.deltaTime;
-        } else
+            _cooldownTimer -= Time.deltaTime;
+        } else if (automatic)
         {
             if (_enemiesInRange.Count > 0)
             {
@@ -71,6 +74,15 @@ public class SwordController : Weapon
                 StartCoroutine(Buildup());
             }
         }
+    }
+
+    public void SwordStrike()
+    {
+        if (_cooldownTimer > 0f) return;
+
+        if (!Controller.SwordAttack(buildupTime)) return;
+
+        StartCoroutine(Buildup());
     }
 
     private IEnumerator Buildup()
@@ -93,7 +105,7 @@ public class SwordController : Weapon
             target.TakeDamage(damage, Controller.transform);
         }
 
-        _cooldownTimer = 0f;
+        _cooldownTimer = cooldown;
 
         _swordSound.start();
 

@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: -1
   cooldown: 1
+  buildupTime: 0
   swordEffectPrefab: {fileID: 4396576707297930692, guid: e6e8944860d6eee4a90151795817cf2a,
     type: 3}
   swordEffectTime: 0.2
@@ -303,10 +304,8 @@ MonoBehaviour:
   aim: {fileID: 83542728683750082}
   laserOriginEffect: {fileID: 546793271799657349, guid: 4ba966aba2f38bb40b70d3ce6e63c979,
     type: 3}
-  weapons:
-  - {fileID: 83542727448862656}
-  - {fileID: 83542727684053890}
-  - {fileID: 83542729509077814}
+  turret: {fileID: 83542727684053890}
+  sword: {fileID: 83542727448862656}
   fallSpritePrefab: {fileID: 5307921919700816351, guid: 16f2489f5664d994ab3017ebcdd38379,
     type: 3}
   fallDownSpritePrefab: {fileID: 5307921919700816351, guid: 7e37e3c1685120a47912615b131b1964,
@@ -2584,22 +2583,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &83542729531191377
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1002513238531296524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fff0960ef4ea6e04eac66b4a7fd2189d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_RigLayers:
-  - m_Rig: {fileID: 83542727554494607}
-    m_Active: 1
-  m_Effectors: []
 --- !u!114 &83542729531191376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2649,6 +2632,22 @@ MonoBehaviour:
   - {fileID: 3343368722014155596}
   - {fileID: 7235646173163199220}
   - {fileID: 889397651027985313}
+--- !u!114 &83542729531191377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1002513238531296524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fff0960ef4ea6e04eac66b4a7fd2189d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RigLayers:
+  - m_Rig: {fileID: 83542727554494607}
+    m_Active: 1
+  m_Effectors: []
 --- !u!4 &1291989927435204002 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1208895808086050303, guid: 12aae722fd3be8441bc77139605f001a,

@@ -59,10 +59,8 @@ public class PlayerDashState : PlayerState
 
     public override void UpdateLogic()
     {
-        foreach (Weapon weapon in Controller.Weapons)
-        {
-            weapon.UpdateLogic();
-        }
+        Controller.Turret.UpdateLogic();
+        Controller.Sword.UpdateLogic();
 
         if (((Vector2)Controller.transform.position - _dashOrigin).magnitude >= Controller.DashDistance)
         {

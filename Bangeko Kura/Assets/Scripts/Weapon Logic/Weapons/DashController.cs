@@ -11,7 +11,7 @@ public class DashController : Weapon
 
     [SerializeField] private float dashTime = 0.1f;
     [SerializeField] private float dashSpeed = 1000f;
-    private float _dashTimer;
+    //private float _dashTimer;
 
     [SerializeField] private float distanceToDash = 15f;
     private Transform _target;
@@ -26,7 +26,7 @@ public class DashController : Weapon
         _target = FindObjectOfType<NewPlayerController>().transform;
 
         _dashCooldownTimer = 0f;
-        _dashTimer = 0f;
+        //_dashTimer = 0f;
         Controller.Dashing = false;
 
         _dashSound = RuntimeManager.CreateInstance("event:/Movement/Dash");

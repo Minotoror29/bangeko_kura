@@ -321,6 +321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f34d275282b623846baeef885476fdea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  automatic: 1
   damage: 5
   cooldown: 2
   buildupTime: 0.5

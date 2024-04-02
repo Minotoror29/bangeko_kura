@@ -41,7 +41,8 @@ public class NewPlayerController : Controller
     private Vector2 _mousePosition;
 
     [Header("Weapons")]
-    [SerializeField] private List<Weapon> weapons;
+    [SerializeField] private TurretController turret;
+    [SerializeField] private SwordController sword;
 
     [Header("Fall")]
     [SerializeField] private GameObject fallSpritePrefab;
@@ -68,7 +69,8 @@ public class NewPlayerController : Controller
     public GameObject DashEffect { get { return dashEffect; } }
     public LayerMask HealthSystemLayer { get { return healthSystemLayer; } }
     public Vector2 LookDirection { get { return _lookDirection; } }
-    public List<Weapon> Weapons { get { return weapons; } }
+    public TurretController Turret { get { return turret; } }
+    public SwordController Sword { get { return sword; } }
     public GameObject FallSprite { get { return _fallSprite; } }
     public GameObject FallDownSprite { get { return _fallDownSprite; } }
     public GameObject LandMesh { get { return _landMesh; } }
@@ -97,6 +99,7 @@ public class NewPlayerController : Controller
         _controls.InGame.Enable();
         _controls.InGame.Dash.performed += ctx => Dash();
         _controls.InGame.Laser.performed += ctx => FireLaser();
+        _controls.InGame.Sword.performed += ctx => sword.SwordStrike();
 
         HealthSystem.OnHit += TakeHit;
         //HealthSystem.OnDamage += TakeDamage;
@@ -106,10 +109,8 @@ public class NewPlayerController : Controller
         _dashCooldownTimer = 0f;
         _laserCooldownTimer = 0f;
 
-        foreach (Weapon weapon in weapons)
-        {
-            weapon.Initialize(this, HealthSystem);
-        }
+        turret.Initialize(this, HealthSystem);
+        sword.Initialize(this, HealthSystem);
 
         _fallSprite = Instantiate(fallSpritePrefab);
         _fallSprite.SetActive(false);
@@ -182,11 +183,6 @@ public class NewPlayerController : Controller
 
     public void Die(HealthSystem healthSystem, Transform deathSource)
     {
-        //_controls.InGame.Disable();
-        //Mesh.gameObject.SetActive(false);
-
-        //ScreenManager.PlayerDied();
-
         ChangeState(new PlayerDeathState(this));
     }
 
@@ -195,22 +191,6 @@ public class NewPlayerController : Controller
         GameObject newEffect = Instantiate(effect, position, rotation);
         Destroy(newEffect, time);
     }
-
-    //private void TakeDamage(int amount)
-    //{
-    //    GeneralAnimator.SetTrigger("Squish");
-    //    ChangeColor();
-    //}
-
-    //private void ChangeColor()
-    //{
-    //    foreach (SkinnedMeshRenderer renderer in MeshRenderers)
-    //    {
-    //        renderer.material.SetColor("_Dark_Color", damageColor);
-    //    }
-
-    //    _changeColorTimer = changeColorTime;
-    //}
 
     public override bool SwordAttack(float builupTime)
     {
@@ -265,10 +245,8 @@ public class NewPlayerController : Controller
     {
         _currentState.UpdatePhysics();
 
-        foreach (Weapon weapon in weapons)
-        {
-            weapon.UpdatePhysics();
-        }
+        turret.UpdatePhysics();
+        sword.UpdatePhysics();
     }
 
     public void Move(Vector2 direction, float speed)

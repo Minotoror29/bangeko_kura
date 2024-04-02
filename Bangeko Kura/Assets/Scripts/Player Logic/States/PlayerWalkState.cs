@@ -39,10 +39,8 @@ public class PlayerWalkState : PlayerState
 
     public override void UpdateLogic()
     {
-        foreach (Weapon weapon in Controller.Weapons)
-        {
-            weapon.UpdateLogic();
-        }
+        Controller.Turret.UpdateLogic();
+        Controller.Sword.UpdateLogic();
 
         Controller.RotateMesh();
         Controller.RotateAim();
