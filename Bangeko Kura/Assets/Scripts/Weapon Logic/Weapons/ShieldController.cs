@@ -31,7 +31,7 @@ public class ShieldController : Weapon
         _shieldSound = RuntimeManager.CreateInstance("event:/Weapons/Shield");
     }
 
-    public void TakeDamage(Transform damageSource)
+    public void TakeDamage(Transform damageSource, Knockback knockback)
     {
         if (!gameObject.activeSelf)
         {

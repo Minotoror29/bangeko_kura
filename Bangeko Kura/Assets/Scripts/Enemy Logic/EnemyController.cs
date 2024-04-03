@@ -84,11 +84,11 @@ public class EnemyController : Controller
         return _currentState.CanDash(dashTime, dashSpeed, dashDirection);
     }
 
-    private void KnockBack(Transform source)
+    private void KnockBack(Transform source, Knockback knockback)
     {
         if (!_currentState.CanBeKnockedBack()) return;
 
-        ChangeState(new EnemyKnockBackState(this, (Vector2)(transform.position - source.position).normalized));
+        ChangeState(new EnemyKnockBackState(this, (Vector2)(transform.position - source.position).normalized, knockback));
     }
 
     public void Die(HealthSystem healthSystem, Transform deathSource)

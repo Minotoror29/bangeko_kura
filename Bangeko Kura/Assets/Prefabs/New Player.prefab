@@ -45,9 +45,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f34d275282b623846baeef885476fdea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  automatic: 0
   damage: -1
   cooldown: 1
   buildupTime: 0
+  swordKnockbackDistance: 0
+  swordKnockbackSpeed: 0
   swordEffectPrefab: {fileID: 4396576707297930692, guid: e6e8944860d6eee4a90151795817cf2a,
     type: 3}
   swordEffectTime: 0.2
@@ -301,6 +304,8 @@ MonoBehaviour:
     m_Bits: 256
   laserDamage: 10
   laserCooldown: 2
+  laserKnockbackDistance: 0
+  laserKnockbackSpeed: 0
   aim: {fileID: 83542728683750082}
   laserOriginEffect: {fileID: 546793271799657349, guid: 4ba966aba2f38bb40b70d3ce6e63c979,
     type: 3}
@@ -317,6 +322,8 @@ MonoBehaviour:
   landEffectLifetime: 0.3
   landDamage: 3
   landDamageRadius: 2.25
+  landKnockbackDistance: 0
+  landKnockbackSpeed: 0
   landCameraShakeGain: 1
   landCameraShakeTime: 0.1
 --- !u!50 &83542728120134515

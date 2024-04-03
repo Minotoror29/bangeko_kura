@@ -102,7 +102,7 @@ public class BulletController : MonoBehaviour
         {
             if (_source != shield.Controller.transform)
             {
-                shield.TakeDamage(_source);
+                shield.TakeDamage(_source, _knockback);
                 Destroy(gameObject);
             }
         }

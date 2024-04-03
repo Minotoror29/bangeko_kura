@@ -17,7 +17,7 @@ public class HealthSystem : MonoBehaviour
     public bool PreventDamage { get { return _preventDamage; } set { _preventDamage = value; } }
     public int HealthRatio { get { return _currentHealth * 100 / maxHealth; } }
 
-    public event Action<Transform> OnHit;
+    public event Action<Transform, Knockback> OnHit;
     public event Action<int> OnDamage;
     public event Action<HealthSystem, Transform> OnDeath;
 
@@ -31,7 +31,7 @@ public class HealthSystem : MonoBehaviour
 
     public void TakeDamage(int damage, Transform damageSource, Knockback knockback)
     {
-        OnHit?.Invoke(damageSource);
+        OnHit?.Invoke(damageSource, knockback);
 
         if (_preventDamage)
         {

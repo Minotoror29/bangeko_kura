@@ -188,7 +188,7 @@ public class NewPlayerController : Controller
         _laserCooldownTimer = laserCooldown;
     }
 
-    private void TakeHit(Transform damageSource)
+    private void TakeHit(Transform damageSource, Knockback knockback)
     {
         OnTakeDamage?.Invoke();
     }
