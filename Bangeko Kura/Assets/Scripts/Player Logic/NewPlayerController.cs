@@ -34,11 +34,14 @@ public class NewPlayerController : Controller
     [SerializeField] private LayerMask obstacleLayer;
     [SerializeField] private int laserDamage = 15;
     [SerializeField] private float laserCooldown = 3f;
+    [SerializeField] private float laserKnockbackDistance;
+    [SerializeField] private float laserKnockbackSpeed;
     [SerializeField] private Transform aim;
     [SerializeField] private GameObject laserOriginEffect;
     private float _laserCooldownTimer;
     private Vector2 _lookDirection;
     private Vector2 _mousePosition;
+    private Knockback _laserKnockback;
 
     [Header("Weapons")]
     [SerializeField] private TurretController turret;
@@ -47,16 +50,21 @@ public class NewPlayerController : Controller
     [Header("Fall")]
     [SerializeField] private GameObject fallSpritePrefab;
     [SerializeField] private GameObject fallDownSpritePrefab;
+    private GameObject _fallSprite;
+    private GameObject _fallDownSprite;
+
+    [Header("Land")]
     [SerializeField] private GameObject landMeshPrefab;
     [SerializeField] private GameObject landEffect;
     [SerializeField] private float landEffectLifetime = 0.3f;
     [SerializeField] private int landDamage = 3;
     [SerializeField] private float landDamageRadius = 2.25f;
+    [SerializeField] private float landKnockbackDistance;
+    [SerializeField] private float landKnockbackSpeed;
     [SerializeField] private float landCameraShakeGain;
     [SerializeField] private float landCameraShakeTime;
-    private GameObject _fallSprite;
-    private GameObject _fallDownSprite;
     private GameObject _landMesh;
+    private Knockback _landKnockback;
 
     public event Action OnDash;
     public event Action OnTakeDamage;
@@ -78,6 +86,7 @@ public class NewPlayerController : Controller
     public float LandEffectLifetime { get { return landEffectLifetime; } }
     public int LandDamage { get { return landDamage; } }
     public float LandDamageRadius { get { return landDamageRadius; } }
+    public Knockback LandKnockback { get { return _landKnockback; } }
     public float LandCameraShakeGain { get { return landCameraShakeGain; } }
     public float LandCameraShakeTime { get { return landCameraShakeTime; } }
 
@@ -108,6 +117,7 @@ public class NewPlayerController : Controller
 
         _dashCooldownTimer = 0f;
         _laserCooldownTimer = 0f;
+        _laserKnockback = new Knockback { knockbackDistance = laserKnockbackDistance, knockbackSpeed = laserKnockbackSpeed };
 
         turret.Initialize(this, HealthSystem);
         sword.Initialize(this, HealthSystem);
@@ -116,8 +126,10 @@ public class NewPlayerController : Controller
         _fallSprite.SetActive(false);
         _fallDownSprite = Instantiate(fallDownSpritePrefab);
         _fallDownSprite.SetActive(false);
+
         _landMesh = Instantiate(landMeshPrefab);
         _landMesh.SetActive(false);
+        _landKnockback = new Knockback { knockbackDistance = landKnockbackDistance, knockbackSpeed = landKnockbackSpeed };
     }
 
     public void ChangeState(PlayerState nextState)
@@ -160,7 +172,7 @@ public class NewPlayerController : Controller
             {
                 if (healthSystem.Source != transform)
                 {
-                    healthSystem.TakeDamage(laserDamage, transform);
+                    healthSystem.TakeDamage(laserDamage, transform, _laserKnockback);
                 }
             }
         }

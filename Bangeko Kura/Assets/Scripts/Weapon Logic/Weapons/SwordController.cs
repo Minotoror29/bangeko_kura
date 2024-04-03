@@ -13,7 +13,10 @@ public class SwordController : Weapon
     [Tooltip("Put -1 for instant kill"), SerializeField] private int damage;
     [SerializeField] private float cooldown = 1f;
     [SerializeField] private float buildupTime;
+    [SerializeField] private float swordKnockbackDistance;
+    [SerializeField] private float swordKnockbackSpeed;
     private float _cooldownTimer = 0f;
+    private Knockback _swordKnockback;
 
     private List<HealthSystem> _enemiesInRange;
     private List<HealthSystem> _alliesInRange;
@@ -33,6 +36,8 @@ public class SwordController : Weapon
         _alliesInRange = new();
 
         HealthSystem.OnDeath += RemoveFromOthersTargets;
+
+        _swordKnockback = new Knockback { knockbackDistance = swordKnockbackDistance, knockbackSpeed = swordKnockbackSpeed };
 
         _swordEffect = Instantiate(swordEffectPrefab);
         _swordEffect.SetActive(false);
@@ -102,7 +107,7 @@ public class SwordController : Weapon
 
         foreach (HealthSystem target in targets)
         {
-            target.TakeDamage(damage, Controller.transform);
+            target.TakeDamage(damage, Controller.transform, _swordKnockback);
         }
 
         _cooldownTimer = cooldown;

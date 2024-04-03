@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public struct Knockback
+{
+    public float knockbackDistance;
+    public float knockbackSpeed;
+}
+
 public class BulletController : MonoBehaviour
 {
     private Rigidbody2D _rb;
@@ -12,6 +18,9 @@ public class BulletController : MonoBehaviour
     private float _lifeTimer;
 
     [SerializeField] private int damage = 1;
+    [SerializeField] private float knockbackDistance = 1f;
+    [SerializeField] private float knockbackSPeed = 100f;
+    private Knockback _knockback;
 
     [Header("Effects")]
     [SerializeField] private List<GameObject> fireEffects;
@@ -51,6 +60,12 @@ public class BulletController : MonoBehaviour
 
         GameObject newSmokeEffect = Instantiate(smokeEffect, transform.position, transform.rotation);
         Destroy(newSmokeEffect, smokeEffectLifetime);
+
+        _knockback = new Knockback
+        {
+            knockbackDistance = knockbackDistance,
+            knockbackSpeed = knockbackSPeed
+        };
     }
 
     public void UpdateLogic()
@@ -79,7 +94,7 @@ public class BulletController : MonoBehaviour
                 GameObject newImpactEffect = Instantiate(impactEffects[randomImpactEffect], transform.position, transform.rotation);
                 Destroy(newImpactEffect, impactEffectLifetime);
 
-                healthSystem.TakeDamage(damage, _source);
+                healthSystem.TakeDamage(damage, _source, _knockback);
                 Destroy(gameObject);
             }
         }

@@ -29,7 +29,7 @@ public class HealthSystem : MonoBehaviour
         _preventDamage = false;
     }
 
-    public void TakeDamage(int damage, Transform damageSource)
+    public void TakeDamage(int damage, Transform damageSource, Knockback knockback)
     {
         OnHit?.Invoke(damageSource);
 

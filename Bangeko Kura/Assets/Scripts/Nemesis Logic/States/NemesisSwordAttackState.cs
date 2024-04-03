@@ -19,7 +19,7 @@ public class NemesisSwordAttackState : NemesisState
         Animator.CrossFade("Player Sword", 0f);
         if ((Player.transform.position - Controller.transform.position).magnitude <= Controller.SwordDistance)
         {
-            Player.HealthSystem.TakeDamage(Controller.SwordDamage, Controller.transform);
+            //Player.HealthSystem.TakeDamage(Controller.SwordDamage, Controller.transform);
         }
     }
 

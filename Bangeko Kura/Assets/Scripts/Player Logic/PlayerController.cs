@@ -26,7 +26,10 @@ public class PlayerController : Controller
     [SerializeField] private LayerMask obstacleLayer;
     [SerializeField] private int laserDamage = 15;
     [SerializeField] private float laserCooldown = 3f;
+    [SerializeField] private float laserKnockbackDistance;
+    [SerializeField] private float laserKnockbackSpeed;
     private float _laserCooldownTimer;
+    private Knockback _laserKnockback;
 
     [Header("Dash")]
     [SerializeField] private float dashSpeed = 1000f;
@@ -74,6 +77,7 @@ public class PlayerController : Controller
         _healthSystem.OnDeath += Die;
 
         _laserCooldownTimer = laserCooldown;
+        _laserKnockback = new Knockback { knockbackDistance = laserKnockbackDistance, knockbackSpeed = laserKnockbackSpeed };
         _dashCooldownTimer = dashCooldown;
 
         foreach (Weapon weapon in weapons)
@@ -203,7 +207,7 @@ public class PlayerController : Controller
         {
             if (hit.collider.TryGetComponent(out HealthSystem healthSystem))
             {
-                healthSystem.TakeDamage(laserDamage, transform);
+                healthSystem.TakeDamage(laserDamage, transform, _laserKnockback);
             }
         }
 
