@@ -57,6 +57,6 @@ public class EnemyPatrolState : EnemyState
 
     public override void UpdatePhysics()
     {
-        Controller.MoveTowards(_direction);
+        Controller.MoveTowards(_direction, Controller.MovementSpeed);
     }
 }

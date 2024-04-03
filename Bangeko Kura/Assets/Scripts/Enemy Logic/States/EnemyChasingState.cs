@@ -70,6 +70,6 @@ public class EnemyChasingState : EnemyState
 
     public override void UpdatePhysics()
     {
-        Controller.MoveTowards(Controller.Player.transform.position - Controller.transform.position);
+        Controller.MoveTowards(Controller.Player.transform.position - Controller.transform.position, Controller.MovementSpeed);
     }
 }

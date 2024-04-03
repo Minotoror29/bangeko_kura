@@ -54,6 +54,6 @@ public class EnemyFleeFromState : EnemyState
 
     public override void UpdatePhysics()
     {
-        Controller.MoveTowards(Controller.transform.position - _target.position);
+        Controller.MoveTowards(Controller.transform.position - _target.position, Controller.MovementSpeed);
     }
 }

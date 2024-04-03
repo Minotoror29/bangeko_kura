@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 787728ef2b9944941af518eca1092c3f, type: 3}
   m_Name: Flee When Ally Die Close
   m_EditorClassIdentifier: 
-  states: 00000000
+  states: 01000000020000000300000004000000
   fleeingTime: 3

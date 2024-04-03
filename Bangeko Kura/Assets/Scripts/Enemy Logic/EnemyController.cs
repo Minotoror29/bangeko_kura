@@ -37,6 +37,7 @@ public class EnemyController : Controller
     public NewPlayerController Player { get { return _player; } }
     public float DistanceToPlayer { get { return _distanceToPlayer; } }
     public float PatrolTime { get { return patrolTime; } }
+    public float MovementSpeed { get { return movementSpeed; } }
     public List<EnemyBehaviourData> Behaviours { get { return behaviours; } }
 
     public event Action<Transform> OnAllyDiedClose;
@@ -48,6 +49,7 @@ public class EnemyController : Controller
         _enemiesManager = enemiesManager;
         _player = player;
 
+        HealthSystem.OnHit += KnockBack;
         HealthSystem.OnDeath += Die;
 
         foreach (Weapon weapon in weapons)
@@ -80,6 +82,13 @@ public class EnemyController : Controller
     public override bool Dash(float dashTime, float dashSpeed, Vector2 dashDirection)
     {
         return _currentState.CanDash(dashTime, dashSpeed, dashDirection);
+    }
+
+    private void KnockBack(Transform source)
+    {
+        if (!_currentState.CanBeKnockedBack()) return;
+
+        ChangeState(new EnemyKnockBackState(this, (Vector2)(transform.position - source.position).normalized));
     }
 
     public void Die(HealthSystem healthSystem, Transform deathSource)
@@ -144,11 +153,11 @@ public class EnemyController : Controller
         Rb.velocity = Vector3.zero;
     }
 
-    public void MoveTowards(Vector2 direction)
+    public void MoveTowards(Vector2 direction, float speed)
     {
         if (!Dashing)
         {
-            Rb.velocity = movementSpeed * Time.fixedDeltaTime * direction.normalized;
+            Rb.velocity = speed * Time.fixedDeltaTime * direction.normalized;
         }
     }
 

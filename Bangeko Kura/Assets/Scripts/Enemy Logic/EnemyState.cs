@@ -49,6 +49,11 @@ public abstract class EnemyState : State
         OnUpdate?.Invoke();
     }
 
+    public virtual bool CanBeKnockedBack()
+    {
+        return true;
+    }
+
     public virtual bool CanAttackSword(float buildupTime)
     {
         return false;

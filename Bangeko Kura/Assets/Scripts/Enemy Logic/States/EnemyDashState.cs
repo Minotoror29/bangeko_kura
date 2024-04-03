@@ -32,6 +32,11 @@ public class EnemyDashState : EnemyState
     {
     }
 
+    public override bool CanBeKnockedBack()
+    {
+        return false;
+    }
+
     public override void UpdateLogic()
     {
         base.UpdateLogic();
