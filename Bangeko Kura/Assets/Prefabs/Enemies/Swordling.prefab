@@ -274,6 +274,8 @@ MonoBehaviour:
   damage: 5
   cooldown: 2
   buildupTime: 0.5
+  swordKnockbackDistance: 0
+  swordKnockbackSpeed: 0
   swordEffectPrefab: {fileID: 4396576707297930692, guid: e6e8944860d6eee4a90151795817cf2a,
     type: 3}
   swordEffectTime: 0.2
