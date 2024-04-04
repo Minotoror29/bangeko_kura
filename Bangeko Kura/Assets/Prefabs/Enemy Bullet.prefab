@@ -135,6 +135,8 @@ MonoBehaviour:
   speed: 750
   lifetime: 5
   damage: 1
+  knockbackDistance: 1
+  knockbackSpeed: 100
   fireEffects:
   - {fileID: 3851610267540276633, guid: ddf7c4b9945e5c5448e8adbd730fe409, type: 3}
   - {fileID: 3851610267540276633, guid: 41bfa9f1ea3069c4496cea7651426ff8, type: 3}
@@ -147,6 +149,7 @@ MonoBehaviour:
   smokeEffect: {fileID: 1543596384095219198, guid: 9b967501143f93d49b7175d562aa85b7,
     type: 3}
   smokeEffectLifetime: 0.183
+  bulletSoundPath: event:/Weapons/Enemy Bullet
 --- !u!50 &5907398816516013800
 Rigidbody2D:
   serializedVersion: 4

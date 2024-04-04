@@ -1,3 +1,5 @@
+using FMOD.Studio;
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -34,6 +36,10 @@ public class BulletController : MonoBehaviour
     [SerializeField] private GameObject smokeEffect;
     [SerializeField] private float smokeEffectLifetime = 0.183f;
 
+    [Header("Audio")]
+    [SerializeField] private string bulletSoundPath;
+    private EventInstance _bulletSound;
+
     private void Update()
     {
         UpdateLogic();
@@ -66,6 +72,9 @@ public class BulletController : MonoBehaviour
             knockbackDistance = knockbackDistance,
             knockbackSpeed = knockbackSpeed
         };
+
+        _bulletSound = RuntimeManager.CreateInstance(bulletSoundPath);
+        _bulletSound.start();
     }
 
     public void UpdateLogic()

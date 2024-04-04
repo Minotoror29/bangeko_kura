@@ -32,6 +32,7 @@ public class EnemyController : Controller
     [SerializeField] private List<GameObject> explosionEffects;
 
     private EventInstance _deathSound;
+    private EventInstance _damageSound;
 
     public EnemiesManager EnemiesManager { get { return _enemiesManager; } }
     public NewPlayerController Player { get { return _player; } }
@@ -49,7 +50,7 @@ public class EnemyController : Controller
         _enemiesManager = enemiesManager;
         _player = player;
 
-        HealthSystem.OnHit += KnockBack;
+        HealthSystem.OnHit += TakeHit;
         HealthSystem.OnDeath += Die;
 
         foreach (Weapon weapon in weapons)
@@ -57,7 +58,8 @@ public class EnemyController : Controller
             weapon.Initialize(this, HealthSystem);
         }
 
-        _deathSound = RuntimeManager.CreateInstance("event:/Enemy Death");
+        _deathSound = RuntimeManager.CreateInstance("event:/Weapons/Enemy Explosion");
+        _damageSound = RuntimeManager.CreateInstance("event:/Weapons/Enemy Hit");
 
         ChangeState(new EnemyIdleState(this));
     }
@@ -84,8 +86,10 @@ public class EnemyController : Controller
         return _currentState.CanDash(dashTime, dashSpeed, dashDirection);
     }
 
-    private void KnockBack(Transform source, Knockback knockback)
+    private void TakeHit(Transform source, Knockback knockback)
     {
+        _damageSound.start();
+
         if (!_currentState.CanBeKnockedBack()) return;
 
         ChangeState(new EnemyKnockBackState(this, (Vector2)(transform.position - source.position).normalized, knockback));

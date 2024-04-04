@@ -74,6 +74,7 @@ public class NewPlayerController : Controller
     private EventInstance _dashSound;
     private EventInstance _laserSound;
     private EventInstance _laserReloadSound;
+    private EventInstance _damageSound;
 
     public event Action OnDash;
     public event Action OnTakeDamage;
@@ -150,6 +151,7 @@ public class NewPlayerController : Controller
         _dashSound = RuntimeManager.CreateInstance("event:/Movement/Dash");
         _laserSound = RuntimeManager.CreateInstance("event:/Weapons/Laser");
         _laserReloadSound = RuntimeManager.CreateInstance("event:/Weapons/Laser Reload");
+        _damageSound = RuntimeManager.CreateInstance("event:/Weapons/Player Hit");
 }
 
     public void ChangeState(PlayerState nextState)
@@ -212,6 +214,8 @@ public class NewPlayerController : Controller
 
     private void TakeHit(Transform damageSource, Knockback knockback)
     {
+        _damageSound.start();
+
         OnTakeDamage?.Invoke();
     }
 

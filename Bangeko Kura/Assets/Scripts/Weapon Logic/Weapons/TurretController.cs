@@ -30,8 +30,6 @@ public class TurretController : Weapon
         _salvoTimer = 0f;
         _fireTimer = 0f;
         _bulletsFired = 0;
-
-        //_fireSound = RuntimeManager.CreateInstance("event:/Weapons/Turret");
     }
 
     public override void UpdateLogic()
