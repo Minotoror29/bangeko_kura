@@ -19,6 +19,8 @@ public class PlayerLandState : PlayerState
     {
         Controller.LandMesh.transform.position = _spawnPosition;
         Controller.LandMesh.SetActive(true);
+
+        Controller.LandingSound.start();
     }
 
     public override void Exit()

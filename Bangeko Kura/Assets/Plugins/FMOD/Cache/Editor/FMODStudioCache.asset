@@ -285,7 +285,7 @@ MonoBehaviour:
   Path: Assets/Sound/1bit_jam/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638478430451436194
+  lastModified: 638478444321060422
   FileSizes:
   - Name: Desktop
     Value: 1703904
@@ -528,7 +528,7 @@ MonoBehaviour:
   - {fileID: 780826937757828281}
   StringsBanks:
   - {fileID: 905448090654457532}
-  cacheTime: 638478430453466203
+  cacheTime: 638478444321401110
   cacheVersion: 131609
 --- !u!114 &780826937757828281
 MonoBehaviour:
@@ -545,7 +545,7 @@ MonoBehaviour:
   Path: Assets/Sound/1bit_jam/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638478430435810894
+  lastModified: 638478444320836163
   FileSizes:
   - Name: Desktop
     Value: 1036
@@ -565,7 +565,7 @@ MonoBehaviour:
   Path: Assets/Sound/1bit_jam/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638478430435824249
+  lastModified: 638478444320851159
   FileSizes:
   - Name: Desktop
     Value: 1988
@@ -639,7 +639,7 @@ MonoBehaviour:
   Path: Assets/Sound/1bit_jam/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638478430453466203
+  lastModified: 638478444321401110
   FileSizes:
   - Name: Desktop
     Value: 601184

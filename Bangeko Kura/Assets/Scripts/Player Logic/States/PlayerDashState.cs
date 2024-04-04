@@ -38,6 +38,8 @@ public class PlayerDashState : PlayerState
         }
 
         Controller.InstantiateEffect(Controller.DashEffect, Controller.transform.position, Quaternion.LookRotation(Vector3.forward, _dashDirection.normalized), 0.367f);
+
+        Controller.DashSound.start();
     }
 
     public override void Exit()

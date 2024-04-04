@@ -1,3 +1,5 @@
+using FMOD.Studio;
+using FMODUnity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -66,11 +68,18 @@ public class NewPlayerController : Controller
     private GameObject _landMesh;
     private Knockback _landKnockback;
 
+    //Audio
+    private EventInstance _landingSound;
+    private EventInstance _fallingSound;
+    private EventInstance _dashSound;
+    private EventInstance _laserSound;
+    private EventInstance _laserReloadSound;
+
     public event Action OnDash;
     public event Action OnTakeDamage;
 
+    #region Getters / Setters
     public PlayerControls Controls { get { return _controls; } }
-    //public Transform Mesh { get { return mesh; } }
     public float MovementSpeed { get { return movementSpeed; } }
     public float DashSpeed { get { return dashSpeed; } }
     public float DashDistance { get { return dashDistance; } }
@@ -89,6 +98,10 @@ public class NewPlayerController : Controller
     public Knockback LandKnockback { get { return _landKnockback; } }
     public float LandCameraShakeGain { get { return landCameraShakeGain; } }
     public float LandCameraShakeTime { get { return landCameraShakeTime; } }
+    public EventInstance LandingSound { get { return _landingSound; } }
+    public EventInstance FallingSound { get { return _fallingSound; } }
+    public EventInstance DashSound { get { return _dashSound; } }
+    #endregion
 
     private void Update()
     {
@@ -130,7 +143,14 @@ public class NewPlayerController : Controller
         _landMesh = Instantiate(landMeshPrefab);
         _landMesh.SetActive(false);
         _landKnockback = new Knockback { knockbackDistance = landKnockbackDistance, knockbackSpeed = landKnockbackSpeed };
-    }
+
+        //Initialize Audio
+        _landingSound = RuntimeManager.CreateInstance("event:/Movement/Landing");
+        _fallingSound = RuntimeManager.CreateInstance("event:/Movement/Fall");
+        _dashSound = RuntimeManager.CreateInstance("event:/Movement/Dash");
+        _laserSound = RuntimeManager.CreateInstance("event:/Weapons/Laser");
+        _laserReloadSound = RuntimeManager.CreateInstance("event:/Weapons/Laser Reload");
+}
 
     public void ChangeState(PlayerState nextState)
     {
@@ -183,6 +203,8 @@ public class NewPlayerController : Controller
 
         InstantiateEffect(laserOriginEffect, laserFirePoint.position, Quaternion.LookRotation(Vector3.forward, _lookDirection), 0.367f);
 
+        _laserSound.start();
+
         CameraManager.Instance.ShakeCamera(2f, 0.1f);
 
         _laserCooldownTimer = laserCooldown;
@@ -225,6 +247,11 @@ public class NewPlayerController : Controller
         if (_laserCooldownTimer > 0f)
         {
             _laserCooldownTimer -= Time.deltaTime;
+
+            if (_laserCooldownTimer <= 0f)
+            {
+                _laserReloadSound.start();
+            }
         }
     }
 
