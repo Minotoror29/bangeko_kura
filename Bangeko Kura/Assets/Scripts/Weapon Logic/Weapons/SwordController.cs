@@ -51,7 +51,7 @@ public class SwordController : Weapon
         base.UpdateLogic();
 
         _swordEffect.transform.position = Controller.transform.position;
-        _swordEffect.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, Controller.Mesh.transform.rotation.eulerAngles.y));
+        _swordEffect.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, -Controller.Mesh.transform.rotation.eulerAngles.y));
 
         if (_swordEffect.activeSelf)
         {
