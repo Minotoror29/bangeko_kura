@@ -19,7 +19,7 @@ public class BulletController : MonoBehaviour
 
     [SerializeField] private int damage = 1;
     [SerializeField] private float knockbackDistance = 1f;
-    [SerializeField] private float knockbackSPeed = 100f;
+    [SerializeField] private float knockbackSpeed = 100f;
     private Knockback _knockback;
 
     [Header("Effects")]
@@ -64,7 +64,7 @@ public class BulletController : MonoBehaviour
         _knockback = new Knockback
         {
             knockbackDistance = knockbackDistance,
-            knockbackSpeed = knockbackSPeed
+            knockbackSpeed = knockbackSpeed
         };
     }
 
