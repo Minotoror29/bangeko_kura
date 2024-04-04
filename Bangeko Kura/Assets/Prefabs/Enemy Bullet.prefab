@@ -134,7 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 750
   lifetime: 5
-  damage: 1
+  damage: 2
   knockbackDistance: 1
   knockbackSpeed: 100
   fireEffects:
