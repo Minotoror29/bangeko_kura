@@ -12,7 +12,9 @@ public class PlayerFallState : PlayerState
 
     public override void Enter()
     {
+        Controller.SetCollidersActive(false);
         Controller.Mesh.gameObject.SetActive(false);
+
         if (Rb.velocity.y < 0)
         {
             Controller.FallDownSprite.SetActive(true);

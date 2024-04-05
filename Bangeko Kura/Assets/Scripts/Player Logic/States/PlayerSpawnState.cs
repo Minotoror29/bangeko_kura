@@ -14,6 +14,7 @@ public class PlayerSpawnState : PlayerState
 
     public override void Enter()
     {
+        Controller.SetCollidersActive(true);
         Controller.transform.position = _spawnPosition;
 
         Controls.InGame.Enable();

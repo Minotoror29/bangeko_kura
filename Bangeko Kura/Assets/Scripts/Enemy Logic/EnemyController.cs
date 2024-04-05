@@ -119,6 +119,13 @@ public class EnemyController : Controller
         gameObject.SetActive(false);
     }
 
+    public void PlayerDied()
+    {
+        Debug.Log("dead");
+
+        _currentState.PlayerDied();
+    }
+
     public override void UpdateLogic()
     {
         base.UpdateLogic();

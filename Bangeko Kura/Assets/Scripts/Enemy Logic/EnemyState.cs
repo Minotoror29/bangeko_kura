@@ -63,4 +63,9 @@ public abstract class EnemyState : State
     {
         return false;
     }
+
+    public virtual void PlayerDied()
+    {
+
+    }
 }

@@ -25,7 +25,7 @@ public class ChasePlayerWhenClose : EnemyBehaviour
 
     private void EnterChasingDistance()
     {
-        if (Controller.DistanceToPlayer <= _chasingDistance)
+        if (Controller.DistanceToPlayer <= _chasingDistance && Controller.Player.Mesh.gameObject.activeSelf)
         {
             Controller.ChangeState(new EnemyChasingState(Controller, _chasingDistance, _chasingTime));
         }

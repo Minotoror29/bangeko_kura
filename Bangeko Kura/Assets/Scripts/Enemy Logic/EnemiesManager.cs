@@ -35,6 +35,16 @@ public class EnemiesManager : MonoBehaviour
             _enemies.Add(enemy);
             enemy.Initialize(this, _player, screenManager);
         }
+
+        screenManager.OnPlayerDeath += PlayerDied;
+    }
+
+    private void PlayerDied()
+    {
+        foreach (EnemyController enemy in _enemies)
+        {
+            enemy.PlayerDied();
+        }
     }
 
     public void UpdateLogic()

@@ -1,4 +1,5 @@
 using Cinemachine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,6 +21,8 @@ public class ScreenManager : MonoBehaviour
     private Transform _spawnCursor;
     private GameObject _ground;
 
+    public event Action OnPlayerDeath;
+
     private void Start()
     {
         Initialize();
@@ -37,6 +40,8 @@ public class ScreenManager : MonoBehaviour
 
     public void PlayerDied()
     {
+        OnPlayerDeath?.Invoke();
+
         if (!isArena)
         {
             player.ChangeState(new PlayerSpawnState(player, spawnPoint.position));

@@ -224,6 +224,12 @@ public class NewPlayerController : Controller
         ChangeState(new PlayerDeathState(this));
     }
 
+    public void SetCollidersActive(bool active)
+    {
+        GetComponent<CircleCollider2D>().enabled = active;
+        HealthSystem.GetComponent<CapsuleCollider2D>().enabled = active;
+    }
+
     public void InstantiateEffect(GameObject effect, Vector2 position, Quaternion rotation, float time)
     {
         GameObject newEffect = Instantiate(effect, position, rotation);

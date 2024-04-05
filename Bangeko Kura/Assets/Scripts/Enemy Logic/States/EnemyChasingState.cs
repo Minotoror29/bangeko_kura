@@ -50,6 +50,13 @@ public class EnemyChasingState : EnemyState
         return true;
     }
 
+    public override void PlayerDied()
+    {
+        base.PlayerDied();
+
+        Controller.ChangeState(new EnemyIdleState(Controller));
+    }
+
     public override void UpdateLogic()
     {
         base.UpdateLogic();

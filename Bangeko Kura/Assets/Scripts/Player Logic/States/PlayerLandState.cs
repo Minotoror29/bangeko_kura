@@ -17,6 +17,8 @@ public class PlayerLandState : PlayerState
 
     public override void Enter()
     {
+        Controller.SetCollidersActive(false);
+        Controller.transform.position = _spawnPosition;
         Controller.LandMesh.transform.position = _spawnPosition;
         Controller.LandMesh.SetActive(true);
 
@@ -27,8 +29,7 @@ public class PlayerLandState : PlayerState
     {
         Controller.LandMesh.SetActive(false);
 
-        Controller.transform.position = _spawnPosition;
-
+        Controller.SetCollidersActive(true);
         Controller.Mesh.gameObject.SetActive(true);
     }
 
