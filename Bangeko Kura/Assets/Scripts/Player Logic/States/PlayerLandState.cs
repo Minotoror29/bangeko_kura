@@ -17,6 +17,7 @@ public class PlayerLandState : PlayerState
 
     public override void Enter()
     {
+        Controls.InGame.Disable();
         Controller.SetCollidersActive(false);
         Controller.transform.position = _spawnPosition;
         Controller.LandMesh.transform.position = _spawnPosition;
@@ -43,6 +44,10 @@ public class PlayerLandState : PlayerState
     }
 
     public override void OnCollisionStay(Collision2D collision)
+    {
+    }
+
+    public override void OnTriggerEnter(Collider2D collision)
     {
     }
 

@@ -22,6 +22,9 @@ public class PlayerIdleState : PlayerState
 
     public override void Enter()
     {
+        Controller.SetCollidersActive(true);
+        Controls.InGame.Enable();
+
         Controller.OnDash += Dash;
 
         _currentState = IdleState.Static;
@@ -35,6 +38,16 @@ public class PlayerIdleState : PlayerState
 
     public override void OnCollisionEnter(Collision2D collision)
     {
+    }
+
+    public override void OnTriggerEnter(Collider2D collision)
+    {
+        if (collision.TryGetComponent(out Elevator elevator))
+        {
+            if (elevator.CurrentState == ElevatorState.Waiting) return;
+
+            Controller.ChangeState(new PlayerMoveToElevatorState(Controller, elevator));
+        }
     }
 
     private void Dash()

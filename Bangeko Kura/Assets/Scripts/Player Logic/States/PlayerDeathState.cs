@@ -40,6 +40,10 @@ public class PlayerDeathState : PlayerState
     {
     }
 
+    public override void OnTriggerEnter(Collider2D collision)
+    {
+    }
+
     public override void UpdateLogic()
     {
     }

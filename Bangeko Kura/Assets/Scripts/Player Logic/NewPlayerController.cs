@@ -313,4 +313,11 @@ public class NewPlayerController : Controller
     {
         _currentState.OnCollisionEnter(collision);
     }
+
+    public override void OnTriggerEnter2D(Collider2D collision)
+    {
+        base.OnTriggerEnter2D(collision);
+
+        _currentState.OnTriggerEnter(collision);
+    }
 }

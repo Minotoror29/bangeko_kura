@@ -87,11 +87,13 @@ public abstract class Controller : MonoBehaviour
         _changeColorTimer = changeColorTime;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground") && !_grounds.Contains(collision.gameObject))
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Elevator"))
         {
-            _grounds.Add(collision.gameObject);
+            if (!_grounds.Contains(collision.gameObject)) {
+                _grounds.Add(collision.gameObject);
+            }
         }
     }
 
@@ -105,9 +107,12 @@ public abstract class Controller : MonoBehaviour
 
     public void AddGround(GameObject ground)
     {
-        if (ground.CompareTag("Ground") && !_grounds.Contains(ground))
+        if (ground.CompareTag("Ground") || ground.CompareTag("Elevator"))
         {
-            _grounds.Add(ground);
+            if (!_grounds.Contains(ground))
+            {
+                _grounds.Add(ground);
+            }
         }
     }
 }

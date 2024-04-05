@@ -13,6 +13,7 @@ public class PlayerFallState : PlayerState
     public override void Enter()
     {
         Controller.SetCollidersActive(false);
+        Controls.InGame.Disable();
         Controller.Mesh.gameObject.SetActive(false);
 
         if (Rb.velocity.y < 0)
@@ -42,6 +43,10 @@ public class PlayerFallState : PlayerState
     }
 
     public override void OnCollisionStay(Collision2D collision)
+    {
+    }
+
+    public override void OnTriggerEnter(Collider2D collision)
     {
     }
 

@@ -38,6 +38,10 @@ public class PlayerKnockbackState : PlayerState
     {
     }
 
+    public override void OnTriggerEnter(Collider2D collision)
+    {
+    }
+
     public override void UpdateLogic()
     {
         if (((Vector2)Controller.transform.position - _origin).magnitude >= _distance)

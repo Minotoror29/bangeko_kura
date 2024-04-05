@@ -30,6 +30,16 @@ public class PlayerWalkState : PlayerState
     {
     }
 
+    public override void OnTriggerEnter(Collider2D collision)
+    {
+        if (collision.TryGetComponent(out Elevator elevator))
+        {
+            if (elevator.CurrentState == ElevatorState.Waiting) return;
+
+            Controller.ChangeState(new PlayerMoveToElevatorState(Controller, elevator));
+        }
+    }
+
     public override bool CanAttackSword()
     {
         Controller.ChangeState(new PlayerSwordState(Controller));

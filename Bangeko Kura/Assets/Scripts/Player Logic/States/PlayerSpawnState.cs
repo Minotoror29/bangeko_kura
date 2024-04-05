@@ -41,6 +41,10 @@ public class PlayerSpawnState : PlayerState
     {
     }
 
+    public override void OnTriggerEnter(Collider2D collision)
+    {
+    }
+
     public override void UpdateLogic()
     {
         if (_spawnTimer > 0f)

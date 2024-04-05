@@ -22,6 +22,8 @@ public abstract class PlayerState : State
         _animator = controller.MeshAnimator;
     }
 
+    public abstract void OnTriggerEnter(Collider2D collision);
+
     public virtual bool CanAttackSword()
     {
         return false;

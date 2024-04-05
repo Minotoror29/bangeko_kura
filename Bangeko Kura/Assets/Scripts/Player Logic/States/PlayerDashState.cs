@@ -64,6 +64,16 @@ public class PlayerDashState : PlayerState
     {
     }
 
+    public override void OnTriggerEnter(Collider2D collision)
+    {
+        if (collision.TryGetComponent(out Elevator elevator))
+        {
+            if (elevator.CurrentState == ElevatorState.Waiting) return;
+
+            Controller.ChangeState(new PlayerMoveToElevatorState(Controller, elevator));
+        }
+    }
+
     public override void UpdateLogic()
     {
         Controller.Turret.UpdateLogic();
