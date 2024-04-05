@@ -1755,6 +1755,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SetPackAnim
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 12aae722fd3be8441bc77139605f001a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1208895808086050303, guid: 12aae722fd3be8441bc77139605f001a,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
