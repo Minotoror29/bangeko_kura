@@ -107,7 +107,7 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.75}
   m_Size: {x: 0.8, y: 1.5}
   m_Direction: 0
 --- !u!1 &3374067823915141177
@@ -220,9 +220,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -1}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.6
+  m_Radius: 0.75
 --- !u!95 &3342664141262294437
 Animator:
   serializedVersion: 5
@@ -268,7 +268,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3860357899604616142}
   m_LocalRotation: {x: -0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -325,6 +325,8 @@ MonoBehaviour:
   damage: 5
   cooldown: 2
   buildupTime: 0.5
+  swordKnockbackDistance: 0
+  swordKnockbackSpeed: 0
   swordEffectPrefab: {fileID: 4396576707297930692, guid: e6e8944860d6eee4a90151795817cf2a,
     type: 3}
   swordEffectTime: 0.2
@@ -341,7 +343,7 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.75}
   serializedVersion: 2
   m_Radius: 1.25
 --- !u!1001 &9221492921146221430
@@ -379,7 +381,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: a31698e6654cb4b41a1a7ae752f01ca3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.65
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a31698e6654cb4b41a1a7ae752f01ca3,
         type: 3}
