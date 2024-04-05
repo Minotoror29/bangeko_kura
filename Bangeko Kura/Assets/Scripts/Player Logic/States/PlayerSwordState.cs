@@ -19,6 +19,11 @@ public class PlayerSwordState : PlayerState
     {
     }
 
+    public override bool CanBeKnockbacked()
+    {
+        return false;
+    }
+
     public override void OnCollisionEnter(Collision2D collision)
     {
     }

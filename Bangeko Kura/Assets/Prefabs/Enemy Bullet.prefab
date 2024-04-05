@@ -135,8 +135,8 @@ MonoBehaviour:
   speed: 750
   lifetime: 5
   damage: 2
-  knockbackDistance: 1
-  knockbackSpeed: 100
+  knockbackDistance: 0.1
+  knockbackSpeed: 225
   fireEffects:
   - {fileID: 3851610267540276633, guid: ddf7c4b9945e5c5448e8adbd730fe409, type: 3}
   - {fileID: 3851610267540276633, guid: 41bfa9f1ea3069c4496cea7651426ff8, type: 3}

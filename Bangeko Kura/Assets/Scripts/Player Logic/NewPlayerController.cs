@@ -217,6 +217,10 @@ public class NewPlayerController : Controller
         _damageSound.start();
 
         OnTakeDamage?.Invoke();
+
+        if (!_currentState.CanBeKnockbacked()) return;
+
+        ChangeState(new PlayerKnockbackState(this, (transform.position - damageSource.position).normalized, knockback));
     }
 
     public void Die(HealthSystem healthSystem, Transform deathSource)

@@ -26,4 +26,9 @@ public abstract class PlayerState : State
     {
         return false;
     }
+
+    public virtual bool CanBeKnockbacked()
+    {
+        return true;
+    }
 }

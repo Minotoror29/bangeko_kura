@@ -47,6 +47,11 @@ public class PlayerDashState : PlayerState
         Controller.OnTakeDamage -= PreventDamage;
     }
 
+    public override bool CanBeKnockbacked()
+    {
+        return false;
+    }
+
     public override void OnCollisionEnter(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Obstacle"))

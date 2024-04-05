@@ -33,6 +33,11 @@ public class PlayerLandState : PlayerState
         Controller.Mesh.gameObject.SetActive(true);
     }
 
+    public override bool CanBeKnockbacked()
+    {
+        return false;
+    }
+
     public override void OnCollisionEnter(Collision2D collision)
     {
     }

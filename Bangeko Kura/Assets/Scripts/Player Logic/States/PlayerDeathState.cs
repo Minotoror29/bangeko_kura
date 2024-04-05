@@ -27,6 +27,11 @@ public class PlayerDeathState : PlayerState
     {
     }
 
+    public override bool CanBeKnockbacked()
+    {
+        return false;
+    }
+
     public override void OnCollisionEnter(Collision2D collision)
     {
     }
