@@ -143,6 +143,17 @@ public class SwordController : Weapon
         }
     }
 
+    public void SetActiveColliders(bool active)
+    {
+        GetComponent<CircleCollider2D>().enabled = active;
+
+        if (!active)
+        {
+            _enemiesInRange.Clear();
+            _alliesInRange.Clear();
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out HealthSystem healthSystem))

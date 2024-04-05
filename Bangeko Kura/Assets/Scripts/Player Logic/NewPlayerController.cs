@@ -228,6 +228,8 @@ public class NewPlayerController : Controller
     {
         GetComponent<CircleCollider2D>().enabled = active;
         HealthSystem.GetComponent<CapsuleCollider2D>().enabled = active;
+
+        turret.SetActiveColliders(active);
     }
 
     public void InstantiateEffect(GameObject effect, Vector2 position, Quaternion rotation, float time)

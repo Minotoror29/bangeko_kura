@@ -91,6 +91,14 @@ public class TurretController : Weapon
         _enemiesInRange.Remove(enemy);
     }
 
+    public void SetActiveColliders(bool active)
+    {
+        GetComponent<CircleCollider2D>().enabled = active;
+
+        if (!active)
+            _enemiesInRange.Clear();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out HealthSystem enemy))
