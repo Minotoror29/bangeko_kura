@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class EnemiesManager : MonoBehaviour
 {
+    [SerializeField] private GameManager gameManager;
     [SerializeField] private ScreenManager screenManager;
 
     private List<EnemyController> _enemies;
@@ -33,7 +34,7 @@ public class EnemiesManager : MonoBehaviour
         foreach (EnemyController enemy in FindObjectsOfType<EnemyController>())
         {
             _enemies.Add(enemy);
-            enemy.Initialize(this, _player, screenManager);
+            enemy.Initialize(this, _player, gameManager);
         }
 
         screenManager.OnPlayerDeath += PlayerDied;

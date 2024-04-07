@@ -114,9 +114,9 @@ public class NewPlayerController : Controller
         UpdatePhysics();
     }
 
-    public override void Initialize(ScreenManager screenManager)
+    public override void Initialize(GameManager gameManager)
     {
-        base.Initialize(screenManager);
+        base.Initialize(gameManager);
 
         _controls = new PlayerControls();
         _controls.InGame.Enable();
@@ -319,5 +319,10 @@ public class NewPlayerController : Controller
         base.OnTriggerEnter2D(collision);
 
         _currentState.OnTriggerEnter(collision);
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        _currentState.OnTriggerStay(collision);
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Controller : MonoBehaviour
 {
-    private ScreenManager _screenManager;
+    private GameManager _gameManager;
 
     private Rigidbody2D _rb;
     [SerializeField] private Animator generalAnimator;
@@ -21,7 +21,7 @@ public abstract class Controller : MonoBehaviour
 
     private List<GameObject> _grounds;
 
-    public ScreenManager ScreenManager { get { return _screenManager; } }
+    public GameManager GameManager { get { return _gameManager; } }
     public Rigidbody2D Rb { get { return _rb; } }
     public Animator GeneralAnimator { get { return generalAnimator; } }
     public Animator MeshAnimator { get { return meshAnimator; } }
@@ -31,9 +31,9 @@ public abstract class Controller : MonoBehaviour
     public bool Dashing { get { return _dashing; } set { _dashing = value; } }
     public List<GameObject> Grounds { get { return _grounds; } }
 
-    public virtual void Initialize(ScreenManager screenManager)
+    public virtual void Initialize(GameManager gameManager)
     {
-        _screenManager = screenManager;
+        _gameManager = gameManager;
 
         _rb = GetComponent<Rigidbody2D>();
         _healthSystem = GetComponentInChildren<HealthSystem>();

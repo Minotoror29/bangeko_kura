@@ -15,6 +15,8 @@ public class Elevator : MonoBehaviour
 
     [SerializeField] private float elevatorSpeed;
 
+    [SerializeField] private bool oneWayElevator;
+
     public event Action OnArrival;
 
     public ElevatorState CurrentState { get { return _currentState; } }
@@ -57,6 +59,8 @@ public class Elevator : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if (oneWayElevator) return;
+
         if (collision.TryGetComponent(out NewPlayerController player))
         {
             ChangeState(ElevatorState.Idle);

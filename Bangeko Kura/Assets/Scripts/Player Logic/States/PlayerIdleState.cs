@@ -42,6 +42,18 @@ public class PlayerIdleState : PlayerState
 
     public override void OnTriggerEnter(Collider2D collision)
     {
+        //if (collision.TryGetComponent(out Elevator elevator))
+        //{
+        //    if (elevator.CurrentState == ElevatorState.Waiting) return;
+
+        //    Controller.ChangeState(new PlayerMoveToElevatorState(Controller, elevator));
+        //}
+    }
+
+    public override void OnTriggerStay(Collider2D collision)
+    {
+        base.OnTriggerStay(collision);
+
         if (collision.TryGetComponent(out Elevator elevator))
         {
             if (elevator.CurrentState == ElevatorState.Waiting) return;

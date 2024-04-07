@@ -24,6 +24,11 @@ public abstract class PlayerState : State
 
     public abstract void OnTriggerEnter(Collider2D collision);
 
+    public virtual void OnTriggerStay(Collider2D collision)
+    {
+
+    }
+
     public virtual bool CanAttackSword()
     {
         return false;

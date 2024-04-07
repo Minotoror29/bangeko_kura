@@ -17,7 +17,7 @@ public class PlayerSpawnState : PlayerState
         Controller.SetCollidersActive(true);
         Controller.transform.position = _spawnPosition;
 
-        Controls.InGame.Enable();
+        //Controls.InGame.Enable();
         Controller.Mesh.gameObject.SetActive(true);
         _spawnTimer = 0.1f;
 

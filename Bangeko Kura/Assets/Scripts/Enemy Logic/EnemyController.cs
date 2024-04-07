@@ -43,9 +43,9 @@ public class EnemyController : Controller
 
     public event Action<Transform> OnAllyDiedClose;
 
-    public void Initialize(EnemiesManager enemiesManager, NewPlayerController player, ScreenManager screenManager)
+    public void Initialize(EnemiesManager enemiesManager, NewPlayerController player, GameManager gameManager)
     {
-        base.Initialize(screenManager);
+        base.Initialize(gameManager);
 
         _enemiesManager = enemiesManager;
         _player = player;

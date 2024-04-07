@@ -78,9 +78,9 @@ public class NemesisController : Controller
         UpdatePhysics();
     }
 
-    public override void Initialize(ScreenManager screenManager)
+    public override void Initialize(GameManager gameManager)
     {
-        base.Initialize(screenManager);
+        base.Initialize(gameManager);
 
         //HealthSystem.OnDamage += TakeDamage;
         HealthSystem.OnDeath += Die;

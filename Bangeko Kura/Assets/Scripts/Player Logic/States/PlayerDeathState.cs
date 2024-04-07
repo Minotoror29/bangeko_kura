@@ -16,7 +16,7 @@ public class PlayerDeathState : PlayerState
         if (Controller.HealthSystem.CurrentHealth > 0)
         {
             Controller.Mesh.gameObject.SetActive(false);
-            Controller.ScreenManager.PlayerDied();
+            Controller.GameManager.PlayerDied();
         } else
         {
             Animator.CrossFade("Player Death", 0f);

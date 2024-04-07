@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ScreenState { Play, Spawn }
+public enum ScreenState { Inactive, Play, Spawn }
 
 public class ScreenManager : MonoBehaviour
 {
@@ -30,12 +30,24 @@ public class ScreenManager : MonoBehaviour
 
     public void Initialize()
     {
+        _currentState = ScreenState.Inactive;
+    }
+
+    public void EnterScreen()
+    {
         _controls = new ScreenControls();
         _controls.Spawn.Spawn.performed += ctx => SpawnPlayer();
         _currentState = ScreenState.Play;
 
-        player.Initialize(this);
-        player.ChangeState(new PlayerSpawnState(player, spawnPoint.position));
+        //player.Initialize(this);
+        
+    }
+
+    public void ExitScreen()
+    {
+        _controls.Spawn.Spawn.performed -= ctx => SpawnPlayer();
+        _controls.Spawn.Disable();
+        _currentState = ScreenState.Inactive;
     }
 
     public void PlayerDied()

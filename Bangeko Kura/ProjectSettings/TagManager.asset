@@ -42,6 +42,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Elevator
+    uniqueID: 390357799
+    locked: 0
   - name: Arena
     uniqueID: 2227834301
     locked: 0

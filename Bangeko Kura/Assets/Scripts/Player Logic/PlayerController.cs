@@ -63,9 +63,9 @@ public class PlayerController : Controller
         UpdatePhysics();
     }
 
-    public override void Initialize(ScreenManager screenManager)
+    public override void Initialize(GameManager gameManager)
     {
-        base.Initialize(screenManager);
+        base.Initialize(gameManager);
 
         _playerControls = new PlayerControls();
         _playerControls.InGame.Enable();
