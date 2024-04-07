@@ -16,6 +16,8 @@ public class ScreenManager : MonoBehaviour
     [SerializeField] private bool isArena = false;
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private Transform spawnCursorPrefab;
+    [SerializeField] private List<ScreenExit> exits;
+    [SerializeField] private CinemachineVirtualCamera vCam;
 
     private Vector2 _spawnPosition;
     private Transform _spawnCursor;
@@ -23,14 +25,15 @@ public class ScreenManager : MonoBehaviour
 
     public event Action OnPlayerDeath;
 
-    private void Start()
-    {
-        Initialize();
-    }
-
-    public void Initialize()
+    public void Initialize(GameManager gameManager)
     {
         _currentState = ScreenState.Inactive;
+
+        foreach (ScreenExit exit in exits)
+        {
+            exit.Initialize(gameManager);
+            exit.gameObject.SetActive(false);
+        }
     }
 
     public void EnterScreen()
@@ -39,8 +42,12 @@ public class ScreenManager : MonoBehaviour
         _controls.Spawn.Spawn.performed += ctx => SpawnPlayer();
         _currentState = ScreenState.Play;
 
-        //player.Initialize(this);
-        
+        foreach (ScreenExit exit in exits)
+        {
+            exit.gameObject.SetActive(true);
+        }
+
+        vCam.gameObject.SetActive(true);
     }
 
     public void ExitScreen()
@@ -48,6 +55,13 @@ public class ScreenManager : MonoBehaviour
         _controls.Spawn.Spawn.performed -= ctx => SpawnPlayer();
         _controls.Spawn.Disable();
         _currentState = ScreenState.Inactive;
+
+        foreach (ScreenExit exit in exits)
+        {
+            exit.gameObject.SetActive(true);
+        }
+
+        vCam.gameObject.SetActive(false);
     }
 
     public void PlayerDied()

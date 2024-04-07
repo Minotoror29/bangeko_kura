@@ -319,6 +319,11 @@ public class NewPlayerController : Controller
         base.OnTriggerEnter2D(collision);
 
         _currentState.OnTriggerEnter(collision);
+
+        if (collision.TryGetComponent(out ScreenExit exit))
+        {
+            exit.ChangeScreen();
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)

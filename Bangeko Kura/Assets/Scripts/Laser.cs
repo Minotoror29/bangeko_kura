@@ -18,8 +18,8 @@ public class Laser : MonoBehaviour
     {
         _lineRenderer = GetComponent<LineRenderer>();
 
-        _lineRenderer.SetPosition(0, startPosition);
-        _lineRenderer.SetPosition(1, endPosition);
+        _lineRenderer.SetPosition(0, new Vector3(startPosition.x, startPosition.y, -1));
+        _lineRenderer.SetPosition(1, new Vector3(endPosition.x, endPosition.y, -1));
 
         _lineRenderer.startWidth = width;
         _lineRenderer.endWidth = width;

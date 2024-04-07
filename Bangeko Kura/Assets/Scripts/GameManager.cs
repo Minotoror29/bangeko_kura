@@ -14,6 +14,11 @@ public class GameManager : MonoBehaviour
     {
         player.Initialize(this);
 
+        foreach (ScreenManager screen in FindObjectsOfType<ScreenManager>(true))
+        {
+            screen.Initialize(this);
+        }
+
         ChangeScreen(startScreen);
 
         player.ChangeState(new PlayerSpawnState(player, startSpawnPoint.position));
