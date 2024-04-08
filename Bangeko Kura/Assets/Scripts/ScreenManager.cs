@@ -34,6 +34,8 @@ public class ScreenManager : MonoBehaviour
             exit.Initialize(gameManager);
             exit.gameObject.SetActive(false);
         }
+
+        vCam.gameObject.SetActive(false);
     }
 
     public void EnterScreen()

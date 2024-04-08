@@ -89,7 +89,7 @@ public abstract class Controller : MonoBehaviour
 
     public virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Elevator"))
+        if (collision.gameObject.CompareTag("Ground"))
         {
             if (!_grounds.Contains(collision.gameObject)) {
                 _grounds.Add(collision.gameObject);
@@ -107,7 +107,7 @@ public abstract class Controller : MonoBehaviour
 
     public void AddGround(GameObject ground)
     {
-        if (ground.CompareTag("Ground") || ground.CompareTag("Elevator"))
+        if (ground.CompareTag("Ground"))
         {
             if (!_grounds.Contains(ground))
             {
