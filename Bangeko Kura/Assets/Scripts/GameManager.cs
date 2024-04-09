@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ScreenManager startScreen;
     [SerializeField] private Transform startSpawnPoint;
     private ScreenManager _currentScreen;
+
+    public event Action OnPlayerFall;
+    public event Action OnPlayerDeath;
 
     private void Start()
     {
@@ -31,8 +35,8 @@ public class GameManager : MonoBehaviour
         _currentScreen.EnterScreen();
     }
 
-    public void PlayerDied()
+    public void PlayerFell()
     {
-        _currentScreen.PlayerDied();
+        _currentScreen.PlayerFell();
     }
 }

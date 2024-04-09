@@ -50,7 +50,6 @@ public class ScreenManager : MonoBehaviour
             exit.gameObject.SetActive(true);
         }
 
-        //vCam.gameObject.SetActive(true);
         CameraManager.Instance.ChangeCamera(vCam);
     }
 
@@ -64,11 +63,9 @@ public class ScreenManager : MonoBehaviour
         {
             exit.gameObject.SetActive(true);
         }
-
-        //vCam.gameObject.SetActive(false);
     }
 
-    public void PlayerDied()
+    public void PlayerFell()
     {
         OnPlayerDeath?.Invoke();
 

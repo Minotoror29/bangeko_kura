@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class PlayerDeathState : PlayerState
 {
-    public PlayerDeathState(NewPlayerController controller) : base(controller)
+    private bool _fromFall;
+
+    public PlayerDeathState(NewPlayerController controller, bool fromFall) : base(controller)
     {
+        _fromFall = fromFall;
     }
 
     public override void Enter()
@@ -13,11 +16,7 @@ public class PlayerDeathState : PlayerState
         Controller.SetCollidersActive(false);
         Controls.InGame.Disable();
         
-        if (Controller.HealthSystem.CurrentHealth > 0)
-        {
-            Controller.Mesh.gameObject.SetActive(false);
-            Controller.GameManager.PlayerDied();
-        } else
+        if (!_fromFall)
         {
             Animator.CrossFade("Player Death", 0f);
         }

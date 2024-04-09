@@ -19,11 +19,11 @@ public class PlayerFallState : PlayerState
         if (Rb.velocity.y < 0)
         {
             Controller.FallDownSprite.SetActive(true);
-            Controller.FallDownSprite.transform.position = (Vector2)Controller.Mesh.position + Vector2.up + Vector2.right * 0.5f/* + Rb.velocity.normalized * 0.5f*/;
+            Controller.FallDownSprite.transform.position = (Vector2)Controller.Mesh.position + Vector2.up + Vector2.right * 0.5f;
         } else
         {
             Controller.FallSprite.SetActive(true);
-            Controller.FallSprite.transform.position = (Vector2)Controller.Mesh.position + Vector2.up + Vector2.right * 0.5f/* + Rb.velocity.normalized * 0.5f*/;
+            Controller.FallSprite.transform.position = (Vector2)Controller.Mesh.position + Vector2.up + Vector2.right * 0.5f;
         }
 
         Controller.FallingSound.start();
@@ -55,17 +55,23 @@ public class PlayerFallState : PlayerState
         if (_fallTimer > 0f)
         {
             _fallTimer -= Time.deltaTime;
-        } else
-        {
-            Controller.FallDownSprite.SetActive(false);
-            Controller.FallSprite.SetActive(false);
-            Controller.ChangeState(new PlayerDeathState(Controller));
+
+            if (_fallTimer <= 0f)
+            {
+                Controller.FallDownSprite.SetActive(false);
+                Controller.FallSprite.SetActive(false);
+                Controller.HealthSystem.TakeDamageFromFall(3);
+                if (Controller.HealthSystem.CurrentHealth > 0)
+                {
+                    Controller.Mesh.gameObject.SetActive(false);
+                    Controller.GameManager.PlayerFell();
+                }
+            }
         }
     }
 
     public override void UpdatePhysics()
     {
         Rb.velocity = Vector2.zero;
-        //Rb.velocity = new Vector2(0f , -_fallSpeed) * Time.fixedDeltaTime;
     }
 }

@@ -121,8 +121,6 @@ public class EnemyController : Controller
 
     public void PlayerDied()
     {
-        Debug.Log("dead");
-
         _currentState.PlayerDied();
     }
 

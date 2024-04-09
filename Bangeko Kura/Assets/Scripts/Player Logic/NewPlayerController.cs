@@ -127,6 +127,7 @@ public class NewPlayerController : Controller
         HealthSystem.OnHit += TakeHit;
         //HealthSystem.OnDamage += TakeDamage;
         HealthSystem.OnDeath += Die;
+        HealthSystem.OnDeathFromFall += DieFromFall;
         healthDisplay.Initialize(HealthSystem);
 
         _dashCooldownTimer = 0f;
@@ -225,7 +226,12 @@ public class NewPlayerController : Controller
 
     public void Die(HealthSystem healthSystem, Transform deathSource)
     {
-        ChangeState(new PlayerDeathState(this));
+        ChangeState(new PlayerDeathState(this, false));
+    }
+
+    public void DieFromFall()
+    {
+        ChangeState(new PlayerDeathState(this, true));
     }
 
     public void SetCollidersActive(bool active)

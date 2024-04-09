@@ -20,6 +20,7 @@ public class HealthSystem : MonoBehaviour
     public event Action<Transform, Knockback> OnHit;
     public event Action<int> OnDamage;
     public event Action<HealthSystem, Transform> OnDeath;
+    public event Action OnDeathFromFall;
 
     public void Initialize(Transform source)
     {
@@ -49,17 +50,23 @@ public class HealthSystem : MonoBehaviour
         OnDamage?.Invoke(damage);
         if (_currentHealth <= 0)
         {
-            Die(damageSource);
+            OnDeath?.Invoke(this, damageSource);
+        }
+    }
+
+    public void TakeDamageFromFall(int damage)
+    {
+        _currentHealth -= damage;
+        OnDamage?.Invoke(damage);
+
+        if (_currentHealth <= 0)
+        {
+            OnDeathFromFall?.Invoke();
         }
     }
 
     public void ResetHealth()
     {
         _currentHealth = maxHealth;
-    }
-
-    public void Die(Transform deathSource)
-    {
-        OnDeath?.Invoke(this, deathSource);
     }
 }
