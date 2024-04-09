@@ -419,7 +419,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aed08d4da884f004dabbe93e084f5760, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  virtualCamera: {fileID: 481748410}
 --- !u!4 &80735952
 Transform:
   m_ObjectHideFlags: 0
@@ -1029,6 +1028,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1487840491}
   spawnPoint: {fileID: 1475077195}
+  spawnGround: {fileID: 1017967565}
   isArena: 1
   groundMask:
     serializedVersion: 2
@@ -2032,6 +2032,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1487840491}
   spawnPoint: {fileID: 1556486512}
+  spawnGround: {fileID: 553037590}
   isArena: 0
   groundMask:
     serializedVersion: 2
@@ -2570,9 +2571,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -2067132995
+  m_SortingLayer: -1
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: cb03e6ce7a2291d48a10c99e5d00e483, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3524,7 +3525,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1284212929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4450,6 +4451,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1487840491}
   spawnPoint: {fileID: 210386338}
+  spawnGround: {fileID: 1052489268}
   isArena: 0
   groundMask:
     serializedVersion: 2
@@ -4923,9 +4925,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -2067132995
+  m_SortingLayer: -1
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 96ef8fe9dfb79b14fbad7eedd7cf98ec, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5263,6 +5265,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1487840491}
   spawnPoint: {fileID: 788452125}
+  spawnGround: {fileID: 1543400807}
   isArena: 0
   groundMask:
     serializedVersion: 2

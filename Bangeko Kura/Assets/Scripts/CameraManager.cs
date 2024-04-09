@@ -8,7 +8,7 @@ public class CameraManager : MonoBehaviour
     private static CameraManager _instance;
     public static CameraManager Instance => _instance;
 
-    [SerializeField] private CinemachineVirtualCamera virtualCamera;
+    private CinemachineVirtualCamera _currentCamera;
     private CinemachineBasicMultiChannelPerlin _perlin;
     private float _shakeTimer = 0f;
 
@@ -23,9 +23,15 @@ public class CameraManager : MonoBehaviour
         }
     }
 
-    private void Start()
+    public void ChangeCamera(CinemachineVirtualCamera nextCamera)
     {
-        _perlin = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        if (_currentCamera != null)
+        {
+            _currentCamera.gameObject.SetActive(false);
+        }
+        _currentCamera = nextCamera;
+        _currentCamera.gameObject.SetActive(true);
+        _perlin = _currentCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
     }
 
     public void ShakeCamera(float gain, float time)

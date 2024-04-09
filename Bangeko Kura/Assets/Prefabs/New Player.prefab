@@ -323,7 +323,7 @@ MonoBehaviour:
   landDamageRadius: 2.25
   landKnockbackDistance: 3
   landKnockbackSpeed: 1000
-  landCameraShakeGain: 1
+  landCameraShakeGain: 5
   landCameraShakeTime: 0.1
 --- !u!50 &83542728120134515
 Rigidbody2D:

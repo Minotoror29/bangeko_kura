@@ -107,6 +107,8 @@ public abstract class Controller : MonoBehaviour
 
     public void AddGround(GameObject ground)
     {
+        if (ground == null) return;
+
         if (ground.CompareTag("Ground"))
         {
             if (!_grounds.Contains(ground))

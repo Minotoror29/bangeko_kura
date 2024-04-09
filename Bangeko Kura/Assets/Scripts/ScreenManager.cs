@@ -13,6 +13,7 @@ public class ScreenManager : MonoBehaviour
 
     [SerializeField] private NewPlayerController player;
     [SerializeField] private Transform spawnPoint;
+    [SerializeField] private GameObject spawnGround;
     [SerializeField] private bool isArena = false;
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private Transform spawnCursorPrefab;
@@ -49,7 +50,8 @@ public class ScreenManager : MonoBehaviour
             exit.gameObject.SetActive(true);
         }
 
-        vCam.gameObject.SetActive(true);
+        //vCam.gameObject.SetActive(true);
+        CameraManager.Instance.ChangeCamera(vCam);
     }
 
     public void ExitScreen()
@@ -63,7 +65,7 @@ public class ScreenManager : MonoBehaviour
             exit.gameObject.SetActive(true);
         }
 
-        vCam.gameObject.SetActive(false);
+        //vCam.gameObject.SetActive(false);
     }
 
     public void PlayerDied()
@@ -72,7 +74,7 @@ public class ScreenManager : MonoBehaviour
 
         if (!isArena)
         {
-            player.ChangeState(new PlayerSpawnState(player, spawnPoint.position));
+            player.ChangeState(new PlayerLandState(player, spawnPoint.position, spawnGround));
         } else
         {
             _currentState = ScreenState.Spawn;
