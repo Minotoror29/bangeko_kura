@@ -10,10 +10,13 @@ public class GamePlayState : GameState
 
     public override void Enter()
     {
+        GameManager.Player.MeshAnimator.speed = 1;
     }
 
     public override void Exit()
     {
+        GameManager.Player.Rb.velocity = Vector2.zero;
+        GameManager.Player.MeshAnimator.speed = 0;
     }
 
     public override void OnCollisionEnter(Collision2D collision)

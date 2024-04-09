@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,7 +12,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform startSpawnPoint;
     private ScreenManager _currentScreen;
 
+    [SerializeField] private CutsceneManager cutsceneManager;
+
     public NewPlayerController Player { get { return player; } }
+    public CutsceneManager CutsceneManager { get { return cutsceneManager; } }
 
     private void Start()
     {
@@ -23,6 +25,8 @@ public class GameManager : MonoBehaviour
         {
             screen.Initialize(this);
         }
+
+        cutsceneManager.Initialize();
 
         ChangeScreen(startScreen);
 

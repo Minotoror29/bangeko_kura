@@ -8,6 +8,8 @@ using UnityEngine.UI;
 
 public class CutsceneManager : MonoBehaviour
 {
+    private GameCutsceneState _gameState;
+
     [SerializeField] private List<Image> frames;
     [SerializeField] private float frameTime = 1f;
     private float _frameTimer;
@@ -17,67 +19,83 @@ public class CutsceneManager : MonoBehaviour
     [SerializeField] private string soundPath;
     private EventInstance _sound;
 
-    private void Start()
-    {
-        Initialize();
-    }
-
-    private void Update()
-    {
-        UpdateLogic();
-    }
-
     public void Initialize()
     {
         _frameTimer = 0f;
-        _currentFrameindex = 0;
 
         if (soundPath != "")
         {
             _sound = RuntimeManager.CreateInstance(soundPath);
         }
+    }
+
+    public void StartCutscene(GameCutsceneState gameState)
+    {
+        _gameState = gameState;
+
+        _currentFrameindex = 0;
+
+        frames[0].gameObject.SetActive(true);
 
         if (soundIndex == 0)
         {
             _sound.start();
         }
+
+        _frameTimer = frameTime;
     }
 
     private void NextFrame()
     {
+        //frames[_currentFrameindex].gameObject.SetActive(false);
+        //_currentFrameindex++;
+
+        //if (soundIndex == _currentFrameindex && soundPath != "")
+        //{
+        //    _sound.start();
+        //}
+
+        //if (_currentFrameindex == frames.Count)
+        //{
+        //    if (SceneManager.GetActiveScene().buildIndex + 1 == SceneManager.sceneCountInBuildSettings)
+        //    {
+        //        Application.Quit();
+        //    } else
+        //    {
+        //        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        //    }
+        //    return;
+        //}
+
+        //frames[_currentFrameindex].gameObject.SetActive(true);
+
         frames[_currentFrameindex].gameObject.SetActive(false);
         _currentFrameindex++;
 
-        if (soundIndex == _currentFrameindex && soundPath != "")
-        {
-            _sound.start();
-        }
-
         if (_currentFrameindex == frames.Count)
         {
-            if (SceneManager.GetActiveScene().buildIndex + 1 == SceneManager.sceneCountInBuildSettings)
-            {
-                Application.Quit();
-            } else
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            }
+            _gameState.EndCutscene();
+
             return;
         }
 
         frames[_currentFrameindex].gameObject.SetActive(true);
+        if (soundIndex == _currentFrameindex && soundPath != "")
+        {
+            _sound.start();
+        }
     }
 
     public void UpdateLogic()
     {
         if (_currentFrameindex == frames.Count) return;
 
-        if (_frameTimer < frameTime)
+        if (_frameTimer > 0f)
         {
-            _frameTimer += Time.deltaTime;
+            _frameTimer -= Time.deltaTime;
         } else
         {
-            _frameTimer = 0f;
+            _frameTimer = frameTime;
             NextFrame();
         }
     }

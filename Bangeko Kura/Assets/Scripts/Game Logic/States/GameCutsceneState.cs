@@ -1,23 +1,25 @@
-using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameTransitionState : GameState
+public class GameCutsceneState : GameState
 {
-    private float _timer;
-
-    public GameTransitionState(GameManager gameManager) : base(gameManager)
+    public GameCutsceneState(GameManager gameManager) : base(gameManager)
     {
     }
 
     public override void Enter()
     {
-        _timer = Camera.main.GetComponent<CinemachineBrain>().m_DefaultBlend.m_Time;
+        GameManager.CutsceneManager.StartCutscene(this);
     }
 
     public override void Exit()
     {
+    }
+
+    public void EndCutscene()
+    {
+        GameManager.ChangeState(new GamePlayState(GameManager));
     }
 
     public override void OnCollisionEnter(Collision2D collision)
@@ -30,13 +32,7 @@ public class GameTransitionState : GameState
 
     public override void UpdateLogic()
     {
-        if (_timer > 0f)
-        {
-            _timer -= Time.deltaTime;
-        } else
-        {
-            GameManager.ChangeState(new GamePlayState(GameManager));
-        }
+        GameManager.CutsceneManager.UpdateLogic();
     }
 
     public override void UpdatePhysics()
