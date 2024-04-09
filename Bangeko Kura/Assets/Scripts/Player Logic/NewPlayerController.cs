@@ -104,16 +104,6 @@ public class NewPlayerController : Controller
     public EventInstance DashSound { get { return _dashSound; } }
     #endregion
 
-    private void Update()
-    {
-        UpdateLogic();
-    }
-
-    private void FixedUpdate()
-    {
-        UpdatePhysics();
-    }
-
     public override void Initialize(GameManager gameManager)
     {
         base.Initialize(gameManager);
