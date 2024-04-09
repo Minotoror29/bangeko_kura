@@ -1,17 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Altar : MonoBehaviour
 {
     [SerializeField] private GameManager gameManager;
-    [SerializeField] private Collider2D coll;
+
+    public UnityEvent OnActivation; 
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.GetComponent<NewPlayerController>())
         {
-            coll.enabled = false;
+            gameObject.SetActive(false);
+            OnActivation?.Invoke();
             gameManager.ChangeState(new GameCutsceneState(gameManager));
         }
     }

@@ -15,7 +15,7 @@ public class PlayerWaitElevatorState : PlayerState
     {
         Animator.CrossFade("Player Idle", 0f);
 
-        _elevator.OnArrival += GoToIdle;
+        _elevator.OnArrival.AddListener(GoToIdle);
     }
 
     public override void Exit()

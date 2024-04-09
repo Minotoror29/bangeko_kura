@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public enum ElevatorState { Idle, Moving, Waiting }
 
@@ -17,7 +18,7 @@ public class Elevator : MonoBehaviour
 
     [SerializeField] private bool oneWayElevator;
 
-    public event Action OnArrival;
+    public UnityEvent OnArrival;
 
     public ElevatorState CurrentState { get { return _currentState; } }
 
