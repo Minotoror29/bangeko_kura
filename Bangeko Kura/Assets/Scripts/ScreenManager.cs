@@ -24,7 +24,12 @@ public class ScreenManager : MonoBehaviour
     private Transform _spawnCursor;
     private GameObject _ground;
 
+    public event Action OnInitialize;
+    public event Action OnUpdate;
+    public event Action OnFixedUpdate;
     public event Action OnPlayerDeath;
+    public event Action<bool> OnEnter;
+    public event Action<bool> OnExit;
 
     public void Initialize(GameManager gameManager)
     {
@@ -37,6 +42,8 @@ public class ScreenManager : MonoBehaviour
         }
 
         vCam.gameObject.SetActive(false);
+
+        OnInitialize?.Invoke();
     }
 
     public void EnterScreen()
@@ -51,6 +58,8 @@ public class ScreenManager : MonoBehaviour
         }
 
         CameraManager.Instance.ChangeCamera(vCam);
+
+        OnEnter?.Invoke(true);
     }
 
     public void ExitScreen()
@@ -63,6 +72,8 @@ public class ScreenManager : MonoBehaviour
         {
             exit.gameObject.SetActive(false);
         }
+
+        OnEnter?.Invoke(false);
     }
 
     public void PlayerFell()
@@ -80,7 +91,7 @@ public class ScreenManager : MonoBehaviour
         }
     }
 
-    private void Update()
+    public void UpdateLogic()
     {
         if (_currentState == ScreenState.Spawn)
         {
@@ -95,6 +106,8 @@ public class ScreenManager : MonoBehaviour
 
             //_spawnPosition = Camera.main.ScreenToWorldPoint(_controls.Spawn.MousePosition.ReadValue<Vector2>());
         }
+
+        OnUpdate?.Invoke();
     }
 
     private void SpawnPlayer()
@@ -104,5 +117,10 @@ public class ScreenManager : MonoBehaviour
         Destroy(_spawnCursor.gameObject);
 
         player.ChangeState(new PlayerLandState(player, _spawnPosition, _ground));
+    }
+
+    public void UpdatePhysics()
+    {
+        OnFixedUpdate?.Invoke();
     }
 }

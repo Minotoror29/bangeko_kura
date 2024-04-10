@@ -715,6 +715,7 @@ MonoBehaviour:
   startScreen: {fileID: 637564265}
   startSpawnPoint: {fileID: 440830881}
   cutsceneManager: {fileID: 2072872966}
+  gameCanvas: {fileID: 1399664810}
 --- !u!4 &118596939
 Transform:
   m_ObjectHideFlags: 0

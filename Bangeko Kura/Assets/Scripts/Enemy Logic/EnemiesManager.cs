@@ -12,26 +12,29 @@ public class EnemiesManager : MonoBehaviour
 
     private NewPlayerController _player;
 
-    private void Start()
+    private void OnEnable()
     {
-        Initialize();
+        screenManager.OnInitialize += Initialize;
+        screenManager.OnUpdate += UpdateLogic;
+        screenManager.OnFixedUpdate += UpdatePhysics;
+        screenManager.OnEnter += SetActiveEnemies;
+        screenManager.OnExit += SetActiveEnemies;
     }
 
-    private void Update()
+    private void OnDisable()
     {
-        UpdateLogic();
-    }
-
-    private void FixedUpdate()
-    {
-        UpdatePhysics();
+        screenManager.OnInitialize -= Initialize;
+        screenManager.OnUpdate -= UpdateLogic;
+        screenManager.OnFixedUpdate -= UpdatePhysics;
+        screenManager.OnEnter -= SetActiveEnemies;
+        screenManager.OnExit -= SetActiveEnemies;
     }
 
     public void Initialize()
     {
         _enemies = new();
         _player = FindObjectOfType<NewPlayerController>();
-        foreach (EnemyController enemy in FindObjectsOfType<EnemyController>())
+        foreach (EnemyController enemy in GetComponentsInChildren<EnemyController>())
         {
             _enemies.Add(enemy);
             enemy.Initialize(this, _player, gameManager);
@@ -80,6 +83,15 @@ public class EnemiesManager : MonoBehaviour
         if (_enemies.Count == 0)
         {
             //EndLevel();
+        }
+    }
+
+    private void SetActiveEnemies(bool active)
+    {
+        foreach (EnemyController enemy in _enemies)
+        {
+            enemy.gameObject.SetActive(active);
+            enemy.Rb.velocity = Vector2.zero;
         }
     }
 
