@@ -61,7 +61,7 @@ public class ScreenManager : MonoBehaviour
 
         foreach (ScreenExit exit in exits)
         {
-            exit.gameObject.SetActive(true);
+            exit.gameObject.SetActive(false);
         }
     }
 
