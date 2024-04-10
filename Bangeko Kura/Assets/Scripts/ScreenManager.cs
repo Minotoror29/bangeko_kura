@@ -73,7 +73,7 @@ public class ScreenManager : MonoBehaviour
             exit.gameObject.SetActive(false);
         }
 
-        OnEnter?.Invoke(false);
+        OnExit?.Invoke(false);
     }
 
     public void PlayerFell()

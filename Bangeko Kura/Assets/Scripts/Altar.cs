@@ -15,7 +15,6 @@ public class Altar : MonoBehaviour
         {
             gameObject.SetActive(false);
             OnActivation?.Invoke();
-            gameManager.ChangeState(new GameCutsceneState(gameManager));
         }
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerSwordState : PlayerState
 {
+    private float _effectTimer = 0.2f;
     private float _timer = 0.633f;
 
     public PlayerSwordState(NewPlayerController controller) : base(controller)
@@ -36,12 +37,32 @@ public class PlayerSwordState : PlayerState
     {
     }
 
+    private void Dash()
+    {
+        if (Controls.InGame.Movement.ReadValue<Vector2>() == Vector2.zero)
+        {
+            Controller.ChangeState(new PlayerDashState(Controller, Controller.LookDirection.normalized, Direction.Forward));
+        }
+        else
+        {
+            Controller.ChangeState(new PlayerDashState(Controller, Controls.InGame.Movement.ReadValue<Vector2>(), Direction.Forward));
+        }
+    }
+
     public override void UpdateLogic()
     {
         Controller.Turret.UpdateLogic();
         Controller.Sword.UpdateLogic();
 
         Controller.RotateMesh();
+
+        if (_effectTimer > 0f)
+        {
+            _effectTimer -= Time.deltaTime;
+        } else
+        {
+            Controller.OnDash += Dash;
+        }
 
         if (_timer > 0f)
         {

@@ -3,13 +3,12 @@ using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class CutsceneManager : MonoBehaviour
 {
-    private GameCutsceneState _gameState;
-
     [SerializeField] private List<Image> frames;
     [SerializeField] private float frameTime = 1f;
     private float _frameTimer;
@@ -18,6 +17,8 @@ public class CutsceneManager : MonoBehaviour
     [SerializeField] private int soundIndex;
     [SerializeField] private string soundPath;
     private EventInstance _sound;
+
+    [SerializeField] private UnityEvent OnCutsceneEnd;
 
     public void Initialize()
     {
@@ -29,10 +30,8 @@ public class CutsceneManager : MonoBehaviour
         }
     }
 
-    public void StartCutscene(GameCutsceneState gameState)
+    public void StartCutscene()
     {
-        _gameState = gameState;
-
         _currentFrameindex = 0;
 
         frames[0].gameObject.SetActive(true);
@@ -47,34 +46,12 @@ public class CutsceneManager : MonoBehaviour
 
     private void NextFrame()
     {
-        //frames[_currentFrameindex].gameObject.SetActive(false);
-        //_currentFrameindex++;
-
-        //if (soundIndex == _currentFrameindex && soundPath != "")
-        //{
-        //    _sound.start();
-        //}
-
-        //if (_currentFrameindex == frames.Count)
-        //{
-        //    if (SceneManager.GetActiveScene().buildIndex + 1 == SceneManager.sceneCountInBuildSettings)
-        //    {
-        //        Application.Quit();
-        //    } else
-        //    {
-        //        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        //    }
-        //    return;
-        //}
-
-        //frames[_currentFrameindex].gameObject.SetActive(true);
-
         frames[_currentFrameindex].gameObject.SetActive(false);
         _currentFrameindex++;
 
         if (_currentFrameindex == frames.Count)
         {
-            _gameState.EndCutscene();
+            OnCutsceneEnd?.Invoke();
 
             return;
         }

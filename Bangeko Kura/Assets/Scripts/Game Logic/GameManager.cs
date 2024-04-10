@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -14,11 +15,13 @@ public class GameManager : MonoBehaviour
     private ScreenManager _currentScreen;
 
     [SerializeField] private CutsceneManager cutsceneManager;
+    [SerializeField] private InGameCutsceneManager inGameCutsceneManager;
 
     [SerializeField] private Canvas gameCanvas;
 
     public NewPlayerController Player { get { return player; } }
     public CutsceneManager CutsceneManager { get { return cutsceneManager; } }
+    public InGameCutsceneManager InGameCutsceneManager { get { return inGameCutsceneManager; } }
     public Canvas GameCanvas { get { return gameCanvas; } }
 
     private void Start()
@@ -43,6 +46,20 @@ public class GameManager : MonoBehaviour
     {
         _currentState?.Exit();
         _currentState = nextState;
+        _currentState.Enter();
+    }
+
+    public void ChangeToCutsceneState()
+    {
+        _currentState?.Exit();
+        _currentState = new GameCutsceneState(this);
+        _currentState.Enter();
+    }
+
+    public void ChangeToPlayState()
+    {
+        _currentState?.Exit();
+        _currentState = new GamePlayState(this);
         _currentState.Enter();
     }
 

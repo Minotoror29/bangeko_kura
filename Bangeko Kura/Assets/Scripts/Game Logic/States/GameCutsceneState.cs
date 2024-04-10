@@ -12,7 +12,7 @@ public class GameCutsceneState : GameState
     {
         GameManager.GameCanvas.gameObject.SetActive(false);
 
-        GameManager.CutsceneManager.StartCutscene(this);
+        //GameManager.CutsceneManager.StartCutscene(this);
     }
 
     public override void Exit()

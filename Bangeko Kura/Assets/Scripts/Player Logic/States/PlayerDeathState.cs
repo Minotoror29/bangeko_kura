@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerDeathState : PlayerState
 {
     private bool _fromFall;
+
+    private float _deathAnimationTimer;
 
     public PlayerDeathState(NewPlayerController controller, bool fromFall) : base(controller)
     {
@@ -19,6 +22,10 @@ public class PlayerDeathState : PlayerState
         if (!_fromFall)
         {
             Animator.CrossFade("Player Death", 0f);
+            _deathAnimationTimer = 2.333f;
+        } else
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 
@@ -45,6 +52,15 @@ public class PlayerDeathState : PlayerState
 
     public override void UpdateLogic()
     {
+        if (_deathAnimationTimer > 0f)
+        {
+            _deathAnimationTimer -= Time.deltaTime;
+
+            if (_deathAnimationTimer <= 0f)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
+        }
     }
 
     public override void UpdatePhysics()
