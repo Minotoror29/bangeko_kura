@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
 
         cutsceneManager.Initialize();
 
-        ChangeScreen(startScreen);
+        ChangeScreen(startScreen, null);
 
         if (!startOnElevator)
         {
@@ -72,9 +72,9 @@ public class GameManager : MonoBehaviour
         _currentState.Enter();
     }
 
-    public void ChangeScreen(ScreenManager nextScreen)
+    public void ChangeScreen(ScreenManager nextScreen, ScreenExit exit)
     {
-        _currentScreen?.ExitScreen();
+        _currentScreen?.ExitScreen(exit);
         _currentScreen = nextScreen;
         _currentScreen.EnterScreen();
 
