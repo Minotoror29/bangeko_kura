@@ -5889,6 +5889,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6e7ea06121d7ff4dba64f36d322eeb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  screenManager: {fileID: 1624387676}
   animator: {fileID: 1947742771}
   platformsA: []
   platformsB:

@@ -6,26 +6,45 @@ public enum SwitchState { AState, BState, SwitchingToA, SwitchingToB }
 
 public class Switch : MonoBehaviour
 {
+    [SerializeField] private ScreenManager screenManager;
+
     [SerializeField] private Animator animator;
+    private BoxCollider2D _coll;
 
     [SerializeField] private List<SwitchPlatform> platformsA;
     [SerializeField] private List<SwitchPlatform> platformsB;
 
     private SwitchState _currentState;
 
-    private void Start()
+    private void OnEnable()
     {
-        Initialize();
+        screenManager.OnInitialize += Initialize;
+        screenManager.OnEnter += SetActiveCollider;
+        screenManager.OnExit += SetActiveCollider;
+    }
+
+    private void OnDisable()
+    {
+        screenManager.OnInitialize -= Initialize;
+        screenManager.OnEnter -= SetActiveCollider;
+        screenManager.OnExit -= SetActiveCollider;
     }
 
     public void Initialize()
     {
+        _coll = GetComponent<BoxCollider2D>();
+
         foreach (SwitchPlatform platform in platformsB)
         {
             platform.gameObject.SetActive(false);
         }
 
         _currentState = SwitchState.AState;
+    }
+
+    private void SetActiveCollider(bool active)
+    {
+        _coll.enabled = active;
     }
 
     public void Activate()
