@@ -13,11 +13,14 @@ public class PlayerSwordState : PlayerState
 
     public override void Enter()
     {
+        Controller.OnDash += Dash;
+
         Animator.CrossFade("Player Sword", 0f);
     }
 
     public override void Exit()
     {
+        Controller.OnDash -= Dash;
     }
 
     public override bool CanBeKnockbacked()
@@ -39,6 +42,8 @@ public class PlayerSwordState : PlayerState
 
     private void Dash()
     {
+        if (_effectTimer > 0f) return;
+
         if (Controls.InGame.Movement.ReadValue<Vector2>() == Vector2.zero)
         {
             Controller.ChangeState(new PlayerDashState(Controller, Controller.LookDirection.normalized, Direction.Forward));
@@ -59,9 +64,6 @@ public class PlayerSwordState : PlayerState
         if (_effectTimer > 0f)
         {
             _effectTimer -= Time.deltaTime;
-        } else
-        {
-            Controller.OnDash += Dash;
         }
 
         if (_timer > 0f)
