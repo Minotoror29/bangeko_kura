@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private NewPlayerController player;
 
+    [SerializeField] private bool startOnElevator = false;
+    [SerializeField] private Elevator startElevator;
     [SerializeField] private ScreenManager startScreen;
     [SerializeField] private Transform startSpawnPoint;
     private ScreenManager _currentScreen;
@@ -37,7 +39,14 @@ public class GameManager : MonoBehaviour
 
         ChangeScreen(startScreen);
 
-        player.ChangeState(new PlayerSpawnState(player, startSpawnPoint.position));
+        if (!startOnElevator)
+        {
+            player.ChangeState(new PlayerSpawnState(player, startSpawnPoint.position));
+        } else
+        {
+            player.ChangeState(new PlayerWaitElevatorState(player, startElevator));
+            startElevator.ChangeState(ElevatorState.Moving);
+        }
 
         ChangeState(new GamePlayState(this));
     }

@@ -24,7 +24,7 @@ public class Elevator : MonoBehaviour
 
     private void Start()
     {
-        ChangeState(ElevatorState.Idle);
+        _currentTarget = endPosition.position;
     }
 
     public void ChangeState(ElevatorState nextState)

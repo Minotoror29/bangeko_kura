@@ -770,6 +770,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1487840491}
+  startOnElevator: 1
+  startElevator: {fileID: 713846059}
   startScreen: {fileID: 637564265}
   startSpawnPoint: {fileID: 440830881}
   cutsceneManager: {fileID: 2072872966}

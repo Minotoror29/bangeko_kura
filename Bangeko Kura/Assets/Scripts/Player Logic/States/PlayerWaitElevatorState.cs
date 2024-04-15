@@ -13,6 +13,10 @@ public class PlayerWaitElevatorState : PlayerState
 
     public override void Enter()
     {
+        Controls.InGame.Disable();
+        Controller.SetCollidersActive(false);
+        Rb.velocity = Vector2.zero;
+
         Animator.CrossFade("Player Idle", 0f);
 
         _elevator.OnArrival.AddListener(GoToIdle);
