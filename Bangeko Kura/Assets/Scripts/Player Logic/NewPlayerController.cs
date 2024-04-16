@@ -75,6 +75,8 @@ public class NewPlayerController : Controller
     private EventInstance _laserSound;
     private EventInstance _laserReloadSound;
     private EventInstance _damageSound;
+    private EventInstance _lowLifeLoop;
+    private EventInstance _stepSound;
 
     public event Action OnDash;
     public event Action OnTakeDamage;
@@ -115,7 +117,7 @@ public class NewPlayerController : Controller
         _controls.InGame.Sword.performed += ctx => sword.SwordStrike();
 
         HealthSystem.OnHit += TakeHit;
-        //HealthSystem.OnDamage += TakeDamage;
+        HealthSystem.OnDamage += TakeDamage;
         HealthSystem.OnDeath += Die;
         HealthSystem.OnDeathFromFall += DieFromFall;
         healthDisplay.Initialize(HealthSystem);
@@ -143,6 +145,8 @@ public class NewPlayerController : Controller
         _laserSound = RuntimeManager.CreateInstance("event:/Weapons/Laser");
         _laserReloadSound = RuntimeManager.CreateInstance("event:/Weapons/Laser Reload");
         _damageSound = RuntimeManager.CreateInstance("event:/Weapons/Player Hit");
+        _lowLifeLoop = RuntimeManager.CreateInstance("event:/LowLifeLoop");
+        _stepSound = RuntimeManager.CreateInstance("event:/Movement/Step");
 }
 
     public void ChangeState(PlayerState nextState)
@@ -206,6 +210,7 @@ public class NewPlayerController : Controller
     private void TakeHit(Transform damageSource, Knockback knockback)
     {
         _damageSound.start();
+        
 
         OnTakeDamage?.Invoke();
 
@@ -214,13 +219,25 @@ public class NewPlayerController : Controller
         ChangeState(new PlayerKnockbackState(this, (transform.position - damageSource.position).normalized, knockback));
     }
 
+    private void TakeDamage(int damage)
+    {
+        if (HealthSystem.CurrentHealth <= 3)
+        {
+            _lowLifeLoop.start();
+        }
+    }
+
     public void Die(HealthSystem healthSystem, Transform deathSource)
     {
+        _lowLifeLoop.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+
         ChangeState(new PlayerDeathState(this, false));
     }
 
     public void DieFromFall()
     {
+        _lowLifeLoop.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+
         ChangeState(new PlayerDeathState(this, true));
     }
 
@@ -241,6 +258,11 @@ public class NewPlayerController : Controller
     public override bool SwordAttack(float builupTime)
     {
         return _currentState.CanAttackSword();
+    }
+
+    public void PlayStepSound()
+    {
+        _stepSound.start();
     }
 
     public override void UpdateLogic()

@@ -1,3 +1,5 @@
+using FMOD.Studio;
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +17,8 @@ public class Switch : MonoBehaviour
     [SerializeField] private List<SwitchPlatform> platformsB;
 
     private SwitchState _currentState;
+
+    private EventInstance _hitSound;
 
     private void OnEnable()
     {
@@ -34,10 +38,18 @@ public class Switch : MonoBehaviour
     {
         _coll = GetComponent<BoxCollider2D>();
 
+        foreach (SwitchPlatform platform in platformsA)
+        {
+            platform.Initialize();
+        }
+
         foreach (SwitchPlatform platform in platformsB)
         {
+            platform.Initialize();
             platform.gameObject.SetActive(false);
         }
+
+        _hitSound = RuntimeManager.CreateInstance("event:/Environment/Switch Hit");
 
         _currentState = SwitchState.AState;
     }
@@ -49,6 +61,7 @@ public class Switch : MonoBehaviour
 
     public void Activate()
     {
+        _hitSound.start();
         ChangeState();
     }
 

@@ -1,3 +1,5 @@
+using FMOD.Studio;
+using FMODUnity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,9 +20,18 @@ public class Elevator : MonoBehaviour
 
     [SerializeField] private bool oneWayElevator;
 
+    private EventInstance _arrivalSound;
+    private EventInstance _movingSound;
+
     public UnityEvent OnArrival;
 
     public ElevatorState CurrentState { get { return _currentState; } }
+
+    private void Awake()
+    {
+        _arrivalSound = RuntimeManager.CreateInstance("event:/Environment/Elevator Arrival");
+        _movingSound = RuntimeManager.CreateInstance("event:/Environment/Elevator Moving Loop");
+    }
 
     private void Start()
     {
@@ -40,6 +51,9 @@ public class Elevator : MonoBehaviour
             {
                 _currentTarget = startPosition.position;
             }
+        } else if (_currentState == ElevatorState.Moving)
+        {
+            _movingSound.start();
         }
     }
 
@@ -53,6 +67,8 @@ public class Elevator : MonoBehaviour
             if ((Vector2)transform.position == _currentTarget)
             {
                 ChangeState(ElevatorState.Waiting);
+                _movingSound.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                _arrivalSound.start();
                 OnArrival?.Invoke();
             }
         }
