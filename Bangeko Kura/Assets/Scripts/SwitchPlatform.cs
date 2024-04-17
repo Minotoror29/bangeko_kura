@@ -9,7 +9,7 @@ public enum SwitchPlatformState { Entering, Exiting, Idle }
 public class SwitchPlatform : MonoBehaviour
 {
     [SerializeField] private Animator animator;
-    [SerializeField] private Collider2D coll;
+    [SerializeField] private List<Collider2D> colliders;
     [SerializeField] private SpriteRenderer spriteRenderer;
 
     private EventInstance _spawnSound;
@@ -22,14 +22,20 @@ public class SwitchPlatform : MonoBehaviour
     public void Enter()
     {
         gameObject.SetActive(true);
-        coll.enabled = true;
+        foreach (Collider2D collider in colliders)
+        {
+            collider.enabled = true;
+        }
         animator.CrossFade("Enter", 0f);
         _spawnSound.start();
     }
 
     public void Exit()
     {
-        coll.enabled = false;
+        foreach (Collider2D collider in colliders)
+        {
+            collider.enabled = false;
+        }
         animator.CrossFade("Exit", 0f);
     }
 }

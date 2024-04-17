@@ -200,6 +200,7 @@ public class NewPlayerController : Controller
 
         InstantiateEffect(laserOriginEffect, laserFirePoint.position, Quaternion.LookRotation(Vector3.forward, _lookDirection), 0.367f);
 
+        _laserReloadSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         _laserSound.start();
 
         CameraManager.Instance.ShakeCamera(2f, 0.1f);

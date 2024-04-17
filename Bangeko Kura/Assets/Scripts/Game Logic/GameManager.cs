@@ -1,6 +1,6 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private Canvas gameCanvas;
 
+    public event Action OnInitialize;
+
     public NewPlayerController Player { get { return player; } }
     public CutsceneManager CutsceneManager { get { return cutsceneManager; } }
     public InGameCutsceneManager InGameCutsceneManager { get { return inGameCutsceneManager; } }
@@ -36,6 +38,7 @@ public class GameManager : MonoBehaviour
         }
 
         cutsceneManager.Initialize();
+        OnInitialize?.Invoke();
 
         ChangeScreen(startScreen, null);
 
