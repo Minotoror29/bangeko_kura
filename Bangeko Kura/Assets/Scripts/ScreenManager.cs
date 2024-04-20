@@ -116,8 +116,6 @@ public class ScreenManager : MonoBehaviour
                 _landPosition = hit.point;
                 _ground = hit.collider.gameObject;
             }
-
-            //_spawnPosition = Camera.main.ScreenToWorldPoint(_controls.Spawn.MousePosition.ReadValue<Vector2>());
         }
 
         OnUpdate?.Invoke();
