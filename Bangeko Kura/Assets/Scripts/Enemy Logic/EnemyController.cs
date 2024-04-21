@@ -37,6 +37,7 @@ public class EnemyController : Controller
     [SerializeField] private float landDamageRadius = 2.25f;
     [SerializeField] private float landKnockbackDistance;
     [SerializeField] private float landKnockbackSpeed;
+    [SerializeField] private GameObject shadowPrefab;
     private Knockback _landKnockback;
 
     private EventInstance _deathSound;
@@ -51,6 +52,7 @@ public class EnemyController : Controller
     public float LandSpeed { get { return landSpeed; } }
     public int LandDamage { get { return landDamage; } }
     public float LandDamageRadius { get { return landDamageRadius; } }
+    public GameObject ShadowPrefab { get { return shadowPrefab; } }
     public Knockback LandKnockback { get { return _landKnockback; } }
 
     public event Action<Transform> OnAllyDiedClose;

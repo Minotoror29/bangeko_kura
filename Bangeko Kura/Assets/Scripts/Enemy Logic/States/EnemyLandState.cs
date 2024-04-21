@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class EnemyLandState : EnemyState
 {
+    private Vector2 _originPosition;
     private Vector2 _spawnPosition;
+    private GameObject _shadow;
 
     public EnemyLandState(EnemyController controller) : base(controller)
     {
@@ -15,8 +17,10 @@ public class EnemyLandState : EnemyState
         base.Enter();
 
         _spawnPosition = Controller.transform.position;
-        Controller.transform.position = _spawnPosition + Vector2.up * 25f;
+        _originPosition = _spawnPosition + Vector2.up * 25f;
+        Controller.transform.position = _originPosition;
         Controller.SetCollidersActive(false);
+        _shadow = Controller.InstantiateEffect(Controller.ShadowPrefab, _spawnPosition, Quaternion.identity, 5f);
     }
 
     public override void Exit()
@@ -44,6 +48,8 @@ public class EnemyLandState : EnemyState
         base.UpdateLogic();
 
         Controller.transform.position = Vector2.MoveTowards(Controller.transform.position, _spawnPosition, Controller.LandSpeed * Time.deltaTime);
+
+        _shadow.transform.localScale = Vector2.one * (((Vector2)Controller.transform.position - _originPosition).magnitude / (_originPosition - _spawnPosition).magnitude);
 
         if ((Vector2)Controller.transform.position == _spawnPosition)
         {

@@ -95,6 +95,14 @@ public abstract class Controller : MonoBehaviour
         _changeColorTimer = changeColorTime;
     }
 
+    public GameObject InstantiateEffect(GameObject effect, Vector2 position, Quaternion rotation, float time)
+    {
+        GameObject newEffect = Instantiate(effect, position, rotation);
+        Destroy(newEffect, time);
+
+        return newEffect;
+    }
+
     public virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))

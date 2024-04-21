@@ -253,12 +253,6 @@ public class NewPlayerController : Controller
         turret.SetActiveColliders(active);
     }
 
-    public void InstantiateEffect(GameObject effect, Vector2 position, Quaternion rotation, float time)
-    {
-        GameObject newEffect = Instantiate(effect, position, rotation);
-        Destroy(newEffect, time);
-    }
-
     public override bool SwordAttack(float builupTime)
     {
         return _currentState.CanAttackSword();
