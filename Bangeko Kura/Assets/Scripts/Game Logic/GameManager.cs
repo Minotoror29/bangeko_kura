@@ -91,7 +91,7 @@ public class GameManager : MonoBehaviour
 
     public void EndLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     private void Update()

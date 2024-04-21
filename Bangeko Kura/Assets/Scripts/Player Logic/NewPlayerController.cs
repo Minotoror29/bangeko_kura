@@ -147,7 +147,14 @@ public class NewPlayerController : Controller
         _damageSound = RuntimeManager.CreateInstance("event:/Weapons/Player Hit");
         _lowLifeLoop = RuntimeManager.CreateInstance("event:/LowLifeLoop");
         _stepSound = RuntimeManager.CreateInstance("event:/Movement/Step");
-}
+    }
+
+    private void OnDisable()
+    {
+        _controls.InGame.Dash.performed -= ctx => Dash();
+        _controls.InGame.Laser.performed -= ctx => FireLaser();
+        _controls.InGame.Sword.performed -= ctx => sword.SwordStrike();
+    }
 
     public void ChangeState(PlayerState nextState)
     {
