@@ -10,6 +10,7 @@ public class ArenaManager : ScreenManager
 
     [Space]
     [SerializeField] private List<EnemiesManager> waves;
+    [SerializeField] private float waveDelay;
 
     private ScreenControls _controls;
     private Transform _spawnCursor;
