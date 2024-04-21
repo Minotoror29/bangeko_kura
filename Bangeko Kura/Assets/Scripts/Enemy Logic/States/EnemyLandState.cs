@@ -20,7 +20,7 @@ public class EnemyLandState : EnemyState
         _originPosition = _spawnPosition + Vector2.up * 25f;
         Controller.transform.position = _originPosition;
         Controller.SetCollidersActive(false);
-        _shadow = Controller.InstantiateEffect(Controller.ShadowPrefab, _spawnPosition, Quaternion.identity, 5f);
+        _shadow = Controller.InstantiateEffect(Controller.ShadowPrefab, _spawnPosition, Quaternion.identity, 2f);
     }
 
     public override void Exit()
@@ -66,6 +66,8 @@ public class EnemyLandState : EnemyState
                     }
                 }
             }
+
+            _shadow.SetActive(false);
 
             Controller.ChangeState(new EnemyIdleState(Controller));
         }
