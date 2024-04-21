@@ -14,14 +14,10 @@ public class ScreenManager : MonoBehaviour
     [SerializeField] private NewPlayerController player;
     [SerializeField] private Transform defaultSpawnPoint;
     [SerializeField] private GameObject defaultSpawnGround;
-    [SerializeField] private bool isArena = false;
-    [SerializeField] private LayerMask groundMask;
-    [SerializeField] private Transform spawnCursorPrefab;
     [SerializeField] private List<ScreenExit> exits;
     [SerializeField] private CinemachineVirtualCamera vCam;
 
     private Vector2 _landPosition;
-    private Transform _spawnCursor;
     private GameObject _ground;
 
     private ScreenExit _lastExit;
@@ -32,6 +28,13 @@ public class ScreenManager : MonoBehaviour
     public event Action OnPlayerDeath;
     public event Action<bool> OnEnter;
     public event Action<bool> OnExit;
+
+    public ScreenControls Controls { get { return _controls; } }
+    public ScreenState CurrentState { get { return _currentState; } set { _currentState = value; } }
+    public NewPlayerController Player { get { return player; } }
+    public Transform DefaultSpawnPoint { get { return defaultSpawnPoint; } }
+    public Vector2 LandPosition { get { return _landPosition; } set { _landPosition = value; } }
+    public GameObject Ground { get { return _ground; } set { _ground = value; } }
 
     public void Initialize(GameManager gameManager)
     {
@@ -48,10 +51,9 @@ public class ScreenManager : MonoBehaviour
         OnInitialize?.Invoke();
     }
 
-    public void EnterScreen()
+    public virtual void EnterScreen()
     {
         _controls = new ScreenControls();
-        _controls.Spawn.Spawn.performed += ctx => SpawnPlayer();
         _currentState = ScreenState.Play;
 
         foreach (ScreenExit exit in exits)
@@ -64,11 +66,10 @@ public class ScreenManager : MonoBehaviour
         OnEnter?.Invoke(true);
     }
 
-    public void ExitScreen(ScreenExit lastExit)
+    public virtual void ExitScreen(ScreenExit lastExit)
     {
         _lastExit = lastExit;
 
-        _controls.Spawn.Spawn.performed -= ctx => SpawnPlayer();
         _controls.Spawn.Disable();
         _currentState = ScreenState.Inactive;
 
@@ -84,51 +85,27 @@ public class ScreenManager : MonoBehaviour
     {
         OnPlayerDeath?.Invoke();
 
-        if (!isArena)
-        {
-            Vector2 spawnPosition = defaultSpawnPoint.position;
-            GameObject spawnGround = defaultSpawnGround;
-
-            if (_lastExit != null)
-            {
-                spawnPosition = _lastExit.RelativeSpawnPoint.position;
-                spawnGround = _lastExit.RelativeSpawnGround;
-            }
-
-            player.ChangeState(new PlayerLandState(player, spawnPosition, spawnGround));
-        } else
-        {
-            _currentState = ScreenState.Spawn;
-            _controls.Spawn.Enable();
-            _spawnCursor = Instantiate(spawnCursorPrefab, defaultSpawnPoint.position, Quaternion.identity);
-        }
+        DetermineSpawnPoint();
     }
 
-    public void UpdateLogic()
+    public virtual void DetermineSpawnPoint()
     {
-        if (_currentState == ScreenState.Spawn)
+        Vector2 spawnPosition = defaultSpawnPoint.position;
+        GameObject spawnGround = defaultSpawnGround;
+
+        if (_lastExit != null)
         {
-            Ray ray = Camera.main.ScreenPointToRay(_controls.Spawn.MousePosition.ReadValue<Vector2>());
-            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, groundMask);
-            if (hit)
-            {
-                _spawnCursor.position = hit.point;
-                _landPosition = hit.point;
-                _ground = hit.collider.gameObject;
-            }
+            spawnPosition = _lastExit.RelativeSpawnPoint.position;
+            spawnGround = _lastExit.RelativeSpawnGround;
         }
 
+        player.ChangeState(new PlayerLandState(player, spawnPosition, spawnGround));
+    }
+
+    public virtual void UpdateLogic()
+    {
         OnUpdate?.Invoke();
-    }
-
-    private void SpawnPlayer()
-    {
-        _currentState = ScreenState.Play;
-        _controls.Spawn.Disable();
-        Destroy(_spawnCursor.gameObject);
-
-        player.ChangeState(new PlayerLandState(player, _landPosition, _ground));
-    }
+    }    
 
     public void UpdatePhysics()
     {

@@ -37,7 +37,10 @@ public class GameManager : MonoBehaviour
             screen.Initialize(this);
         }
 
-        cutsceneManager.Initialize();
+        if (cutsceneManager != null)
+        {
+            cutsceneManager.Initialize();
+        }
         OnInitialize?.Invoke();
 
         ChangeScreen(startScreen, null);
