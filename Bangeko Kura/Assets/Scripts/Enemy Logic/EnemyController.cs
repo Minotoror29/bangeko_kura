@@ -40,6 +40,9 @@ public class EnemyController : Controller
     [SerializeField] private GameObject shadowPrefab;
     private Knockback _landKnockback;
 
+    [Space]
+    [SerializeField] private bool spawnIdle = true;
+
     private EventInstance _deathSound;
     private EventInstance _damageSound;
 
@@ -77,7 +80,13 @@ public class EnemyController : Controller
         _deathSound = RuntimeManager.CreateInstance("event:/Weapons/Enemy Explosion");
         _damageSound = RuntimeManager.CreateInstance("event:/Weapons/Enemy Hit");
 
-        ChangeState(new EnemyLandState(this));
+        if (spawnIdle)
+        {
+            ChangeState(new EnemyIdleState(this));
+        } else
+        {
+            ChangeState(new EnemyLandState(this));
+        }
     }
 
     public void ChangeState(EnemyState nextState)
