@@ -16,6 +16,7 @@ public class ArenaManager : ScreenManager
     private Transform _spawnCursor;
     private Vector2 _landPosition;
     private GameObject _ground;
+    private float _waveDelayTimer;
 
     private EnemiesManager _currentWave;
 
@@ -54,9 +55,7 @@ public class ArenaManager : ScreenManager
         }
 
         _currentWave = nextWave;
-        _currentWave.gameObject.SetActive(true);
-        _currentWave.Initialize();
-        _currentWave.OnAllEnemiesDead += CheckIfArenaEnds;
+        _waveDelayTimer = waveDelay;
     }
 
     private void CheckIfArenaEnds()
@@ -83,6 +82,18 @@ public class ArenaManager : ScreenManager
                 _spawnCursor.position = hit.point;
                 _landPosition = hit.point;
                 _ground = hit.collider.gameObject;
+            }
+        }
+
+        if (_waveDelayTimer > 0f)
+        {
+            _waveDelayTimer -= Time.deltaTime;
+
+            if (_waveDelayTimer <= 0f)
+            {
+                _currentWave.gameObject.SetActive(true);
+                _currentWave.Initialize();
+                _currentWave.OnAllEnemiesDead += CheckIfArenaEnds;
             }
         }
     }

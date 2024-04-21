@@ -771,7 +771,7 @@ MonoBehaviour:
   waves:
   - {fileID: 1422683622}
   - {fileID: 1112196894}
-  waveDelay: 0
+  waveDelay: 0.5
 --- !u!1 &658421153
 GameObject:
   m_ObjectHideFlags: 3

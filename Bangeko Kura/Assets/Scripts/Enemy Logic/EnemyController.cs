@@ -31,6 +31,14 @@ public class EnemyController : Controller
     [SerializeField] private Scrap scrapPrefab;
     [SerializeField] private List<GameObject> explosionEffects;
 
+    [Header("Land")]
+    [SerializeField] private float landSpeed = 50f;
+    [SerializeField] private int landDamage = 3;
+    [SerializeField] private float landDamageRadius = 2.25f;
+    [SerializeField] private float landKnockbackDistance;
+    [SerializeField] private float landKnockbackSpeed;
+    private Knockback _landKnockback;
+
     private EventInstance _deathSound;
     private EventInstance _damageSound;
 
@@ -40,6 +48,10 @@ public class EnemyController : Controller
     public float PatrolTime { get { return patrolTime; } }
     public float MovementSpeed { get { return movementSpeed; } }
     public List<EnemyBehaviourData> Behaviours { get { return behaviours; } }
+    public float LandSpeed { get { return landSpeed; } }
+    public int LandDamage { get { return landDamage; } }
+    public float LandDamageRadius { get { return landDamageRadius; } }
+    public Knockback LandKnockback { get { return _landKnockback; } }
 
     public event Action<Transform> OnAllyDiedClose;
 
@@ -58,10 +70,12 @@ public class EnemyController : Controller
             weapon.Initialize(this, HealthSystem);
         }
 
+        _landKnockback = new Knockback { knockbackDistance = landKnockbackDistance, knockbackSpeed = landKnockbackSpeed };
+
         _deathSound = RuntimeManager.CreateInstance("event:/Weapons/Enemy Explosion");
         _damageSound = RuntimeManager.CreateInstance("event:/Weapons/Enemy Hit");
 
-        ChangeState(new EnemyIdleState(this));
+        ChangeState(new EnemyLandState(this));
     }
 
     public void ChangeState(EnemyState nextState)
@@ -122,6 +136,19 @@ public class EnemyController : Controller
     public void PlayerDied()
     {
         _currentState.PlayerDied();
+    }
+
+    public override void SetCollidersActive(bool active)
+    {
+        base.SetCollidersActive(active);
+
+        foreach (Weapon weapon in weapons)
+        {
+            if (weapon.TryGetComponent(out Collider2D coll))
+            {
+                coll.enabled = active;
+            }
+        }
     }
 
     public override void UpdateLogic()

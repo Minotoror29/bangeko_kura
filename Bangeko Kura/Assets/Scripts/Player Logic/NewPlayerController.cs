@@ -13,8 +13,6 @@ public class NewPlayerController : Controller
 
     private PlayerState _currentState;
 
-    //[SerializeField] private Transform mesh;
-
     [SerializeField] private HealthDisplay healthDisplay;
 
     [Header("Movement")]
@@ -32,7 +30,6 @@ public class NewPlayerController : Controller
     [SerializeField] private float laserMaxDistance = 10f;
     [SerializeField] private float laserWidth;
     [SerializeField] private Laser laserPrefab;
-    [SerializeField] private LayerMask healthSystemLayer;
     [SerializeField] private LayerMask obstacleLayer;
     [SerializeField] private int laserDamage = 15;
     [SerializeField] private float laserCooldown = 3f;
@@ -87,7 +84,7 @@ public class NewPlayerController : Controller
     public float DashSpeed { get { return dashSpeed; } }
     public float DashDistance { get { return dashDistance; } }
     public GameObject DashEffect { get { return dashEffect; } }
-    public LayerMask HealthSystemLayer { get { return healthSystemLayer; } }
+    
     public Vector2 LookDirection { get { return _lookDirection; } }
     public TurretController Turret { get { return turret; } }
     public SwordController Sword { get { return sword; } }
@@ -189,7 +186,7 @@ public class NewPlayerController : Controller
             }
         }
         //Creates the damaging ray
-        RaycastHit2D[] hits = Physics2D.BoxCastAll(ray.origin, new Vector2(laserWidth, 1), aim.rotation.eulerAngles.y, ray.direction, rayDistance, healthSystemLayer);
+        RaycastHit2D[] hits = Physics2D.BoxCastAll(ray.origin, new Vector2(laserWidth, 1), aim.rotation.eulerAngles.y, ray.direction, rayDistance, HealthSystemLayer);
         foreach (RaycastHit2D enemyHit in hits)
         {
             if (enemyHit.collider.TryGetComponent(out HealthSystem healthSystem))
@@ -249,10 +246,9 @@ public class NewPlayerController : Controller
         ChangeState(new PlayerDeathState(this, true));
     }
 
-    public void SetCollidersActive(bool active)
+    public override void SetCollidersActive(bool active)
     {
-        GetComponent<CircleCollider2D>().enabled = active;
-        HealthSystem.GetComponent<CapsuleCollider2D>().enabled = active;
+        base.SetCollidersActive(active);
 
         turret.SetActiveColliders(active);
     }

@@ -10,6 +10,7 @@ public abstract class Controller : MonoBehaviour
     [SerializeField] private Animator generalAnimator;
     [SerializeField] private Animator meshAnimator;
     private HealthSystem _healthSystem;
+    [SerializeField] private LayerMask healthSystemLayer;
     [SerializeField] private Transform mesh;
     [SerializeField] private List<SkinnedMeshRenderer> meshRenderers;
 
@@ -26,6 +27,7 @@ public abstract class Controller : MonoBehaviour
     public Animator GeneralAnimator { get { return generalAnimator; } }
     public Animator MeshAnimator { get { return meshAnimator; } }
     public HealthSystem HealthSystem { get { return _healthSystem; } }
+    public LayerMask HealthSystemLayer { get { return healthSystemLayer; } }
     public Transform Mesh { get { return mesh; } }
     public List<SkinnedMeshRenderer> MeshRenderers { get { return meshRenderers; } }
     public bool Dashing { get { return _dashing; } set { _dashing = value; } }
@@ -42,6 +44,12 @@ public abstract class Controller : MonoBehaviour
 
         _dashing = false;
         _grounds = new();
+    }
+
+    public virtual void SetCollidersActive(bool active)
+    {
+        GetComponent<CircleCollider2D>().enabled = active;
+        HealthSystem.GetComponent<CapsuleCollider2D>().enabled = active;
     }
 
     public virtual void UpdateLogic()
