@@ -8,7 +8,6 @@ public enum ScreenState { Inactive, Play, Spawn }
 
 public class ScreenManager : MonoBehaviour
 {
-    private ScreenControls _controls;
     private ScreenState _currentState;
 
     [SerializeField] private NewPlayerController player;
@@ -16,10 +15,7 @@ public class ScreenManager : MonoBehaviour
     [SerializeField] private GameObject defaultSpawnGround;
     [SerializeField] private List<ScreenExit> exits;
     [SerializeField] private CinemachineVirtualCamera vCam;
-
-    private Vector2 _landPosition;
-    private GameObject _ground;
-
+    
     private ScreenExit _lastExit;
 
     public event Action OnInitialize;
@@ -29,12 +25,9 @@ public class ScreenManager : MonoBehaviour
     public event Action<bool> OnEnter;
     public event Action<bool> OnExit;
 
-    public ScreenControls Controls { get { return _controls; } }
     public ScreenState CurrentState { get { return _currentState; } set { _currentState = value; } }
     public NewPlayerController Player { get { return player; } }
     public Transform DefaultSpawnPoint { get { return defaultSpawnPoint; } }
-    public Vector2 LandPosition { get { return _landPosition; } set { _landPosition = value; } }
-    public GameObject Ground { get { return _ground; } set { _ground = value; } }
 
     public void Initialize(GameManager gameManager)
     {
@@ -53,7 +46,6 @@ public class ScreenManager : MonoBehaviour
 
     public virtual void EnterScreen()
     {
-        _controls = new ScreenControls();
         _currentState = ScreenState.Play;
 
         foreach (ScreenExit exit in exits)
@@ -70,7 +62,6 @@ public class ScreenManager : MonoBehaviour
     {
         _lastExit = lastExit;
 
-        _controls.Spawn.Disable();
         _currentState = ScreenState.Inactive;
 
         foreach (ScreenExit exit in exits)

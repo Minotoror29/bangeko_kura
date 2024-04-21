@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,8 @@ public class EnemiesManager : MonoBehaviour
     private List<EnemyController> _enemies;
 
     private NewPlayerController _player;
+
+    public event Action OnAllEnemiesDead;
 
     private void OnEnable()
     {
@@ -34,7 +37,7 @@ public class EnemiesManager : MonoBehaviour
     {
         _enemies = new();
         _player = FindObjectOfType<NewPlayerController>();
-        foreach (EnemyController enemy in GetComponentsInChildren<EnemyController>())
+        foreach (EnemyController enemy in GetComponentsInChildren<EnemyController>(true))
         {
             _enemies.Add(enemy);
             enemy.Initialize(this, _player, gameManager);
@@ -82,7 +85,7 @@ public class EnemiesManager : MonoBehaviour
 
         if (_enemies.Count == 0)
         {
-            //EndLevel();
+            OnAllEnemiesDead?.Invoke();
         }
     }
 
@@ -93,11 +96,6 @@ public class EnemiesManager : MonoBehaviour
             enemy.gameObject.SetActive(active);
             enemy.Rb.velocity = Vector2.zero;
         }
-    }
-
-    private void EndLevel()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public List<EnemyController> EnemiesCloseTo(EnemyController source, float distance)
