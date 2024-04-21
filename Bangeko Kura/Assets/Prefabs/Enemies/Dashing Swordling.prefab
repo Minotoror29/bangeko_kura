@@ -163,6 +163,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   generalAnimator: {fileID: 3342664141262294437}
   meshAnimator: {fileID: 3619628903641754861}
+  healthSystemLayer:
+    serializedVersion: 2
+    m_Bits: 8192
   mesh: {fileID: 8679539881473361053}
   meshRenderers:
   - {fileID: 8114757996097367194}
@@ -186,6 +189,11 @@ MonoBehaviour:
   explosionEffects:
   - {fileID: 7688115154114750695, guid: b42ceb097a6a2a541ab82d88356387e6, type: 3}
   - {fileID: 7688115154114750695, guid: c1ff6de5a538ecb4a98eef7badfa7d1a, type: 3}
+  landSpeed: 50
+  landDamage: 3
+  landDamageRadius: 2.25
+  landKnockbackDistance: 3
+  landKnockbackSpeed: 1000
 --- !u!50 &587774895628843217
 Rigidbody2D:
   serializedVersion: 4
