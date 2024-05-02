@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caab90597b1af1043b07cbed6607480e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
+  maxHealth: 20
 --- !u!70 &1550601309711252835
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -139,7 +139,7 @@ Transform:
   m_GameObject: {fileID: 3374067823915141177}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 10.75, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1256665156802774115}
@@ -196,6 +196,7 @@ MonoBehaviour:
   landKnockbackSpeed: 1000
   shadowPrefab: {fileID: 1518433040841752098, guid: d10ef6c8cf1b3634fb3176259e73b05f,
     type: 3}
+  spawnIdle: 1
 --- !u!50 &587774895628843217
 Rigidbody2D:
   serializedVersion: 4
@@ -313,8 +314,8 @@ Transform:
   m_GameObject: {fileID: 4657648718113354149}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 3374067823915141156}
   m_RootOrder: 1
