@@ -800,14 +800,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1487840491}
-  spawnPoint: {fileID: 440830881}
-  spawnGround: {fileID: 1521665031}
-  isArena: 1
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 64
-  spawnCursorPrefab: {fileID: 3291757219152962563, guid: f3a039f29da8656438639c623ac5428c,
-    type: 3}
+  defaultSpawnPoint: {fileID: 440830881}
+  defaultSpawnGround: {fileID: 1521665031}
   exits: []
   vCam: {fileID: 481748410}
 --- !u!4 &637564266
@@ -1210,8 +1204,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1487840491}
+  startOnElevator: 0
+  startElevator: {fileID: 0}
   startScreen: {fileID: 637564265}
   startSpawnPoint: {fileID: 440830881}
+  cutsceneManager: {fileID: 0}
+  inGameCutsceneManager: {fileID: 0}
+  gameCanvas: {fileID: 0}
 --- !u!4 &897902914
 Transform:
   m_ObjectHideFlags: 0
