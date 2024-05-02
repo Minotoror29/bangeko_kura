@@ -4,17 +4,17 @@ using UnityEngine;
 
 public abstract class PlayerState : State
 {
-    private NewPlayerController _controller;
+    private PlayerController _controller;
     private Rigidbody2D _rb;
     private PlayerControls _controls;
     private Animator _animator;
 
-    public NewPlayerController Controller { get { return _controller; } }
+    public PlayerController Controller { get { return _controller; } }
     public Rigidbody2D Rb { get { return _rb; } }
     public PlayerControls Controls { get { return _controls; } }
     public Animator Animator { get { return _animator; } }
 
-    public PlayerState(NewPlayerController controller)
+    public PlayerState(PlayerController controller)
     {
         _controller = controller;
         _rb = controller.Rb;
@@ -27,6 +27,11 @@ public abstract class PlayerState : State
     public virtual void OnTriggerStay(Collider2D collision)
     {
 
+    }
+
+    public virtual bool CanDash()
+    {
+        return false;
     }
 
     public virtual bool CanAttackSword()

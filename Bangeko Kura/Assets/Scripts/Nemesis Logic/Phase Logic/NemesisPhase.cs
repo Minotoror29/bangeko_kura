@@ -7,13 +7,13 @@ public abstract class NemesisPhase
     private NemesisPhaseData _data;
 
     private NemesisController _controller;
-    private NewPlayerController _player;
+    private PlayerController _player;
 
     private NemesisState _currentState;
 
     public NemesisPhaseData Data { get { return _data; } }
     public NemesisController Controller { get { return _controller; } }
-    public NewPlayerController Player { get { return _player; } }
+    public PlayerController Player { get { return _player; } }
 
     public NemesisPhase(NemesisPhaseData data, NemesisController controller)
     {

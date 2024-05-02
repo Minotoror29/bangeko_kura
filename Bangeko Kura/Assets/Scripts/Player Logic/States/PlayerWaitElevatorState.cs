@@ -6,7 +6,7 @@ public class PlayerWaitElevatorState : PlayerState
 {
     private Elevator _elevator;
 
-    public PlayerWaitElevatorState(NewPlayerController controller, Elevator elevator) : base(controller)
+    public PlayerWaitElevatorState(PlayerController controller, Elevator elevator) : base(controller)
     {
         _elevator = elevator;
     }

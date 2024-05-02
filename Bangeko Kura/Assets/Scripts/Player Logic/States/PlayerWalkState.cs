@@ -9,21 +9,18 @@ public class PlayerWalkState : PlayerState
     private Vector2 _walkAnimDirection;
     private Direction _currentDirection;
 
-    public PlayerWalkState(NewPlayerController controller) : base(controller)
+    public PlayerWalkState(PlayerController controller) : base(controller)
     {
     }
 
     public override void Enter()
     {
-        Controller.OnDash += Dash;
-
         _currentDirection = Direction.Forward;
         Animator.CrossFade("Player Walk Forward", 0.1f);
     }
 
     public override void Exit()
     {
-        Controller.OnDash -= Dash;
     }
 
     public override void OnCollisionEnter(Collision2D collision)
@@ -49,8 +46,7 @@ public class PlayerWalkState : PlayerState
 
     public override void UpdateLogic()
     {
-        Controller.Turret.UpdateLogic();
-        Controller.Sword.UpdateLogic();
+        Controller.UpdateWeapons();
 
         Controller.RotateMesh();
         Controller.RotateAim();
@@ -103,9 +99,11 @@ public class PlayerWalkState : PlayerState
         Controller.Move(Controls.InGame.Movement.ReadValue<Vector2>(), Controller.MovementSpeed);
     }
 
-    private void Dash()
+    public override bool CanDash()
     {
         Controller.ChangeState(new PlayerDashState(Controller, Controls.InGame.Movement.ReadValue<Vector2>(), _currentDirection));
+
+        return true;
     }
 
     public override void OnCollisionStay(Collision2D collision)

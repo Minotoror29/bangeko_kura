@@ -78,7 +78,7 @@ public class Elevator : MonoBehaviour
     {
         if (oneWayElevator) return;
 
-        if (collision.TryGetComponent(out NewPlayerController player))
+        if (collision.TryGetComponent(out PlayerController player))
         {
             ChangeState(ElevatorState.Idle);
         }

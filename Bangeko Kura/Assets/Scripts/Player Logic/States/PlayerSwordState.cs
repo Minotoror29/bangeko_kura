@@ -6,21 +6,19 @@ public class PlayerSwordState : PlayerState
 {
     private float _effectTimer = 0.2f;
     private float _timer = 0.633f;
+    private bool _canDash = false;
 
-    public PlayerSwordState(NewPlayerController controller) : base(controller)
+    public PlayerSwordState(PlayerController controller) : base(controller)
     {
     }
 
     public override void Enter()
     {
-        Controller.OnDash += Dash;
-
         Animator.CrossFade("Player Sword", 0f);
     }
 
     public override void Exit()
     {
-        Controller.OnDash -= Dash;
     }
 
     public override bool CanBeKnockbacked()
@@ -40,30 +38,37 @@ public class PlayerSwordState : PlayerState
     {
     }
 
-    private void Dash()
+    public override bool CanDash()
     {
-        if (_effectTimer > 0f) return;
+        if (_canDash)
+        {
+            if (Controls.InGame.Movement.ReadValue<Vector2>() == Vector2.zero)
+            {
+                Controller.ChangeState(new PlayerDashState(Controller, Controller.LookDirection.normalized, Direction.Forward));
+            }
+            else
+            {
+                Controller.ChangeState(new PlayerDashState(Controller, Controls.InGame.Movement.ReadValue<Vector2>(), Direction.Forward));
+            }
+        }
 
-        if (Controls.InGame.Movement.ReadValue<Vector2>() == Vector2.zero)
-        {
-            Controller.ChangeState(new PlayerDashState(Controller, Controller.LookDirection.normalized, Direction.Forward));
-        }
-        else
-        {
-            Controller.ChangeState(new PlayerDashState(Controller, Controls.InGame.Movement.ReadValue<Vector2>(), Direction.Forward));
-        }
+        return _canDash;
     }
 
     public override void UpdateLogic()
     {
-        Controller.Turret.UpdateLogic();
-        Controller.Sword.UpdateLogic();
+        Controller.UpdateWeapons();
 
         Controller.RotateMesh();
 
         if (_effectTimer > 0f)
         {
             _effectTimer -= Time.deltaTime;
+
+            if (_effectTimer <= 0f)
+            {
+                _canDash = true;
+            }
         }
 
         if (_timer > 0f)

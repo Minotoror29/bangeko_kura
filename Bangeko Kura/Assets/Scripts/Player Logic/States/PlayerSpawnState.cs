@@ -7,7 +7,7 @@ public class PlayerSpawnState : PlayerState
     private float _spawnTimer;
     private Vector2 _spawnPosition;
 
-    public PlayerSpawnState(NewPlayerController controller, Vector2 spawnPosition) : base(controller)
+    public PlayerSpawnState(PlayerController controller, Vector2 spawnPosition) : base(controller)
     {
         _spawnPosition = spawnPosition;
     }

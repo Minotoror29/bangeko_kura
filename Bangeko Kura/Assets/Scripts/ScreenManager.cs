@@ -10,7 +10,7 @@ public class ScreenManager : MonoBehaviour
 {
     private ScreenState _currentState;
 
-    [SerializeField] private NewPlayerController player;
+    [SerializeField] private PlayerController player;
     [SerializeField] private Transform defaultSpawnPoint;
     [SerializeField] private GameObject defaultSpawnGround;
     [SerializeField] private List<ScreenExit> exits;
@@ -26,7 +26,7 @@ public class ScreenManager : MonoBehaviour
     public event Action<bool> OnExit;
 
     public ScreenState CurrentState { get { return _currentState; } set { _currentState = value; } }
-    public NewPlayerController Player { get { return player; } }
+    public PlayerController Player { get { return player; } }
     public Transform DefaultSpawnPoint { get { return defaultSpawnPoint; } }
 
     public void Initialize(GameManager gameManager)

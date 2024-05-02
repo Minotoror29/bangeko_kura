@@ -9,7 +9,7 @@ public class PlayerDeathState : PlayerState
 
     private float _deathAnimationTimer;
 
-    public PlayerDeathState(NewPlayerController controller, bool fromFall) : base(controller)
+    public PlayerDeathState(PlayerController controller, bool fromFall) : base(controller)
     {
         _fromFall = fromFall;
     }

@@ -9,7 +9,7 @@ public class PlayerKnockbackState : PlayerState
     private float _speed;
     private Vector2 _origin;
 
-    public PlayerKnockbackState(NewPlayerController controller, Vector2 direction, Knockback knockback) : base(controller)
+    public PlayerKnockbackState(PlayerController controller, Vector2 direction, Knockback knockback) : base(controller)
     {
         _direction = direction;
         _distance = knockback.knockbackDistance;

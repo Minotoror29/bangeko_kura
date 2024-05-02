@@ -16,7 +16,7 @@ public class PlayerIdleState : PlayerState
 
     private float _bufferTimer = 0.1f;
 
-    public PlayerIdleState(NewPlayerController controller) : base(controller)
+    public PlayerIdleState(PlayerController controller) : base(controller)
     {
     }
 
@@ -25,15 +25,12 @@ public class PlayerIdleState : PlayerState
         Controller.SetCollidersActive(true);
         Controls.InGame.Enable();
 
-        Controller.OnDash += Dash;
-
         _currentState = IdleState.Static;
         Controller.MeshAnimator.CrossFade("Player Idle", 0.1f);
     }
 
     public override void Exit()
     {
-        Controller.OnDash -= Dash;
     }
 
     public override void OnCollisionEnter(Collision2D collision)
@@ -42,12 +39,6 @@ public class PlayerIdleState : PlayerState
 
     public override void OnTriggerEnter(Collider2D collision)
     {
-        //if (collision.TryGetComponent(out Elevator elevator))
-        //{
-        //    if (elevator.CurrentState == ElevatorState.Waiting) return;
-
-        //    Controller.ChangeState(new PlayerMoveToElevatorState(Controller, elevator));
-        //}
     }
 
     public override void OnTriggerStay(Collider2D collision)
@@ -62,9 +53,11 @@ public class PlayerIdleState : PlayerState
         }
     }
 
-    private void Dash()
+    public override bool CanDash()
     {
         Controller.ChangeState(new PlayerDashState(Controller, Controller.LookDirection.normalized, Direction.Forward));
+
+        return true;
     }
 
     public override bool CanAttackSword()
@@ -76,8 +69,7 @@ public class PlayerIdleState : PlayerState
 
     public override void UpdateLogic()
     {
-        Controller.Turret.UpdateLogic();
-        Controller.Sword.UpdateLogic();
+        Controller.UpdateWeapons();
 
         _bodyDirection = new Vector2((Quaternion.AngleAxis(45, Vector3.right) * Controller.Mesh.forward).x, (Quaternion.AngleAxis(45, Vector3.right) * Controller.Mesh.forward).z);
         _angle = Vector2.Angle(_bodyDirection, Controller.LookDirection.normalized);

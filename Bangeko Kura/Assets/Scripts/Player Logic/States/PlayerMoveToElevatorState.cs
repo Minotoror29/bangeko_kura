@@ -7,7 +7,7 @@ public class PlayerMoveToElevatorState : PlayerState
     private Elevator _elevator;
     private Vector2 _targetPosition;
 
-    public PlayerMoveToElevatorState(NewPlayerController controller, Elevator elevator) : base(controller)
+    public PlayerMoveToElevatorState(PlayerController controller, Elevator elevator) : base(controller)
     {
         _elevator = elevator;
     }

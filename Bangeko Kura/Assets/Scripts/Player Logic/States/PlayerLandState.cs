@@ -9,7 +9,7 @@ public class PlayerLandState : PlayerState
 
     private bool _landEffectSpawned = false;
 
-    public PlayerLandState(NewPlayerController controller, Vector2 spawnPosition, GameObject ground) : base(controller)
+    public PlayerLandState(PlayerController controller, Vector2 spawnPosition, GameObject ground) : base(controller)
     {
         _spawnPosition = spawnPosition;
         Controller.AddGround(ground);

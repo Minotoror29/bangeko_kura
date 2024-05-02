@@ -224,12 +224,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 83542728120134524}
-  - component: {fileID: 83542728120134514}
+  - component: {fileID: 6641624104335652187}
   - component: {fileID: 83542728120134515}
   - component: {fileID: 83542728120134517}
   - component: {fileID: 83542728120134516}
   m_Layer: 7
-  m_Name: New Player
+  m_Name: Player Walk
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -254,7 +254,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &83542728120134514
+--- !u!114 &6641624104335652187
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -263,11 +263,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 83542728120134522}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ed879647cd700143a85a405717a9592, type: 3}
+  m_Script: {fileID: 11500000, guid: 66e51ffe4994e4644ba4e8d6622c1ef3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   generalAnimator: {fileID: 83542728120134516}
   meshAnimator: {fileID: 83542729531191390}
+  healthSystemLayer:
+    serializedVersion: 2
+    m_Bits: 8192
   mesh: {fileID: 478072972993140662}
   meshRenderers:
   - {fileID: 1817984242396933050}
@@ -282,22 +285,14 @@ MonoBehaviour:
   - {fileID: 2907863417649866231}
   - {fileID: 2950674634794377690}
   changeColorTime: 0.1
-  damageColor: {r: 0.8018868, g: 0.12482201, b: 0.12482201, a: 1}
+  damageColor: {r: 0.8207547, g: 0.18970275, b: 0.18970275, a: 1}
   healthDisplay: {fileID: 0}
   movementSpeed: 325
-  dashSpeed: 1500
-  dashDistance: 6
-  dashCooldown: 0.5
-  dashEffect: {fileID: 812327942000203491, guid: fc67148725f210346b87012a70ff8cb9,
-    type: 3}
   laserFirePoint: {fileID: 3813493439890415791}
   laserMaxDistance: 50
   laserWidth: 0.25
   laserPrefab: {fileID: 5168047291316246020, guid: 27b14fae9d065cb4a8df3f240af1b7d3,
     type: 3}
-  healthSystemLayer:
-    serializedVersion: 2
-    m_Bits: 8192
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 131072
@@ -308,8 +303,6 @@ MonoBehaviour:
   aim: {fileID: 83542728683750082}
   laserOriginEffect: {fileID: 546793271799657349, guid: 4ba966aba2f38bb40b70d3ce6e63c979,
     type: 3}
-  turret: {fileID: 83542727684053890}
-  sword: {fileID: 83542727448862656}
   fallSpritePrefab: {fileID: 5307921919700816351, guid: 16f2489f5664d994ab3017ebcdd38379,
     type: 3}
   fallDownSpritePrefab: {fileID: 5307921919700816351, guid: 7e37e3c1685120a47912615b131b1964,
@@ -325,6 +318,13 @@ MonoBehaviour:
   landKnockbackSpeed: 1000
   landCameraShakeGain: 5
   landCameraShakeTime: 0.1
+  dashSpeed: 1500
+  dashDistance: 6
+  dashCooldown: 0.5
+  dashEffect: {fileID: 812327942000203491, guid: fc67148725f210346b87012a70ff8cb9,
+    type: 3}
+  turret: {fileID: 83542727684053890}
+  sword: {fileID: 83542727448862656}
 --- !u!50 &83542728120134515
 Rigidbody2D:
   serializedVersion: 4

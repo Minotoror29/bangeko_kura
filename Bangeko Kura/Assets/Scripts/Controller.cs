@@ -14,7 +14,7 @@ public abstract class Controller : MonoBehaviour
     [SerializeField] private Transform mesh;
     [SerializeField] private List<SkinnedMeshRenderer> meshRenderers;
 
-    [SerializeField] private float changeColorTime;
+    [SerializeField] private float changeColorTime = 0.1f;
     [SerializeField] private Color damageColor;
     private float _changeColorTimer = 0f;
 

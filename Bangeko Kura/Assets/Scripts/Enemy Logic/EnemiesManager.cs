@@ -11,7 +11,7 @@ public class EnemiesManager : MonoBehaviour
 
     private List<EnemyController> _enemies;
 
-    private NewPlayerController _player;
+    private PlayerController _player;
 
     public event Action OnAllEnemiesDead;
 
@@ -36,7 +36,7 @@ public class EnemiesManager : MonoBehaviour
     public void Initialize()
     {
         _enemies = new();
-        _player = FindObjectOfType<NewPlayerController>();
+        _player = FindObjectOfType<PlayerController>();
         foreach (EnemyController enemy in GetComponentsInChildren<EnemyController>(true))
         {
             _enemies.Add(enemy);

@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class NemesisController : Controller
 {
-    private NewPlayerController _player;
+    private PlayerController _player;
 
     [SerializeField] private ShieldController shield;
 
@@ -50,7 +50,7 @@ public class NemesisController : Controller
 
     private EventInstance _deathSound;
 
-    public NewPlayerController Player { get { return _player; } }
+    public PlayerController Player { get { return _player; } }
     public float SwordDistance { get { return swordDistance; } }
     public float SwordChargeTime { get { return swordChargeTime; } }
     public float SwordCooldown { get { return swordCooldown; } }
@@ -84,7 +84,7 @@ public class NemesisController : Controller
 
         //HealthSystem.OnDamage += TakeDamage;
         HealthSystem.OnDeath += Die;
-        _player = FindObjectOfType<NewPlayerController>();
+        _player = FindObjectOfType<PlayerController>();
 
         shield.Initialize(this, HealthSystem);
 

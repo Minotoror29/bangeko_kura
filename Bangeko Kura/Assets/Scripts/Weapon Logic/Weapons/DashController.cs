@@ -23,7 +23,7 @@ public class DashController : Weapon
     {
         base.Initialize(controller, healthSystem);
 
-        _target = FindObjectOfType<NewPlayerController>().transform;
+        _target = FindObjectOfType<PlayerController>().transform;
 
         _dashCooldownTimer = 0f;
         //_dashTimer = 0f;

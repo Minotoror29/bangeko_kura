@@ -5,12 +5,15 @@ using UnityEngine.UIElements.Experimental;
 
 public class PlayerDashState : PlayerState
 {
+    PlayerWalkController _controller;
+
     private Vector2 _dashDirection;
     private Vector2 _dashOrigin;
     private Direction _animationDirection;
 
-    public PlayerDashState(NewPlayerController controller, Vector2 dashDirection, Direction animationDirection) : base(controller)
+    public PlayerDashState(PlayerController controller, Vector2 dashDirection, Direction animationDirection) : base(controller)
     {
+        _controller = controller as PlayerWalkController;
         _dashDirection = dashDirection;
         _animationDirection = animationDirection;
     }
@@ -37,9 +40,9 @@ public class PlayerDashState : PlayerState
             Controller.MeshAnimator.CrossFade("Player Dash Left", 0f);
         }
 
-        Controller.InstantiateEffect(Controller.DashEffect, Controller.transform.position, Quaternion.LookRotation(Vector3.forward, _dashDirection.normalized), 0.367f);
+        Controller.InstantiateEffect(_controller.DashEffect, Controller.transform.position, Quaternion.LookRotation(Vector3.forward, _dashDirection.normalized), 0.367f);
 
-        Controller.DashSound.start();
+        _controller.DashSound.start();
     }
 
     public override void Exit()
@@ -76,10 +79,9 @@ public class PlayerDashState : PlayerState
 
     public override void UpdateLogic()
     {
-        Controller.Turret.UpdateLogic();
-        Controller.Sword.UpdateLogic();
+        Controller.UpdateWeapons();
 
-        if (((Vector2)Controller.transform.position - _dashOrigin).magnitude >= Controller.DashDistance)
+        if (((Vector2)Controller.transform.position - _dashOrigin).magnitude >= _controller.DashDistance)
         {
             Controller.ChangeState(new PlayerIdleState(Controller));
         }
@@ -87,7 +89,7 @@ public class PlayerDashState : PlayerState
 
     public override void UpdatePhysics()
     {
-        Controller.Move(_dashDirection, Controller.DashSpeed);
+        Controller.Move(_dashDirection, _controller.DashSpeed);
     }
 
     private void PreventDamage()

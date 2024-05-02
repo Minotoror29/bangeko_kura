@@ -6,7 +6,7 @@ public class PlayerFallState : PlayerState
 {
     private float _fallTimer = 0.4f;
 
-    public PlayerFallState(NewPlayerController controller) : base(controller)
+    public PlayerFallState(PlayerController controller) : base(controller)
     {
     }
 

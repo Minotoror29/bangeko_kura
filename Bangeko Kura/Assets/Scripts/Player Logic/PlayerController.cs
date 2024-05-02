@@ -1,244 +1,284 @@
+using FMOD.Studio;
+using FMODUnity;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using FMOD.Studio;
-using FMODUnity;
 
-public class PlayerController : Controller
+public abstract class PlayerController : Controller
 {
-    private PlayerControls _playerControls;
-    private HealthSystem _healthSystem;
+    private PlayerState _currentState;
+
+    private PlayerControls _controls;
+
+    [SerializeField] private HealthDisplay healthDisplay;
 
     [Header("Movement")]
-    [SerializeField] private float movementSpeed = 100f;
-    private Vector3 _movementDirection;
-
-    [Header("Rotation")]
-    [SerializeField] LayerMask groundLayer;
-    private Vector3 _lookDirection;
+    [SerializeField] private float movementSpeed = 325f;
 
     [Header("Laser")]
     [SerializeField] private Transform laserFirePoint;
-    [SerializeField] private float laserMaxDistance = 10f;
+    [SerializeField] private float laserMaxDistance = 50f;
+    [SerializeField] private float laserWidth = 0.25f;
     [SerializeField] private Laser laserPrefab;
-    [SerializeField] private LayerMask enemyLayer;
     [SerializeField] private LayerMask obstacleLayer;
-    [SerializeField] private int laserDamage = 15;
-    [SerializeField] private float laserCooldown = 3f;
-    [SerializeField] private float laserKnockbackDistance;
-    [SerializeField] private float laserKnockbackSpeed;
+    [SerializeField] private int laserDamage = 10;
+    [SerializeField] private float laserCooldown = 2f;
+    [SerializeField] private float laserKnockbackDistance = 2f;
+    [SerializeField] private float laserKnockbackSpeed = 1000f;
+    [SerializeField] private Transform aim;
+    [SerializeField] private GameObject laserOriginEffect;
     private float _laserCooldownTimer;
+    private Vector2 _lookDirection;
+    private Vector2 _mousePosition;
     private Knockback _laserKnockback;
 
-    [Header("Dash")]
-    [SerializeField] private float dashSpeed = 1000f;
-    [SerializeField] private float dashTime = 0.1f;
-    [SerializeField] private float dashCooldown = 2f;
-    private float _dashTimer;
-    private float _dashCooldownTimer;
-    private Vector3 _dashDirection;
+    [Header("Fall")]
+    [SerializeField] private GameObject fallSpritePrefab;
+    [SerializeField] private GameObject fallDownSpritePrefab;
+    private GameObject _fallSprite;
+    private GameObject _fallDownSprite;
 
-    [Header("Weapons")]
-    [SerializeField] private List<Weapon> weapons;
+    [Header("Land")]
+    [SerializeField] private GameObject landMeshPrefab;
+    [SerializeField] private GameObject landEffect;
+    [SerializeField] private float landEffectLifetime = 0.3f;
+    [SerializeField] private int landDamage = 3;
+    [SerializeField] private float landDamageRadius = 2.25f;
+    [SerializeField] private float landKnockbackDistance = 3f;
+    [SerializeField] private float landKnockbackSpeed = 1000f;
+    [SerializeField] private float landCameraShakeGain = 5f;
+    [SerializeField] private float landCameraShakeTime = 0.1f;
+    private GameObject _landMesh;
+    private Knockback _landKnockback;
 
-    //Audio
     private EventInstance _laserSound;
     private EventInstance _laserReloadSound;
-    private EventInstance _dashSound;
-    private EventInstance _rollSound;
+    private EventInstance _damageSound;
+    private EventInstance _lowLifeLoop;
+    private EventInstance _landingSound;
+    private EventInstance _fallingSound;
 
-    private void Start()
-    {
-        //Initialize();
-    }
+    public event Action OnTakeDamage;
 
-    private void Update()
-    {
-        UpdateLogic();
-    }
-
-    private void FixedUpdate()
-    {
-        UpdatePhysics();
-    }
+    public PlayerState CurrentState { get { return _currentState; } }
+    public PlayerControls Controls { get { return _controls; } }
+    public float MovementSpeed { get { return movementSpeed; } }
+    public Vector2 LookDirection { get { return _lookDirection; } }
+    public GameObject FallSprite { get { return _fallSprite; } }
+    public GameObject FallDownSprite { get { return _fallDownSprite; } }
+    public GameObject LandMesh { get { return _landMesh; } }
+    public GameObject LandEffect { get { return landEffect; } }
+    public float LandEffectLifetime { get { return landEffectLifetime; } }
+    public int LandDamage { get { return landDamage; } }
+    public float LandDamageRadius { get { return landDamageRadius; } }
+    public Knockback LandKnockback { get { return _landKnockback; } }
+    public float LandCameraShakeGain { get { return landCameraShakeGain; } }
+    public float LandCameraShakeTime { get { return landCameraShakeTime; } }
+    public EventInstance LandingSound { get { return _landingSound; } }
+    public EventInstance FallingSound { get { return _fallingSound; } }
 
     public override void Initialize(GameManager gameManager)
     {
         base.Initialize(gameManager);
 
-        _playerControls = new PlayerControls();
-        _playerControls.InGame.Enable();
-        _playerControls.InGame.Laser.performed += ctx => FireLaser();
-        _playerControls.InGame.Dash.performed += ctx => Dash();
+        _controls = new PlayerControls();
+        _controls.InGame.Enable();
+        _controls.InGame.Laser.performed += ctx => FireLaser();
 
-        _healthSystem = GetComponent<HealthSystem>();
-        _healthSystem.Initialize(transform);
-        _healthSystem.OnDeath += Die;
+        HealthSystem.OnHit += TakeHit;
+        HealthSystem.OnDamage += TakeDamage;
+        HealthSystem.OnDeath += Die;
+        HealthSystem.OnDeathFromFall += DieFromFall;
+        healthDisplay.Initialize(HealthSystem);
 
-        _laserCooldownTimer = laserCooldown;
+        _laserCooldownTimer = 0f;
         _laserKnockback = new Knockback { knockbackDistance = laserKnockbackDistance, knockbackSpeed = laserKnockbackSpeed };
-        _dashCooldownTimer = dashCooldown;
 
-        foreach (Weapon weapon in weapons)
-        {
-            weapon.Initialize(this, _healthSystem);
-        }
+        _fallSprite = Instantiate(fallSpritePrefab);
+        _fallSprite.SetActive(false);
+        _fallDownSprite = Instantiate(fallDownSpritePrefab);
+        _fallDownSprite.SetActive(false);
 
-        //Initialize audio
+        _landMesh = Instantiate(landMeshPrefab);
+        _landMesh.SetActive(false);
+        _landKnockback = new Knockback { knockbackDistance = landKnockbackDistance, knockbackSpeed = landKnockbackSpeed };
+
         _laserSound = RuntimeManager.CreateInstance("event:/Weapons/Laser");
-        _laserReloadSound = RuntimeManager.CreateInstance("event:/Weapons/Laser reload");
-        _dashSound = RuntimeManager.CreateInstance("event:/Movement/Dash");
-        _rollSound = RuntimeManager.CreateInstance("event:/Movement/Roll");
+        _laserReloadSound = RuntimeManager.CreateInstance("event:/Weapons/Laser Reload");
+        _damageSound = RuntimeManager.CreateInstance("event:/Weapons/Player Hit");
+        _lowLifeLoop = RuntimeManager.CreateInstance("event:/LowLifeLoop");
+        _landingSound = RuntimeManager.CreateInstance("event:/Movement/Landing");
+        _fallingSound = RuntimeManager.CreateInstance("event:/Movement/Fall");
     }
 
-    private void Die(HealthSystem healthSystem, Transform deathSource)
+    private void OnDisable()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        _controls.InGame.Laser.performed -= ctx => FireLaser();
     }
 
-    public override void UpdateLogic()
+    public void ChangeState(PlayerState nextState)
     {
-        foreach (Weapon weapon in weapons)
-        {
-            weapon.UpdateLogic();
-        }
-
-        HandleMovementInput();
-        //HandleLookInput();
-
-        //Look();
-
-        if (_laserCooldownTimer < laserCooldown)
-        {
-            _laserCooldownTimer += Time.deltaTime;
-
-            if (_laserCooldownTimer >= laserCooldown)
-            {
-                _laserReloadSound.start();
-            }
-        }
-
-        if (_dashCooldownTimer < dashCooldown)
-        {
-            _dashCooldownTimer += Time.deltaTime;
-        }
-
-        if (Dashing)
-        {
-            if (_dashTimer < dashTime)
-            {
-                _dashTimer += Time.deltaTime;
-            }
-            else
-            {
-                if (MeshAnimator != null)
-                {
-                    MeshAnimator.SetBool("Dashing", false);
-                }
-                Dashing = false;
-                _dashCooldownTimer = 0f;
-            }
-        }
-    }
-
-    private void HandleMovementInput()
-    {
-        _movementDirection = _playerControls.InGame.Movement.ReadValue<Vector2>();
-
-        //if (Animator != null)
-        //{
-        //    if (_movementDirection.magnitude > 0)
-        //    {
-        //        Animator.SetBool("Walking", true);
-        //    }
-        //    else
-        //    {
-        //        Animator.SetBool("Walking", false);
-        //    }
-        //}
-    }
-
-    private void HandleLookInput()
-    {
-        Ray ray = Camera.main.ScreenPointToRay(_playerControls.InGame.MousePosition.ReadValue<Vector2>());
-        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, groundLayer))
-        {
-            _lookDirection = hit.point - Vector3.up * hit.point.y;
-
-            Debug.DrawRay(Camera.main.transform.position, hit.point - Camera.main.transform.position, Color.red);
-        }
-    }
-
-    private void Look()
-    {
-        transform.LookAt(_lookDirection);
-    }
-
-    public override void UpdatePhysics()
-    {
-        foreach (Weapon weapon in weapons)
-        {
-            weapon.UpdatePhysics();
-        }
-
-        if (!Dashing)
-        {
-            Rb.velocity = movementSpeed * Time.fixedDeltaTime * _movementDirection.normalized;
-        } else
-        {
-            Rb.velocity = dashSpeed * Time.fixedDeltaTime * _dashDirection.normalized;
-        }
+        _currentState?.Exit();
+        _currentState = nextState;
+        _currentState.Enter();
     }
 
     private void FireLaser()
     {
-        if (_laserCooldownTimer < laserCooldown) return;
+        if (_laserCooldownTimer > 0f) return;
 
         //Physics
-        Ray ray = new(laserFirePoint.position, transform.forward);
+        Ray2D ray = new(laserFirePoint.position, _mousePosition - (Vector2)laserFirePoint.position);
         float rayDistance = laserMaxDistance;
-        if (Physics.Raycast(ray, out RaycastHit obstacleHit, laserMaxDistance, obstacleLayer))
+        //Checks obstacles
+        RaycastHit2D obstacleHit = Physics2D.Raycast(ray.origin, ray.direction, rayDistance, obstacleLayer);
+        if (obstacleHit.collider != null)
         {
             rayDistance = obstacleHit.distance;
-        }
-        RaycastHit[] hits = Physics.RaycastAll(ray, rayDistance, enemyLayer);
-        foreach (RaycastHit hit in hits)
-        {
-            if (hit.collider.TryGetComponent(out HealthSystem healthSystem))
+            if (obstacleHit.collider.TryGetComponent(out Switch s))
             {
-                healthSystem.TakeDamage(laserDamage, transform, _laserKnockback);
+                s.Activate();
+            }
+        }
+        //Creates the damaging ray
+        RaycastHit2D[] hits = Physics2D.BoxCastAll(ray.origin, new Vector2(laserWidth, 1), aim.rotation.eulerAngles.y, ray.direction, rayDistance, HealthSystemLayer);
+        foreach (RaycastHit2D enemyHit in hits)
+        {
+            if (enemyHit.collider.TryGetComponent(out HealthSystem healthSystem))
+            {
+                if (healthSystem.Source != transform)
+                {
+                    healthSystem.TakeDamage(laserDamage, transform, _laserKnockback);
+                }
             }
         }
 
-        //Visuals
+        ////Visuals
         Laser newLaser = Instantiate(laserPrefab);
-        newLaser.Initialize(laserFirePoint.position, laserFirePoint.position + transform.forward * rayDistance, 1);
+        newLaser.Initialize((Vector2)laserFirePoint.position + _lookDirection.normalized * 0.75f, (Vector2)laserFirePoint.position + (_mousePosition - (Vector2)laserFirePoint.position).normalized * rayDistance, laserWidth);
 
-        //Audio
+        InstantiateEffect(laserOriginEffect, laserFirePoint.position, Quaternion.LookRotation(Vector3.forward, _lookDirection), 0.367f);
+
+        _laserReloadSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         _laserSound.start();
 
-        _laserCooldownTimer = 0f;
+        CameraManager.Instance.ShakeCamera(2f, 0.1f);
+
+        _laserCooldownTimer = laserCooldown;
     }
 
-    private void Dash()
+    private void TakeHit(Transform damageSource, Knockback knockback)
     {
-        if (_dashCooldownTimer < dashCooldown || _movementDirection.magnitude == 0f) return;
+        _damageSound.start();
 
-        if (MeshAnimator != null)
-        {
-            MeshAnimator.SetBool("Dashing", true);
-        }
-        _dashTimer = 0f;
-        _dashDirection = _movementDirection;
-        Dashing = true;
+        OnTakeDamage?.Invoke();
 
-        if (dashSpeed == 1500f)
+        if (!_currentState.CanBeKnockbacked()) return;
+
+        ChangeState(new PlayerKnockbackState(this, (transform.position - damageSource.position).normalized, knockback));
+    }
+
+    private void TakeDamage(int damage)
+    {
+        if (HealthSystem.CurrentHealth <= 3)
         {
-            _dashSound.start();
-        } else if (dashSpeed > 0f)
-        {
-            _rollSound.start();
+            _lowLifeLoop.start();
         }
+    }
+
+    public void Die(HealthSystem healthSystem, Transform deathSource)
+    {
+        _lowLifeLoop.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+
+        ChangeState(new PlayerDeathState(this, false));
+    }
+
+    public void DieFromFall()
+    {
+        _lowLifeLoop.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+
+        ChangeState(new PlayerDeathState(this, true));
+    }
+
+    public override void UpdateLogic()
+    {
+        base.UpdateLogic();
+
+        _currentState.UpdateLogic();
+
+        HandleRotationInput();
+
+        if (_laserCooldownTimer > 0f)
+        {
+            _laserCooldownTimer -= Time.deltaTime;
+
+            if (_laserCooldownTimer <= 0f)
+            {
+                _laserReloadSound.start();
+            }
+        }
+    }
+
+    public virtual void UpdateWeapons()
+    {
+
+    }
+
+    private void HandleRotationInput()
+    {
+        _mousePosition = Camera.main.ScreenToWorldPoint(_controls.InGame.MousePosition.ReadValue<Vector2>());
+        _lookDirection = _mousePosition - (Vector2)laserFirePoint.localPosition - (Vector2)transform.position;
+    }
+
+    public void RotateAim()
+    {
+        Quaternion aimRotation = Quaternion.LookRotation(new Vector3(_lookDirection.x, 0f, _lookDirection.y), aim.up);
+        aim.localRotation = Quaternion.Euler(new Vector3(0f, aimRotation.eulerAngles.y, 0f));
+    }
+
+    public void RotateMesh()
+    {
+        Quaternion meshRotation = Quaternion.LookRotation(new Vector3(_lookDirection.x, 0f, _lookDirection.y), Mesh.up);
+        Mesh.localRotation = Quaternion.Euler(new Vector3(0f, meshRotation.eulerAngles.y, 0f));
+    }
+
+    public void RotateMeshSmooth(Vector3 direction, float speed)
+    {
+        Quaternion meshRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.y), Mesh.up);
+        Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, meshRotation.eulerAngles.y, 0f));
+        Mesh.localRotation = Quaternion.RotateTowards(Mesh.localRotation, targetRotation, speed * Time.deltaTime);
+    }
+
+    public override void UpdatePhysics()
+    {
+        _currentState.UpdatePhysics();
+    }
+
+    public void Move(Vector2 direction, float speed)
+    {
+        Rb.velocity = speed * Time.fixedDeltaTime * direction;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        _currentState.OnCollisionEnter(collision);
+    }
+
+    public override void OnTriggerEnter2D(Collider2D collision)
+    {
+        base.OnTriggerEnter2D(collision);
+
+        _currentState.OnTriggerEnter(collision);
+
+        if (collision.TryGetComponent(out ScreenExit exit))
+        {
+            exit.ChangeScreen();
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        _currentState.OnTriggerStay(collision);
     }
 }

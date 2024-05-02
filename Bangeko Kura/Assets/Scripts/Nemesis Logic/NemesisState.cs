@@ -8,13 +8,13 @@ public abstract class NemesisState : State
     private NemesisController _controller;
     private Rigidbody2D _rb;
     private Animator _animator;
-    private NewPlayerController _player;
+    private PlayerController _player;
 
     public NemesisPhase Phase { get { return _phase; } }
     public NemesisController Controller { get { return _controller; } }
     public Rigidbody2D Rb { get { return _rb; } }
     public Animator Animator { get { return _animator; } }
-    public NewPlayerController Player { get { return _player; } }
+    public PlayerController Player { get { return _player; } }
 
     public NemesisState(NemesisPhase phase)
     {

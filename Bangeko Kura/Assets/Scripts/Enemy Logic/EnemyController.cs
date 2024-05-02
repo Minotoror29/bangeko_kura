@@ -9,7 +9,7 @@ public class EnemyController : Controller
 {
     private EnemiesManager _enemiesManager;
 
-    private NewPlayerController _player;
+    private PlayerController _player;
     private float _distanceToPlayer;
 
     private EnemyState _currentState;
@@ -47,7 +47,7 @@ public class EnemyController : Controller
     private EventInstance _damageSound;
 
     public EnemiesManager EnemiesManager { get { return _enemiesManager; } }
-    public NewPlayerController Player { get { return _player; } }
+    public PlayerController Player { get { return _player; } }
     public float DistanceToPlayer { get { return _distanceToPlayer; } }
     public float PatrolTime { get { return patrolTime; } }
     public float MovementSpeed { get { return movementSpeed; } }
@@ -60,7 +60,7 @@ public class EnemyController : Controller
 
     public event Action<Transform> OnAllyDiedClose;
 
-    public void Initialize(EnemiesManager enemiesManager, NewPlayerController player, GameManager gameManager)
+    public void Initialize(EnemiesManager enemiesManager, PlayerController player, GameManager gameManager)
     {
         base.Initialize(gameManager);
 

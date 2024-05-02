@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
     private GameState _currentState;
 
-    [SerializeField] private NewPlayerController player;
+    [SerializeField] private PlayerController player;
 
     [SerializeField] private bool startOnElevator = false;
     [SerializeField] private Elevator startElevator;
@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
 
     public event Action OnInitialize;
 
-    public NewPlayerController Player { get { return player; } }
+    public PlayerController Player { get { return player; } }
     public CutsceneManager CutsceneManager { get { return cutsceneManager; } }
     public InGameCutsceneManager InGameCutsceneManager { get { return inGameCutsceneManager; } }
     public Canvas GameCanvas { get { return gameCanvas; } }

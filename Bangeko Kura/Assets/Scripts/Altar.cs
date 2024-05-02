@@ -11,7 +11,7 @@ public class Altar : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<NewPlayerController>())
+        if (collision.GetComponent<PlayerController>())
         {
             gameObject.SetActive(false);
             OnActivation?.Invoke();
