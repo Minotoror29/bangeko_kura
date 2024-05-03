@@ -26,8 +26,6 @@ public class PlayerWalkController : PlayerController
     public float DashSpeed { get { return dashSpeed; } }
     public float DashDistance { get { return dashDistance; } }
     public GameObject DashEffect { get { return dashEffect; } }
-    public TurretController Turret { get { return turret; } }
-    public SwordController Sword { get { return sword; } }
     public EventInstance DashSound { get { return _dashSound; } }
     #endregion
 

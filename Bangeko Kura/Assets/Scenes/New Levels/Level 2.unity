@@ -1053,13 +1053,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a7c992a89768a44f81ea9fe8abbcb4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1487840491}
+  player: {fileID: 1867244181}
   startOnElevator: 1
   startElevator: {fileID: 713846059}
   startScreen: {fileID: 637564265}
   startSpawnPoint: {fileID: 440830881}
   cutsceneManager: {fileID: 2072872966}
-  inGameCutsceneManager: {fileID: 0}
+  inGameCutsceneManager: {fileID: 1674855249}
   gameCanvas: {fileID: 1399664810}
 --- !u!4 &118596939
 Transform:
@@ -2102,15 +2102,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd5d815122fa8a4593965b8509efcba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1487840491}
+  player: {fileID: 1867244181}
   defaultSpawnPoint: {fileID: 1475077195}
   defaultSpawnGround: {fileID: 1017967565}
-  isArena: 1
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 64
-  spawnCursorPrefab: {fileID: 3291757219152962563, guid: f3a039f29da8656438639c623ac5428c,
-    type: 3}
   exits:
   - {fileID: 125557715}
   vCam: {fileID: 1284212929}
@@ -3869,15 +3863,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd5d815122fa8a4593965b8509efcba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1487840491}
+  player: {fileID: 1867244181}
   defaultSpawnPoint: {fileID: 1556486512}
   defaultSpawnGround: {fileID: 553037590}
-  isArena: 0
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 64
-  spawnCursorPrefab: {fileID: 3291757219152962563, guid: f3a039f29da8656438639c623ac5428c,
-    type: 3}
   exits:
   - {fileID: 970575013}
   vCam: {fileID: 481748410}
@@ -8669,18 +8657,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e962c991e9f24847a48adc07b7827a5, type: 3}
---- !u!114 &1487840491 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 83542728120134514, guid: 2da8cdec84a653c44b2b1f5b4cdc3d90,
-    type: 3}
-  m_PrefabInstance: {fileID: 83542729333952409}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ed879647cd700143a85a405717a9592, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1492107436 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1114052894230267602, guid: 2e962c991e9f24847a48adc07b7827a5,
@@ -9147,15 +9123,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd5d815122fa8a4593965b8509efcba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1487840491}
+  player: {fileID: 1867244181}
   defaultSpawnPoint: {fileID: 210386338}
   defaultSpawnGround: {fileID: 1052489268}
-  isArena: 0
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 64
-  spawnCursorPrefab: {fileID: 3291757219152962563, guid: f3a039f29da8656438639c623ac5428c,
-    type: 3}
   exits:
   - {fileID: 1738745269}
   - {fileID: 1600049518}
@@ -10199,6 +10169,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 83542729333952409}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1867244181 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6641624104335652187, guid: 2da8cdec84a653c44b2b1f5b4cdc3d90,
+    type: 3}
+  m_PrefabInstance: {fileID: 83542729333952409}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66e51ffe4994e4644ba4e8d6622c1ef3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1874160952 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1114052894230267602, guid: 2e962c991e9f24847a48adc07b7827a5,
@@ -11239,15 +11221,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd5d815122fa8a4593965b8509efcba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1487840491}
+  player: {fileID: 1867244181}
   defaultSpawnPoint: {fileID: 788452125}
   defaultSpawnGround: {fileID: 1543400807}
-  isArena: 0
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 64
-  spawnCursorPrefab: {fileID: 3291757219152962563, guid: f3a039f29da8656438639c623ac5428c,
-    type: 3}
   exits:
   - {fileID: 1990860496}
   vCam: {fileID: 146592491}
@@ -12516,6 +12492,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 6641624104335652187, guid: 2da8cdec84a653c44b2b1f5b4cdc3d90,
+        type: 3}
+      propertyPath: healthDisplay
+      value: 
+      objectReference: {fileID: 2091074028}
     - target: {fileID: 6672606390160745530, guid: 2da8cdec84a653c44b2b1f5b4cdc3d90,
         type: 3}
       propertyPath: m_Layer

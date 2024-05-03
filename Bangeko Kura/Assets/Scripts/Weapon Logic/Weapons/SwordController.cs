@@ -83,7 +83,7 @@ public class SwordController : Weapon
 
     public void SwordStrike()
     {
-        if (_cooldownTimer > 0f) return;
+        if (_cooldownTimer > 0f || !gameObject.activeSelf) return;
 
         if (!Controller.SwordAttack(buildupTime)) return;
 
