@@ -237,13 +237,13 @@ public abstract class PlayerController : Controller
         aim.localRotation = Quaternion.Euler(new Vector3(0f, aimRotation.eulerAngles.y, 0f));
     }
 
-    public void RotateMesh()
+    public virtual void RotateMesh()
     {
         Quaternion meshRotation = Quaternion.LookRotation(new Vector3(_lookDirection.x, 0f, _lookDirection.y), Mesh.up);
         Mesh.localRotation = Quaternion.Euler(new Vector3(0f, meshRotation.eulerAngles.y, 0f));
     }
 
-    public void RotateMeshSmooth(Vector3 direction, float speed)
+    public virtual void RotateMeshSmooth(Vector3 direction, float speed)
     {
         Quaternion meshRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.y), Mesh.up);
         Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, meshRotation.eulerAngles.y, 0f));
@@ -255,7 +255,7 @@ public abstract class PlayerController : Controller
         _currentState.UpdatePhysics();
     }
 
-    public void Move(Vector2 direction, float speed)
+    public virtual void Move(Vector2 direction, float speed)
     {
         Rb.velocity = speed * Time.fixedDeltaTime * direction;
     }
