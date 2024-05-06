@@ -115,7 +115,7 @@ public class PlayerIdleState : PlayerState
 
         if (_currentState != IdleState.Static && _currentState != IdleState.FinishingRotation)
         {
-            if (Vector2.Angle(_bodyDirection, _targetDirection) == 0f)
+            if (Vector2.Angle(_bodyDirection, _targetDirection) <= 0.05f)
             {
                 _bufferTimer = 0.1f;
                 _currentState = IdleState.FinishingRotation;
