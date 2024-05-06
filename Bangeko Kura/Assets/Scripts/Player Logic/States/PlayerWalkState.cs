@@ -58,28 +58,28 @@ public class PlayerWalkState : PlayerState
             if (_currentDirection != Direction.Forward)
             {
                 _currentDirection = Direction.Forward;
-                Animator.CrossFade("Player Walk Forward", 0.25f);
+                Animator.CrossFade("Player Walk Forward", 0f);
             }
         } else if (_walkAnimDirection.y < -0.71f)
         {
             if (_currentDirection != Direction.Back)
             {
                 _currentDirection = Direction.Back;
-                Animator.CrossFade("Player Walk Back", 0.5f);
+                Animator.CrossFade("Player Walk Back", 0f);
             }
         } else if (_walkAnimDirection.x > 0.71f)
         {
             if (_currentDirection != Direction.Right)
             {
                 _currentDirection = Direction.Right;
-                Animator.CrossFade("Player Walk Right", 0.5f);
+                Animator.CrossFade("Player Walk Right", 0f);
             }
         } else if (_walkAnimDirection.x < -0.71f)
         {
             if (_currentDirection != Direction.Left)
             {
                 _currentDirection = Direction.Left;
-                Animator.CrossFade("Player Walk Left", 0.5f);
+                Animator.CrossFade("Player Walk Left", 0f);
             }
         }
 
