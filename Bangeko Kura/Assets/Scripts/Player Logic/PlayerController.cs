@@ -67,6 +67,7 @@ public abstract class PlayerController : Controller
     public PlayerControls Controls { get { return _controls; } }
     public float MovementSpeed { get { return movementSpeed; } }
     public Vector2 LookDirection { get { return _lookDirection; } }
+    public float LaserCooldownTimer { get { return _laserCooldownTimer; } }
     public GameObject FallSprite { get { return _fallSprite; } }
     public GameObject FallDownSprite { get { return _fallDownSprite; } }
     public GameObject LandMesh { get { return _landMesh; } }
@@ -128,7 +129,7 @@ public abstract class PlayerController : Controller
         _currentState.Enter();
     }
 
-    private void FireLaser()
+    public virtual void FireLaser()
     {
         if (_laserCooldownTimer > 0f) return;
 

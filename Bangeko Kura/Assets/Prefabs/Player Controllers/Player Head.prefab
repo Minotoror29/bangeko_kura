@@ -306,7 +306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   generalAnimator: {fileID: 7465103803272489417}
-  meshAnimator: {fileID: 7465103803272489417}
+  meshAnimator: {fileID: 5927357067102471503}
   healthSystemLayer:
     serializedVersion: 2
     m_Bits: 8192
@@ -347,6 +347,10 @@ MonoBehaviour:
   landKnockbackSpeed: 1000
   landCameraShakeGain: 5
   landCameraShakeTime: 0.1
+  landTime: 1.333
+  landEffectTime: 0.75
+  laserKnockbackPlayerDistance: 2
+  laserKnockbackPlayerSpeed: 100
 --- !u!50 &7465103803272489422
 Rigidbody2D:
   serializedVersion: 4
