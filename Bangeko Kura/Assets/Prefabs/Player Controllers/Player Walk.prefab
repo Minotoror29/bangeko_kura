@@ -318,6 +318,8 @@ MonoBehaviour:
   landKnockbackSpeed: 1000
   landCameraShakeGain: 5
   landCameraShakeTime: 0.1
+  landTime: 1.333
+  landEffectTime: 0.75
   dashSpeed: 1500
   dashDistance: 6
   dashCooldown: 0.5

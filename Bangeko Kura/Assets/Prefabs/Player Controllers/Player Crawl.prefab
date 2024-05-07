@@ -5264,7 +5264,7 @@ MonoBehaviour:
     type: 3}
   fallDownSpritePrefab: {fileID: 5307921919700816351, guid: 7e37e3c1685120a47912615b131b1964,
     type: 3}
-  landMeshPrefab: {fileID: 8119634437791927223, guid: 483dbf57321995147bcbbcfb9bb2ea4a,
+  landMeshPrefab: {fileID: 8119634437791927223, guid: 30455d289b68b504b90e576f49c7bbce,
     type: 3}
   landEffect: {fileID: 4310220037457896771, guid: 70296c780681ce04c982d8ca3fe31e1a,
     type: 3}
@@ -5275,6 +5275,8 @@ MonoBehaviour:
   landKnockbackSpeed: 1000
   landCameraShakeGain: 5
   landCameraShakeTime: 0.1
+  landTime: 0.7
+  landEffectTime: 0.366
   turret: {fileID: 7421424803913910617}
 --- !u!50 &7421424803343104424
 Rigidbody2D:

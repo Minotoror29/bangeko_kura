@@ -49,6 +49,8 @@ public abstract class PlayerController : Controller
     [SerializeField] private float landKnockbackSpeed = 1000f;
     [SerializeField] private float landCameraShakeGain = 5f;
     [SerializeField] private float landCameraShakeTime = 0.1f;
+    [SerializeField] private float landTime;
+    [SerializeField] private float landEffectTime;
     private GameObject _landMesh;
     private Knockback _landKnockback;
 
@@ -75,6 +77,8 @@ public abstract class PlayerController : Controller
     public Knockback LandKnockback { get { return _landKnockback; } }
     public float LandCameraShakeGain { get { return landCameraShakeGain; } }
     public float LandCameraShakeTime { get { return landCameraShakeTime; } }
+    public float LandTime { get { return landTime; } }
+    public float LandEffectTime { get { return landEffectTime; } }
     public EventInstance LandingSound { get { return _landingSound; } }
     public EventInstance FallingSound { get { return _fallingSound; } }
 

@@ -6,6 +6,7 @@ public class PlayerLandState : PlayerState
 {
     private Vector2 _spawnPosition;
     private float _landTimer = 1.333f;
+    private float _landEffectTime;
 
     private bool _landEffectSpawned = false;
 
@@ -13,6 +14,8 @@ public class PlayerLandState : PlayerState
     {
         _spawnPosition = spawnPosition;
         Controller.AddGround(ground);
+        _landTimer = Controller.LandTime;
+        _landEffectTime = Controller.LandEffectTime;
     }
 
     public override void Enter()
@@ -61,7 +64,7 @@ public class PlayerLandState : PlayerState
             Controller.ChangeState(new PlayerIdleState(Controller));
         }
 
-        if (_landTimer < 0.75f)
+        if (_landTimer < _landEffectTime)
         {
             if (!_landEffectSpawned)
             {
