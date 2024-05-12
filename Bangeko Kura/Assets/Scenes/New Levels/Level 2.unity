@@ -8185,7 +8185,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 92c4409aaf6e2c94f8acef454536fc9d, type: 2}
+      objectReference: {fileID: 2100000, guid: fb24e327ba8b05c4caabf634f149601b, type: 2}
     - target: {fileID: 919132149155446097, guid: 6903263aaa4c2a74f90e611940b2d18d,
         type: 3}
       propertyPath: m_Name
@@ -8865,7 +8865,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 19.2, y: 9.575}
+    oldSize: {x: 20.8, y: 11.2}
     newSize: {x: 19.2, y: 9.575}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
