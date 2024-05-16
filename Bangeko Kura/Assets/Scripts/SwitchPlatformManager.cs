@@ -23,13 +23,12 @@ public class SwitchPlatformManager : MonoBehaviour
     {
         foreach (SwitchPlatform platform in platformsA)
         {
-            platform.Initialize();
+            platform.Initialize(true);
         }
 
         foreach (SwitchPlatform platform in platformsB)
         {
-            platform.Initialize();
-            platform.gameObject.SetActive(false);
+            platform.Initialize(false);
         }
 
         _switches = new();

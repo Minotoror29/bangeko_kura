@@ -68,4 +68,9 @@ public abstract class EnemyState : State
     {
 
     }
+
+    public virtual void OnTriggerEnter(Collider2D collision)
+    {
+
+    }
 }

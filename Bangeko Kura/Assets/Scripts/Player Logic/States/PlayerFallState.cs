@@ -18,12 +18,12 @@ public class PlayerFallState : PlayerState
 
         if (Rb.velocity.y < 0)
         {
-            Controller.FallDownSprite.SetActive(true);
             Controller.FallDownSprite.transform.position = (Vector2)Controller.Mesh.position + Vector2.up + Vector2.right * 0.5f;
+            Controller.FallDownSprite.SetActive(true);
         } else
         {
-            Controller.FallSprite.SetActive(true);
             Controller.FallSprite.transform.position = (Vector2)Controller.Mesh.position + Vector2.up + Vector2.right * 0.5f;
+            Controller.FallSprite.SetActive(true);
         }
 
         Controller.FallingSound.start();

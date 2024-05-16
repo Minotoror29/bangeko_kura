@@ -18,9 +18,19 @@ public class EnemyPatrolState : EnemyState
 
         Controller.MeshAnimator.CrossFade("Enemy Walk", 0f);
 
-        _direction = Random.insideUnitCircle;
+        FindPatrolDirection();
 
         _patrolTimer = Controller.PatrolTime;
+    }
+
+    public void FindPatrolDirection()
+    {
+        _direction = Random.insideUnitCircle;
+        RaycastHit2D ray = Physics2D.Raycast(Controller.transform.position, _direction, _direction.magnitude, Controller.VoidLayer);
+        if (ray.collider != null)
+        {
+            FindPatrolDirection();
+        }
     }
 
     public override void Exit()
@@ -35,10 +45,14 @@ public class EnemyPatrolState : EnemyState
 
     public override void OnCollisionStay(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Obstacle"))
-        {
-            _direction += collision.GetContact(0).normal;
-        }
+        
+    }
+
+    public override void OnTriggerEnter(Collider2D collision)
+    {
+        base.OnTriggerEnter(collision);
+
+        Controller.ChangeState(new EnemyIdleState(Controller));
     }
 
     public override void UpdateLogic()
@@ -52,6 +66,11 @@ public class EnemyPatrolState : EnemyState
         if (_patrolTimer <= 0f)
         {
             Controller.ChangeState(new EnemyIdleState(Controller));
+        }
+
+        if (Controller.Grounds.Count == 0)
+        {
+            Controller.ChangeState(new EnemyFallState(Controller));
         }
     }
 

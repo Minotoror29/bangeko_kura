@@ -98,6 +98,9 @@ MonoBehaviour:
   maxIdleTime: 7
   patrolTime: 4
   movementSpeed: 250
+  voidLayer:
+    serializedVersion: 2
+    m_Bits: 32768
   behaviours:
   - {fileID: 11400000, guid: 5519ae41a5bb9a14198ea39ea5ed8f4a, type: 2}
   fleeingZoneRadius: 10
@@ -115,6 +118,9 @@ MonoBehaviour:
   landKnockbackSpeed: 1000
   shadowPrefab: {fileID: 1518433040841752098, guid: d10ef6c8cf1b3634fb3176259e73b05f,
     type: 3}
+  fallSpritePrefab: {fileID: 5307921919700816351, guid: 16f2489f5664d994ab3017ebcdd38379,
+    type: 3}
+  spawnIdle: 1
 --- !u!50 &1250143677085547648
 Rigidbody2D:
   serializedVersion: 4

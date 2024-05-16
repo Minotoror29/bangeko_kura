@@ -33,6 +33,11 @@ public class EnemyIdleState : EnemyState
     public override void UpdateLogic()
     {
         base.UpdateLogic();
+
+        if (Controller.Grounds.Count == 0)
+        {
+            Controller.ChangeState(new EnemyFallState(Controller));
+        }
     }
 
     public override void UpdatePhysics()

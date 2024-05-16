@@ -54,7 +54,12 @@ public class EnemySwordState : EnemyState
             {
                 Controller.ChangeState(new EnemyIdleState(Controller));
             }
-        }        
+        }
+
+        if (Controller.Grounds.Count == 0)
+        {
+            Controller.ChangeState(new EnemyFallState(Controller));
+        }
     }
 
     public override void UpdatePhysics()

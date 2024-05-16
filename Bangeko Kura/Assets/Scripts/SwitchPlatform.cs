@@ -10,18 +10,31 @@ public enum SwitchPlatformState { Entering, Exiting, Idle }
 public class SwitchPlatform : MonoBehaviour
 {
     private Animator _animator;
-    private List<Collider2D> _colliders;
-
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private List<Collider2D> colliders;
+    [SerializeField] private List<Collider2D> voidColliders;
 
     private EventInstance _spawnSound;
 
-    public void Initialize()
+    public void Initialize(bool active)
     {
         _animator = GetComponent<Animator>();
-        _colliders = new();
-        foreach (Collider2D collider in GetComponentsInChildren<Collider2D>())
+        //_colliders = new();
+        //foreach (Collider2D collider in GetComponentsInChildren<Collider2D>())
+        //{
+        //    _colliders.Add(collider);
+        //}
+
+        spriteRenderer.enabled = active;
+
+        foreach (Collider2D collider in colliders)
         {
-            _colliders.Add(collider);
+            collider.enabled = active;
+        }
+
+        foreach (Collider2D collider in voidColliders)
+        {
+            collider.enabled = !active;
         }
 
         _spawnSound = RuntimeManager.CreateInstance("event:/Environment/Switch Platform Spawn");
@@ -30,9 +43,15 @@ public class SwitchPlatform : MonoBehaviour
     public void Enter()
     {
         gameObject.SetActive(true);
-        foreach (Collider2D collider in _colliders)
+        foreach (Collider2D collider in colliders)
         {
             collider.enabled = true;
+            //collider.tag = "Ground";
+            //collider.gameObject.layer = LayerMask.NameToLayer("Ground");
+        }
+        foreach (Collider2D collider in voidColliders)
+        {
+            collider.enabled = false;
         }
         _animator.CrossFade("Enter", 0f);
         _spawnSound.start();
@@ -40,9 +59,15 @@ public class SwitchPlatform : MonoBehaviour
 
     public void Exit()
     {
-        foreach (Collider2D collider in _colliders)
+        foreach (Collider2D collider in colliders)
         {
             collider.enabled = false;
+            //collider.tag = "Obstacle";
+            //collider.gameObject.layer = LayerMask.NameToLayer("Void");
+        }
+        foreach (Collider2D collider in voidColliders)
+        {
+            collider.enabled = true;
         }
         _animator.CrossFade("Exit", 0f);
     }

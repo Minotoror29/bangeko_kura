@@ -165,6 +165,9 @@ MonoBehaviour:
   maxIdleTime: 7
   patrolTime: 4
   movementSpeed: 200
+  voidLayer:
+    serializedVersion: 2
+    m_Bits: 32768
   behaviours:
   - {fileID: 11400000, guid: ed761c27d8e87ea4493de0c5eb67a1f5, type: 2}
   - {fileID: 11400000, guid: 99a3187e6d16ca546b8de208992d7be1, type: 2}
@@ -183,6 +186,9 @@ MonoBehaviour:
   landKnockbackSpeed: 1000
   shadowPrefab: {fileID: 1518433040841752098, guid: d10ef6c8cf1b3634fb3176259e73b05f,
     type: 3}
+  fallSpritePrefab: {fileID: 5307921919700816351, guid: 16f2489f5664d994ab3017ebcdd38379,
+    type: 3}
+  spawnIdle: 1
 --- !u!50 &6286139187828219420
 Rigidbody2D:
   serializedVersion: 4

@@ -21,6 +21,7 @@ public class EnemyController : Controller
     [Header("Patrol")]
     [SerializeField] private float patrolTime = 4f;
     [SerializeField] private float movementSpeed = 250f;
+    [SerializeField] private LayerMask voidLayer;
 
     [SerializeField] private List<EnemyBehaviourData> behaviours;
     [SerializeField] private float fleeingZoneRadius = 10f;
@@ -40,6 +41,10 @@ public class EnemyController : Controller
     [SerializeField] private GameObject shadowPrefab;
     private Knockback _landKnockback;
 
+    [Header("Fall")]
+    [SerializeField] private GameObject fallSpritePrefab;
+    private GameObject _fallSprite;
+
     [Space]
     [SerializeField] private bool spawnIdle = true;
 
@@ -51,12 +56,14 @@ public class EnemyController : Controller
     public float DistanceToPlayer { get { return _distanceToPlayer; } }
     public float PatrolTime { get { return patrolTime; } }
     public float MovementSpeed { get { return movementSpeed; } }
+    public LayerMask VoidLayer { get { return voidLayer; } }
     public List<EnemyBehaviourData> Behaviours { get { return behaviours; } }
     public float LandSpeed { get { return landSpeed; } }
     public int LandDamage { get { return landDamage; } }
     public float LandDamageRadius { get { return landDamageRadius; } }
     public GameObject ShadowPrefab { get { return shadowPrefab; } }
     public Knockback LandKnockback { get { return _landKnockback; } }
+    public GameObject FallSprite { get { return _fallSprite; } }
 
     public event Action<Transform> OnAllyDiedClose;
 
@@ -76,6 +83,9 @@ public class EnemyController : Controller
         }
 
         _landKnockback = new Knockback { knockbackDistance = landKnockbackDistance, knockbackSpeed = landKnockbackSpeed };
+
+        _fallSprite = Instantiate(fallSpritePrefab);
+        _fallSprite.SetActive(false);
 
         _deathSound = RuntimeManager.CreateInstance("event:/Weapons/Enemy Explosion");
         _damageSound = RuntimeManager.CreateInstance("event:/Weapons/Enemy Hit");
@@ -223,6 +233,13 @@ public class EnemyController : Controller
     private void OnCollisionStay2D(Collision2D collision)
     {
         _currentState.OnCollisionStay(collision);
+    }
+
+    public override void OnTriggerEnter2D(Collider2D collision)
+    {
+        base.OnTriggerEnter2D(collision);
+
+        _currentState.OnTriggerEnter(collision);
     }
 
     private void OnDrawGizmos()

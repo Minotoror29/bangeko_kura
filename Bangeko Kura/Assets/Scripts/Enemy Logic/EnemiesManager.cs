@@ -41,6 +41,7 @@ public class EnemiesManager : MonoBehaviour
         {
             _enemies.Add(enemy);
             enemy.Initialize(this, _player, gameManager);
+            enemy.gameObject.SetActive(false);
         }
 
         screenManager.OnPlayerDeath += PlayerDied;

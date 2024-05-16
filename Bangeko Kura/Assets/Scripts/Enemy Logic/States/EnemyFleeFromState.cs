@@ -27,7 +27,7 @@ public class EnemyFleeFromState : EnemyState
         base.Exit();
     }
 
-    public override void OnCollisionEnter(Collision2D collision)
+    public override void OnTriggerEnter(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Obstacle"))
         {
@@ -50,10 +50,19 @@ public class EnemyFleeFromState : EnemyState
         {
             Controller.ChangeState(new EnemyIdleState(Controller));
         }
+
+        if (Controller.Grounds.Count == 0)
+        {
+            Controller.ChangeState(new EnemyFallState(Controller));
+        }
     }
 
     public override void UpdatePhysics()
     {
         Controller.MoveTowards(Controller.transform.position - _target.position, Controller.MovementSpeed);
+    }
+
+    public override void OnCollisionEnter(Collision2D collision)
+    {
     }
 }
