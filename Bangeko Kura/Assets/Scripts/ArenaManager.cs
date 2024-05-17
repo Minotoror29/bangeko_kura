@@ -92,7 +92,7 @@ public class ArenaManager : ScreenManager
             if (_waveDelayTimer <= 0f)
             {
                 _currentWave.gameObject.SetActive(true);
-                _currentWave.Initialize();
+                _currentWave.Initialize(true);
                 _currentWave.OnAllEnemiesDead += CheckIfArenaEnds;
             }
         }

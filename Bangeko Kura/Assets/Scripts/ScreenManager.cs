@@ -18,7 +18,7 @@ public class ScreenManager : MonoBehaviour
     
     private ScreenExit _lastExit;
 
-    public event Action OnInitialize;
+    public event Action<bool> OnInitialize;
     public event Action OnUpdate;
     public event Action OnFixedUpdate;
     public event Action OnPlayerDeath;
@@ -41,7 +41,7 @@ public class ScreenManager : MonoBehaviour
 
         vCam.gameObject.SetActive(false);
 
-        OnInitialize?.Invoke();
+        OnInitialize?.Invoke(false);
     }
 
     public virtual void EnterScreen()

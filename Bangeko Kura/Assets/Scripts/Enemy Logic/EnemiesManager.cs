@@ -33,7 +33,7 @@ public class EnemiesManager : MonoBehaviour
         screenManager.OnExit -= SetActiveEnemies;
     }
 
-    public void Initialize()
+    public void Initialize(bool isArena)
     {
         _enemies = new();
         _player = FindObjectOfType<PlayerController>();
@@ -41,7 +41,7 @@ public class EnemiesManager : MonoBehaviour
         {
             _enemies.Add(enemy);
             enemy.Initialize(this, _player, gameManager);
-            enemy.gameObject.SetActive(false);
+            enemy.gameObject.SetActive(isArena);
         }
 
         screenManager.OnPlayerDeath += PlayerDied;
