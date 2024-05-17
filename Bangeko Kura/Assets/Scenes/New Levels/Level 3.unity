@@ -1135,15 +1135,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd5d815122fa8a4593965b8509efcba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1487840491}
+  player: {fileID: 1503911611}
   defaultSpawnPoint: {fileID: 1087927858}
   defaultSpawnGround: {fileID: 792694180}
-  isArena: 0
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 64
-  spawnCursorPrefab: {fileID: 3291757219152962563, guid: f3a039f29da8656438639c623ac5428c,
-    type: 3}
   exits:
   - {fileID: 148390824}
   - {fileID: 462412534}
@@ -1364,15 +1358,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd5d815122fa8a4593965b8509efcba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1487840491}
+  player: {fileID: 1503911611}
   defaultSpawnPoint: {fileID: 1685099048}
   defaultSpawnGround: {fileID: 814381250}
-  isArena: 1
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 64
-  spawnCursorPrefab: {fileID: 3291757219152962563, guid: f3a039f29da8656438639c623ac5428c,
-    type: 3}
   exits:
   - {fileID: 1095219235}
   - {fileID: 1093111257}
@@ -1939,15 +1927,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd5d815122fa8a4593965b8509efcba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1487840491}
+  player: {fileID: 1503911611}
   defaultSpawnPoint: {fileID: 1034763227}
   defaultSpawnGround: {fileID: 1301724511}
-  isArena: 1
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 64
-  spawnCursorPrefab: {fileID: 3291757219152962563, guid: f3a039f29da8656438639c623ac5428c,
-    type: 3}
   exits:
   - {fileID: 878933083}
   vCam: {fileID: 892833299}
@@ -2222,15 +2204,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd5d815122fa8a4593965b8509efcba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1487840491}
+  player: {fileID: 1503911611}
   defaultSpawnPoint: {fileID: 79758836}
   defaultSpawnGround: {fileID: 130069814}
-  isArena: 0
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 64
-  spawnCursorPrefab: {fileID: 3291757219152962563, guid: f3a039f29da8656438639c623ac5428c,
-    type: 3}
   exits:
   - {fileID: 2051768574}
   vCam: {fileID: 481748410}
@@ -2400,15 +2376,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd5d815122fa8a4593965b8509efcba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1487840491}
+  player: {fileID: 1503911611}
   defaultSpawnPoint: {fileID: 512072392}
   defaultSpawnGround: {fileID: 1651152134}
-  isArena: 0
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 64
-  spawnCursorPrefab: {fileID: 3291757219152962563, guid: f3a039f29da8656438639c623ac5428c,
-    type: 3}
   exits:
   - {fileID: 908315476}
   - {fileID: 1039155600}
@@ -3707,7 +3677,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a7c992a89768a44f81ea9fe8abbcb4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1487840491}
+  player: {fileID: 1503911611}
   startOnElevator: 1
   startElevator: {fileID: 555642810}
   startScreen: {fileID: 637564265}
@@ -6021,24 +5991,24 @@ Transform:
   m_Father: {fileID: 325809267}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1487840491 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 83542728120134514, guid: 2da8cdec84a653c44b2b1f5b4cdc3d90,
-    type: 3}
-  m_PrefabInstance: {fileID: 83542729333952409}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ed879647cd700143a85a405717a9592, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1487840495 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 83542728120134524, guid: 2da8cdec84a653c44b2b1f5b4cdc3d90,
     type: 3}
   m_PrefabInstance: {fileID: 83542729333952409}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1503911611 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6641624104335652187, guid: 2da8cdec84a653c44b2b1f5b4cdc3d90,
+    type: 3}
+  m_PrefabInstance: {fileID: 83542729333952409}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66e51ffe4994e4644ba4e8d6622c1ef3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1512763447
 GameObject:
   m_ObjectHideFlags: 0
@@ -8533,6 +8503,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 6641624104335652187, guid: 2da8cdec84a653c44b2b1f5b4cdc3d90,
+        type: 3}
+      propertyPath: healthDisplay
+      value: 
+      objectReference: {fileID: 2091074028}
     - target: {fileID: 6672606390160745530, guid: 2da8cdec84a653c44b2b1f5b4cdc3d90,
         type: 3}
       propertyPath: m_Layer

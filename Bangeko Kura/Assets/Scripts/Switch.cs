@@ -30,6 +30,7 @@ public class Switch : MonoBehaviour
     {
         _switchPlatformManager = switchPlatformManager;
         _coll = GetComponent<BoxCollider2D>();
+        _coll.enabled = false;
 
         _hitSound = RuntimeManager.CreateInstance("event:/Environment/Switch Hit");
     }
