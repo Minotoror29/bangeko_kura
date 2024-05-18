@@ -53,7 +53,7 @@
 			<destination>{6f4d92d2-d444-42a0-a33c-5431b07f8b73}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{34cef6d5-0d4e-4663-9814-7241e490afae}</destination>
+			<destination>{dc8d96cc-f81d-4db6-aca5-5f8dfaae8701}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{101dd490-1465-49de-bb5f-28f137b3d52f}" />
@@ -125,7 +125,7 @@
 			<value>pitch</value>
 		</property>
 		<property name="amount">
-			<value>10.416666</value>
+			<value>10.5</value>
 		</property>
 	</object>
 	<object class="MixerBusEffectChain" id="{5dfba333-b4ec-4977-af32-6efeb59a76f4}">

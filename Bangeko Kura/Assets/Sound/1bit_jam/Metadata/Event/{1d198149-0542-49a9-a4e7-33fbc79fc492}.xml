@@ -53,7 +53,7 @@
 			<destination>{fe28e708-6078-48b2-8eef-ecabc5417100}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{34cef6d5-0d4e-4663-9814-7241e490afae}</destination>
+			<destination>{dc8d96cc-f81d-4db6-aca5-5f8dfaae8701}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{8ff1c4e3-8f58-41ee-aa42-788f9f3fb698}" />
@@ -104,7 +104,7 @@
 			<value>pitch</value>
 		</property>
 		<property name="amount">
-			<value>10.416666</value>
+			<value>12.5</value>
 		</property>
 	</object>
 	<object class="RandomizerModulator" id="{b0136ed2-ab67-47c6-9a73-50da6a869e77}">
