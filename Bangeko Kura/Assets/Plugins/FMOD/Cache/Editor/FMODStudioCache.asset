@@ -54,33 +54,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1947
---- !u!114 &-8444015178581215183
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Music/MenuEndNoLoop
-  m_EditorClassIdentifier: 
-  Path: event:/Music/MenuEndNoLoop
-  Guid:
-    Data1: 1870507490
-    Data2: 1125893109
-    Data3: -1514064726
-    Data4: 620727141
-  Banks:
-  - {fileID: -4443212541527653608}
-  IsStream: 1
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 25413
 --- !u!114 &-8389292810104499059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -378,33 +351,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 240
---- !u!114 &-4548694274812268718
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Music/CombatLoop
-  m_EditorClassIdentifier: 
-  Path: event:/Music/CombatLoop
-  Guid:
-    Data1: 1100252755
-    Data2: 1216866996
-    Data3: 587886483
-    Data4: 1192348492
-  Banks:
-  - {fileID: -4443212541527653608}
-  IsStream: 1
-  Is3D: 0
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 82580
 --- !u!114 &-4443212541527653608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -420,10 +366,10 @@ MonoBehaviour:
   Path: Assets/Sound/1bit_jam/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638488799276601902
+  lastModified: 638516514490522156
   FileSizes:
   - Name: Desktop
-    Value: 1703904
+    Value: 494
   Exists: 1
 --- !u!114 &-3966551579621473177
 MonoBehaviour:
@@ -533,33 +479,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &-684441980847567428
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Music/MenuStartLoop
-  m_EditorClassIdentifier: 
-  Path: event:/Music/MenuStartLoop
-  Guid:
-    Data1: -1325418445
-    Data2: 1274239756
-    Data3: 2111405467
-    Data4: 1147431233
-  Banks:
-  - {fileID: -4443212541527653608}
-  IsStream: 1
-  Is3D: 0
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 20645
 --- !u!114 &-60674337218942141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -605,9 +524,6 @@ MonoBehaviour:
   - {fileID: -4443212541527653608}
   - {fileID: 1589832365939916333}
   EditorEvents:
-  - {fileID: -4548694274812268718}
-  - {fileID: -684441980847567428}
-  - {fileID: -8444015178581215183}
   - {fileID: -6386284670042277513}
   - {fileID: -3966551579621473177}
   - {fileID: -5044475388306123958}
@@ -642,7 +558,7 @@ MonoBehaviour:
   - {fileID: 780826937757828281}
   StringsBanks:
   - {fileID: 905448090654457532}
-  cacheTime: 638488799276952909
+  cacheTime: 638516514492838990
   cacheVersion: 131609
 --- !u!114 &780826937757828281
 MonoBehaviour:
@@ -659,7 +575,7 @@ MonoBehaviour:
   Path: Assets/Sound/1bit_jam/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638488799276082371
+  lastModified: 638516514490499420
   FileSizes:
   - Name: Desktop
     Value: 1036
@@ -679,10 +595,10 @@ MonoBehaviour:
   Path: Assets/Sound/1bit_jam/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638488799276097393
+  lastModified: 638516514490509392
   FileSizes:
   - Name: Desktop
-    Value: 2280
+    Value: 2114
   Exists: 1
 --- !u!114 &933272810296468547
 MonoBehaviour:
@@ -753,10 +669,10 @@ MonoBehaviour:
   Path: Assets/Sound/1bit_jam/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638488799276952909
+  lastModified: 638516514492838990
   FileSizes:
   - Name: Desktop
-    Value: 609440
+    Value: 610848
   Exists: 1
 --- !u!114 &2185684127286894087
 MonoBehaviour:
