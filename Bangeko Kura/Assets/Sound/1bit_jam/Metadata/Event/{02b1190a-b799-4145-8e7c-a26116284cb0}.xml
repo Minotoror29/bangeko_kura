@@ -73,7 +73,7 @@
 	</object>
 	<object class="EventMixerMaster" id="{02a5656d-3471-4a17-a515-73b0c39ba79f}">
 		<property name="volume">
-			<value>-13.5</value>
+			<value>-5</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{fe0e8ad0-e142-469e-96c0-dead58a98ddf}</destination>
@@ -112,12 +112,15 @@
 	<object class="MixerBusFader" id="{fd197d53-460d-42b7-b7ae-37f13d0de90e}" />
 	<object class="DistortionEffect" id="{e558f48d-c1fd-4e43-931d-3311fcc6d9bb}">
 		<property name="level">
-			<value>0.919999957</value>
+			<value>0.63499999</value>
 		</property>
 	</object>
 	<object class="SFXReverbEffect" id="{92bc8c32-9f20-4686-b63d-52d8b8eb2f2c}">
 		<property name="decayTime">
 			<value>2200</value>
+		</property>
+		<property name="wetLevel">
+			<value>-19</value>
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{3c61d502-dee3-413b-9d5f-2b59b0362a40}" />
