@@ -332,9 +332,9 @@ MonoBehaviour:
   aim: {fileID: 7465103801680167039}
   laserOriginEffect: {fileID: 546793271799657349, guid: 4ba966aba2f38bb40b70d3ce6e63c979,
     type: 3}
-  fallSpritePrefab: {fileID: 5307921919700816351, guid: 16f2489f5664d994ab3017ebcdd38379,
+  fallSpritePrefab: {fileID: 5307921919700816351, guid: b13075c2586820e45927afc68e234c87,
     type: 3}
-  fallDownSpritePrefab: {fileID: 5307921919700816351, guid: 7e37e3c1685120a47912615b131b1964,
+  fallDownSpritePrefab: {fileID: 5307921919700816351, guid: b13075c2586820e45927afc68e234c87,
     type: 3}
   landMeshPrefab: {fileID: 1025309985873388636, guid: 582629093b0bdce48a6441176dbdc63e,
     type: 3}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5307921919700816344}
   - component: {fileID: 5307921919700816350}
   m_Layer: 0
-  m_Name: Fall Sprite
+  m_Name: Head Fall Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,7 +43,7 @@ Animator:
   m_GameObject: {fileID: 5307921919700816351}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bf3bd2e7026f9444481c7e7860f6eb1c, type: 2}
+  m_Controller: {fileID: 9100000, guid: 87021d1781a25d548a5a18356c6672d7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -127,7 +127,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fddb217a6b09efa49897f0a5069fc898, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 839d5a0c4c62b174abea85cb64c1f527, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

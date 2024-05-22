@@ -18,11 +18,11 @@ public class PlayerFallState : PlayerState
 
         if (Rb.velocity.y < 0)
         {
-            Controller.FallDownSprite.transform.position = (Vector2)Controller.Mesh.position + Vector2.up + Vector2.right * 0.5f;
+            Controller.FallDownSprite.transform.position = (Vector2)Controller.Mesh.position;
             Controller.FallDownSprite.SetActive(true);
         } else
         {
-            Controller.FallSprite.transform.position = (Vector2)Controller.Mesh.position + Vector2.up + Vector2.right * 0.5f;
+            Controller.FallSprite.transform.position = (Vector2)Controller.Mesh.position;
             Controller.FallSprite.SetActive(true);
         }
 
