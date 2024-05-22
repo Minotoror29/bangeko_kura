@@ -266,6 +266,11 @@ PrefabInstance:
       propertyPath: healthDisplay
       value: 
       objectReference: {fileID: 2091074028}
+    - target: {fileID: 7421424803343104416, guid: 5ae37264ae70b2e449f4df050d60c9ef,
+        type: 3}
+      propertyPath: movementSpeed
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 7421424803343104417, guid: 5ae37264ae70b2e449f4df050d60c9ef,
         type: 3}
       propertyPath: m_Name

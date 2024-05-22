@@ -171,13 +171,15 @@ MonoBehaviour:
   explosionEffects:
   - {fileID: 7688115154114750695, guid: b42ceb097a6a2a541ab82d88356387e6, type: 3}
   - {fileID: 7688115154114750695, guid: c1ff6de5a538ecb4a98eef7badfa7d1a, type: 3}
-  landSpeed: 100
+  landMeshPrefab: {fileID: 3849923774970919623, guid: 16b67a0ed2a227541a4223bd688c3c90,
+    type: 3}
   landDamage: 3
   landDamageRadius: 2.25
   landKnockbackDistance: 3
   landKnockbackSpeed: 1000
   shadowPrefab: {fileID: 1518433040841752098, guid: d10ef6c8cf1b3634fb3176259e73b05f,
     type: 3}
+  startGround: {fileID: 0}
   fallSpritePrefab: {fileID: 5307921919700816351, guid: 16f2489f5664d994ab3017ebcdd38379,
     type: 3}
   spawnIdle: 1

@@ -33,13 +33,15 @@ public class EnemyController : Controller
     [SerializeField] private List<GameObject> explosionEffects;
 
     [Header("Land")]
-    [SerializeField] private float landSpeed = 50f;
+    [SerializeField] private GameObject landMeshPrefab;
     [SerializeField] private int landDamage = 3;
     [SerializeField] private float landDamageRadius = 2.25f;
     [SerializeField] private float landKnockbackDistance;
     [SerializeField] private float landKnockbackSpeed;
     [SerializeField] private GameObject shadowPrefab;
+    [SerializeField] private GameObject startGround;
     private Knockback _landKnockback;
+    private GameObject _landMesh;
 
     [Header("Fall")]
     [SerializeField] private GameObject fallSpritePrefab;
@@ -58,7 +60,7 @@ public class EnemyController : Controller
     public float MovementSpeed { get { return movementSpeed; } }
     public LayerMask VoidLayer { get { return voidLayer; } }
     public List<EnemyBehaviourData> Behaviours { get { return behaviours; } }
-    public float LandSpeed { get { return landSpeed; } }
+    public GameObject LandMesh { get { return _landMesh; } }
     public int LandDamage { get { return landDamage; } }
     public float LandDamageRadius { get { return landDamageRadius; } }
     public GameObject ShadowPrefab { get { return shadowPrefab; } }
@@ -95,7 +97,9 @@ public class EnemyController : Controller
             ChangeState(new EnemyIdleState(this));
         } else
         {
-            ChangeState(new EnemyLandState(this));
+            _landMesh = Instantiate(landMeshPrefab);
+            _landMesh.SetActive(false);
+            ChangeState(new EnemyLandState(this, startGround));
         }
     }
 
