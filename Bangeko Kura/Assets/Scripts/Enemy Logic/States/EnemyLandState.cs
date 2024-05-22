@@ -5,9 +5,11 @@ using UnityEngine;
 public class EnemyLandState : EnemyState
 {
     private GameObject _shadow;
-    private float _landTimer = 1.167f;
+    private float _landTimer = 2f;
+    private float _landAnimationTime = 1.167f;
     private float _landDamageTime = 1f;
     private bool _landed = false;
+    private bool _animationStarted = false;
 
     public EnemyLandState(EnemyController controller, GameObject ground) : base(controller)
     {
@@ -18,11 +20,10 @@ public class EnemyLandState : EnemyState
     {
         base.Enter();
 
+        _landTimer += _landAnimationTime;
         Controller.Mesh.gameObject.SetActive(false);
         Controller.SetCollidersActive(false);
-        _shadow = Controller.InstantiateEffect(Controller.ShadowPrefab, Controller.transform.position, Quaternion.identity, 2f);
-        Controller.LandMesh.transform.position = Controller.transform.position;
-        Controller.LandMesh.SetActive(true);
+        _shadow = Controller.InstantiateEffect(Controller.ShadowPrefab, Controller.transform.position, Quaternion.identity, 3);
     }
 
     public override void Exit()
@@ -61,7 +62,21 @@ public class EnemyLandState : EnemyState
             Controller.ChangeState(new EnemyIdleState(Controller));
         }
 
-        _shadow.transform.localScale = Vector2.one * ((1.167f- _landTimer) / .167f);
+        if (!_landed)
+        {
+            _shadow.transform.localScale = Vector2.one * ((3.167f - _landTimer) / 2.167f);
+        }
+
+        if (_landTimer < _landAnimationTime)
+        {
+            if (!_animationStarted)
+            {
+                _animationStarted = true;
+
+                Controller.LandMesh.transform.position = Controller.transform.position;
+                Controller.LandMesh.SetActive(true);
+            }
+        }
 
         if (_landTimer < _landDamageTime)
         {
