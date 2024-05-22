@@ -63,16 +63,16 @@ public class EnemyChasingState : EnemyState
 
         Controller.LookTowards(Controller.Player.transform.position - Controller.transform.position, false);
 
-        if (_chasingTimer < _chasingTime)
-        {
-            _chasingTimer += Time.deltaTime;
-        } else
-        {
-            if ((Controller.Player.transform.position - Controller.transform.position).magnitude > _chasingDistance)
-            {
-                Controller.ChangeState(new EnemyIdleState(Controller));
-            }
-        }
+        //if (_chasingTimer < _chasingTime)
+        //{
+        //    _chasingTimer += Time.deltaTime;
+        //} else
+        //{
+        //    if ((Controller.Player.transform.position - Controller.transform.position).magnitude > _chasingDistance)
+        //    {
+        //        Controller.ChangeState(new EnemyIdleState(Controller));
+        //    }
+        //}
 
         if (Controller.Grounds.Count == 0)
         {
