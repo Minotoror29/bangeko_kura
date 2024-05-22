@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyLandState : EnemyState
 {
     private GameObject _shadow;
-    private float _landTimer = 2f;
+    private float _landTimer = 1f;
     private float _landAnimationTime = 1.167f;
     private float _landDamageTime = 1f;
     private bool _landed = false;
@@ -64,7 +64,7 @@ public class EnemyLandState : EnemyState
 
         if (!_landed)
         {
-            _shadow.transform.localScale = Vector2.one * ((3.167f - _landTimer) / 2.167f);
+            _shadow.transform.localScale = Vector2.one * ((2.167f - _landTimer) / 1.167f);
         }
 
         if (_landTimer < _landAnimationTime)
