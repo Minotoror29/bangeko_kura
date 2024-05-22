@@ -960,6 +960,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1112196893}
     m_Modifications:
+    - target: {fileID: 2292292660711292534, guid: 8cc96b24c2c58774ba8956fdec5c0fda,
+        type: 3}
+      propertyPath: spawnIdle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292292660711292534, guid: 8cc96b24c2c58774ba8956fdec5c0fda,
+        type: 3}
+      propertyPath: startGround
+      value: 
+      objectReference: {fileID: 1653308442}
     - target: {fileID: 6286139187828219395, guid: 8cc96b24c2c58774ba8956fdec5c0fda,
         type: 3}
       propertyPath: m_RootOrder
@@ -2459,7 +2469,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1306269411}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1653308442}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d70e2e2b5f7ad2d438ad96420494a1ee, type: 3}
@@ -3171,6 +3181,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d70e2e2b5f7ad2d438ad96420494a1ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1653308442 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1964596918781174210, guid: d2a67418dbfd56848907a80a675db0bb,
+    type: 3}
+  m_PrefabInstance: {fileID: 1306269411}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1690277916 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1114052894230267602, guid: 2e962c991e9f24847a48adc07b7827a5,
@@ -3327,6 +3343,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1112196893}
     m_Modifications:
+    - target: {fileID: 2292292660711292534, guid: 8cc96b24c2c58774ba8956fdec5c0fda,
+        type: 3}
+      propertyPath: spawnIdle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292292660711292534, guid: 8cc96b24c2c58774ba8956fdec5c0fda,
+        type: 3}
+      propertyPath: startGround
+      value: 
+      objectReference: {fileID: 1562506828}
     - target: {fileID: 6286139187828219395, guid: 8cc96b24c2c58774ba8956fdec5c0fda,
         type: 3}
       propertyPath: m_RootOrder
@@ -3437,6 +3463,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1422683621}
     m_Modifications:
+    - target: {fileID: 2292292660711292534, guid: 8cc96b24c2c58774ba8956fdec5c0fda,
+        type: 3}
+      propertyPath: spawnIdle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292292660711292534, guid: 8cc96b24c2c58774ba8956fdec5c0fda,
+        type: 3}
+      propertyPath: startGround
+      value: 
+      objectReference: {fileID: 624401420}
     - target: {fileID: 6286139187828219395, guid: 8cc96b24c2c58774ba8956fdec5c0fda,
         type: 3}
       propertyPath: m_RootOrder
