@@ -350,7 +350,7 @@ MonoBehaviour:
   landTime: 1.333
   landEffectTime: 0.75
   laserKnockbackPlayerDistance: 2
-  laserKnockbackPlayerSpeed: 100
+  laserKnockbackPlayerSpeed: 500
 --- !u!50 &7465103803272489422
 Rigidbody2D:
   serializedVersion: 4

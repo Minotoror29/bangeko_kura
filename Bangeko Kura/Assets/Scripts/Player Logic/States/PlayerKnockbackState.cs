@@ -52,6 +52,6 @@ public class PlayerKnockbackState : PlayerState
 
     public override void UpdatePhysics()
     {
-        Controller.Move(_direction, _speed);
+        Controller.Move(_direction.normalized, _speed);
     }
 }
