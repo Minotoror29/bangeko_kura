@@ -68,7 +68,7 @@ public class EnemyController : Controller
     public GameObject ShadowPrefab { get { return shadowPrefab; } }
     public Knockback LandKnockback { get { return _landKnockback; } }
     public GameObject FallSprite { get { return _fallSprite; } }
-    public bool DamagedByPlayer { get { return _damagedByPlayer; } }
+    public bool DamagedByPlayer { get { return _damagedByPlayer; } set { _damagedByPlayer = value; } }
 
     public event Action<Transform> OnAllyDiedClose;
 

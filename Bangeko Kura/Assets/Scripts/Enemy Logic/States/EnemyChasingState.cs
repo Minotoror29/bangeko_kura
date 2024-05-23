@@ -25,6 +25,15 @@ public class EnemyChasingState : EnemyState
     {
     }
 
+    public override void OnTriggerEnter(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            Controller.DamagedByPlayer = false;
+            Controller.ChangeState(new EnemyIdleState(Controller));
+        }
+    }
+
     public override void OnCollisionStay(Collision2D collision)
     {
     }
