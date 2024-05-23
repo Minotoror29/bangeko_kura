@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform startSpawnPoint;
     private ScreenManager _currentScreen;
 
+    [SerializeField] private CameraManager cameraManager;
     [SerializeField] private CutsceneManager cutsceneManager;
     [SerializeField] private InGameCutsceneManager inGameCutsceneManager;
     [SerializeField] private Transform newPlayerSpawnPoint;
@@ -103,6 +104,8 @@ public class GameManager : MonoBehaviour
         {
             screen.ChangePlayerController(newPlayer);
         }
+
+        cameraManager.ChangePlayerController(newPlayer);
     }
 
     public void PlayerFell()

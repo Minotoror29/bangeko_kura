@@ -12,6 +12,8 @@ public class CameraManager : MonoBehaviour
     private CinemachineBasicMultiChannelPerlin _perlin;
     private float _shakeTimer = 0f;
 
+    [SerializeField] private List<CinemachineVirtualCamera> playerDependantCameras;
+
     private void Awake()
     {
         if (_instance == null)
@@ -38,6 +40,14 @@ public class CameraManager : MonoBehaviour
     {
         _perlin.m_AmplitudeGain = gain;
         _shakeTimer = time;
+    }
+
+    public void ChangePlayerController(PlayerController newPlayer)
+    {
+        foreach (CinemachineVirtualCamera camera in playerDependantCameras)
+        {
+            camera.Follow = newPlayer.transform;
+        }
     }
 
     private void Update()

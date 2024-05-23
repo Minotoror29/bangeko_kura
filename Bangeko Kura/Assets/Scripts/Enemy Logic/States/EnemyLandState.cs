@@ -11,11 +11,9 @@ public class EnemyLandState : EnemyState
     private bool _landed = false;
     private bool _animationStarted = false;
 
-    public EnemyLandState(EnemyController controller, GameObject ground) : base(controller)
+    public EnemyLandState(EnemyController controller) : base(controller)
     {
         Id = EnemyStateId.Land;
-
-        Controller.AddGround(ground);
     }
 
     public override void Enter()

@@ -95,6 +95,8 @@ public class EnemyController : Controller
         _deathSound = RuntimeManager.CreateInstance("event:/Weapons/Enemy Explosion");
         _damageSound = RuntimeManager.CreateInstance("event:/Weapons/Enemy Hit");
 
+        AddGround(startGround);
+
         if (spawnIdle)
         {
             ChangeState(new EnemyIdleState(this));
@@ -102,7 +104,7 @@ public class EnemyController : Controller
         {
             _landMesh = Instantiate(landMeshPrefab);
             _landMesh.SetActive(false);
-            ChangeState(new EnemyLandState(this, startGround));
+            ChangeState(new EnemyLandState(this));
         }
     }
 
