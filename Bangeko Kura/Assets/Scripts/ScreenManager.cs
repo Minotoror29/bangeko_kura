@@ -10,7 +10,7 @@ public class ScreenManager : MonoBehaviour
 {
     private ScreenState _currentState;
 
-    [SerializeField] private PlayerController player;
+    private PlayerController _player;
     [SerializeField] private Transform defaultSpawnPoint;
     [SerializeField] private GameObject defaultSpawnGround;
     [SerializeField] private List<ScreenExit> exits;
@@ -24,14 +24,17 @@ public class ScreenManager : MonoBehaviour
     public event Action OnPlayerDeath;
     public event Action<bool> OnEnter;
     public event Action<bool> OnExit;
+    public event Action<PlayerController> OnChangePlayerController;
 
     public ScreenState CurrentState { get { return _currentState; } set { _currentState = value; } }
-    public PlayerController Player { get { return player; } }
+    public PlayerController Player { get { return _player; } }
     public Transform DefaultSpawnPoint { get { return defaultSpawnPoint; } }
 
-    public void Initialize(GameManager gameManager)
+    public void Initialize(GameManager gameManager, PlayerController player)
     {
         _currentState = ScreenState.Inactive;
+
+        _player = player;
 
         foreach (ScreenExit exit in exits)
         {
@@ -72,6 +75,13 @@ public class ScreenManager : MonoBehaviour
         OnExit?.Invoke(false);
     }
 
+    public void ChangePlayerController(PlayerController newPlayer)
+    {
+        _player = newPlayer;
+
+        OnChangePlayerController?.Invoke(newPlayer);
+    }
+
     public void PlayerFell()
     {
         OnPlayerDeath?.Invoke();
@@ -90,7 +100,7 @@ public class ScreenManager : MonoBehaviour
             spawnGround = _lastExit.RelativeSpawnGround;
         }
 
-        player.ChangeState(new PlayerLandState(player, spawnPosition, spawnGround));
+        _player.ChangeState(new PlayerLandState(_player, spawnPosition, spawnGround));
     }
 
     public virtual void UpdateLogic()

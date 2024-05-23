@@ -1060,7 +1060,9 @@ MonoBehaviour:
   startSpawnPoint: {fileID: 440830881}
   cutsceneManager: {fileID: 2072872966}
   inGameCutsceneManager: {fileID: 1674855249}
+  newPlayerSpawnPoint: {fileID: 1098479295}
   gameCanvas: {fileID: 1399664810}
+  healthDisplay: {fileID: 2091074028}
 --- !u!4 &118596939
 Transform:
   m_ObjectHideFlags: 0
@@ -2102,7 +2104,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd5d815122fa8a4593965b8509efcba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1867244181}
   defaultSpawnPoint: {fileID: 1475077195}
   defaultSpawnGround: {fileID: 1017967565}
   exits:
@@ -3779,7 +3780,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd5d815122fa8a4593965b8509efcba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1867244181}
   defaultSpawnPoint: {fileID: 1556486512}
   defaultSpawnGround: {fileID: 553037590}
   exits:
@@ -4676,6 +4676,19 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 118596938}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: ChangePlayerController
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 6641624104335652187, guid: dc35b89c6b2d00044b7d5aa5995ffd20,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: PlayerController, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -6478,6 +6491,37 @@ Transform:
   - {fileID: 6107641}
   m_Father: {fileID: 2029116960}
   m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1098479294
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1098479295}
+  m_Layer: 0
+  m_Name: New Player Spawn Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1098479295
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1098479294}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.25, y: 32, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2029116960}
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1108183295 stripped
 Transform:
@@ -9039,7 +9083,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd5d815122fa8a4593965b8509efcba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1867244181}
   defaultSpawnPoint: {fileID: 210386338}
   defaultSpawnGround: {fileID: 1052489268}
   exits:
@@ -11120,7 +11163,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd5d815122fa8a4593965b8509efcba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1867244181}
   defaultSpawnPoint: {fileID: 788452125}
   defaultSpawnGround: {fileID: 1543400807}
   exits:
@@ -11149,6 +11191,7 @@ Transform:
   - {fileID: 1697156323}
   - {fileID: 482659331}
   - {fileID: 1530139805}
+  - {fileID: 1098479295}
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12775,6 +12818,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 4741cf45a86afaf42beb4c083a3cbd4a,
         type: 3}
+    - target: {fileID: 1964596919886678458, guid: d2a67418dbfd56848907a80a675db0bb,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1964596919886678458, guid: d2a67418dbfd56848907a80a675db0bb,
         type: 3}
       propertyPath: m_Color.b

@@ -22,6 +22,7 @@ public class EnemiesManager : MonoBehaviour
         screenManager.OnFixedUpdate += UpdatePhysics;
         screenManager.OnEnter += SetActiveEnemies;
         screenManager.OnExit += SetActiveEnemies;
+        screenManager.OnChangePlayerController += ChangePlayerController;
     }
 
     private void OnDisable()
@@ -31,6 +32,7 @@ public class EnemiesManager : MonoBehaviour
         screenManager.OnFixedUpdate -= UpdatePhysics;
         screenManager.OnEnter -= SetActiveEnemies;
         screenManager.OnExit -= SetActiveEnemies;
+        screenManager.OnChangePlayerController -= ChangePlayerController;
     }
 
     public void Initialize(bool isArena)
@@ -45,6 +47,16 @@ public class EnemiesManager : MonoBehaviour
         }
 
         screenManager.OnPlayerDeath += PlayerDied;
+    }
+
+    public void ChangePlayerController(PlayerController newPlayer)
+    {
+        _player = newPlayer;
+
+        foreach (EnemyController enemy in _enemies)
+        {
+            enemy.ChangePlayerController(newPlayer);
+        }
     }
 
     private void PlayerDied()

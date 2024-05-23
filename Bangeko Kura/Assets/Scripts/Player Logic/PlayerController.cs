@@ -11,7 +11,7 @@ public abstract class PlayerController : Controller
 
     private PlayerControls _controls;
 
-    [SerializeField] private HealthDisplay healthDisplay;
+    private HealthDisplay _healthDisplay;
 
     [Header("Movement")]
     [SerializeField] private float movementSpeed = 325f;
@@ -95,7 +95,7 @@ public abstract class PlayerController : Controller
         HealthSystem.OnDamage += TakeDamage;
         HealthSystem.OnDeath += Die;
         HealthSystem.OnDeathFromFall += DieFromFall;
-        healthDisplay.Initialize(HealthSystem);
+        gameManager.HealthDisplay.Initialize(HealthSystem);
 
         _laserCooldownTimer = 0f;
         _laserKnockback = new Knockback { knockbackDistance = laserKnockbackDistance, knockbackSpeed = laserKnockbackSpeed };

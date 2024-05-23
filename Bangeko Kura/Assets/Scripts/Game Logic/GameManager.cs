@@ -18,8 +18,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private CutsceneManager cutsceneManager;
     [SerializeField] private InGameCutsceneManager inGameCutsceneManager;
+    [SerializeField] private Transform newPlayerSpawnPoint;
 
     [SerializeField] private Canvas gameCanvas;
+    [SerializeField] private HealthDisplay healthDisplay;
 
     public event Action OnInitialize;
 
@@ -27,6 +29,7 @@ public class GameManager : MonoBehaviour
     public CutsceneManager CutsceneManager { get { return cutsceneManager; } }
     public InGameCutsceneManager InGameCutsceneManager { get { return inGameCutsceneManager; } }
     public Canvas GameCanvas { get { return gameCanvas; } }
+    public HealthDisplay HealthDisplay { get {  return healthDisplay; } }
 
     private void Start()
     {
@@ -34,7 +37,7 @@ public class GameManager : MonoBehaviour
 
         foreach (ScreenManager screen in FindObjectsOfType<ScreenManager>(true))
         {
-            screen.Initialize(this);
+            screen.Initialize(this, player);
         }
 
         if (cutsceneManager != null)
@@ -85,6 +88,21 @@ public class GameManager : MonoBehaviour
         _currentScreen.EnterScreen();
 
         ChangeState(new GameTransitionState(this));
+    }
+
+    public void ChangePlayerController(PlayerController newPlayerPrefab)
+    {
+        PlayerController newPlayer = Instantiate(newPlayerPrefab, player.transform.position, Quaternion.identity);
+        newPlayer.Initialize(this);
+        Destroy(player.gameObject);
+
+        player = newPlayer;
+        player.ChangeState(new PlayerSpawnState(player, newPlayerSpawnPoint.position));
+
+        foreach (ScreenManager screen in FindObjectsOfType<ScreenManager>(true))
+        {
+            screen.ChangePlayerController(newPlayer);
+        }
     }
 
     public void PlayerFell()

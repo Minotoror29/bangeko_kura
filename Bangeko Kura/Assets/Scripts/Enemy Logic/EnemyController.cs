@@ -166,6 +166,11 @@ public class EnemyController : Controller
         gameObject.SetActive(false);
     }
 
+    public void ChangePlayerController(PlayerController newPlayer)
+    {
+        _player = newPlayer;
+    }
+
     public void PlayerDied()
     {
         _currentState.PlayerDied();
