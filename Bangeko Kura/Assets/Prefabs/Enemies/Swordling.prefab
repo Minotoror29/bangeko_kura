@@ -103,6 +103,7 @@ MonoBehaviour:
     m_Bits: 32768
   behaviours:
   - {fileID: 11400000, guid: 5519ae41a5bb9a14198ea39ea5ed8f4a, type: 2}
+  - {fileID: 11400000, guid: 3306821cc71442b409a59d5f3af72cdb, type: 2}
   fleeingZoneRadius: 10
   weapons:
   - {fileID: 4511209060302146073}

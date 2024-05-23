@@ -6,10 +6,8 @@ using UnityEngine;
 public class ChasePlayerWhenCloseData : EnemyBehaviourData
 {
     public float chasingDistance;
-    public float chasingTime;
-
     public override EnemyBehaviour Behaviour(EnemyController controller)
     {
-        return new ChasePlayerWhenClose(controller, chasingDistance, chasingTime);
+        return new ChasePlayerWhenClose(controller, chasingDistance);
     }
 }

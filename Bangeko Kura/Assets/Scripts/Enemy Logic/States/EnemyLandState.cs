@@ -13,6 +13,8 @@ public class EnemyLandState : EnemyState
 
     public EnemyLandState(EnemyController controller, GameObject ground) : base(controller)
     {
+        Id = EnemyStateId.Land;
+
         Controller.AddGround(ground);
     }
 

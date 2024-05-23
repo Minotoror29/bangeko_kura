@@ -50,6 +50,8 @@ public class EnemyController : Controller
     [Space]
     [SerializeField] private bool spawnIdle = true;
 
+    private bool _damagedByPlayer = false;
+
     private EventInstance _deathSound;
     private EventInstance _damageSound;
 
@@ -66,6 +68,7 @@ public class EnemyController : Controller
     public GameObject ShadowPrefab { get { return shadowPrefab; } }
     public Knockback LandKnockback { get { return _landKnockback; } }
     public GameObject FallSprite { get { return _fallSprite; } }
+    public bool DamagedByPlayer { get { return _damagedByPlayer; } }
 
     public event Action<Transform> OnAllyDiedClose;
 
@@ -128,6 +131,11 @@ public class EnemyController : Controller
     private void TakeHit(Transform source, Knockback knockback)
     {
         _damageSound.start();
+
+        if (source = _player.transform)
+        {
+            _damagedByPlayer = true;
+        }
 
         if (!_currentState.CanBeKnockedBack()) return;
 

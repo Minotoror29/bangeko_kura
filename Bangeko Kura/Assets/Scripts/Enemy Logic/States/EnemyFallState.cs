@@ -8,6 +8,7 @@ public class EnemyFallState : EnemyState
 
     public EnemyFallState(EnemyController controller) : base(controller)
     {
+        Id = EnemyStateId.Fall;
     }
 
     public override void Enter()

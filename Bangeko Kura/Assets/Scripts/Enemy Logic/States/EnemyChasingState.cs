@@ -4,16 +4,9 @@ using UnityEngine;
 
 public class EnemyChasingState : EnemyState
 {
-    private float _chasingDistance;
-    private float _chasingTime;
-    private float _chasingTimer;
-
-    public EnemyChasingState(EnemyController controller, float chasingDistance, float chasingTime) : base(controller)
+    public EnemyChasingState(EnemyController controller) : base(controller)
     {
         Id = EnemyStateId.Chasing;
-        _chasingDistance = chasingDistance;
-        _chasingTime = chasingTime;
-        _chasingTimer = 0f;
     }
 
     public override void Enter()
