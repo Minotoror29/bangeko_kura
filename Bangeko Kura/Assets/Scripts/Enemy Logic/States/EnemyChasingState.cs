@@ -65,16 +65,13 @@ public class EnemyChasingState : EnemyState
 
         Controller.LookTowards(Controller.Player.transform.position - Controller.transform.position, false);
 
-        //if (_chasingTimer < _chasingTime)
-        //{
-        //    _chasingTimer += Time.deltaTime;
-        //} else
-        //{
-        //    if ((Controller.Player.transform.position - Controller.transform.position).magnitude > _chasingDistance)
-        //    {
-        //        Controller.ChangeState(new EnemyIdleState(Controller));
-        //    }
-        //}
+        Ray ray = new(Controller.transform.position, Controller.Player.transform.position - Controller.transform.position);
+        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, (Controller.Player.transform.position - Controller.transform.position).magnitude, Controller.VoidLayer);
+        if (hit.collider != null)
+        {
+            Controller.DamagedByPlayer = false;
+            Controller.ChangeState(new EnemyIdleState(Controller));
+        }
 
         if (Controller.Grounds.Count == 0)
         {
