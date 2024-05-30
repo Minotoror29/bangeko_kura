@@ -26,11 +26,11 @@ public class EnemyPatrolState : EnemyState
     public void FindPatrolDirection()
     {
         _direction = Random.insideUnitCircle;
-        RaycastHit2D ray = Physics2D.Raycast(Controller.transform.position, _direction, _direction.magnitude, Controller.VoidLayer);
-        if (ray.collider != null)
-        {
-            FindPatrolDirection();
-        }
+        //RaycastHit2D ray = Physics2D.Raycast(Controller.transform.position, _direction, _direction.magnitude, Controller.VoidLayer);
+        //if (ray.collider != null)
+        //{
+        //    FindPatrolDirection();
+        //}
     }
 
     public override void Exit()
