@@ -190,6 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aed08d4da884f004dabbe93e084f5760, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerDependantCameras: []
 --- !u!4 &80735952
 Transform:
   m_ObjectHideFlags: 0
@@ -1263,7 +1264,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1ff6ce0eadcc0543a54dcc52e913602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 2129240397}
   defaultSpawnPoint: {fileID: 440830881}
   defaultSpawnGround: {fileID: 1562506828}
   exits: []
@@ -1736,9 +1736,12 @@ MonoBehaviour:
   startElevator: {fileID: 0}
   startScreen: {fileID: 637564267}
   startSpawnPoint: {fileID: 440830881}
+  cameraManager: {fileID: 0}
   cutsceneManager: {fileID: 0}
   inGameCutsceneManager: {fileID: 0}
+  newPlayerSpawnPoint: {fileID: 0}
   gameCanvas: {fileID: 1399664810}
+  healthDisplay: {fileID: 2091074028}
 --- !u!4 &897902914
 Transform:
   m_ObjectHideFlags: 0
