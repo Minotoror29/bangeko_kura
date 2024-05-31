@@ -12,13 +12,28 @@ public class ArenaManager : ScreenManager
     [SerializeField] private List<EnemiesManager> waves;
     [SerializeField] private float waveDelay;
 
+    [Space]
+    [SerializeField] private List<SwitchPlatform> switchPlatforms;
+
     private ScreenControls _controls;
     private Transform _spawnCursor;
     private Vector2 _landPosition;
     private GameObject _ground;
     private float _waveDelayTimer;
 
+    private bool _started = false;
+
     private EnemiesManager _currentWave;
+
+    public override void Initialize(GameManager gameManager, PlayerController player)
+    {
+        base.Initialize(gameManager, player);
+
+        foreach (SwitchPlatform platform in switchPlatforms)
+        {
+            platform.Initialize(true);
+        }
+    }
 
     public override void DetermineSpawnPoint()
     {
@@ -33,11 +48,6 @@ public class ArenaManager : ScreenManager
 
         _controls = new ScreenControls();
         _controls.Spawn.Spawn.performed += ctx => SpawnPlayer();
-
-        if (_currentWave == null)
-        {
-            ChangeWave(waves[0]);
-        }
     }
 
     public override void ExitScreen(ScreenExit lastExit)
@@ -45,6 +55,23 @@ public class ArenaManager : ScreenManager
         base.ExitScreen(lastExit);
 
         _controls.Spawn.Spawn.performed -= ctx => SpawnPlayer();
+    }
+
+    public void StartArena()
+    {
+        if (_started) return;
+
+        if (_currentWave == null)
+        {
+            _started = true;
+
+            foreach (SwitchPlatform platform in switchPlatforms)
+            {
+                platform.Exit();
+            }
+
+            ChangeWave(waves[0]);
+        }
     }
 
     private void ChangeWave(EnemiesManager nextWave)
@@ -63,6 +90,11 @@ public class ArenaManager : ScreenManager
         if (waves.IndexOf(_currentWave) == waves.Count - 1)
         {
             _currentWave.gameObject.SetActive(false);
+
+            foreach (SwitchPlatform platform in switchPlatforms)
+            {
+                platform.Enter();
+            }
         } else
         {
             ChangeWave(waves[waves.IndexOf(_currentWave) + 1]);

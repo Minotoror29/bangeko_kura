@@ -30,7 +30,7 @@ public class ScreenManager : MonoBehaviour
     public PlayerController Player { get { return _player; } }
     public Transform DefaultSpawnPoint { get { return defaultSpawnPoint; } }
 
-    public void Initialize(GameManager gameManager, PlayerController player)
+    public virtual void Initialize(GameManager gameManager, PlayerController player)
     {
         _currentState = ScreenState.Inactive;
 
