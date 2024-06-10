@@ -19,11 +19,6 @@ public class SwitchPlatform : MonoBehaviour
     public void Initialize(bool active)
     {
         _animator = GetComponent<Animator>();
-        //_colliders = new();
-        //foreach (Collider2D collider in GetComponentsInChildren<Collider2D>())
-        //{
-        //    _colliders.Add(collider);
-        //}
 
         spriteRenderer.enabled = active;
 
@@ -46,8 +41,6 @@ public class SwitchPlatform : MonoBehaviour
         foreach (Collider2D collider in colliders)
         {
             collider.enabled = true;
-            //collider.tag = "Ground";
-            //collider.gameObject.layer = LayerMask.NameToLayer("Ground");
         }
         foreach (Collider2D collider in voidColliders)
         {
@@ -62,8 +55,6 @@ public class SwitchPlatform : MonoBehaviour
         foreach (Collider2D collider in colliders)
         {
             collider.enabled = false;
-            //collider.tag = "Obstacle";
-            //collider.gameObject.layer = LayerMask.NameToLayer("Void");
         }
         foreach (Collider2D collider in voidColliders)
         {

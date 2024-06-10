@@ -102,7 +102,7 @@ public class EnemiesManager : MonoBehaviour
         }
     }
 
-    private void SetActiveEnemies(bool active)
+    public void SetActiveEnemies(bool active)
     {
         foreach (EnemyController enemy in _enemies)
         {
