@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ArenaManager : ScreenManager
 {
@@ -24,6 +25,9 @@ public class ArenaManager : ScreenManager
     private bool _started = false;
 
     private EnemiesManager _currentWave;
+
+    public UnityEvent OnStartArena;
+    public UnityEvent OnEndArena;
 
     public override void Initialize(GameManager gameManager, PlayerController player)
     {
@@ -61,6 +65,13 @@ public class ArenaManager : ScreenManager
     {
         if (_started) return;
 
+        OnStartArena?.Invoke();
+
+        foreach (ScreenExit exit in Exits)
+        {
+            exit.gameObject.SetActive(false);
+        }
+
         if (_currentWave == null)
         {
             _started = true;
@@ -89,7 +100,14 @@ public class ArenaManager : ScreenManager
     {
         if (waves.IndexOf(_currentWave) == waves.Count - 1)
         {
+            OnEndArena?.Invoke();
+
             _currentWave.gameObject.SetActive(false);
+
+            foreach (ScreenExit exit in Exits)
+            {
+                exit.gameObject.SetActive(true);
+            }
 
             foreach (SwitchPlatform platform in switchPlatforms)
             {

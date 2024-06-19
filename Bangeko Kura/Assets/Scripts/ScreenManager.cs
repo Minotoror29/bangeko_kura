@@ -29,6 +29,7 @@ public class ScreenManager : MonoBehaviour
     public ScreenState CurrentState { get { return _currentState; } set { _currentState = value; } }
     public PlayerController Player { get { return _player; } }
     public Transform DefaultSpawnPoint { get { return defaultSpawnPoint; } }
+    public List<ScreenExit> Exits { get { return exits; } }
 
     public virtual void Initialize(GameManager gameManager, PlayerController player)
     {
@@ -101,6 +102,13 @@ public class ScreenManager : MonoBehaviour
         }
 
         _player.ChangeState(new PlayerLandState(_player, spawnPosition, spawnGround));
+    }
+
+    public void ChangeScreenCamera(CinemachineVirtualCamera newCam)
+    {
+        vCam.gameObject.SetActive(false);
+        vCam = newCam;
+        vCam.gameObject.SetActive(true);
     }
 
     public virtual void UpdateLogic()
