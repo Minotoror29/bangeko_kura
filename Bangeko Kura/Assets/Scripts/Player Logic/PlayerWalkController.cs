@@ -52,6 +52,14 @@ public class PlayerWalkController : PlayerController
         Controls.InGame.Sword.performed -= ctx => sword.SwordStrike();
     }
 
+    public override void UnsubscribeEvents()
+    {
+        base.UnsubscribeEvents();
+
+        Controls.InGame.Dash.performed -= ctx => Dash();
+        Controls.InGame.Sword.performed -= ctx => sword.SwordStrike();
+    }
+
     private void Dash()
     {
         if (_dashCooldownTimer > 0f) return;

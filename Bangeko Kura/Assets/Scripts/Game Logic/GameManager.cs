@@ -93,10 +93,11 @@ public class GameManager : MonoBehaviour
 
     public void ChangePlayerController(PlayerController newPlayerPrefab)
     {
-        PlayerController newPlayer = Instantiate(newPlayerPrefab, player.transform.position, Quaternion.identity);
-        newPlayer.Initialize(this);
+        player.UnsubscribeEvents();
         Destroy(player.gameObject);
 
+        PlayerController newPlayer = Instantiate(newPlayerPrefab, player.transform.position, Quaternion.identity);
+        newPlayer.Initialize(this);
         player = newPlayer;
         player.ChangeState(new PlayerSpawnState(player, newPlayerSpawnPoint.position));
 
@@ -115,6 +116,8 @@ public class GameManager : MonoBehaviour
 
     public void EndLevel()
     {
+        player.UnsubscribeEvents();
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 

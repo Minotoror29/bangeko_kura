@@ -122,6 +122,11 @@ public abstract class PlayerController : Controller
         _controls.InGame.Laser.performed -= ctx => FireLaser();
     }
 
+    public virtual void UnsubscribeEvents()
+    {
+        _controls.InGame.Laser.performed -= ctx => FireLaser();
+    }
+
     public void ChangeState(PlayerState nextState)
     {
         _currentState?.Exit();
