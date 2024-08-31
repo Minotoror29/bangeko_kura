@@ -325,7 +325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caab90597b1af1043b07cbed6607480e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 30
 --- !u!70 &2119430135552674668
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
