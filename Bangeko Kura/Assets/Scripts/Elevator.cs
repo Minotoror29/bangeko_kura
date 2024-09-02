@@ -14,7 +14,7 @@ public class Elevator : MonoBehaviour
 
     [SerializeField] private Transform startPosition;
     [SerializeField] private Transform endPosition;
-    private Vector2 _currentTarget;
+    private Vector3 _currentTarget;
 
     [SerializeField] private float elevatorSpeed;
 
@@ -64,7 +64,7 @@ public class Elevator : MonoBehaviour
             Vector3 nextPosition = Vector3.MoveTowards(transform.position, _currentTarget, elevatorSpeed * Time.deltaTime);
             transform.position = nextPosition;
 
-            if ((Vector2)transform.position == _currentTarget)
+            if (transform.position == _currentTarget)
             {
                 ChangeState(ElevatorState.Waiting);
                 _movingSound.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
