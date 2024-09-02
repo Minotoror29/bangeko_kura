@@ -23,6 +23,7 @@ public class Elevator : MonoBehaviour
     private EventInstance _arrivalSound;
     private EventInstance _movingSound;
 
+    public UnityEvent OnStart;
     public UnityEvent OnArrival;
 
     public ElevatorState CurrentState { get { return _currentState; } }
@@ -53,6 +54,7 @@ public class Elevator : MonoBehaviour
             }
         } else if (_currentState == ElevatorState.Moving)
         {
+            OnStart?.Invoke();
             _movingSound.start();
         }
     }
