@@ -31,6 +31,11 @@ public class EnemySwordState : EnemyState
     {
     }
 
+    public override bool CanBeKnockedBack()
+    {
+        return false;
+    }
+
     public override void UpdateLogic()
     {
         base.UpdateLogic();
