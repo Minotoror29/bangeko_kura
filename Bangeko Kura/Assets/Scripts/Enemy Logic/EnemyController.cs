@@ -49,6 +49,7 @@ public class EnemyController : Controller
 
     [Space]
     [SerializeField] private bool spawnIdle = true;
+    [SerializeField] private bool canBeKnockedback = true;
 
     private bool _damagedByPlayer = false;
 
@@ -139,7 +140,7 @@ public class EnemyController : Controller
             _damagedByPlayer = true;
         }
 
-        if (!_currentState.CanBeKnockedBack()) return;
+        if (!_currentState.CanBeKnockedBack() || !canBeKnockedback) return;
 
         ChangeState(new EnemyKnockBackState(this, (Vector2)(transform.position - source.position).normalized, knockback));
     }

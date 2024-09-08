@@ -191,6 +191,7 @@ MonoBehaviour:
   fallSpritePrefab: {fileID: 5307921919700816351, guid: 79853256a2d5baa489de612baaed502b,
     type: 3}
   spawnIdle: 1
+  canBeKnockedback: 0
 --- !u!50 &6286139187828219420
 Rigidbody2D:
   serializedVersion: 4
