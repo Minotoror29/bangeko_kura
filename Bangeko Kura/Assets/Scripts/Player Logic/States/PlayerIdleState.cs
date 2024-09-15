@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum IdleState { Static, RotatingSlow, RotatingMedium, RotatingFast, FinishingRotation }
 
@@ -23,7 +24,7 @@ public class PlayerIdleState : PlayerState
     public override void Enter()
     {
         Controller.SetCollidersActive(true);
-        Controls.InGame.Enable();
+        Controller.Controls.InGame.Enable();
 
         _currentState = IdleState.Static;
         Controller.MeshAnimator.CrossFade("Player Idle", 0.1f);
@@ -136,7 +137,7 @@ public class PlayerIdleState : PlayerState
 
         Controller.RotateAim();
 
-        if (Controls.InGame.Movement.ReadValue<Vector2>().magnitude > 0f)
+        if (Controller.Controls.InGame.Movement.ReadValue<Vector2>().magnitude > 0f)
         {
             Controller.ChangeState(new PlayerWalkState(Controller));
         }

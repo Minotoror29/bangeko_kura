@@ -17,7 +17,7 @@ public class PlayerDeathState : PlayerState
     public override void Enter()
     {
         Controller.SetCollidersActive(false);
-        Controls.InGame.Disable();
+        Controller.Controls.InGame.Disable();
         
         if (!_fromFall)
         {

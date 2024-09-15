@@ -124,7 +124,11 @@ public abstract class PlayerController : Controller
 
     public virtual void UnsubscribeEvents()
     {
+        Debug.Log(_controls.InGame.enabled);
+
         _controls.InGame.Laser.performed -= ctx => FireLaser();
+        _controls.InGame.Disable();
+        Debug.Log(_controls.InGame.enabled);
     }
 
     public void ChangeState(PlayerState nextState)

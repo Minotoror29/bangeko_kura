@@ -20,7 +20,7 @@ public class PlayerLandState : PlayerState
 
     public override void Enter()
     {
-        Controls.InGame.Disable();
+        Controller.Controls.InGame.Disable();
         Controller.SetCollidersActive(false);
         Controller.transform.position = _spawnPosition;
         Controller.LandMesh.transform.position = _spawnPosition;
@@ -94,8 +94,8 @@ public class PlayerLandState : PlayerState
 
         if (_landTimer < 0.633f)
         {
-            Controls.InGame.Enable();
-            if (Controls.InGame.Movement.ReadValue<Vector2>().magnitude > 0f)
+            Controller.Controls.InGame.Enable();
+            if (Controller.Controls.InGame.Movement.ReadValue<Vector2>().magnitude > 0f)
             {
                 Controller.ChangeState(new PlayerWalkState(Controller));
             }

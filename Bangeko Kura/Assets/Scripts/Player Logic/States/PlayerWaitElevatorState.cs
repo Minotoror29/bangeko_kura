@@ -13,7 +13,7 @@ public class PlayerWaitElevatorState : PlayerState
 
     public override void Enter()
     {
-        Controls.InGame.Disable();
+        Controller.Controls.InGame.Disable();
         Controller.SetCollidersActive(false);
         Rb.velocity = Vector2.zero;
 

@@ -51,7 +51,7 @@ public class PlayerWalkState : PlayerState
         Controller.RotateMesh();
         Controller.RotateAim();
 
-        _walkAnimDirection = new Vector2(Controller.Mesh.transform.InverseTransformDirection(Controls.InGame.Movement.ReadValue<Vector2>()).x, Controller.Mesh.transform.InverseTransformDirection(Controls.InGame.Movement.ReadValue<Vector2>()).z).normalized;
+        _walkAnimDirection = new Vector2(Controller.Mesh.transform.InverseTransformDirection(Controller.Controls.InGame.Movement.ReadValue<Vector2>()).x, Controller.Mesh.transform.InverseTransformDirection(Controller.Controls.InGame.Movement.ReadValue<Vector2>()).z).normalized;
 
         if (_walkAnimDirection.y > 0.71f)
         {
@@ -83,7 +83,7 @@ public class PlayerWalkState : PlayerState
             }
         }
 
-        if (Controls.InGame.Movement.ReadValue<Vector2>().magnitude == 0f)
+        if (Controller.Controls.InGame.Movement.ReadValue<Vector2>().magnitude == 0f)
         {
             Controller.ChangeState(new PlayerIdleState(Controller));
         }
@@ -96,12 +96,12 @@ public class PlayerWalkState : PlayerState
 
     public override void UpdatePhysics()
     {
-        Controller.Move(Controls.InGame.Movement.ReadValue<Vector2>(), Controller.MovementSpeed);
+        Controller.Move(Controller.Controls.InGame.Movement.ReadValue<Vector2>(), Controller.MovementSpeed);
     }
 
     public override bool CanDash()
     {
-        Controller.ChangeState(new PlayerDashState(Controller, Controls.InGame.Movement.ReadValue<Vector2>(), _currentDirection));
+        Controller.ChangeState(new PlayerDashState(Controller, Controller.Controls.InGame.Movement.ReadValue<Vector2>(), _currentDirection));
 
         return true;
     }

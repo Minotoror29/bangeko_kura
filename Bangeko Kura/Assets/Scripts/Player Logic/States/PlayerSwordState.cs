@@ -42,13 +42,13 @@ public class PlayerSwordState : PlayerState
     {
         if (_canDash)
         {
-            if (Controls.InGame.Movement.ReadValue<Vector2>() == Vector2.zero)
+            if (Controller.Controls.InGame.Movement.ReadValue<Vector2>() == Vector2.zero)
             {
                 Controller.ChangeState(new PlayerDashState(Controller, Controller.LookDirection.normalized, Direction.Forward));
             }
             else
             {
-                Controller.ChangeState(new PlayerDashState(Controller, Controls.InGame.Movement.ReadValue<Vector2>(), Direction.Forward));
+                Controller.ChangeState(new PlayerDashState(Controller, Controller.Controls.InGame.Movement.ReadValue<Vector2>(), Direction.Forward));
             }
         }
 
@@ -87,6 +87,6 @@ public class PlayerSwordState : PlayerState
 
     public override void UpdatePhysics()
     {
-        Controller.Move(Controls.InGame.Movement.ReadValue<Vector2>(), Controller.MovementSpeed);
+        Controller.Move(Controller.Controls.InGame.Movement.ReadValue<Vector2>(), Controller.MovementSpeed);
     }
 }

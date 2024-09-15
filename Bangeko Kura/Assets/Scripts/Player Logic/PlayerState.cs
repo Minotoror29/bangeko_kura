@@ -6,19 +6,16 @@ public abstract class PlayerState : State
 {
     private PlayerController _controller;
     private Rigidbody2D _rb;
-    private PlayerControls _controls;
     private Animator _animator;
 
     public PlayerController Controller { get { return _controller; } }
     public Rigidbody2D Rb { get { return _rb; } }
-    public PlayerControls Controls { get { return _controls; } }
     public Animator Animator { get { return _animator; } }
 
     public PlayerState(PlayerController controller)
     {
         _controller = controller;
         _rb = controller.Rb;
-        _controls = controller.Controls;
         _animator = controller.MeshAnimator;
     }
 
