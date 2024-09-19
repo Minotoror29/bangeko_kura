@@ -46,6 +46,7 @@ public class EnemyController : Controller
     [Header("Fall")]
     [SerializeField] private GameObject fallSpritePrefab;
     private GameObject _fallSprite;
+    private List<GameObject> _lastGrounds;
 
     [Space]
     [SerializeField] private bool spawnIdle = true;
@@ -243,6 +244,29 @@ public class EnemyController : Controller
         if (deathSource == null) return;
 
         OnAllyDiedClose?.Invoke(deathSource);
+    }
+
+    public void Activate(bool activate)
+    {
+        if (!activate)
+        {
+            _lastGrounds = new();
+            foreach (GameObject ground in Grounds)
+            {
+                _lastGrounds.Add(ground);
+            }
+        } else
+        {
+            if (_lastGrounds.Count > 0)
+            {
+                foreach (GameObject ground in _lastGrounds)
+                {
+                    Grounds.Add(ground);
+                }
+            }
+        }
+        ChangeState(new EnemyIdleState(this));
+        gameObject.SetActive(activate);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
