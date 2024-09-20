@@ -106,8 +106,7 @@ public class EnemiesManager : MonoBehaviour
     {
         foreach (EnemyController enemy in _enemies)
         {
-            enemy.gameObject.SetActive(active);
-            enemy.Rb.velocity = Vector2.zero;
+            enemy.Activate(active);
         }
     }
 
