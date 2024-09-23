@@ -257,7 +257,7 @@ public class EnemyController : Controller
             }
         } else
         {
-            if (_lastGrounds.Count > 0)
+            if (_lastGrounds != null && _lastGrounds.Count > 0)
             {
                 foreach (GameObject ground in _lastGrounds)
                 {
