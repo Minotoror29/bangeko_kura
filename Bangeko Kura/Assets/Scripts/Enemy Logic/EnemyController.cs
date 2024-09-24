@@ -136,7 +136,7 @@ public class EnemyController : Controller
     {
         _damageSound.start();
 
-        if (source = _player.transform)
+        if (source == _player.transform)
         {
             _damagedByPlayer = true;
         }
