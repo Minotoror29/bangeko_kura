@@ -11,12 +11,15 @@ public class InGameCutsceneManager : MonoBehaviour
 
     private float _eventTimer;
 
+    [SerializeField] private UnityEvent OnCutsceneStart;
     [SerializeField] private UnityEvent OnCutsceneEnd;
 
     public void StartCutscene()
     {
         events[_currentEvent].cutsceneEvents?.Invoke();
         _eventTimer = events[_currentEvent].eventTime;
+
+        OnCutsceneStart?.Invoke();
     }
 
     private void NextEvent()

@@ -2279,6 +2279,10 @@ MonoBehaviour:
   frameTime: 2
   soundIndex: 0
   soundPath: 
+  stayLastFrame: 1
+  OnCutsceneStart:
+    m_PersistentCalls:
+      m_Calls: []
   OnCutsceneEnd:
     m_PersistentCalls:
       m_Calls:
@@ -6851,6 +6855,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   events: []
+  OnCutsceneStart:
+    m_PersistentCalls:
+      m_Calls: []
   OnCutsceneEnd:
     m_PersistentCalls:
       m_Calls: []

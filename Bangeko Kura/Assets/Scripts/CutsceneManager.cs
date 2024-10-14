@@ -18,6 +18,9 @@ public class CutsceneManager : MonoBehaviour
     [SerializeField] private string soundPath;
     private EventInstance _sound;
 
+    [SerializeField] private bool stayLastFrame = false;
+
+    [SerializeField] private UnityEvent OnCutsceneStart;
     [SerializeField] private UnityEvent OnCutsceneEnd;
 
     public void Initialize()
@@ -42,20 +45,27 @@ public class CutsceneManager : MonoBehaviour
         }
 
         _frameTimer = frameTime;
+
+        OnCutsceneStart?.Invoke();
     }
 
     private void NextFrame()
     {
         frames[_currentFrameindex].gameObject.SetActive(false);
-        _currentFrameindex++;
-
-        if (_currentFrameindex == frames.Count)
+        
+        if (_currentFrameindex == frames.Count - 1)
         {
+            if (stayLastFrame)
+            {
+                frames[_currentFrameindex].gameObject.SetActive(true);
+            }
+
             OnCutsceneEnd?.Invoke();
 
             return;
         }
 
+        _currentFrameindex++;
         frames[_currentFrameindex].gameObject.SetActive(true);
         if (soundIndex == _currentFrameindex && soundPath != "")
         {
