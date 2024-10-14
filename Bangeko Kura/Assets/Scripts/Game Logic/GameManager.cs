@@ -4,16 +4,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public enum StartingPlayerState { Idle, Elevator, Falling }
+
 public class GameManager : MonoBehaviour
 {
     private GameState _currentState;
 
     [SerializeField] private PlayerController player;
 
-    [SerializeField] private bool startOnElevator = false;
+    [SerializeField] private StartingPlayerState startState;
     [SerializeField] private Elevator startElevator;
     [SerializeField] private ScreenManager startScreen;
     [SerializeField] private Transform startSpawnPoint;
+    [SerializeField] private GameObject startGround;
     private ScreenManager _currentScreen;
 
     [SerializeField] private CameraManager cameraManager;
@@ -49,13 +52,17 @@ public class GameManager : MonoBehaviour
 
         ChangeScreen(startScreen, null);
 
-        if (!startOnElevator)
+        switch (startState)
         {
-            player.ChangeState(new PlayerSpawnState(player, startSpawnPoint.position));
-        } else
-        {
-            player.ChangeState(new PlayerWaitElevatorState(player, startElevator));
-            startElevator.ChangeState(ElevatorState.Moving);
+            case StartingPlayerState.Idle:
+                player.ChangeState(new PlayerSpawnState(player, startSpawnPoint.position));
+                break;
+            case StartingPlayerState.Elevator:
+                player.ChangeState(new PlayerWaitElevatorState(player, startElevator));
+                break;
+            case StartingPlayerState.Falling:
+                player.ChangeState(new PlayerLandState(player, startSpawnPoint.position, startGround));
+                break;
         }
 
         ChangeState(new GamePlayState(this));

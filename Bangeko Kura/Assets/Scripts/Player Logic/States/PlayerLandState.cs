@@ -20,6 +20,7 @@ public class PlayerLandState : PlayerState
 
     public override void Enter()
     {
+        Controller.Mesh.gameObject.SetActive(false);
         Controller.Controls.InGame.Disable();
         Controller.SetCollidersActive(false);
         Controller.transform.position = _spawnPosition;

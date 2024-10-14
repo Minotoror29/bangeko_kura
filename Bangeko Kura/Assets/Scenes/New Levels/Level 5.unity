@@ -5658,6 +5658,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6810386056013468283, guid: 4584ca8d53cf53948a309aa7ec61d3bf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7465103803272489409, guid: 4584ca8d53cf53948a309aa7ec61d3bf,
         type: 3}
       propertyPath: m_RootOrder
@@ -5768,10 +5773,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 888742323}
-  startOnElevator: 0
+  startState: 2
   startElevator: {fileID: 0}
   startScreen: {fileID: 637564267}
   startSpawnPoint: {fileID: 440830881}
+  startGround: {fileID: 281961216}
   cameraManager: {fileID: 80735951}
   cutsceneManager: {fileID: 296114158}
   inGameCutsceneManager: {fileID: 979962635}
@@ -8015,7 +8021,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1399664808
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6572,10 +6572,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 446232703}
-  startOnElevator: 1
+  startState: 1
   startElevator: {fileID: 555642810}
   startScreen: {fileID: 637564265}
   startSpawnPoint: {fileID: 440830881}
+  startGround: {fileID: 0}
   cameraManager: {fileID: 80735951}
   cutsceneManager: {fileID: 296114158}
   inGameCutsceneManager: {fileID: 979962635}

@@ -1076,10 +1076,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1867244181}
-  startOnElevator: 1
+  startState: 1
   startElevator: {fileID: 713846059}
   startScreen: {fileID: 637564265}
   startSpawnPoint: {fileID: 440830881}
+  startGround: {fileID: 0}
   cameraManager: {fileID: 80735951}
   cutsceneManager: {fileID: 2072872966}
   inGameCutsceneManager: {fileID: 1674855249}
@@ -3407,6 +3408,9 @@ MonoBehaviour:
   endPosition: {fileID: 1033904465}
   elevatorSpeed: 5
   oneWayElevator: 1
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
   OnArrival:
     m_PersistentCalls:
       m_Calls:
