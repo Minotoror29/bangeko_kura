@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour
                 break;
             case StartingPlayerState.Elevator:
                 player.ChangeState(new PlayerWaitElevatorState(player, startElevator));
+                startElevator.ChangeState(ElevatorState.Moving);
                 break;
             case StartingPlayerState.Falling:
                 player.ChangeState(new PlayerLandState(player, startSpawnPoint.position, startGround));
