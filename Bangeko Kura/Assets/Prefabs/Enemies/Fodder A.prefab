@@ -183,6 +183,7 @@ MonoBehaviour:
   fallSpritePrefab: {fileID: 5307921919700816351, guid: 745c08947435de149aa15c6385a8b031,
     type: 3}
   spawnIdle: 1
+  canBeKnockedback: 1
 --- !u!50 &5820088486749555142
 Rigidbody2D:
   serializedVersion: 4
@@ -219,7 +220,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.75
+  m_Radius: 0.4
 --- !u!95 &3993889168560487937
 Animator:
   serializedVersion: 5
