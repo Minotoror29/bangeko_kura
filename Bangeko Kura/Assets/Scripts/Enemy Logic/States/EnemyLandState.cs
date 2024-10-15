@@ -11,9 +11,13 @@ public class EnemyLandState : EnemyState
     private bool _landed = false;
     private bool _animationStarted = false;
 
-    public EnemyLandState(EnemyController controller) : base(controller)
+    private GameObject _ground;
+
+    public EnemyLandState(EnemyController controller, GameObject ground) : base(controller)
     {
         Id = EnemyStateId.Land;
+
+        _ground = ground;
     }
 
     public override void Enter()
@@ -59,6 +63,16 @@ public class EnemyLandState : EnemyState
         }
         else
         {
+            if (_ground.TryGetComponent(out SwitchPlatform platform))
+            {
+                if (platform.Active)
+                {
+                    Controller.AddGround(_ground);
+                }
+            } else
+            {
+                Controller.AddGround(_ground);
+            }
             Controller.ChangeState(new EnemyIdleState(Controller));
         }
 
@@ -78,11 +92,29 @@ public class EnemyLandState : EnemyState
             }
         }
 
+        if (_landTimer > _landDamageTime)
+        {
+            if (_ground.TryGetComponent(out SwitchPlatform platform))
+            {
+                _shadow.SetActive(platform.Active);
+            }
+        }
+
         if (_landTimer < _landDamageTime)
         {
             if (!_landed)
             {
                 _landed = true;
+
+                if (_ground.TryGetComponent(out SwitchPlatform platform))
+                {
+                    if (!platform.Active)
+                    {
+                        Controller.ChangeState(new EnemyFallState(Controller));
+                        _shadow.SetActive(false);
+                        return;
+                    }
+                }
 
                 List<Collider2D> results = new();
                 ContactFilter2D contactFilter = new() { useTriggers = true, layerMask = Controller.HealthSystemLayer };

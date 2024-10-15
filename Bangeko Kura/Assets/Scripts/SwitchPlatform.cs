@@ -14,7 +14,11 @@ public class SwitchPlatform : MonoBehaviour
     [SerializeField] private List<Collider2D> colliders;
     [SerializeField] private List<Collider2D> voidColliders;
 
+    private bool _active = true;
+
     private EventInstance _spawnSound;
+
+    public bool Active { get { return _active; } }
 
     public void Initialize(bool active)
     {
@@ -32,6 +36,8 @@ public class SwitchPlatform : MonoBehaviour
             collider.enabled = !active;
         }
 
+        _active = active;
+
         _spawnSound = RuntimeManager.CreateInstance("event:/Environment/Switch Platform Spawn");
     }
 
@@ -48,6 +54,8 @@ public class SwitchPlatform : MonoBehaviour
         }
         _animator.CrossFade("Enter", 0f);
         _spawnSound.start();
+
+        _active = true;
     }
 
     public void Exit()
@@ -61,5 +69,7 @@ public class SwitchPlatform : MonoBehaviour
             collider.enabled = true;
         }
         _animator.CrossFade("Exit", 0f);
+
+        _active = false;
     }
 }
