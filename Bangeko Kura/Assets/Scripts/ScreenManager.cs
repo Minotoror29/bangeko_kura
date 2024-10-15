@@ -25,6 +25,7 @@ public class ScreenManager : MonoBehaviour
     public event Action<bool> OnEnter;
     public event Action<bool> OnExit;
     public event Action<PlayerController> OnChangePlayerController;
+    public event Action OnPauseScreen;
 
     public ScreenState CurrentState { get { return _currentState; } set { _currentState = value; } }
     public PlayerController Player { get { return _player; } }
@@ -109,6 +110,11 @@ public class ScreenManager : MonoBehaviour
         vCam.gameObject.SetActive(false);
         vCam = newCam;
         vCam.gameObject.SetActive(true);
+    }
+
+    public void PauseScreen()
+    {
+        OnPauseScreen?.Invoke();
     }
 
     public virtual void UpdateLogic()

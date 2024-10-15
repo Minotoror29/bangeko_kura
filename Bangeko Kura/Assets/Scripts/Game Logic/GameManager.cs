@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     public event Action OnInitialize;
 
     public PlayerController Player { get { return player; } }
+    public ScreenManager CurrentScreen { get { return _currentScreen; } }
     public CutsceneManager CutsceneManager { get { return cutsceneManager; } }
     public InGameCutsceneManager InGameCutsceneManager { get { return inGameCutsceneManager; } }
     public Canvas GameCanvas { get { return gameCanvas; } }

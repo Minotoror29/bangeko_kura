@@ -17,6 +17,7 @@ public class GamePlayState : GameState
     {
         GameManager.Player.Rb.velocity = Vector2.zero;
         GameManager.Player.MeshAnimator.speed = 0;
+        GameManager.CurrentScreen.PauseScreen();
     }
 
     public override void OnCollisionEnter(Collision2D collision)

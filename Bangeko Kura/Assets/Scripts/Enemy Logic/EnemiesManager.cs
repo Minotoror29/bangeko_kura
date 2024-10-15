@@ -23,6 +23,7 @@ public class EnemiesManager : MonoBehaviour
         screenManager.OnEnter += SetActiveEnemies;
         screenManager.OnExit += SetActiveEnemies;
         screenManager.OnChangePlayerController += ChangePlayerController;
+        screenManager.OnPauseScreen += PauseEnemies;
     }
 
     private void OnDisable()
@@ -33,6 +34,7 @@ public class EnemiesManager : MonoBehaviour
         screenManager.OnEnter -= SetActiveEnemies;
         screenManager.OnExit -= SetActiveEnemies;
         screenManager.OnChangePlayerController -= ChangePlayerController;
+        screenManager.OnPauseScreen -= PauseEnemies;
     }
 
     public void Initialize(bool isArena)
@@ -107,6 +109,14 @@ public class EnemiesManager : MonoBehaviour
         foreach (EnemyController enemy in _enemies)
         {
             enemy.Activate(active);
+        }
+    }
+
+    public void PauseEnemies()
+    {
+        foreach (EnemyController enemy in _enemies)
+        {
+            enemy.Rb.velocity = Vector2.zero;
         }
     }
 
