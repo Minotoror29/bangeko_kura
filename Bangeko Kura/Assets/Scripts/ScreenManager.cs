@@ -114,6 +114,7 @@ public class ScreenManager : MonoBehaviour
 
     public void PauseScreen()
     {
+        Debug.Log("Pause Screen");
         OnPauseScreen?.Invoke();
     }
 

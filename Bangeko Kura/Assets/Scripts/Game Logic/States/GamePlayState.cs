@@ -31,10 +31,12 @@ public class GamePlayState : GameState
     public override void UpdateLogic()
     {
         GameManager.Player.UpdateLogic();
+        GameManager.CurrentScreen.UpdateLogic();
     }
 
     public override void UpdatePhysics()
     {
         GameManager.Player.UpdatePhysics();
+        GameManager.CurrentScreen.UpdatePhysics();
     }
 }

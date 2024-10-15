@@ -133,12 +133,10 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         _currentState.UpdateLogic();
-        _currentScreen.UpdateLogic();
     }
 
     private void FixedUpdate()
     {
         _currentState.UpdatePhysics();
-        _currentScreen.UpdatePhysics();
     }
 }
