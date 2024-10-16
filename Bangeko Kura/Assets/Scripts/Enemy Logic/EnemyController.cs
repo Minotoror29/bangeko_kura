@@ -264,7 +264,10 @@ public class EnemyController : Controller
                 }
             }
         }
-        ChangeState(new EnemyIdleState(this));
+        if (!activate)
+        {
+            ChangeState(new EnemyIdleState(this));
+        }
         gameObject.SetActive(activate);
     }
 

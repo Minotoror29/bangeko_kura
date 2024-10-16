@@ -18,13 +18,13 @@ public class EnemyLandState : EnemyState
         Id = EnemyStateId.Land;
 
         _ground = ground;
+        _landTimer += _landAnimationTime;
     }
 
     public override void Enter()
     {
         base.Enter();
-
-        _landTimer += _landAnimationTime;
+        
         Controller.Mesh.gameObject.SetActive(false);
         Controller.SetCollidersActive(false);
         _shadow = Controller.InstantiateEffect(Controller.ShadowPrefab, Controller.transform.position, Quaternion.identity, 3);
