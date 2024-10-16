@@ -199,10 +199,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1867244181}
-  startOnElevator: 0
+  startState: 0
   startElevator: {fileID: 0}
   startScreen: {fileID: 637564265}
   startSpawnPoint: {fileID: 440830881}
+  startGround: {fileID: 0}
   cameraManager: {fileID: 80735951}
   cutsceneManager: {fileID: 2072872966}
   inGameCutsceneManager: {fileID: 1674855249}
@@ -1474,6 +1475,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   events: []
+  OnCutsceneStart:
+    m_PersistentCalls:
+      m_Calls: []
   OnCutsceneEnd:
     m_PersistentCalls:
       m_Calls: []
@@ -1586,6 +1590,10 @@ MonoBehaviour:
   frameTime: 3
   soundIndex: 2
   soundPath: event:/Cutscenes/Arm
+  stayLastFrame: 0
+  OnCutsceneStart:
+    m_PersistentCalls:
+      m_Calls: []
   OnCutsceneEnd:
     m_PersistentCalls:
       m_Calls: []
@@ -2502,6 +2510,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042232673334332182, guid: 563f096d1649ca747a3af94863579318,
+        type: 3}
+      propertyPath: isExit
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7042232673334332182, guid: 563f096d1649ca747a3af94863579318,
         type: 3}

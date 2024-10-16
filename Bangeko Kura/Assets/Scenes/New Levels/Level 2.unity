@@ -3408,6 +3408,7 @@ MonoBehaviour:
   endPosition: {fileID: 1033904465}
   elevatorSpeed: 5
   oneWayElevator: 1
+  isExit: 1
   OnStart:
     m_PersistentCalls:
       m_Calls: []
@@ -9808,6 +9809,9 @@ MonoBehaviour:
             m_BoolArgument: 1
           m_CallState: 2
     eventTime: 2
+  OnCutsceneStart:
+    m_PersistentCalls:
+      m_Calls: []
   OnCutsceneEnd:
     m_PersistentCalls:
       m_Calls:
@@ -11627,6 +11631,10 @@ MonoBehaviour:
   frameTime: 3
   soundIndex: 2
   soundPath: event:/Cutscenes/Arm
+  stayLastFrame: 0
+  OnCutsceneStart:
+    m_PersistentCalls:
+      m_Calls: []
   OnCutsceneEnd:
     m_PersistentCalls:
       m_Calls:

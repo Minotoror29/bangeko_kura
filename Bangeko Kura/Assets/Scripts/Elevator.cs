@@ -19,12 +19,15 @@ public class Elevator : MonoBehaviour
     [SerializeField] private float elevatorSpeed;
 
     [SerializeField] private bool oneWayElevator;
+    [SerializeField] private bool isExit = false;
 
     private EventInstance _arrivalSound;
     private EventInstance _movingSound;
 
     public UnityEvent OnStart;
     public UnityEvent OnArrival;
+
+    public bool IsExit { get { return isExit; } }
 
     public ElevatorState CurrentState { get { return _currentState; } }
 

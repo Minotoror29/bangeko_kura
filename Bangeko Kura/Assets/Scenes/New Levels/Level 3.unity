@@ -2753,6 +2753,10 @@ MonoBehaviour:
   frameTime: 1
   soundIndex: 0
   soundPath: 
+  stayLastFrame: 0
+  OnCutsceneStart:
+    m_PersistentCalls:
+      m_Calls: []
   OnCutsceneEnd:
     m_PersistentCalls:
       m_Calls:
@@ -9540,6 +9544,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7042232673334332182, guid: 563f096d1649ca747a3af94863579318,
         type: 3}
+      propertyPath: isExit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042232673334332182, guid: 563f096d1649ca747a3af94863579318,
+        type: 3}
       propertyPath: OnArrival.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -9850,6 +9859,9 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
     eventTime: 1.5
+  OnCutsceneStart:
+    m_PersistentCalls:
+      m_Calls: []
   OnCutsceneEnd:
     m_PersistentCalls:
       m_Calls:
