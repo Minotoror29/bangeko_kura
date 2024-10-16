@@ -16,12 +16,24 @@ public class HealthDisplay : MonoBehaviour
         _healthSystem = healthSystem;
         _healthSystem.OnDamage += TakeDamage;
 
+        ClearHealthDisplay();
+
         _bars = new();
         for (int i = 0; i < healthSystem.CurrentHealth; i++)
         {
             GameObject newBar = Instantiate(barPrefab, barsParent);
             _bars.Add(newBar);
         }
+    }
+
+    private void ClearHealthDisplay()
+    {
+        for (int i = 0; i < _bars.Count; i++)
+        {
+            Destroy(_bars[i]);
+        }
+
+        _bars.Clear();
     }
 
     public void TakeDamage(int amount)

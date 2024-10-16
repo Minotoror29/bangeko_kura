@@ -11,8 +11,6 @@ public abstract class PlayerController : Controller
 
     private PlayerControls _controls;
 
-    private HealthDisplay _healthDisplay;
-
     [Header("Movement")]
     [SerializeField] private float movementSpeed = 325f;
 
