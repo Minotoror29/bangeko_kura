@@ -16,9 +16,9 @@ public class HealthDisplay : MonoBehaviour
         _healthSystem = healthSystem;
         _healthSystem.OnDamage += TakeDamage;
 
+        _bars = new();
         ClearHealthDisplay();
 
-        _bars = new();
         for (int i = 0; i < healthSystem.CurrentHealth; i++)
         {
             GameObject newBar = Instantiate(barPrefab, barsParent);
