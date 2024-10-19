@@ -16,8 +16,11 @@ public class HealthDisplay : MonoBehaviour
         _healthSystem = healthSystem;
         _healthSystem.OnDamage += TakeDamage;
 
+        if (_bars != null)
+        {
+            ClearHealthDisplay();
+        }
         _bars = new();
-        ClearHealthDisplay();
 
         for (int i = 0; i < healthSystem.CurrentHealth; i++)
         {
