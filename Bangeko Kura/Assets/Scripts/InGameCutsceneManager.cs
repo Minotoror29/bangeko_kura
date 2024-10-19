@@ -11,11 +11,15 @@ public class InGameCutsceneManager : MonoBehaviour
 
     private float _eventTimer;
 
+    private bool _cutsceneEnded = false;
+
     [SerializeField] private UnityEvent OnCutsceneStart;
     [SerializeField] private UnityEvent OnCutsceneEnd;
 
     public void StartCutscene()
     {
+        Debug.Log("Start Cutscene");
+
         events[_currentEvent].cutsceneEvents?.Invoke();
         _eventTimer = events[_currentEvent].eventTime;
 
@@ -29,6 +33,7 @@ public class InGameCutsceneManager : MonoBehaviour
         if (_currentEvent >= events.Count)
         {
             OnCutsceneEnd?.Invoke();
+            _cutsceneEnded = true;
 
             return;
         }
@@ -39,6 +44,8 @@ public class InGameCutsceneManager : MonoBehaviour
 
     private void Update()
     {
+        if (_cutsceneEnded) return;
+
         if (_eventTimer > 0f)
         {
             _eventTimer -= Time.deltaTime;

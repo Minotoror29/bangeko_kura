@@ -20,6 +20,8 @@ public class CutsceneManager : MonoBehaviour
 
     [SerializeField] private bool stayLastFrame = false;
 
+    private bool _cutsceneEnded = false;
+
     [SerializeField] private UnityEvent OnCutsceneStart;
     [SerializeField] private UnityEvent OnCutsceneEnd;
 
@@ -61,6 +63,7 @@ public class CutsceneManager : MonoBehaviour
             }
 
             OnCutsceneEnd?.Invoke();
+            _cutsceneEnded = true;
 
             return;
         }
@@ -75,6 +78,8 @@ public class CutsceneManager : MonoBehaviour
 
     public void UpdateLogic()
     {
+        if (_cutsceneEnded) return;
+
         if (_currentFrameindex == frames.Count) return;
 
         if (_frameTimer > 0f)
