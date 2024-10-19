@@ -18,8 +18,6 @@ public class InGameCutsceneManager : MonoBehaviour
 
     public void StartCutscene()
     {
-        Debug.Log("Start Cutscene");
-
         events[_currentEvent].cutsceneEvents?.Invoke();
         _eventTimer = events[_currentEvent].eventTime;
 

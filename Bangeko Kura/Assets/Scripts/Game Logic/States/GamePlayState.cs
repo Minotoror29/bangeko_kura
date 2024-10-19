@@ -11,6 +11,7 @@ public class GamePlayState : GameState
     public override void Enter()
     {
         GameManager.Player.MeshAnimator.speed = 1;
+        GameManager.Player.HealthSystem.GetComponent<CapsuleCollider2D>().enabled = true;
     }
 
     public override void Exit()
@@ -18,6 +19,7 @@ public class GamePlayState : GameState
         GameManager.Player.Rb.velocity = Vector2.zero;
         GameManager.Player.MeshAnimator.speed = 0;
         GameManager.CurrentScreen.PauseScreen();
+        GameManager.Player.HealthSystem.GetComponent<CapsuleCollider2D>().enabled = false;
     }
 
     public override void OnCollisionEnter(Collision2D collision)
