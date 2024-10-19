@@ -13113,6 +13113,16 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1964596920062438745, guid: d2a67418dbfd56848907a80a675db0bb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1964596920062438745, guid: d2a67418dbfd56848907a80a675db0bb,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     - target: {fileID: 1964596920062438751, guid: d2a67418dbfd56848907a80a675db0bb,
         type: 3}
       propertyPath: m_Size.x

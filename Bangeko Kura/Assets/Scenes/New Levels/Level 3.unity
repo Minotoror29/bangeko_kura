@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 8659931}
   m_Layer: 15
   m_Name: Void Collider
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2858,7 +2858,7 @@ GameObject:
   - component: {fileID: 323692464}
   m_Layer: 15
   m_Name: Void Collider
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6129,7 +6129,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 664115027}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Void Colliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7115,9 +7115,9 @@ GameObject:
   m_Component:
   - component: {fileID: 717094974}
   - component: {fileID: 717094975}
-  m_Layer: 6
+  m_Layer: 15
   m_Name: Collider (2)
-  m_TagString: Ground
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7386,9 +7386,9 @@ GameObject:
   m_Component:
   - component: {fileID: 746928493}
   - component: {fileID: 746928492}
-  m_Layer: 6
+  m_Layer: 15
   m_Name: Void Collider
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9019,7 +9019,7 @@ GameObject:
   - component: {fileID: 927767115}
   m_Layer: 15
   m_Name: Collider (2)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10084,7 +10084,7 @@ GameObject:
   - component: {fileID: 1020019088}
   m_Layer: 15
   m_Name: Void Collider
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11997,7 +11997,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1274245858}
   - component: {fileID: 1274245859}
-  m_Layer: 6
+  m_Layer: 15
   m_Name: Void Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13347,7 +13347,7 @@ GameObject:
   - component: {fileID: 1384743998}
   m_Layer: 15
   m_Name: Void Collider
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13798,7 +13798,7 @@ GameObject:
   - component: {fileID: 1460589598}
   m_Layer: 15
   m_Name: Void Collider
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14194,9 +14194,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1483964524}
   - component: {fileID: 1483964525}
-  m_Layer: 6
+  m_Layer: 15
   m_Name: Void Collider
-  m_TagString: Ground
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16213,9 +16213,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1867954096}
   - component: {fileID: 1867954097}
-  m_Layer: 6
+  m_Layer: 15
   m_Name: Collider (3)
-  m_TagString: Ground
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18421,7 +18421,7 @@ GameObject:
   - component: {fileID: 2124431327}
   m_Layer: 15
   m_Name: Collider (3)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
