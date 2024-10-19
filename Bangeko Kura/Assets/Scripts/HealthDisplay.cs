@@ -10,6 +10,7 @@ public class HealthDisplay : MonoBehaviour
     [SerializeField] private GameObject barPrefab;
     [SerializeField] private Transform barsParent;
     private List<GameObject> _bars;
+    private List<GameObject> _removedBars;
 
     public void Initialize(HealthSystem healthSystem)
     {
@@ -21,6 +22,7 @@ public class HealthDisplay : MonoBehaviour
             ClearHealthDisplay();
         }
         _bars = new();
+        _removedBars = new();
 
         for (int i = 0; i < healthSystem.CurrentHealth; i++)
         {
@@ -36,7 +38,13 @@ public class HealthDisplay : MonoBehaviour
             Destroy(_bars[i]);
         }
 
+        for (int i = 0; i < _removedBars.Count; i++)
+        {
+            Destroy(_removedBars[i]);
+        }
+
         _bars.Clear();
+        _removedBars.Clear();
     }
 
     public void TakeDamage(int amount)
@@ -48,6 +56,7 @@ public class HealthDisplay : MonoBehaviour
             GameObject barToRemove = _bars[^1];
             _bars.Remove(barToRemove);
             barToRemove.GetComponent<Animator>().CrossFade("TakeDamage", 0f);
+            _removedBars.Add(barToRemove);
             //barToRemove.SetActive(false);
 
             if (_bars.Count == 0) break;
