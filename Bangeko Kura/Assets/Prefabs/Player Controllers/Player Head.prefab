@@ -239,7 +239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caab90597b1af1043b07cbed6607480e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 15
 --- !u!70 &7465103803243694722
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -315,7 +315,6 @@ MonoBehaviour:
   - {fileID: 5927357067102471502}
   changeColorTime: 0.1
   damageColor: {r: 0.81960785, g: 0.1882353, b: 0.1882353, a: 1}
-  healthDisplay: {fileID: 0}
   movementSpeed: 200
   laserFirePoint: {fileID: 6181342927311374529}
   laserMaxDistance: 50
