@@ -94,6 +94,7 @@ public abstract class PlayerController : Controller
         HealthSystem.OnDeath += Die;
         HealthSystem.OnDeathFromFall += DieFromFall;
         gameManager.HealthDisplay.Initialize(HealthSystem);
+        MusicManager.Instance.PlayMusicLayer(MusicLayer.LowLife, false);
 
         _laserCooldownTimer = laserCooldown;
         _laserKnockback = new Knockback { knockbackDistance = laserKnockbackDistance, knockbackSpeed = laserKnockbackSpeed };
@@ -192,20 +193,20 @@ public abstract class PlayerController : Controller
     {
         if (HealthSystem.CurrentHealth <= 3)
         {
-            //Start low life loop
+            MusicManager.Instance.PlayMusicLayer(MusicLayer.LowLife, true);
         }
     }
 
     public void Die(HealthSystem healthSystem, Transform deathSource)
     {
-        //Stop low life loop
+        MusicManager.Instance.PlayMusicLayer(MusicLayer.LowLife, false);
 
         ChangeState(new PlayerDeathState(this, false));
     }
 
     public void DieFromFall()
     {
-        //Stop low life loop
+        MusicManager.Instance.PlayMusicLayer(MusicLayer.LowLife, false);
 
         ChangeState(new PlayerDeathState(this, true));
     }
