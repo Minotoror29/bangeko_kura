@@ -11,6 +11,7 @@ public class GameCutsceneState : GameState
     public override void Enter()
     {
         GameManager.GameCanvas.gameObject.SetActive(false);
+        GameManager.Player.Controls.Disable();
 
         //GameManager.CutsceneManager.StartCutscene(this);
     }
@@ -22,6 +23,7 @@ public class GameCutsceneState : GameState
 
     public void EndCutscene()
     {
+        GameManager.Player.Controls.Enable();
         GameManager.ChangeState(new GamePlayState(GameManager));
     }
 

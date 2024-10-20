@@ -55,7 +55,6 @@ public abstract class PlayerController : Controller
     private EventInstance _laserSound;
     private EventInstance _laserReloadSound;
     private EventInstance _damageSound;
-    private EventInstance _lowLifeLoop;
     private EventInstance _landingSound;
     private EventInstance _fallingSound;
     private bool _reloadSoundTriggered = false;
@@ -96,7 +95,7 @@ public abstract class PlayerController : Controller
         HealthSystem.OnDeathFromFall += DieFromFall;
         gameManager.HealthDisplay.Initialize(HealthSystem);
 
-        _laserCooldownTimer = 0f;
+        _laserCooldownTimer = laserCooldown;
         _laserKnockback = new Knockback { knockbackDistance = laserKnockbackDistance, knockbackSpeed = laserKnockbackSpeed };
 
         _fallSprite = Instantiate(fallSpritePrefab);
@@ -111,7 +110,6 @@ public abstract class PlayerController : Controller
         _laserSound = RuntimeManager.CreateInstance("event:/Weapons/Laser");
         _laserReloadSound = RuntimeManager.CreateInstance("event:/Weapons/Laser Reload");
         _damageSound = RuntimeManager.CreateInstance("event:/Weapons/Player Hit");
-        _lowLifeLoop = RuntimeManager.CreateInstance("event:/LowLifeLoop");
         _landingSound = RuntimeManager.CreateInstance("event:/Movement/Landing");
         _fallingSound = RuntimeManager.CreateInstance("event:/Movement/Fall");
     }
@@ -194,20 +192,20 @@ public abstract class PlayerController : Controller
     {
         if (HealthSystem.CurrentHealth <= 3)
         {
-            _lowLifeLoop.start();
+            //Start low life loop
         }
     }
 
     public void Die(HealthSystem healthSystem, Transform deathSource)
     {
-        _lowLifeLoop.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        //Stop low life loop
 
         ChangeState(new PlayerDeathState(this, false));
     }
 
     public void DieFromFall()
     {
-        _lowLifeLoop.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        //Stop low life loop
 
         ChangeState(new PlayerDeathState(this, true));
     }

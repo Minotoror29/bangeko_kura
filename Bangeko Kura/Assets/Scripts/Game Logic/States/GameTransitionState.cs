@@ -13,6 +13,7 @@ public class GameTransitionState : GameState
 
     public override void Enter()
     {
+        GameManager.Player.Controls.Disable();
         _timer = Camera.main.GetComponent<CinemachineBrain>().m_DefaultBlend.m_Time;
     }
 
@@ -35,6 +36,7 @@ public class GameTransitionState : GameState
             _timer -= Time.deltaTime;
         } else
         {
+            GameManager.Player.Controls.Enable();
             GameManager.ChangeState(new GamePlayState(GameManager));
         }
     }
