@@ -21,6 +21,7 @@ public class Elevator : MonoBehaviour
     [SerializeField] private bool oneWayElevator;
     [SerializeField] private bool isExit = false;
 
+    [SerializeField] private bool triggerArrivalSound = false;
     private EventInstance _arrivalSound;
     private EventInstance _movingSound;
 
@@ -73,7 +74,10 @@ public class Elevator : MonoBehaviour
             {
                 ChangeState(ElevatorState.Waiting);
                 _movingSound.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-                _arrivalSound.start();
+                if (triggerArrivalSound)
+                {
+                    _arrivalSound.start();
+                }
                 OnArrival?.Invoke();
             }
         }

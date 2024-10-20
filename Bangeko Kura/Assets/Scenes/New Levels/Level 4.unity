@@ -4413,6 +4413,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 7042232673334332182, guid: 563f096d1649ca747a3af94863579318,
+        type: 3}
+      propertyPath: triggerArrivalSound
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7042232673499805418, guid: 563f096d1649ca747a3af94863579318,
         type: 3}
       propertyPath: m_LocalPosition.x
