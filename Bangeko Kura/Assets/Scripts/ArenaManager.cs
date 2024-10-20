@@ -1,3 +1,5 @@
+using FMOD.Studio;
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -29,6 +31,10 @@ public class ArenaManager : ScreenManager
     public UnityEvent OnStartArena;
     public UnityEvent OnEndArena;
 
+    //Audio
+    private EventInstance _startbattleSound;
+    private EventInstance _endbattleSound;
+
     public override void Initialize(GameManager gameManager, PlayerController player)
     {
         base.Initialize(gameManager, player);
@@ -37,6 +43,9 @@ public class ArenaManager : ScreenManager
         {
             platform.Initialize(true);
         }
+
+        _startbattleSound = RuntimeManager.CreateInstance("event:/Music/StingerStart");
+        _endbattleSound = RuntimeManager.CreateInstance("event:/Music/StingerEnd");
     }
 
     public override void DetermineSpawnPoint()
@@ -84,6 +93,8 @@ public class ArenaManager : ScreenManager
             ChangeWave(waves[0]);
         }
 
+        _startbattleSound.start();
+        MusicManager.Instance.PlayMusicLayer(MusicLayer.Drones, false);
         MusicManager.Instance.PlayMusicLayer(MusicLayer.Battle, true);
     }
 
@@ -116,6 +127,8 @@ public class ArenaManager : ScreenManager
                 platform.Enter();
             }
 
+            _endbattleSound.start();
+            MusicManager.Instance.PlayMusicLayer(MusicLayer.Drones, true);
             MusicManager.Instance.PlayMusicLayer(MusicLayer.Battle, false);
         } else
         {
