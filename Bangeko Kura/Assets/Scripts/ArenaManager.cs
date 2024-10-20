@@ -83,6 +83,8 @@ public class ArenaManager : ScreenManager
 
             ChangeWave(waves[0]);
         }
+
+        MusicManager.Instance.PlayMusicLayer(MusicLayer.Battle, true);
     }
 
     private void ChangeWave(EnemiesManager nextWave)
@@ -113,6 +115,8 @@ public class ArenaManager : ScreenManager
             {
                 platform.Enter();
             }
+
+            MusicManager.Instance.PlayMusicLayer(MusicLayer.Battle, false);
         } else
         {
             ChangeWave(waves[waves.IndexOf(_currentWave) + 1]);

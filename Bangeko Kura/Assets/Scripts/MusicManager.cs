@@ -36,6 +36,10 @@ public class MusicManager : MonoBehaviour
 
     public void PlayMusicLayer(MusicLayer musicLayer, bool play)
     {
+        _music.getParameterByName(musicLayer.ToString() + " Volume", out float volume);
+        if (volume == 1f && play) return;
+        if (volume == 0f && !play) return;
+
         float startVolume = play ? 0f : 1f;
         foreach (MusicFader fader in _musicFaders)
         {
