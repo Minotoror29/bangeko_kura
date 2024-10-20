@@ -16,6 +16,7 @@ public class PlayerDeathState : PlayerState
 
     public override void Enter()
     {
+        Controller.Rb.velocity = Vector2.zero;
         Controller.SetCollidersActive(false);
         Controller.Controls.InGame.Disable();
         

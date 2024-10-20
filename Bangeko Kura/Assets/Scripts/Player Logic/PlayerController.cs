@@ -200,6 +200,7 @@ public abstract class PlayerController : Controller
     public void Die(HealthSystem healthSystem, Transform deathSource)
     {
         MusicManager.Instance.PlayMusicLayer(MusicLayer.LowLife, false);
+        MusicManager.Instance.PlayMusicLayer(MusicLayer.Battle, false);
 
         ChangeState(new PlayerDeathState(this, false));
     }
@@ -207,6 +208,7 @@ public abstract class PlayerController : Controller
     public void DieFromFall()
     {
         MusicManager.Instance.PlayMusicLayer(MusicLayer.LowLife, false);
+        MusicManager.Instance.PlayMusicLayer(MusicLayer.Battle, false);
 
         ChangeState(new PlayerDeathState(this, true));
     }
