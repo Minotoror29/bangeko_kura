@@ -69,6 +69,7 @@ public class SwitchPlatform : MonoBehaviour
             collider.enabled = true;
         }
         _animator.CrossFade("Exit", 0f);
+        _spawnSound.start();
 
         _active = false;
     }

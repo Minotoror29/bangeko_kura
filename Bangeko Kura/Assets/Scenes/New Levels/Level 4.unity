@@ -2276,9 +2276,9 @@ MonoBehaviour:
   - {fileID: 1669795620}
   - {fileID: 277345609}
   - {fileID: 573858143}
-  frameTime: 1
-  soundIndex: 0
-  soundPath: 
+  frameTime: 2
+  soundIndex: 3
+  soundPath: event:/Cutscenes/Head
   stayLastFrame: 1
   OnCutsceneStart:
     m_PersistentCalls:

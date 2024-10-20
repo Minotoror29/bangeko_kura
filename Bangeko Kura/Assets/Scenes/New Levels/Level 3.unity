@@ -2748,14 +2748,11 @@ MonoBehaviour:
   frames:
   - {fileID: 1661952407}
   - {fileID: 239345339}
-  - {fileID: 239345339}
-  - {fileID: 239345339}
-  - {fileID: 239345339}
-  - {fileID: 239345339}
-  - {fileID: 239345339}
+  - {fileID: 656270288}
+  - {fileID: 136004114}
   frameTime: 1
-  soundIndex: 0
-  soundPath: 
+  soundIndex: 2
+  soundPath: event:/Cutscenes/Legs
   stayLastFrame: 0
   OnCutsceneStart:
     m_PersistentCalls:

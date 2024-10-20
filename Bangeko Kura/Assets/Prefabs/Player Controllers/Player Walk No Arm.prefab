@@ -286,7 +286,6 @@ MonoBehaviour:
   - {fileID: 2950674634794377690}
   changeColorTime: 0.1
   damageColor: {r: 0.8207547, g: 0.18970275, b: 0.18970275, a: 1}
-  healthDisplay: {fileID: 0}
   movementSpeed: 325
   laserFirePoint: {fileID: 3813493439890415791}
   laserMaxDistance: 50
@@ -2518,6 +2517,37 @@ MonoBehaviour:
   - m_Rig: {fileID: 83542727554494607}
     m_Active: 1
   m_Effectors: []
+--- !u!114 &9081923421221663151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1002513238531296524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1506206238
+      Data2: 1156519022
+      Data3: 1623753138
+      Data4: -1421962188
+    Path: event:/Movement/Footsteps
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!4 &1291989927435204002 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1208895808086050303, guid: 12aae722fd3be8441bc77139605f001a,

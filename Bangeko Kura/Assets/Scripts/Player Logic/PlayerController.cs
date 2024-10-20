@@ -226,7 +226,7 @@ public abstract class PlayerController : Controller
 
             if (_laserCooldownTimer <= 1f && !_reloadSoundTriggered)
             {
-                _laserReloadSound.start();
+                //_laserReloadSound.start();
                 _reloadSoundTriggered = true;
             }
         }
