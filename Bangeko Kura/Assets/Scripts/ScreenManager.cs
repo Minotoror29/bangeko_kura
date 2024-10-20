@@ -1,4 +1,6 @@
 using Cinemachine;
+using FMOD.Studio;
+using FMODUnity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -27,6 +29,10 @@ public class ScreenManager : MonoBehaviour
     public event Action<PlayerController> OnChangePlayerController;
     public event Action OnPauseScreen;
 
+    //Audio
+    private EventInstance _switchPlatformEnterSound;
+    private EventInstance _switchPlatformExitSound;
+
     public ScreenState CurrentState { get { return _currentState; } set { _currentState = value; } }
     public PlayerController Player { get { return _player; } }
     public Transform DefaultSpawnPoint { get { return defaultSpawnPoint; } }
@@ -45,6 +51,9 @@ public class ScreenManager : MonoBehaviour
         }
 
         vCam.gameObject.SetActive(false);
+
+        _switchPlatformEnterSound = RuntimeManager.CreateInstance("event:/Environment/Switch Platform Spawn");
+        _switchPlatformExitSound = RuntimeManager.CreateInstance("event:/Environment/Switch Platform Spawn");
 
         OnInitialize?.Invoke(false);
     }
@@ -115,6 +124,19 @@ public class ScreenManager : MonoBehaviour
     public void PauseScreen()
     {
         OnPauseScreen?.Invoke();
+    }
+
+    public void PlaySwitchPlatformSound(bool enter)
+    {
+        if (_currentState == ScreenState.Inactive) return;
+
+        if (enter)
+        {
+            _switchPlatformEnterSound.start();
+        } else
+        {
+            _switchPlatformExitSound.start();
+        }
     }
 
     public virtual void UpdateLogic()

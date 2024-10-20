@@ -16,7 +16,7 @@ public class SwitchPlatform : MonoBehaviour
 
     private bool _active = true;
 
-    private EventInstance _spawnSound;
+    [SerializeField] private List<ScreenManager> screens;
 
     public bool Active { get { return _active; } }
 
@@ -37,8 +37,6 @@ public class SwitchPlatform : MonoBehaviour
         }
 
         _active = active;
-
-        _spawnSound = RuntimeManager.CreateInstance("event:/Environment/Switch Platform Spawn");
     }
 
     public void Enter()
@@ -53,7 +51,7 @@ public class SwitchPlatform : MonoBehaviour
             collider.enabled = false;
         }
         _animator.CrossFade("Enter", 0f);
-        _spawnSound.start();
+        PlaySound(true);
 
         _active = true;
     }
@@ -69,8 +67,16 @@ public class SwitchPlatform : MonoBehaviour
             collider.enabled = true;
         }
         _animator.CrossFade("Exit", 0f);
-        _spawnSound.start();
+        PlaySound(false);
 
         _active = false;
+    }
+
+    private void PlaySound(bool enter)
+    {
+        foreach (ScreenManager screen in screens)
+        {
+            screen.PlaySwitchPlatformSound(enter);
+        }
     }
 }

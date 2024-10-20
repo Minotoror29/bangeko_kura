@@ -1262,6 +1262,8 @@ MonoBehaviour:
   voidColliders:
   - {fileID: 717094975}
   - {fileID: 1867954097}
+  screens:
+  - {fileID: 332843152}
 --- !u!95 &126105215
 Animator:
   serializedVersion: 5
@@ -6337,6 +6339,8 @@ MonoBehaviour:
   - {fileID: 667711880}
   voidColliders:
   - {fileID: 1274245859}
+  screens:
+  - {fileID: 500523463}
 --- !u!95 &667711882
 Animator:
   serializedVersion: 5
@@ -6765,6 +6769,8 @@ MonoBehaviour:
   - {fileID: 1472578990}
   voidColliders:
   - {fileID: 1460589598}
+  screens:
+  - {fileID: 325809266}
 --- !u!1 &697141299
 GameObject:
   m_ObjectHideFlags: 0
@@ -7110,6 +7116,8 @@ MonoBehaviour:
   - {fileID: 1246714624}
   voidColliders:
   - {fileID: 1020019088}
+  screens:
+  - {fileID: 661352207}
 --- !u!1 &717094973
 GameObject:
   m_ObjectHideFlags: 0
@@ -7492,6 +7500,8 @@ MonoBehaviour:
   - {fileID: 1373384927}
   voidColliders:
   - {fileID: 323692464}
+  screens:
+  - {fileID: 500523463}
 --- !u!95 &755824040
 Animator:
   serializedVersion: 5
@@ -12525,6 +12535,8 @@ MonoBehaviour:
   - {fileID: 1301724513}
   voidColliders:
   - {fileID: 746928492}
+  screens:
+  - {fileID: 500523463}
 --- !u!95 &1301724515
 Animator:
   serializedVersion: 5
@@ -13036,6 +13048,9 @@ MonoBehaviour:
   voidColliders:
   - {fileID: 927767115}
   - {fileID: 2124431327}
+  screens:
+  - {fileID: 637564265}
+  - {fileID: 661352207}
 --- !u!1 &1348642882
 GameObject:
   m_ObjectHideFlags: 0
@@ -13110,6 +13125,8 @@ MonoBehaviour:
   - {fileID: 136112160}
   voidColliders:
   - {fileID: 1384743998}
+  screens:
+  - {fileID: 325809266}
 --- !u!1001 &1353197323
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16123,6 +16140,8 @@ MonoBehaviour:
   - {fileID: 1171668154}
   voidColliders:
   - {fileID: 8659931}
+  screens:
+  - {fileID: 500523463}
 --- !u!95 &1834776010
 Animator:
   serializedVersion: 5
@@ -16895,6 +16914,8 @@ MonoBehaviour:
   - {fileID: 490028429}
   voidColliders:
   - {fileID: 1483964525}
+  screens:
+  - {fileID: 332843152}
 --- !u!95 &1937919993
 Animator:
   serializedVersion: 5

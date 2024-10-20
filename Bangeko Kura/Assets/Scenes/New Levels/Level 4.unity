@@ -6809,6 +6809,8 @@ MonoBehaviour:
   - {fileID: 1828666042}
   voidColliders:
   - {fileID: 1269983182}
+  screens:
+  - {fileID: 1051160080}
 --- !u!95 &978602522
 Animator:
   serializedVersion: 5
@@ -7325,6 +7327,8 @@ MonoBehaviour:
   - {fileID: 2124450407}
   voidColliders:
   - {fileID: 575665734}
+  screens:
+  - {fileID: 768022926}
 --- !u!95 &1065062192
 Animator:
   serializedVersion: 5
@@ -8484,6 +8488,8 @@ MonoBehaviour:
   - {fileID: 1299724301}
   voidColliders:
   - {fileID: 501333009}
+  screens:
+  - {fileID: 1051160080}
 --- !u!95 &1299724303
 Animator:
   serializedVersion: 5
@@ -9302,6 +9308,8 @@ MonoBehaviour:
   - {fileID: 1444096141}
   voidColliders:
   - {fileID: 1430639412}
+  screens:
+  - {fileID: 768022926}
 --- !u!95 &1457865912
 Animator:
   serializedVersion: 5
@@ -9376,6 +9384,8 @@ MonoBehaviour:
   - {fileID: 733144816}
   voidColliders:
   - {fileID: 2048619214}
+  screens:
+  - {fileID: 1051160080}
 --- !u!95 &1460923640
 Animator:
   serializedVersion: 5
@@ -10021,6 +10031,8 @@ MonoBehaviour:
   - {fileID: 346616404}
   voidColliders:
   - {fileID: 1200645782}
+  screens:
+  - {fileID: 1051160080}
 --- !u!95 &1545009532
 Animator:
   serializedVersion: 5
@@ -10727,6 +10739,8 @@ MonoBehaviour:
   - {fileID: 644591172}
   voidColliders:
   - {fileID: 345736817}
+  screens:
+  - {fileID: 1051160080}
 --- !u!95 &1698545362
 Animator:
   serializedVersion: 5
@@ -12110,6 +12124,8 @@ MonoBehaviour:
   - {fileID: 2090458884}
   voidColliders:
   - {fileID: 1056048823}
+  screens:
+  - {fileID: 1051160080}
 --- !u!95 &2102897323
 Animator:
   serializedVersion: 5

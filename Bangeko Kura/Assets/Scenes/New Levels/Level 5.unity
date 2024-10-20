@@ -363,6 +363,8 @@ MonoBehaviour:
   - {fileID: 14912072}
   voidColliders:
   - {fileID: 837955621}
+  screens:
+  - {fileID: 637564267}
 --- !u!95 &14912074
 Animator:
   serializedVersion: 5
@@ -2254,6 +2256,8 @@ MonoBehaviour:
   - {fileID: 281961218}
   voidColliders:
   - {fileID: 777608140}
+  screens:
+  - {fileID: 637564267}
 --- !u!95 &281961220
 Animator:
   serializedVersion: 5
@@ -7101,6 +7105,8 @@ MonoBehaviour:
   - {fileID: 1035121280}
   voidColliders:
   - {fileID: 114193932}
+  screens:
+  - {fileID: 637564267}
 --- !u!95 &1035121282
 Animator:
   serializedVersion: 5
@@ -8393,6 +8399,8 @@ MonoBehaviour:
   - {fileID: 1368197379}
   voidColliders:
   - {fileID: 2094137769}
+  screens:
+  - {fileID: 637564267}
 --- !u!95 &1368197381
 Animator:
   serializedVersion: 5
@@ -10435,7 +10443,10 @@ MonoBehaviour:
   spriteRenderer: {fileID: 1070556042}
   colliders:
   - {fileID: 1615010816}
-  voidColliders: []
+  voidColliders:
+  - {fileID: 769911230}
+  screens:
+  - {fileID: 637564267}
 --- !u!95 &1615010818
 Animator:
   serializedVersion: 5
@@ -11093,6 +11104,8 @@ MonoBehaviour:
   - {fileID: 1732469406}
   voidColliders:
   - {fileID: 234913317}
+  screens:
+  - {fileID: 637564267}
 --- !u!95 &1732469408
 Animator:
   serializedVersion: 5
@@ -12143,6 +12156,8 @@ MonoBehaviour:
   - {fileID: 1943049020}
   voidColliders:
   - {fileID: 60807612}
+  screens:
+  - {fileID: 637564267}
 --- !u!95 &1943049022
 Animator:
   serializedVersion: 5
