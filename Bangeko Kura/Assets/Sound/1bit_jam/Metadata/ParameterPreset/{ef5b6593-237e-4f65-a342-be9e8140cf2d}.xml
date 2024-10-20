@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{ef5b6593-237e-4f65-a342-be9e8140cf2d}">
+		<property name="name">
+			<value>LowLife Volume</value>
+		</property>
+		<relationship name="folder">
+			<destination>{468e1073-2dd5-42cd-b9c6-61514ee47211}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{4f3deb6f-e3e9-460c-bb96-6035df44fc3a}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{4f3deb6f-e3e9-460c-bb96-6035df44fc3a}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
