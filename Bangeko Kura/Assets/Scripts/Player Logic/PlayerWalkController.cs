@@ -20,7 +20,6 @@ public class PlayerWalkController : PlayerController
     
     //Audio
     private EventInstance _dashSound;
-    private EventInstance _stepSound;    
 
     #region Getters / Setters
     public float DashSpeed { get { return dashSpeed; } }
@@ -43,7 +42,6 @@ public class PlayerWalkController : PlayerController
 
         //Initialize Audio
         _dashSound = RuntimeManager.CreateInstance("event:/Movement/Dash");
-        _stepSound = RuntimeManager.CreateInstance("event:/Movement/Step");
     }
 
     private void OnDisable()
@@ -80,11 +78,6 @@ public class PlayerWalkController : PlayerController
     public override bool SwordAttack(float builupTime)
     {
         return CurrentState.CanAttackSword();
-    }
-
-    public void PlayStepSound()
-    {
-        _stepSound.start();
     }
 
     public override void UpdateLogic()

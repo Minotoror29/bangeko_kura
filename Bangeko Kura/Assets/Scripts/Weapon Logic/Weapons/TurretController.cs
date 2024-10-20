@@ -18,9 +18,6 @@ public class TurretController : Weapon
     private float _fireTimer;
     private int _bulletsFired;
 
-    //Audio
-    private EventInstance _fireSound;
-
     public override void Initialize(Controller controller, HealthSystem healthSystem)
     {
         base.Initialize(controller, healthSystem);
@@ -82,8 +79,6 @@ public class TurretController : Weapon
         BulletController newBullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
         newBullet.Initialize(_enemiesInRange[0].transform.position - firePoint.position, Controller.transform);
         _bulletsFired++;
-
-        _fireSound.start();
     }
 
     private void RemoveEnemyFromTargets(HealthSystem enemy, Transform deathSource)

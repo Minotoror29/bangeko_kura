@@ -58,6 +58,7 @@ public abstract class PlayerController : Controller
     private EventInstance _lowLifeLoop;
     private EventInstance _landingSound;
     private EventInstance _fallingSound;
+    private bool _reloadSoundTriggered = false;
 
     public event Action OnTakeDamage;
 
@@ -175,6 +176,7 @@ public abstract class PlayerController : Controller
         CameraManager.Instance.ShakeCamera(2f, 0.1f);
 
         _laserCooldownTimer = laserCooldown;
+        _reloadSoundTriggered = false;
     }
 
     private void TakeHit(Transform damageSource, Knockback knockback)
@@ -222,9 +224,10 @@ public abstract class PlayerController : Controller
         {
             _laserCooldownTimer -= Time.deltaTime;
 
-            if (_laserCooldownTimer <= 0f)
+            if (_laserCooldownTimer <= 1f && !_reloadSoundTriggered)
             {
                 _laserReloadSound.start();
+                _reloadSoundTriggered = true;
             }
         }
     }
