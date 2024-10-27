@@ -245,7 +245,7 @@ Transform:
   m_Children:
   - {fileID: 771754852}
   m_Father: {fileID: 637564266}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &14165962
 BoxCollider2D:
@@ -307,7 +307,7 @@ Transform:
   - {fileID: 2085109970}
   - {fileID: 837955620}
   m_Father: {fileID: 637564266}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!60 &14912072
 PolygonCollider2D:
@@ -652,7 +652,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 79758835}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.63, y: 0, z: 0}
+  m_LocalPosition: {x: 21.630001, y: -9.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1417,7 +1417,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 637564266}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &180709876
 BoxCollider2D:
@@ -2211,7 +2211,7 @@ Transform:
   - {fileID: 899742007}
   - {fileID: 777608139}
   m_Father: {fileID: 637564266}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &281961218
 BoxCollider2D:
@@ -3825,7 +3825,7 @@ Transform:
   m_Children:
   - {fileID: 1953283230}
   m_Father: {fileID: 637564266}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &549029581
 BoxCollider2D:
@@ -4045,7 +4045,7 @@ Transform:
   m_Children:
   - {fileID: 654558537}
   m_Father: {fileID: 637564266}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &581883392
 BoxCollider2D:
@@ -4223,6 +4223,7 @@ Transform:
   - {fileID: 1962474848}
   - {fileID: 481748411}
   - {fileID: 79758836}
+  - {fileID: 1714398636}
   - {fileID: 1615010815}
   - {fileID: 549029580}
   - {fileID: 1308367344}
@@ -4253,7 +4254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultSpawnPoint: {fileID: 79758836}
-  defaultSpawnGround: {fileID: 281961216}
+  defaultSpawnGround: {fileID: 581883390}
   exits:
   - {fileID: 1394802752}
   vCam: {fileID: 481748410}
@@ -6572,7 +6573,7 @@ Transform:
   - {fileID: 1317604838}
   - {fileID: 258460307}
   m_Father: {fileID: 637564266}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &969697533
 PrefabInstance:
@@ -7047,7 +7048,7 @@ Transform:
   - {fileID: 80639720}
   - {fileID: 114193931}
   m_Father: {fileID: 637564266}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!60 &1035121280
 PolygonCollider2D:
@@ -8103,7 +8104,7 @@ Transform:
   m_Children:
   - {fileID: 215714268}
   m_Father: {fileID: 637564266}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1308367345
 BoxCollider2D:
@@ -8354,7 +8355,7 @@ Transform:
   - {fileID: 842574374}
   - {fileID: 2094137768}
   m_Father: {fileID: 637564266}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1368197379
 BoxCollider2D:
@@ -8718,7 +8719,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 637564266}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1394802752
 MonoBehaviour:
@@ -8733,8 +8734,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextScreen: {fileID: 376191988}
-  relativeSpawnPoint: {fileID: 79758836}
-  relativeSpawnGround: {fileID: 1308367343}
+  relativeSpawnPoint: {fileID: 1714398636}
+  relativeSpawnGround: {fileID: 1615010814}
 --- !u!61 &1394802753
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10405,7 +10406,7 @@ Transform:
   - {fileID: 1070556041}
   - {fileID: 769911229}
   m_Father: {fileID: 637564266}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!60 &1615010816
 PolygonCollider2D:
@@ -10998,6 +10999,37 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.72, y: 9.63}
   m_EdgeRadius: 0
+--- !u!1 &1714398635
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1714398636}
+  m_Layer: 0
+  m_Name: Spawn Point 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1714398636
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1714398635}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1, y: -12, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 637564266}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1727808421
 GameObject:
   m_ObjectHideFlags: 0
@@ -11090,7 +11122,7 @@ Transform:
   - {fileID: 1593201540}
   - {fileID: 234913316}
   m_Father: {fileID: 637564266}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!60 &1732469406
 PolygonCollider2D:
@@ -12190,7 +12222,7 @@ Transform:
   - {fileID: 1870501162}
   - {fileID: 60807611}
   m_Father: {fileID: 637564266}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!60 &1943049020
 PolygonCollider2D:

@@ -1304,7 +1304,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &185975289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4314,7 +4314,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextScreen: {fileID: 768022926}
   relativeSpawnPoint: {fileID: 1220738323}
-  relativeSpawnGround: {fileID: 1416365571}
+  relativeSpawnGround: {fileID: 346616402}
 --- !u!61 &497531566
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6027,7 +6027,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1525690590ef0894bb6896522dec4b4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScreen: {fileID: 0}
+  nextScreen: {fileID: 1051160080}
   relativeSpawnPoint: {fileID: 231202987}
   relativeSpawnGround: {fileID: 1299724299}
 --- !u!61 &757520440
@@ -7119,7 +7119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultSpawnPoint: {fileID: 1220738323}
-  defaultSpawnGround: {fileID: 1416365571}
+  defaultSpawnGround: {fileID: 346616402}
   exits:
   - {fileID: 1836968773}
   - {fileID: 497531565}
@@ -8272,7 +8272,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1220738322}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.25, y: -9.25, z: 0}
+  m_LocalPosition: {x: -11.25, y: -12.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -25,6 +25,7 @@ public class ArenaManager : ScreenManager
     private float _waveDelayTimer;
 
     private bool _started = false;
+    private bool _ended = false;
 
     private EnemiesManager _currentWave;
 
@@ -53,9 +54,15 @@ public class ArenaManager : ScreenManager
 
     public override void DetermineSpawnPoint()
     {
-        CurrentState = ScreenState.Spawn;
-        _controls.Spawn.Enable();
-        _spawnCursor = Instantiate(spawnCursorPrefab, DefaultSpawnPoint.position, Quaternion.identity);
+        if (!_started || _ended)
+        {
+            base.DetermineSpawnPoint();
+        } else
+        {
+            CurrentState = ScreenState.Spawn;
+            _controls.Spawn.Enable();
+            _spawnCursor = Instantiate(spawnCursorPrefab, DefaultSpawnPoint.position, Quaternion.identity);
+        }
     }
 
     public override void EnterScreen()
@@ -117,6 +124,7 @@ public class ArenaManager : ScreenManager
         if (waves.IndexOf(_currentWave) == waves.Count - 1)
         {
             OnEndArena?.Invoke();
+            _ended = true;
 
             _currentWave.gameObject.SetActive(false);
 
