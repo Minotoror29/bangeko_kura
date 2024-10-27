@@ -8790,6 +8790,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_XPosition: -50
+  m_MaxYPosition: 113
+  m_MinYPosition: 91.5
 --- !u!1 &897902912
 GameObject:
   m_ObjectHideFlags: 0
