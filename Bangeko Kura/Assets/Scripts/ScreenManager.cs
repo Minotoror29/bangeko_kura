@@ -36,6 +36,7 @@ public class ScreenManager : MonoBehaviour
     public ScreenState CurrentState { get { return _currentState; } set { _currentState = value; } }
     public PlayerController Player { get { return _player; } }
     public Transform DefaultSpawnPoint { get { return defaultSpawnPoint; } }
+    public GameObject DefaultSpawnGround { get { return defaultSpawnGround; } }
     public List<ScreenExit> Exits { get { return exits; } }
 
     public virtual void Initialize(GameManager gameManager, PlayerController player)

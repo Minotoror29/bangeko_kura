@@ -44,6 +44,9 @@ public class ArenaManager : ScreenManager
             platform.Initialize(true);
         }
 
+        _landPosition = DefaultSpawnPoint.position;
+        _ground = DefaultSpawnGround;
+
         _startbattleSound = RuntimeManager.CreateInstance("event:/Music/StingerStart");
         _endbattleSound = RuntimeManager.CreateInstance("event:/Music/StingerEnd");
     }
@@ -147,7 +150,7 @@ public class ArenaManager : ScreenManager
             if (hit)
             {
                 _spawnCursor.position = hit.point;
-                _landPosition = hit.point;
+                _landPosition = _spawnCursor.position;
                 _ground = hit.collider.gameObject;
             }
         }
