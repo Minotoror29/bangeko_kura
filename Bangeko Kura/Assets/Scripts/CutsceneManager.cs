@@ -9,6 +9,10 @@ using UnityEngine.UI;
 
 public class CutsceneManager : MonoBehaviour
 {
+    [Header("TESTING ONLY")]
+    [SerializeField] private bool testing = false;
+
+    [Space, Space, Space, Space]
     [SerializeField] private Image background;
     [SerializeField] private List<CutsceneFrame> frames;
     private float _frameTimer;
@@ -24,6 +28,23 @@ public class CutsceneManager : MonoBehaviour
 
     [SerializeField] private UnityEvent OnCutsceneStart;
     [SerializeField] private UnityEvent OnCutsceneEnd;
+
+    private void Start()
+    {
+        if (testing)
+        {
+            Initialize();
+            StartCutscene();
+        }
+    }
+
+    private void Update()
+    {
+        if (testing)
+        {
+            UpdateLogic();
+        }
+    }
 
     public void Initialize()
     {
