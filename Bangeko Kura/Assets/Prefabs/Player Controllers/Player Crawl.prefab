@@ -5259,6 +5259,8 @@ MonoBehaviour:
   aim: {fileID: 7421424802786709529}
   laserOriginEffect: {fileID: 546793271799657349, guid: 4ba966aba2f38bb40b70d3ce6e63c979,
     type: 3}
+  whiteCursor: {fileID: 2800000, guid: a012cbc27275d6d41847623223c9eed4, type: 3}
+  redCursor: {fileID: 2800000, guid: 73e2302c2ceeb2e48b7b02ad69012b96, type: 3}
   fallSpritePrefab: {fileID: 5307921919700816351, guid: 852ff2d41a0b3fc45959fda2c569b271,
     type: 3}
   fallDownSpritePrefab: {fileID: 5307921919700816351, guid: 852ff2d41a0b3fc45959fda2c569b271,

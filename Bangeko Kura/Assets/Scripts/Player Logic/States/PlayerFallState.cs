@@ -12,6 +12,7 @@ public class PlayerFallState : PlayerState
 
     public override void Enter()
     {
+        Cursor.visible = false;
         Controller.SetCollidersActive(false);
         Controller.Controls.InGame.Disable();
         Controller.Mesh.gameObject.SetActive(false);
@@ -31,6 +32,7 @@ public class PlayerFallState : PlayerState
 
     public override void Exit()
     {
+        Cursor.visible = true;
     }
 
     public override bool CanBeKnockbacked()

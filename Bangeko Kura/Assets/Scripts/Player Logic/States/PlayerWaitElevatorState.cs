@@ -13,6 +13,7 @@ public class PlayerWaitElevatorState : PlayerState
 
     public override void Enter()
     {
+        Cursor.visible = false;
         Controller.Controls.InGame.Disable();
         Controller.SetCollidersActive(false);
         Rb.velocity = Vector2.zero;
@@ -27,6 +28,7 @@ public class PlayerWaitElevatorState : PlayerState
 
     public override void Exit()
     {
+        Cursor.visible = true;
         Controller.AddGround(_elevator.gameObject);
     }
 

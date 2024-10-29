@@ -62,6 +62,7 @@ public class ArenaManager : ScreenManager
             CurrentState = ScreenState.Spawn;
             _controls.Spawn.Enable();
             _spawnCursor = Instantiate(spawnCursorPrefab, DefaultSpawnPoint.position, Quaternion.identity);
+            Cursor.visible = false;
         }
     }
 
@@ -181,6 +182,7 @@ public class ArenaManager : ScreenManager
         CurrentState = ScreenState.Play;
         _controls.Spawn.Disable();
         Destroy(_spawnCursor.gameObject);
+        Cursor.visible = true;
 
         Player.ChangeState(new PlayerLandState(Player, _landPosition, _ground));
     }

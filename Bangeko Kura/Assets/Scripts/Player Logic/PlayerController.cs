@@ -26,10 +26,13 @@ public abstract class PlayerController : Controller
     [SerializeField] private float laserKnockbackSpeed = 1000f;
     [SerializeField] private Transform aim;
     [SerializeField] private GameObject laserOriginEffect;
+    [SerializeField] private Texture2D whiteCursor;
+    [SerializeField] private Texture2D redCursor;
     private float _laserCooldownTimer;
     private Vector2 _lookDirection;
     private Vector2 _mousePosition;
     private Knockback _laserKnockback;
+    private Texture2D _currentCursor;
 
     [Header("Fall")]
     [SerializeField] private GameObject fallSpritePrefab;
@@ -163,7 +166,7 @@ public abstract class PlayerController : Controller
             }
         }
 
-        ////Visuals
+        //Visuals
         Laser newLaser = Instantiate(laserPrefab);
         newLaser.Initialize((Vector2)laserFirePoint.position + _lookDirection.normalized * 0.75f, (Vector2)laserFirePoint.position + (_mousePosition - (Vector2)laserFirePoint.position).normalized * rayDistance, laserWidth);
 
@@ -231,6 +234,8 @@ public abstract class PlayerController : Controller
                 _reloadSoundTriggered = true;
             }
         }
+
+        ChangeCursorColor();
     }
 
     public virtual void UpdateWeapons()
@@ -261,6 +266,33 @@ public abstract class PlayerController : Controller
         Quaternion meshRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.y), Mesh.up);
         Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, meshRotation.eulerAngles.y, 0f));
         Mesh.localRotation = Quaternion.RotateTowards(Mesh.localRotation, targetRotation, speed * Time.deltaTime);
+    }
+
+    private void ChangeCursorColor()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(_controls.InGame.MousePosition.ReadValue<Vector2>());
+        RaycastHit2D enemyHit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, HealthSystemLayer);
+        if (enemyHit)
+        {
+            if (enemyHit.collider.TryGetComponent(out HealthSystem healthSystem))
+            {
+                if (healthSystem.Source != transform)
+                {
+                    if (_currentCursor != redCursor)
+                    {
+                        _currentCursor = redCursor;
+                        Cursor.SetCursor(_currentCursor, new Vector2(576, 480), CursorMode.Auto);
+                    }
+                }
+            }
+        } else
+        {
+            if (_currentCursor != whiteCursor)
+            {
+                _currentCursor = whiteCursor;
+                Cursor.SetCursor(_currentCursor, new Vector2(576, 480), CursorMode.Auto);
+            }
+        }
     }
 
     public override void UpdatePhysics()

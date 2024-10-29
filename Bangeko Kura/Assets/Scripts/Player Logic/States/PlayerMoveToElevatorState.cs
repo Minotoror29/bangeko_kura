@@ -14,6 +14,7 @@ public class PlayerMoveToElevatorState : PlayerState
 
     public override void Enter()
     {
+        Cursor.visible = false;
         Controller.Controls.InGame.Disable();
         Controller.SetCollidersActive(false);
         Rb.velocity = Vector2.zero;
@@ -25,6 +26,7 @@ public class PlayerMoveToElevatorState : PlayerState
 
     public override void Exit()
     {
+        Cursor.visible = false;
     }
 
     public override void OnCollisionEnter(Collision2D collision)
