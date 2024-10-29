@@ -20,6 +20,7 @@ public class PlayerLandState : PlayerState
 
     public override void Enter()
     {
+        Cursor.visible = false;
         Controller.Mesh.gameObject.SetActive(false);
         Controller.Controls.InGame.Disable();
         Controller.SetCollidersActive(false);
@@ -32,6 +33,7 @@ public class PlayerLandState : PlayerState
 
     public override void Exit()
     {
+        Cursor.visible = true;
         Controller.LandMesh.SetActive(false);
 
         Controller.SetCollidersActive(true);

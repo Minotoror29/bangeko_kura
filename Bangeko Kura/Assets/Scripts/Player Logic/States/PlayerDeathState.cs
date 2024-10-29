@@ -16,6 +16,7 @@ public class PlayerDeathState : PlayerState
 
     public override void Enter()
     {
+        Cursor.visible = false;
         Controller.Rb.velocity = Vector2.zero;
         Controller.SetCollidersActive(false);
         Controller.Controls.InGame.Disable();
@@ -32,6 +33,7 @@ public class PlayerDeathState : PlayerState
 
     public override void Exit()
     {
+        Cursor.visible = true;
     }
 
     public override bool CanBeKnockbacked()
