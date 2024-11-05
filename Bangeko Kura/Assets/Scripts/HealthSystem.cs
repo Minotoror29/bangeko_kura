@@ -32,6 +32,8 @@ public class HealthSystem : MonoBehaviour
 
     public void TakeDamage(int damage, Transform damageSource, Knockback knockback)
     {
+        Debug.Log("Take Hit");
+
         OnHit?.Invoke(damageSource, knockback);
 
         if (_preventDamage)
@@ -52,6 +54,8 @@ public class HealthSystem : MonoBehaviour
         {
             OnDeath?.Invoke(this, damageSource);
         }
+
+        Debug.Log("Take Damage");
     }
 
     public void TakeDamageFromFall(int damage)
