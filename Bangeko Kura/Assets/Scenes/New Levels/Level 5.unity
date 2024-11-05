@@ -12932,7 +12932,7 @@ MonoBehaviour:
   OnActivation:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 862483469}
         m_TargetAssemblyTypeName: CutsceneManager, Assembly-CSharp
         m_MethodName: StartCutscene
         m_Mode: 1
