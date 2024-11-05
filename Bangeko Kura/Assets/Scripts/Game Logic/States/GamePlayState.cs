@@ -10,6 +10,7 @@ public class GamePlayState : GameState
 
     public override void Enter()
     {
+        Cursor.visible = true;
         GameManager.Player.MeshAnimator.speed = 1;
         GameManager.Player.HealthSystem.GetComponent<CapsuleCollider2D>().enabled = true;
     }

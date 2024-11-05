@@ -10,6 +10,7 @@ public class GameCutsceneState : GameState
 
     public override void Enter()
     {
+        Cursor.visible = false;
         GameManager.GameCanvas.gameObject.SetActive(false);
         GameManager.Player.Controls.Disable();
 
@@ -18,6 +19,7 @@ public class GameCutsceneState : GameState
 
     public override void Exit()
     {
+        Cursor.visible = true;
         GameManager.GameCanvas.gameObject.SetActive(true);
     }
 
