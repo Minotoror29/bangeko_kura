@@ -13,12 +13,14 @@ public class GameTransitionState : GameState
 
     public override void Enter()
     {
+        Cursor.visible = false;
         GameManager.Player.Controls.Disable();
         _timer = Camera.main.GetComponent<CinemachineBrain>().m_DefaultBlend.m_Time;
     }
 
     public override void Exit()
     {
+        Cursor.visible = true;
     }
 
     public override void OnCollisionEnter(Collision2D collision)

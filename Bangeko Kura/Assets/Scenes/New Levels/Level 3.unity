@@ -3869,7 +3869,7 @@ MonoBehaviour:
   OnCutsceneEnd:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 979962635}
         m_TargetAssemblyTypeName: InGameCutsceneManager, Assembly-CSharp
         m_MethodName: StartCutscene
         m_Mode: 1
@@ -11769,7 +11769,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 422221123}
         m_TargetAssemblyTypeName: CutsceneManager, Assembly-CSharp
         m_MethodName: StartCutscene
         m_Mode: 1
