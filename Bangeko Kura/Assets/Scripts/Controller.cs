@@ -87,7 +87,7 @@ public abstract class Controller : MonoBehaviour
 
     private void ChangeColor()
     {
-        foreach (SkinnedMeshRenderer renderer in MeshRenderers)
+        foreach (SkinnedMeshRenderer renderer in meshRenderers)
         {
             renderer.material.SetColor("_Dark_Color", damageColor);
         }

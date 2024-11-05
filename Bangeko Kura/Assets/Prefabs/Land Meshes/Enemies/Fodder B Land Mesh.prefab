@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2311365497706254230}
+  - component: {fileID: 8433475328444023486}
+  - component: {fileID: 1656533821871391139}
   m_Layer: 0
   m_Name: Fodder B Land Mesh
   m_TagString: Untagged
@@ -28,8 +30,78 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5019126323855310105}
+  - {fileID: 6618754520475895734}
   m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8433475328444023486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3849923774970919623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b49068bbddcb2d449b21453c611d42db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1656533821871391139}
+  meshRenderers:
+  - {fileID: 744752121741747157}
+  - {fileID: 1737320642593070234}
+  changeColorTime: 0.1
+--- !u!95 &1656533821871391139
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3849923774970919623}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3b51ca21cd4970a4eb0dd41584788432, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &8786871478126775032
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6618754520475895734}
+  m_Layer: 0
+  m_Name: Mesh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6618754520475895734
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8786871478126775032}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5019126323855310105}
+  m_Father: {fileID: 2311365497706254230}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4768535414875642610
@@ -37,7 +109,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 2311365497706254230}
+    m_TransformParent: {fileID: 6618754520475895734}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: b73d41c91350b224a935c7682a546c0e,
         type: 3}
@@ -82,7 +154,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: b73d41c91350b224a935c7682a546c0e,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b73d41c91350b224a935c7682a546c0e,
         type: 3}
@@ -1706,6 +1778,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b73d41c91350b224a935c7682a546c0e, type: 3}
+--- !u!137 &744752121741747157 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5222163092920269095, guid: b73d41c91350b224a935c7682a546c0e,
+    type: 3}
+  m_PrefabInstance: {fileID: 4768535414875642610}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &1737320642593070234 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -2724380517251234200, guid: b73d41c91350b224a935c7682a546c0e,
+    type: 3}
+  m_PrefabInstance: {fileID: 4768535414875642610}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5019126323855310105 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b73d41c91350b224a935c7682a546c0e,

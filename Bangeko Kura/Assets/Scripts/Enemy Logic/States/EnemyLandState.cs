@@ -34,7 +34,7 @@ public class EnemyLandState : EnemyState
     {
         base.Exit();
 
-        Controller.LandMesh.SetActive(false);
+        Controller.LandMesh.gameObject.SetActive(false);
 
         Controller.Mesh.gameObject.SetActive(true);
     }
@@ -87,7 +87,7 @@ public class EnemyLandState : EnemyState
                 _animationStarted = true;
 
                 Controller.LandMesh.transform.position = Controller.transform.position;
-                Controller.LandMesh.SetActive(true);
+                Controller.LandMesh.gameObject.SetActive(true);
             }
         }
 
@@ -122,7 +122,7 @@ public class EnemyLandState : EnemyState
                 {
                     if (collider.TryGetComponent(out HealthSystem hs))
                     {
-                        if (hs.CompareTag(collider.tag))
+                        if (!Controller.HealthSystem.CompareTag(collider.tag))
                         {
                             hs.TakeDamage(Controller.LandDamage, Controller.transform, Controller.LandKnockback);
                         }

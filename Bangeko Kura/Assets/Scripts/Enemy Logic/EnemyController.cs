@@ -33,7 +33,7 @@ public class EnemyController : Controller
     [SerializeField] private List<GameObject> explosionEffects;
 
     [Header("Land")]
-    [SerializeField] private GameObject landMeshPrefab;
+    [SerializeField] private LandMesh landMeshPrefab;
     [SerializeField] private int landDamage = 3;
     [SerializeField] private float landDamageRadius = 2.25f;
     [SerializeField] private float landKnockbackDistance;
@@ -41,7 +41,7 @@ public class EnemyController : Controller
     [SerializeField] private GameObject shadowPrefab;
     [SerializeField] private GameObject startGround;
     private Knockback _landKnockback;
-    private GameObject _landMesh;
+    private LandMesh _landMesh;
 
     [Header("Fall")]
     [SerializeField] private GameObject fallSpritePrefab;
@@ -64,7 +64,7 @@ public class EnemyController : Controller
     public float MovementSpeed { get { return movementSpeed; } }
     public LayerMask VoidLayer { get { return voidLayer; } }
     public List<EnemyBehaviourData> Behaviours { get { return behaviours; } }
-    public GameObject LandMesh { get { return _landMesh; } }
+    public LandMesh LandMesh { get { return _landMesh; } }
     public int LandDamage { get { return landDamage; } }
     public float LandDamageRadius { get { return landDamageRadius; } }
     public GameObject ShadowPrefab { get { return shadowPrefab; } }
@@ -104,7 +104,7 @@ public class EnemyController : Controller
         } else
         {
             _landMesh = Instantiate(landMeshPrefab);
-            _landMesh.SetActive(false);
+            _landMesh.gameObject.SetActive(false);
             ChangeState(new EnemyLandState(this, startGround));
         }
     }
@@ -140,6 +140,12 @@ public class EnemyController : Controller
             _damagedByPlayer = true;
         }
 
+        if (_landMesh.gameObject.activeSelf)
+        {
+            Debug.Log("Take Damage");
+            _landMesh.TakeDamage();
+        }
+
         if (!_currentState.CanBeKnockedBack() || !canBeKnockedback) return;
 
         ChangeState(new EnemyKnockBackState(this, (Vector2)(transform.position - source.position).normalized, knockback));
@@ -167,6 +173,11 @@ public class EnemyController : Controller
         _deathSound.start();
 
         gameObject.SetActive(false);
+
+        if (_landMesh.gameObject.activeSelf)
+        {
+            _landMesh.gameObject.SetActive(false);
+        }
     }
 
     public void ChangePlayerController(PlayerController newPlayer)
@@ -204,6 +215,11 @@ public class EnemyController : Controller
         }
 
         _currentState.UpdateLogic();
+
+        if (_landMesh.gameObject.activeSelf)
+        {
+            _landMesh.UpdateLogic();
+        }
     }
 
     public void LookTowards(Vector2 direction, bool idle)
