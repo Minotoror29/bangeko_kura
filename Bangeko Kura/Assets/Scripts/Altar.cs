@@ -13,7 +13,7 @@ public class Altar : MonoBehaviour
     {
         if (collision.GetComponent<PlayerController>())
         {
-            gameObject.SetActive(false);
+            GetComponent<BoxCollider2D>().enabled = false;
             OnActivation?.Invoke();
         }
     }

@@ -25,6 +25,8 @@ public class CutsceneManager : MonoBehaviour
     [SerializeField] private bool stayLastFrame = false;
 
     private bool _cutsceneEnded = false;
+    private bool _fadingBackground = false;
+    private float _fadingBackgroundTimer = 1f;
 
     [SerializeField] private UnityEvent OnCutsceneStart;
     [SerializeField] private UnityEvent OnCutsceneEnd;
@@ -60,16 +62,10 @@ public class CutsceneManager : MonoBehaviour
     {
         _currentFrameindex = 0;
 
+        background.color = new Color(0f, 0f, 0f, 0f);
         background.gameObject.SetActive(true);
-        frames[0].gameObject.SetActive(true);
-
-        if (soundIndex == 0)
-        {
-            _sound.start();
-        }
-
-        _frameTimer = frames[0].FrameTime;
-
+        _fadingBackground = true;
+        
         OnCutsceneStart?.Invoke();
     }
 
@@ -106,14 +102,37 @@ public class CutsceneManager : MonoBehaviour
     {
         if (_cutsceneEnded) return;
 
-        if (_currentFrameindex == frames.Count) return;
-
-        if (_frameTimer > 0f)
+        if (_fadingBackground)
         {
-            _frameTimer -= Time.deltaTime;
+            if (_fadingBackgroundTimer > 0f)
+            {
+                _fadingBackgroundTimer -= Time.deltaTime;
+                background.color = new Color(0f, 0f, 0f, Mathf.Abs(_fadingBackgroundTimer - 1f));
+
+                if (_fadingBackgroundTimer <= 0f)
+                {
+                    _fadingBackground = false;
+
+                    frames[0].gameObject.SetActive(true);
+
+                    if (soundIndex == 0)
+                    {
+                        _sound.start();
+                    }
+
+                    _frameTimer = frames[0].FrameTime;
+                }
+            }
         } else
         {
-            NextFrame();
+            if (_frameTimer > 0f)
+            {
+                _frameTimer -= Time.deltaTime;
+            }
+            else
+            {
+                NextFrame();
+            }
         }
     }
 }
