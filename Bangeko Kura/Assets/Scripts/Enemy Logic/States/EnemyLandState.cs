@@ -36,7 +36,6 @@ public class EnemyLandState : EnemyState
 
         Controller.LandMesh.SetActive(false);
 
-        Controller.SetCollidersActive(true);
         Controller.Mesh.gameObject.SetActive(true);
     }
 
@@ -131,6 +130,8 @@ public class EnemyLandState : EnemyState
                 }
 
                 _shadow.SetActive(false);
+
+                Controller.SetCollidersActive(true);
             }
         }
     }
