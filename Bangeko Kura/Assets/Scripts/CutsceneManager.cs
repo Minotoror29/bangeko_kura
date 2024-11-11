@@ -14,6 +14,7 @@ public class CutsceneManager : MonoBehaviour
 
     [Space, Space, Space, Space]
     [SerializeField] private Image background;
+    [SerializeField] private float backgroundOpacity = 1f;
     [SerializeField] private List<CutsceneFrame> frames;
     private float _frameTimer;
     private int _currentFrameindex;
@@ -62,9 +63,15 @@ public class CutsceneManager : MonoBehaviour
     {
         _currentFrameindex = 0;
 
-        background.color = new Color(0f, 0f, 0f, 0f);
-        background.gameObject.SetActive(true);
-        _fadingBackground = true;
+        if (backgroundOpacity > 1f)
+        {
+            background.gameObject.SetActive(true);
+        } else
+        {
+            background.color = new Color(0f, 0f, 0f, 0f);
+            background.gameObject.SetActive(true);
+            _fadingBackground = true;
+        }
         
         OnCutsceneStart?.Invoke();
     }
@@ -78,6 +85,15 @@ public class CutsceneManager : MonoBehaviour
             if (stayLastFrame)
             {
                 frames[_currentFrameindex].gameObject.SetActive(true);
+
+                frames[0].gameObject.SetActive(true);
+
+                if (soundIndex == 0)
+                {
+                    _sound.start();
+                }
+
+                _frameTimer = frames[0].FrameTime;
             } else
             {
                 background.gameObject.SetActive(false);
@@ -92,6 +108,10 @@ public class CutsceneManager : MonoBehaviour
         _currentFrameindex++;
         frames[_currentFrameindex].gameObject.SetActive(true);
         _frameTimer = frames[_currentFrameindex].FrameTime;
+        if (frames[_currentFrameindex].Shake)
+        {
+            frames[_currentFrameindex].StartShake();
+        }
         if (soundIndex == _currentFrameindex && soundPath != "")
         {
             _sound.start();
@@ -107,7 +127,7 @@ public class CutsceneManager : MonoBehaviour
             if (_fadingBackgroundTimer > 0f)
             {
                 _fadingBackgroundTimer -= Time.deltaTime;
-                background.color = new Color(0f, 0f, 0f, Mathf.Abs(_fadingBackgroundTimer - 1f));
+                background.color = new Color(0f, 0f, 0f, Mathf.Abs((_fadingBackgroundTimer - 1f) * backgroundOpacity));
 
                 if (_fadingBackgroundTimer <= 0f)
                 {

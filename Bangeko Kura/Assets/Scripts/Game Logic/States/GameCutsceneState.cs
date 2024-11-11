@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class GameCutsceneState : GameState
 {
-    public GameCutsceneState(GameManager gameManager) : base(gameManager)
+    private CutsceneManager _cutsceneManager;
+
+    public GameCutsceneState(GameManager gameManager, CutsceneManager cutsceneManager) : base(gameManager)
     {
+        _cutsceneManager = cutsceneManager;
     }
 
     public override void Enter()
@@ -14,7 +17,7 @@ public class GameCutsceneState : GameState
         GameManager.GameCanvas.gameObject.SetActive(false);
         GameManager.Player.Controls.Disable();
 
-        //GameManager.CutsceneManager.StartCutscene(this);
+        _cutsceneManager.StartCutscene();
     }
 
     public override void Exit()
@@ -39,7 +42,7 @@ public class GameCutsceneState : GameState
 
     public override void UpdateLogic()
     {
-        GameManager.CutsceneManager.UpdateLogic();
+        _cutsceneManager.UpdateLogic();
     }
 
     public override void UpdatePhysics()

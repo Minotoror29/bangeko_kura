@@ -140,9 +140,8 @@ public class EnemyController : Controller
             _damagedByPlayer = true;
         }
 
-        if (_landMesh.gameObject.activeSelf)
+        if (_landMesh != null && _landMesh.gameObject.activeSelf)
         {
-            Debug.Log("Take Damage");
             _landMesh.TakeDamage();
         }
 
@@ -174,7 +173,7 @@ public class EnemyController : Controller
 
         gameObject.SetActive(false);
 
-        if (_landMesh.gameObject.activeSelf)
+        if (_landMesh != null && _landMesh.gameObject.activeSelf)
         {
             _landMesh.gameObject.SetActive(false);
         }
@@ -216,7 +215,7 @@ public class EnemyController : Controller
 
         _currentState.UpdateLogic();
 
-        if (_landMesh.gameObject.activeSelf)
+        if (_landMesh != null && _landMesh.gameObject.activeSelf)
         {
             _landMesh.UpdateLogic();
         }
