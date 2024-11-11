@@ -10,8 +10,6 @@ public class Tutorial : MonoBehaviour
     [SerializeField] private GameObject tutorialAnimation;
     [SerializeField] private List<SpriteRenderer> spriteRenderers;
     [SerializeField] private float fadeTime = 1f;
-    [SerializeField] private CinemachineVirtualCamera tutorialCam;
-    [SerializeField] private CinemachineVirtualCamera levelCam;
 
     private TutorialState _currentState = TutorialState.Inactive;
     private float _fadeTimer = 0f;
@@ -20,7 +18,6 @@ public class Tutorial : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            CameraManager.Instance.ChangeCamera(tutorialCam);
             _currentState = TutorialState.Entering;
         }
     }
@@ -29,7 +26,6 @@ public class Tutorial : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            CameraManager.Instance.ChangeCamera(levelCam);
             _currentState = TutorialState.Exiting;
         }
     }
