@@ -12,6 +12,8 @@ public class CutsceneFrame : MonoBehaviour
     private float _shakeTime = 0f;
     private Vector2 _startPosition;
 
+    private float _fadeTimer = 0f;
+
     public float FrameTime { get { return frameTime; } }
     public bool Shake { get { return shake; } }
 
@@ -19,6 +21,8 @@ public class CutsceneFrame : MonoBehaviour
     {
         _startPosition = GetComponent<Image>().rectTransform.position;
         _shakeTime = 0.2f;
+
+        StartCoroutine(FadeCountDown());
     }
 
     private void Update()
@@ -36,5 +40,20 @@ public class CutsceneFrame : MonoBehaviour
                 GetComponent<Image>().rectTransform.position = _startPosition;
             }
         }
+
+        if (_fadeTimer > 0f)
+        {
+            _fadeTimer -= Time.deltaTime;
+            Color color = new Color(1f, 1f, 1f, _fadeTimer);
+
+            GetComponent<Image>().color = color;
+        }
+    }
+
+    private IEnumerator FadeCountDown()
+    {
+        yield return new WaitForSeconds(2f);
+
+        _fadeTimer = 1f;
     }
 }
