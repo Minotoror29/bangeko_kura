@@ -3533,7 +3533,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   frameTime: 3
-  shake: 0
+  shake: 1
 --- !u!114 &415040437
 MonoBehaviour:
   m_ObjectHideFlags: 0
