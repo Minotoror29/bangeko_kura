@@ -52,12 +52,16 @@ public class CameraManager : MonoBehaviour
 
     private void Update()
     {
-        if (_shakeTimer > 0f)
+        if (_perlin != null)
         {
-            _shakeTimer -= Time.deltaTime;
-        } else
-        {
-            _perlin.m_AmplitudeGain = 0f;
+            if (_shakeTimer > 0f)
+            {
+                _shakeTimer -= Time.deltaTime;
+            }
+            else
+            {
+                _perlin.m_AmplitudeGain = 0f;
+            }
         }
     }
 }
