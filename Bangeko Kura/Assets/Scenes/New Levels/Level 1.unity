@@ -381,7 +381,7 @@ MonoBehaviour:
   startSpawnPoint: {fileID: 440830881}
   startGround: {fileID: 0}
   cameraManager: {fileID: 80735951}
-  cutsceneManager: {fileID: 2072872966}
+  cutsceneManagers: []
   inGameCutsceneManager: {fileID: 1674855249}
   newPlayerSpawnPoint: {fileID: 0}
   gameCanvas: {fileID: 1399664810}
@@ -2606,7 +2606,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Goulven Leperru
+  m_text: 'Goulven Le Perru
 
 
     3D Graphics -
@@ -3191,7 +3191,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Goulven Leperru
+  m_text: 'Goulven Le Perru
 
 
     3D Graphics -
@@ -4000,7 +4000,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Goulven Leperru
+  m_text: 'Goulven Le Perru
 
 
     3D Graphics -
@@ -4583,6 +4583,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   testing: 0
   background: {fileID: 0}
+  backgroundOpacity: 1
   frames: []
   soundIndex: 2
   soundPath: event:/Cutscenes/Arm
