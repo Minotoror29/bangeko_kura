@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     private ScreenManager _currentScreen;
 
     [SerializeField] private CameraManager cameraManager;
-    [SerializeField] private CutsceneManager cutsceneManager;
+    [SerializeField] private List<CutsceneManager> cutsceneManagers;
     [SerializeField] private InGameCutsceneManager inGameCutsceneManager;
     [SerializeField] private Transform newPlayerSpawnPoint;
 
@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
 
     public PlayerController Player { get { return player; } }
     public ScreenManager CurrentScreen { get { return _currentScreen; } }
-    public CutsceneManager CutsceneManager { get { return cutsceneManager; } }
+    public List<CutsceneManager> CutsceneManagers { get { return cutsceneManagers; } }
     public InGameCutsceneManager InGameCutsceneManager { get { return inGameCutsceneManager; } }
     public Canvas GameCanvas { get { return gameCanvas; } }
     public HealthDisplay HealthDisplay { get {  return healthDisplay; } }
@@ -45,13 +45,14 @@ public class GameManager : MonoBehaviour
             screen.Initialize(this, player);
         }
 
-        if (cutsceneManager != null)
+        foreach (CutsceneManager cutsceneManager in cutsceneManagers)
         {
             cutsceneManager.Initialize();
         }
         OnInitialize?.Invoke();
 
-        ChangeScreen(startScreen, null);
+        _currentScreen = startScreen;
+        _currentScreen.EnterScreen();
 
         switch (startState)
         {
@@ -77,10 +78,10 @@ public class GameManager : MonoBehaviour
         _currentState.Enter();
     }
 
-    public void ChangeToCutsceneState()
+    public void ChangeToCutsceneState(CutsceneManager cutsceneManager)
     {
         _currentState?.Exit();
-        _currentState = new GameCutsceneState(this);
+        _currentState = new GameCutsceneState(this, cutsceneManager);
         _currentState.Enter();
     }
 

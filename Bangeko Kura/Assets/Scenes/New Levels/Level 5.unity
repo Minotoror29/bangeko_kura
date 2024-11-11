@@ -6254,6 +6254,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   testing: 0
   background: {fileID: 2018711749}
+  backgroundOpacity: 1
   frames:
   - {fileID: 1569547491}
   - {fileID: 125417977}
@@ -6607,7 +6608,8 @@ MonoBehaviour:
   startSpawnPoint: {fileID: 440830881}
   startGround: {fileID: 281961216}
   cameraManager: {fileID: 80735951}
-  cutsceneManager: {fileID: 862483469}
+  cutsceneManagers:
+  - {fileID: 862483469}
   inGameCutsceneManager: {fileID: 979962635}
   newPlayerSpawnPoint: {fileID: 440830881}
   gameCanvas: {fileID: 1399664810}
@@ -12933,25 +12935,13 @@ MonoBehaviour:
   OnActivation:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 862483469}
-        m_TargetAssemblyTypeName: CutsceneManager, Assembly-CSharp
-        m_MethodName: StartCutscene
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 897902913}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: ChangeToCutsceneState
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 862483469}
+          m_ObjectArgumentAssemblyTypeName: CutsceneManager, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
