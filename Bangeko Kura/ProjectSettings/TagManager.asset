@@ -41,6 +41,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 1824709275
+    locked: 0
   - name: Elevator
     uniqueID: 390357799
     locked: 0
