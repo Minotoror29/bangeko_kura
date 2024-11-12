@@ -21,7 +21,7 @@ public class Tutorial : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             CameraManager.Instance.ChangeCamera(tutorialCam);
-            _currentState = TutorialState.Entering;
+            //_currentState = TutorialState.Entering;
         }
     }
 
@@ -30,7 +30,7 @@ public class Tutorial : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             CameraManager.Instance.ChangeCamera(levelCam);
-            _currentState = TutorialState.Exiting;
+            //_currentState = TutorialState.Exiting;
         }
     }
 
