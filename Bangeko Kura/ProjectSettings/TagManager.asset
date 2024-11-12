@@ -44,6 +44,9 @@ TagManager:
   - name: Background
     uniqueID: 1824709275
     locked: 0
+  - name: Back Cloud
+    uniqueID: 2283606639
+    locked: 0
   - name: Elevator
     uniqueID: 390357799
     locked: 0
@@ -52,4 +55,7 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Front Cloud
+    uniqueID: 3843240639
     locked: 0
