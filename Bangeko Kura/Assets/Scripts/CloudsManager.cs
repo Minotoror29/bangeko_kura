@@ -21,15 +21,30 @@ public class CloudsManager : MonoBehaviour
             float randomSpeed = Random.Range(minCloudSpeed, maxCloudSpeed);
 
             Cloud newCloud =  Instantiate(cloud, randomPosition, Quaternion.identity);
-            newCloud.Initialize(randomDirection, randomSpeed);
+            newCloud.Initialize(this, randomDirection, randomSpeed, minX, maxX);
             _clouds.Add(newCloud);
+        }
+    }
+
+    public void RespawnCloud(Cloud cloud)
+    {
+        float randomY = Random.Range(minY, maxY);
+        float randomDirection = Random.Range(0, 2) * 2 - 1;
+        float randomSpeed = Random.Range(minCloudSpeed, maxCloudSpeed);
+
+        if (randomDirection == 1)
+        {
+            float xPos = minX - cloud.SpriteRenderer.bounds.extents.x;
+            cloud.SetNewPosition(new Vector2(xPos, randomY), randomSpeed, randomDirection);
+        } else if (randomDirection == -1)
+        {
+            float xPos = maxX + cloud.SpriteRenderer.bounds.extents.x;
+            cloud.SetNewPosition(new Vector2(xPos, randomY), randomSpeed, randomDirection);
         }
     }
 
     private void Update()
     {
-        //A faire: faire disparaitre les nuages lorsqu'ils atteignent la position max et les faire réapparaitre à un endroit aléatoire en dehors des positions max
-
         foreach (Cloud cloud in _clouds)
         {
             cloud.UpdateLogic();

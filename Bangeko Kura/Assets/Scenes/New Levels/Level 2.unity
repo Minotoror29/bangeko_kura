@@ -3661,7 +3661,7 @@ MonoBehaviour:
   maxX: 121
   minY: -14
   maxY: 40
-  minCloudSpeed: 0.1
+  minCloudSpeed: 0.25
   maxCloudSpeed: 0.5
 --- !u!1 &481748409
 GameObject:

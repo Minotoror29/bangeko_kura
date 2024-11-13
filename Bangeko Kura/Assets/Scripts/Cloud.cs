@@ -4,19 +4,38 @@ using UnityEngine;
 
 public class Cloud : MonoBehaviour
 {
+    [SerializeField] private SpriteRenderer spriteRenderer;
+
+    private CloudsManager _cloudsManager;
     private float _direction;
     private float _speed;
+    private float _minX, _maxX;
 
-    public void Initialize(float direction, float speed)
+    public SpriteRenderer SpriteRenderer { get { return spriteRenderer; } }
+
+    public void Initialize(CloudsManager cloudsManager, float direction, float speed, float minX, float maxX)
     {
+        _cloudsManager = cloudsManager;
         _direction = direction;
         _speed = speed;
+        _minX = minX;
+        _maxX = maxX;
+    }
+
+    public void SetNewPosition(Vector2 newPosition, float speed, float direction)
+    {
+        transform.position = newPosition;
+        _speed = speed;
+        _direction = direction;
     }
 
     public void UpdateLogic()
-    {
-        float xPos = _direction * _speed;
-        
-        transform.position += Vector3.right * xPos * Time.deltaTime;
+    {        
+        transform.position += _direction * _speed * Time.deltaTime * Vector3.right;
+
+        if (transform.position.x < _minX - spriteRenderer.bounds.extents.x || transform.position.x > _maxX + spriteRenderer.bounds.extents.x)
+        {
+            _cloudsManager.RespawnCloud(this);
+        }
     }
 }
