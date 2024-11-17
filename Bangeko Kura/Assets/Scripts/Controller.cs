@@ -16,6 +16,7 @@ public abstract class Controller : MonoBehaviour
 
     [SerializeField] private float changeColorTime = 0.1f;
     [SerializeField] private Color damageColor;
+    [SerializeField] private Color baseColor = Color.black;
     private float _changeColorTimer = 0f;
 
     private bool _dashing;
@@ -62,7 +63,7 @@ public abstract class Controller : MonoBehaviour
         {
             foreach (SkinnedMeshRenderer renderer in MeshRenderers)
             {
-                renderer.material.SetColor("_Dark_Color", Color.black);
+                renderer.material.SetColor("_Dark_Color", baseColor);
             }
         }
     }
