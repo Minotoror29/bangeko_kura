@@ -169,7 +169,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 32768
   behaviours:
-  - {fileID: 11400000, guid: ed761c27d8e87ea4493de0c5eb67a1f5, type: 2}
   - {fileID: 11400000, guid: 99a3187e6d16ca546b8de208992d7be1, type: 2}
   fleeingZoneRadius: 10
   weapons:
