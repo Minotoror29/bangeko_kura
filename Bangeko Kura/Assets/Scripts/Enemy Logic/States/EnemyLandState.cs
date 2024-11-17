@@ -124,7 +124,7 @@ public class EnemyLandState : EnemyState
                     {
                         if (!Controller.HealthSystem.CompareTag(collider.tag))
                         {
-                            hs.TakeDamage(Controller.LandDamage, Controller.transform, Controller.LandKnockback);
+                            hs.TakeDamage(Controller.LandDamage, Controller.transform, Controller.LandKnockback, DamageCause.Turret);
                         }
                     }
                 }

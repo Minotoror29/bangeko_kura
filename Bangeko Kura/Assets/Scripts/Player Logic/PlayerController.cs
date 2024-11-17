@@ -161,7 +161,7 @@ public abstract class PlayerController : Controller
             {
                 if (healthSystem.Source != transform)
                 {
-                    healthSystem.TakeDamage(laserDamage, transform, _laserKnockback);
+                    healthSystem.TakeDamage(laserDamage, transform, _laserKnockback, DamageCause.Laser);
                 }
             }
         }
@@ -200,7 +200,7 @@ public abstract class PlayerController : Controller
         }
     }
 
-    public void Die(HealthSystem healthSystem, Transform deathSource)
+    public void Die(HealthSystem healthSystem, Transform deathSource, DamageCause damageCause)
     {
         MusicManager.Instance.PlayMusicLayer(MusicLayer.LowLife, false);
         MusicManager.Instance.PlayMusicLayer(MusicLayer.Battle, false);

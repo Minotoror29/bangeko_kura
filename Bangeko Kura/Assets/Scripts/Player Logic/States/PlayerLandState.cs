@@ -85,7 +85,7 @@ public class PlayerLandState : PlayerState
                     {
                         if (hs.Source != Controller.transform)
                         {
-                            hs.TakeDamage(Controller.LandDamage, Controller.transform, Controller.LandKnockback);
+                            hs.TakeDamage(Controller.LandDamage, Controller.transform, Controller.LandKnockback, DamageCause.Turret);
                         }
                     }
                 }

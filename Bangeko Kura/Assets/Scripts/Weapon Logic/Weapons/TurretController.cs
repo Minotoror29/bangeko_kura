@@ -81,7 +81,7 @@ public class TurretController : Weapon
         _bulletsFired++;
     }
 
-    private void RemoveEnemyFromTargets(HealthSystem enemy, Transform deathSource)
+    private void RemoveEnemyFromTargets(HealthSystem enemy, Transform deathSource, DamageCause damageCause)
     {
         _enemiesInRange.Remove(enemy);
     }
@@ -110,7 +110,7 @@ public class TurretController : Weapon
     {
         if (collision.TryGetComponent(out HealthSystem enemy) && _enemiesInRange.Contains(enemy))
         {
-            RemoveEnemyFromTargets(enemy, Controller.transform);
+            RemoveEnemyFromTargets(enemy, Controller.transform, DamageCause.Other);
             enemy.OnDeath -= RemoveEnemyFromTargets;
         }
     }
