@@ -53,6 +53,7 @@ public class EnemyController : Controller
     [Header("Death")]
     [SerializeField] private GameObject deathExplosionPrefab;
     [SerializeField] private GameObject deathLaserPrefab;
+    [SerializeField] private GameObject deathSwordPrefab;
 
     [Space]
     [SerializeField] private bool spawnIdle = true;
@@ -173,18 +174,22 @@ public class EnemyController : Controller
         {
             case DamageCause.Turret:
                 newDeathMesh = Instantiate(deathExplosionPrefab, transform.position, Quaternion.identity);
-                newDeathMesh.transform.GetChild(0).localRotation = Mesh.localRotation;
+                newDeathMesh.transform.GetChild(0).GetChild(0).localRotation = Mesh.localRotation;
                 Destroy(newDeathMesh, 0.292f);
                 break;
             case DamageCause.Laser:
                 newDeathMesh = Instantiate(deathLaserPrefab, transform.position, Quaternion.identity);
-                Quaternion meshRotation = Quaternion.LookRotation(new Vector3(0f, 0f, 0f));
-                //newDeathMesh.transform.GetChild(0).GetChild(0).localRotation = Mesh.localRotation;
+                Vector2 direction = _player.transform.position - transform.position;
+                Quaternion meshRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.y));
+                newDeathMesh.transform.GetChild(0).GetChild(0).localRotation = meshRotation;
                 Destroy(newDeathMesh, 0.292f);
                 break;
             case DamageCause.Sword:
-                break;
-            case DamageCause.Other:
+                if (deathSwordPrefab == null) break;
+
+                newDeathMesh = Instantiate(deathSwordPrefab, transform.position, Quaternion.identity);
+                newDeathMesh.transform.GetChild(0).GetChild(0).localRotation = Mesh.localRotation;
+                Destroy(newDeathMesh, 0.375f);
                 break;
         }
 
