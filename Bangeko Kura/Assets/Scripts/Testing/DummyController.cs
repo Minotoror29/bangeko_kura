@@ -50,12 +50,12 @@ public class DummyController : MonoBehaviour
         generalAnimator.SetTrigger("Squish");
     }
 
-    private void ResetHealth(HealthSystem healthSystem, Transform deathSource)
+    private void ResetHealth(HealthSystem healthSystem, Transform deathSource, DamageCause damageCause)
     {
         this.healthSystem.ResetHealth();
     }
 
-    private void Die(HealthSystem healthSystem, Transform deathSource)
+    private void Die(HealthSystem healthSystem, Transform deathSource, DamageCause damageCause)
     {
         Scrap newScrap = Instantiate(scrapPrefab, transform.position, Quaternion.identity);
         newScrap.Initialize();

@@ -19,7 +19,7 @@ public class HealthSystem : MonoBehaviour
 
     public event Action<Transform, Knockback> OnHit;
     public event Action<int> OnDamage;
-    public event Action<HealthSystem, Transform> OnDeath;
+    public event Action<HealthSystem, Transform, DamageCause> OnDeath;
     public event Action OnDeathFromFall;
 
     public void Initialize(Transform source)
@@ -30,7 +30,7 @@ public class HealthSystem : MonoBehaviour
         _preventDamage = false;
     }
 
-    public void TakeDamage(int damage, Transform damageSource, Knockback knockback)
+    public void TakeDamage(int damage, Transform damageSource, Knockback knockback, DamageCause damageCause)
     {
         OnHit?.Invoke(damageSource, knockback);
 
@@ -50,7 +50,7 @@ public class HealthSystem : MonoBehaviour
         OnDamage?.Invoke(damage);
         if (_currentHealth <= 0)
         {
-            OnDeath?.Invoke(this, damageSource);
+            OnDeath?.Invoke(this, damageSource, damageCause);
         }
     }
 

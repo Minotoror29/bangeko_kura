@@ -107,7 +107,7 @@ public class SwordController : Weapon
 
         foreach (HealthSystem target in targets)
         {
-            target.TakeDamage(damage, Controller.transform, _swordKnockback);
+            target.TakeDamage(damage, Controller.transform, _swordKnockback, DamageCause.Sword);
         }
 
         _cooldownTimer = cooldown;
@@ -118,7 +118,7 @@ public class SwordController : Weapon
         _swordEffectTimer = swordEffectTime;
     }
 
-    private void RemoveTarget(HealthSystem target, Transform deathSource)
+    private void RemoveTarget(HealthSystem target, Transform deathSource, DamageCause damageCause)
     {
         if (target.gameObject.CompareTag(Controller.gameObject.tag))
         {
@@ -130,7 +130,7 @@ public class SwordController : Weapon
         }
     }
 
-    private void RemoveFromOthersTargets(HealthSystem target, Transform deathSource)
+    private void RemoveFromOthersTargets(HealthSystem target, Transform deathSource, DamageCause damageCause)
     {
         foreach (HealthSystem enemy in _enemiesInRange)
         {
@@ -174,7 +174,7 @@ public class SwordController : Weapon
     {
         if (collision.TryGetComponent(out HealthSystem healthSystem))
         {
-            RemoveTarget(healthSystem, Controller.transform);
+            RemoveTarget(healthSystem, Controller.transform, DamageCause.Other);
             healthSystem.OnDeath -= RemoveTarget;
         }
     }

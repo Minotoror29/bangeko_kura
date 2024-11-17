@@ -103,7 +103,7 @@ public class BulletController : MonoBehaviour
                 GameObject newImpactEffect = Instantiate(impactEffects[randomImpactEffect], transform.position, transform.rotation);
                 Destroy(newImpactEffect, impactEffectLifetime);
 
-                healthSystem.TakeDamage(damage, _source, _knockback);
+                healthSystem.TakeDamage(damage, _source, _knockback, DamageCause.Turret);
                 Destroy(gameObject);
             }
         }

@@ -94,6 +94,7 @@ MonoBehaviour:
   - {fileID: 7946928051986661571}
   changeColorTime: 0.1
   damageColor: {r: 1, g: 1, b: 1, a: 1}
+  baseColor: {r: 0, g: 0, b: 0, a: 1}
   minIdleTime: 3
   maxIdleTime: 7
   patrolTime: 4
@@ -123,6 +124,11 @@ MonoBehaviour:
   startGround: {fileID: 0}
   fallSpritePrefab: {fileID: 5307921919700816351, guid: 13acce79450980b46adb1e889c7f0e61,
     type: 3}
+  deathExplosionPrefab: {fileID: 5407051139659638411, guid: 416a8d0bb91035e42baf9444f0b17b35,
+    type: 3}
+  deathLaserPrefab: {fileID: 5407051139659638411, guid: a455021ebe29b3b4992222cebf911036,
+    type: 3}
+  deathSwordPrefab: {fileID: 0}
   spawnIdle: 1
   canBeKnockedback: 1
 --- !u!50 &1250143677085547648

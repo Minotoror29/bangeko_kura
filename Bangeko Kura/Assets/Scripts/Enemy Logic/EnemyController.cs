@@ -5,6 +5,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum DamageCause { Turret, Laser, Sword, Other }
+
 public class EnemyController : Controller
 {
     private EnemiesManager _enemiesManager;
@@ -47,6 +49,11 @@ public class EnemyController : Controller
     [SerializeField] private GameObject fallSpritePrefab;
     private GameObject _fallSprite;
     private List<GameObject> _lastGrounds;
+
+    [Header("Death")]
+    [SerializeField] private GameObject deathExplosionPrefab;
+    [SerializeField] private GameObject deathLaserPrefab;
+    [SerializeField] private GameObject deathSwordPrefab;
 
     [Space]
     [SerializeField] private bool spawnIdle = true;
@@ -150,10 +157,10 @@ public class EnemyController : Controller
         ChangeState(new EnemyKnockBackState(this, (Vector2)(transform.position - source.position).normalized, knockback));
     }
 
-    public void Die(HealthSystem healthSystem, Transform deathSource)
+    public void Die(HealthSystem healthSystem, Transform deathSource, DamageCause deathCause)
     {
-        Scrap newScrap = Instantiate(scrapPrefab, transform.position, Quaternion.identity);
-        newScrap.Initialize();
+        //Scrap newScrap = Instantiate(scrapPrefab, transform.position, Quaternion.identity);
+        //newScrap.Initialize();
 
         int randomExplosion = UnityEngine.Random.Range(0, explosionEffects.Count);
         float randomExplosionRotation = UnityEngine.Random.Range(0f, 360f);
@@ -161,6 +168,30 @@ public class EnemyController : Controller
         GameObject newExplosion = Instantiate(explosionEffects[randomExplosion], transform.position, Quaternion.Euler(0f, 0f, randomExplosionRotation));
         newExplosion.transform.localScale = new Vector3(randomExplosionScale, randomExplosionScale, 1f);
         Destroy(newExplosion, 0.367f);
+
+        GameObject newDeathMesh;
+        switch (deathCause)
+        {
+            case DamageCause.Turret:
+                newDeathMesh = Instantiate(deathExplosionPrefab, transform.position, Quaternion.identity);
+                newDeathMesh.transform.GetChild(0).GetChild(0).localRotation = Mesh.localRotation;
+                Destroy(newDeathMesh, 0.292f);
+                break;
+            case DamageCause.Laser:
+                newDeathMesh = Instantiate(deathLaserPrefab, transform.position, Quaternion.identity);
+                Vector2 direction = _player.transform.position - transform.position;
+                Quaternion meshRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.y));
+                newDeathMesh.transform.GetChild(0).GetChild(0).localRotation = meshRotation;
+                Destroy(newDeathMesh, 0.292f);
+                break;
+            case DamageCause.Sword:
+                if (deathSwordPrefab == null) break;
+
+                newDeathMesh = Instantiate(deathSwordPrefab, transform.position, Quaternion.identity);
+                newDeathMesh.transform.GetChild(0).GetChild(0).localRotation = Mesh.localRotation;
+                Destroy(newDeathMesh, 0.375f);
+                break;
+        }
 
         foreach (EnemyController enemy in EnemiesManager.EnemiesCloseTo(this, fleeingZoneRadius))
         {
