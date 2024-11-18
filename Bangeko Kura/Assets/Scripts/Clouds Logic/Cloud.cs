@@ -12,6 +12,9 @@ public class Cloud : MonoBehaviour
     private float _minX, _maxX;
 
     public SpriteRenderer SpriteRenderer { get { return spriteRenderer; } }
+    public CloudsManager CloudsManager { get { return _cloudsManager; } }
+    public float Direction { get { return _direction; } }
+    public float Speed { get { return _speed; } }
 
     public void Initialize(CloudsManager cloudsManager, float direction, float speed, float minX, float maxX)
     {
