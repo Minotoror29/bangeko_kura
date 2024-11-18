@@ -86,8 +86,6 @@ public class CutsceneManager : MonoBehaviour
             {
                 frames[_currentFrameindex].gameObject.SetActive(true);
 
-                frames[0].gameObject.SetActive(true);
-
                 if (soundIndex == 0)
                 {
                     _sound.start();

@@ -44,7 +44,7 @@ public class CutsceneFrame : MonoBehaviour
         if (_fadeTimer > 0f)
         {
             _fadeTimer -= Time.deltaTime;
-            Color color = new Color(1f, 1f, 1f, _fadeTimer);
+            Color color = new(1f, 1f, 1f, _fadeTimer);
 
             GetComponent<Image>().color = color;
         }
