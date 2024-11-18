@@ -18,6 +18,8 @@ public class GameCutsceneState : GameState
         GameManager.Player.Controls.Disable();
 
         _cutsceneManager.StartCutscene();
+
+        MusicManager.Instance.PlayMusicLayer(MusicLayer.LowLife, false);
     }
 
     public override void Exit()
