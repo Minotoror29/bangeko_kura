@@ -160,8 +160,8 @@ MonoBehaviour:
   - {fileID: 324844487192054302}
   - {fileID: 6832303299106713387}
   changeColorTime: 0.1
-  damageColor: {r: 1, g: 1, b: 1, a: 1}
-  baseColor: {r: 0, g: 0, b: 0, a: 1}
+  damageColor: {r: 1, g: 0.9607844, b: 0.6156863, a: 1}
+  baseColor: {r: 0.34901962, g: 0.15294118, b: 0.15294118, a: 1}
   minIdleTime: 3
   maxIdleTime: 7
   patrolTime: 4

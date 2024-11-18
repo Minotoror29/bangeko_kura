@@ -52,6 +52,8 @@ MonoBehaviour:
   - {fileID: 8289280180793713745}
   - {fileID: 1385013129716647247}
   changeColorTime: 0.1
+  lightColor: {r: 1, g: 0.9607844, b: 0.6156863, a: 1}
+  darkColor: {r: 0.34901962, g: 0.15294118, b: 0.15294118, a: 1}
 --- !u!95 &9019617081752816687
 Animator:
   serializedVersion: 5
