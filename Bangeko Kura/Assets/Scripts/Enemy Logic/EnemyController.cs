@@ -159,9 +159,6 @@ public class EnemyController : Controller
 
     public void Die(HealthSystem healthSystem, Transform deathSource, DamageCause deathCause)
     {
-        //Scrap newScrap = Instantiate(scrapPrefab, transform.position, Quaternion.identity);
-        //newScrap.Initialize();
-
         int randomExplosion = UnityEngine.Random.Range(0, explosionEffects.Count);
         float randomExplosionRotation = UnityEngine.Random.Range(0f, 360f);
         float randomExplosionScale = UnityEngine.Random.Range(0.75f, 1f);
