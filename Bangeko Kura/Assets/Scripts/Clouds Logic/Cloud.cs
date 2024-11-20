@@ -32,7 +32,7 @@ public class Cloud : MonoBehaviour
         _direction = direction;
     }
 
-    public void UpdateLogic()
+    public virtual void UpdateLogic()
     {        
         transform.position += _direction * _speed * Time.deltaTime * Vector3.right;
 

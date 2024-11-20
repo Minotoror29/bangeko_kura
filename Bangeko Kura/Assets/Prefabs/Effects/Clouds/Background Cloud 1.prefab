@@ -93,7 +93,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1623274777042755767}
-  - component: {fileID: 7059948262242009319}
+  - component: {fileID: 4072297546270130886}
   m_Layer: 0
   m_Name: Background Cloud 1
   m_TagString: Untagged
@@ -117,7 +117,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7059948262242009319
+--- !u!114 &4072297546270130886
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -126,7 +126,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7113789350142470802}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36450f3870b235e4796c8a13feb4d7e4, type: 3}
+  m_Script: {fileID: 11500000, guid: ef2f4368510f0d44fbfe12c78e5a01a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 4700454884896016399}

@@ -19778,18 +19778,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90ce7f459d40b8a4f8fd653fd2f5adc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cloudPrefabs:
+  foreGroundCloudPrefabs:
   - {fileID: 950495541748446753, guid: e17f6eddb96fb784aa89d0b699737511, type: 3}
   - {fileID: 950495541748446753, guid: 02edfd8636e279940819020037050931, type: 3}
   - {fileID: 950495541748446753, guid: b7c36065f14acc1428b51148658ba360, type: 3}
-  - {fileID: 950495541748446753, guid: 2957d7fe6145c1044a3ba871fef115a7, type: 3}
-  - {fileID: 950495541748446753, guid: fa22c8d290545e747bd1b95d5130b955, type: 3}
+  backgroundCloudPrefabs:
+  - {fileID: 4072297546270130886, guid: 2957d7fe6145c1044a3ba871fef115a7, type: 3}
+  - {fileID: 4962902772392328141, guid: fa22c8d290545e747bd1b95d5130b955, type: 3}
   minX: -76
   maxX: 26
   minY: -15
   maxY: 128
   minCloudSpeed: 0.25
   maxCloudSpeed: 0.5
+  cloudsAmount: 2
 --- !u!4 &2060330205
 Transform:
   m_ObjectHideFlags: 0
