@@ -76,7 +76,7 @@ public class CloudsManager : MonoBehaviour
         }
     }
 
-    private void Update()
+    public void UpdateLogic()
     {
         foreach (Cloud cloud in _clouds)
         {

@@ -79,6 +79,8 @@ public class TurretController : Weapon
         BulletController newBullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
         newBullet.Initialize(_enemiesInRange[0].transform.position - firePoint.position, Controller.transform);
         _bulletsFired++;
+
+        Controller.GameManager.Bullets.Add(newBullet);
     }
 
     private void RemoveEnemyFromTargets(HealthSystem enemy, Transform deathSource, DamageCause damageCause)

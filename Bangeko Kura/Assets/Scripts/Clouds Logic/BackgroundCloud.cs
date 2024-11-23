@@ -15,7 +15,5 @@ public class BackgroundCloud : Cloud
         {
             CloudsManager.RespawnBackgroundCloud(this);
         }
-
-        //Debug.Log(gameObject.name + " | " + Camera.main.WorldToViewportPoint(SpriteRenderer.bounds.extents));
     }
 }

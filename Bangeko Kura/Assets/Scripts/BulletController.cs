@@ -40,15 +40,7 @@ public class BulletController : MonoBehaviour
     [SerializeField] private string bulletSoundPath;
     private EventInstance _bulletSound;
 
-    private void Update()
-    {
-        UpdateLogic();
-    }
-
-    private void FixedUpdate()
-    {
-        UpdatePhysics();
-    }
+    public Rigidbody2D Rb { get { return _rb; } }
 
     public void Initialize(Vector2 direction, Transform source)
     {
@@ -77,6 +69,11 @@ public class BulletController : MonoBehaviour
         _bulletSound.start();
     }
 
+    public void DestroyBullet()
+    {
+        Destroy(gameObject);
+    }
+
     public void UpdateLogic()
     {
         if (_lifeTimer < lifetime)
@@ -84,7 +81,7 @@ public class BulletController : MonoBehaviour
             _lifeTimer += Time.deltaTime;
         } else
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 
@@ -104,7 +101,7 @@ public class BulletController : MonoBehaviour
                 Destroy(newImpactEffect, impactEffectLifetime);
 
                 healthSystem.TakeDamage(damage, _source, _knockback, DamageCause.Turret);
-                Destroy(gameObject);
+                gameObject.SetActive(false);
             }
         }
         else if (collision.TryGetComponent(out ShieldController shield))
@@ -112,12 +109,12 @@ public class BulletController : MonoBehaviour
             if (_source != shield.Controller.transform)
             {
                 shield.TakeDamage(_source, _knockback);
-                Destroy(gameObject);
+                gameObject.SetActive(false);
             }
         }
         else if (collision.gameObject.CompareTag("Obstacle"))
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

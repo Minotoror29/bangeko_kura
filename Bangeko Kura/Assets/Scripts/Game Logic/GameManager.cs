@@ -1,7 +1,9 @@
+using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 public enum StartingPlayerState { Idle, Elevator, Falling }
@@ -27,6 +29,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Canvas gameCanvas;
     [SerializeField] private HealthDisplay healthDisplay;
 
+    [SerializeField] private CloudsManager cloudsManager;
+
+    [SerializeField] private CinemachineVirtualCamera deathAnimationCam;
+    [SerializeField] private CinemachineVirtualCamera deathNegativeCam;
+    [SerializeField] private Canvas blackScreen;
+    [SerializeField] private Volume invertVolume;
+
+    private List<BulletController> _bullets;
+
     public event Action OnInitialize;
 
     public PlayerController Player { get { return player; } }
@@ -35,6 +46,12 @@ public class GameManager : MonoBehaviour
     public InGameCutsceneManager InGameCutsceneManager { get { return inGameCutsceneManager; } }
     public Canvas GameCanvas { get { return gameCanvas; } }
     public HealthDisplay HealthDisplay { get {  return healthDisplay; } }
+    public CloudsManager CloudsManager { get { return cloudsManager; } }
+    public CinemachineVirtualCamera DeathAnimationCam {  get { return deathAnimationCam; } }
+    public CinemachineVirtualCamera DeathNegativeCam {  get { return deathNegativeCam; } }
+    public Canvas BlackScreen { get { return blackScreen; } }
+    public Volume InvertVolume { get { return invertVolume; } }
+    public List<BulletController> Bullets { get { return _bullets; } }
 
     private void Start()
     {
@@ -67,6 +84,8 @@ public class GameManager : MonoBehaviour
                 player.ChangeState(new PlayerLandState(player, startSpawnPoint.position, startGround));
                 break;
         }
+
+        _bullets = new();
 
         ChangeState(new GamePlayState(this));
     }
@@ -122,6 +141,11 @@ public class GameManager : MonoBehaviour
     public void PlayerFell()
     {
         _currentScreen.PlayerFell();
+    }
+
+    public void OnPlayerDeath(bool fromFall)
+    {
+        ChangeState(new GameDeathState(this, fromFall));
     }
 
     public void EndLevel()
