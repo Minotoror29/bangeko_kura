@@ -5,7 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class Intro : MonoBehaviour
 {
+    [SerializeField] private Canvas blackCanvas;
+
     private float _timer = 16f;
+
+    private void Start()
+    {
+        Cursor.visible = false;
+    }
 
     private void Update()
     {
@@ -14,6 +21,8 @@ public class Intro : MonoBehaviour
             _timer -= Time.deltaTime;
         } else
         {
+            blackCanvas.gameObject.SetActive(true);
+            Cursor.visible = true;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
