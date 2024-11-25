@@ -1,0 +1,56 @@
+{
+    "name": "MenuControls",
+    "maps": [
+        {
+            "name": "Menu",
+            "id": "d08b2b8a-3c32-41d4-a146-c60939f01268",
+            "actions": [
+                {
+                    "name": "Skip",
+                    "type": "Button",
+                    "id": "2cd78b35-406d-49e6-8be1-234098e92545",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "c4f7887d-0bae-43ae-bb3d-e39621117a03",
+                    "path": "<Keyboard>/anyKey",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Skip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3eaee43c-880b-4b11-ac03-ea66e55c9e63",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Skip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ac4ecc5b-e1fc-4285-b235-3570bea757e2",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Skip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
