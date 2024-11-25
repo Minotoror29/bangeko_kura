@@ -6,7 +6,7 @@ public class BackgroundCloud : Cloud
 {
     public override void UpdateLogic()
     {
-        transform.position += Direction * Speed * Time.deltaTime * Vector3.right;
+        transform.position += Speed * Time.deltaTime * Vector3.right;
 
         float viewportXPos = Camera.main.WorldToViewportPoint(transform.position).x;
         float spriteXExtents = Camera.main.WorldToViewportPoint(Camera.main.ViewportToWorldPoint(new Vector2(0, 0)) + SpriteRenderer.bounds.extents).x;
