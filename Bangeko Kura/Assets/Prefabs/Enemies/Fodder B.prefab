@@ -95,6 +95,7 @@ MonoBehaviour:
     type: 3}
   deathSwordPrefab: {fileID: 5407051139659638411, guid: 060615e0b8b22a4469cfee5ae870c17a,
     type: 3}
+  deathMeshTime: 5
   spawnIdle: 1
   canBeKnockedback: 1
 --- !u!50 &3081177990996059515

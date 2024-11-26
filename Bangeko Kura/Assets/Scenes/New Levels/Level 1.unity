@@ -2590,7 +2590,7 @@ MonoBehaviour:
   maxY: 40
   minCloudSpeed: 0.25
   maxCloudSpeed: 0.5
-  cloudsAmount: 2
+  cloudsAmount: 4
 --- !u!4 &789012897
 Transform:
   m_ObjectHideFlags: 0
