@@ -3830,7 +3830,7 @@ MonoBehaviour:
   maxY: 40
   minCloudSpeed: 0.25
   maxCloudSpeed: 0.5
-  cloudsAmount: 2
+  cloudsAmount: 5
 --- !u!1 &481748409
 GameObject:
   m_ObjectHideFlags: 0
