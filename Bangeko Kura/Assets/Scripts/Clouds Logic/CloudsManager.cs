@@ -21,11 +21,10 @@ public class CloudsManager : MonoBehaviour
             for (int i = 0; i < cloudsAmount; i++)
             {
                 Vector2 randomPosition = new(Random.Range(minX, maxX), Random.Range(minY, maxY));
-                float randomDirection = Random.Range(0, 2) * 2 - 1;
                 float randomSpeed = Random.Range(minCloudSpeed, maxCloudSpeed);
 
                 Cloud newCloud = Instantiate(cloud, randomPosition, Quaternion.identity);
-                newCloud.Initialize(this, randomDirection, randomSpeed, minX, maxX);
+                newCloud.Initialize(this, randomSpeed, minX, maxX);
                 _clouds.Add(newCloud);
             }
         }
@@ -33,11 +32,10 @@ public class CloudsManager : MonoBehaviour
         foreach (Cloud cloud in backgroundCloudPrefabs)
         {
             Vector2 randomPosition = new(Random.Range(0f, 1f), Random.Range(0f, 1f));
-            float randomDirection = Random.Range(0, 2) * 2 - 1;
             float randomSpeed = Random.Range(minCloudSpeed, maxCloudSpeed);
 
             Cloud newCloud = Instantiate(cloud, Camera.main.ViewportToWorldPoint(randomPosition), Quaternion.identity, Camera.main.transform);
-            newCloud.Initialize(this, randomDirection, randomSpeed, minX, maxX);
+            newCloud.Initialize(this, randomSpeed, minX, maxX);
             _clouds.Add(newCloud);
         }
     }
@@ -45,35 +43,17 @@ public class CloudsManager : MonoBehaviour
     public void RespawnCloud(Cloud cloud)
     {
         float randomY = Random.Range(minY, maxY);
-        float randomDirection = Random.Range(0, 2) * 2 - 1;
         float randomSpeed = Random.Range(minCloudSpeed, maxCloudSpeed);
-
-        if (randomDirection == 1)
-        {
-            float xPos = minX - cloud.SpriteRenderer.bounds.extents.x;
-            cloud.SetNewPosition(new Vector2(xPos, randomY), randomSpeed, randomDirection);
-        } else if (randomDirection == -1)
-        {
-            float xPos = maxX + cloud.SpriteRenderer.bounds.extents.x;
-            cloud.SetNewPosition(new Vector2(xPos, randomY), randomSpeed, randomDirection);
-        }
+        float xPos = minX - cloud.SpriteRenderer.bounds.extents.x;
+        cloud.SetNewPosition(new Vector2(xPos, randomY), randomSpeed);
     }
 
     public void RespawnBackgroundCloud(BackgroundCloud cloud)
     {
         float randomY = Random.Range(0f, 1f);
-        float randomDirection = Random.Range(0, 2) * 2 - 1;
         float randomSPeed = Random.Range(minCloudSpeed, maxCloudSpeed);
-
-        if (randomDirection == 1)
-        {
-            float xPos = 0 - Camera.main.WorldToViewportPoint(Camera.main.ViewportToWorldPoint(new Vector2(0, 0)) + cloud.SpriteRenderer.bounds.extents).x;
-            cloud.SetNewPosition(Camera.main.ViewportToWorldPoint(new Vector2(xPos, randomY)), randomSPeed, randomDirection);
-        } else if (randomDirection == -1)
-        {
-            float xPos = 1 + Camera.main.WorldToViewportPoint(Camera.main.ViewportToWorldPoint(new Vector2(0, 0)) + cloud.SpriteRenderer.bounds.extents).x;
-            cloud.SetNewPosition(Camera.main.ViewportToWorldPoint(new Vector2(xPos, randomY)), randomSPeed, randomDirection);
-        }
+        float xPos = 0 - Camera.main.WorldToViewportPoint(Camera.main.ViewportToWorldPoint(new Vector2(0, 0)) + cloud.SpriteRenderer.bounds.extents).x;
+        cloud.SetNewPosition(Camera.main.ViewportToWorldPoint(new Vector2(xPos, randomY)), randomSPeed);
     }
 
     public void UpdateLogic()
