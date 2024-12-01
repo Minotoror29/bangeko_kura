@@ -23,8 +23,11 @@ public class MainMenuManager : MonoBehaviour
 
     private void SkipIntro()
     {
-        _currentEvent = 3;
-        PlayEvent(_currentEvent);
+        if (_currentEvent <= 3)
+        {
+            _currentEvent = 4;
+            PlayEvent(_currentEvent);
+        }
     }
 
     private void PlayEvent(int eventIndex)
