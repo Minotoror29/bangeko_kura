@@ -573,6 +573,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuEvents:
+  - time: 2
+    events:
+      m_PersistentCalls:
+        m_Calls: []
   - time: 5
     events:
       m_PersistentCalls:
