@@ -173,7 +173,7 @@ public class EnemyController : Controller
             case DamageCause.Turret:
                 newDeathMesh = Instantiate(deathExplosionPrefab, transform.position, Quaternion.identity);
                 newDeathMesh.transform.GetChild(0).GetChild(0).localRotation = Mesh.localRotation;
-                Destroy(newDeathMesh, 0.292f);
+                Destroy(newDeathMesh, 0.542f);
                 break;
             case DamageCause.Laser:
                 newDeathMesh = Instantiate(deathLaserPrefab, transform.position, Quaternion.identity);
