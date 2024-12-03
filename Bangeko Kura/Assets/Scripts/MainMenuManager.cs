@@ -23,9 +23,9 @@ public class MainMenuManager : MonoBehaviour
 
     private void SkipIntro()
     {
-        if (_currentEvent <= 3)
+        if (_currentEvent < 7)
         {
-            _currentEvent = 4;
+            _currentEvent = 7;
             PlayEvent(_currentEvent);
         }
     }
