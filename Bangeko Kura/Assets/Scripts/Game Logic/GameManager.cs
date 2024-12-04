@@ -32,9 +32,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private CloudsManager cloudsManager;
 
     [SerializeField] private CinemachineVirtualCamera deathAnimationCam;
-    [SerializeField] private CinemachineVirtualCamera deathNegativeCam;
+    [SerializeField] private SpriteRenderer blackBackground;
     [SerializeField] private Canvas blackScreen;
-    [SerializeField] private Volume invertVolume;
 
     private List<BulletController> _bullets;
 
@@ -48,9 +47,8 @@ public class GameManager : MonoBehaviour
     public HealthDisplay HealthDisplay { get {  return healthDisplay; } }
     public CloudsManager CloudsManager { get { return cloudsManager; } }
     public CinemachineVirtualCamera DeathAnimationCam {  get { return deathAnimationCam; } }
-    public CinemachineVirtualCamera DeathNegativeCam {  get { return deathNegativeCam; } }
+    public SpriteRenderer BlackBackground { get { return blackBackground; } }
     public Canvas BlackScreen { get { return blackScreen; } }
-    public Volume InvertVolume { get { return invertVolume; } }
     public List<BulletController> Bullets { get { return _bullets; } }
 
     private void Start()

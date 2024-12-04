@@ -10,9 +10,8 @@ public class GameDeathState : GameState
     private DeathState _currentDeathState;
 
     private bool _fromFall;
-    private float _pauseTimer = 1f;
+    private float _pauseTimer = 0.2f;
     private float _animationTimer = 2.333f;
-    private float _negativeTimer = 1f;
     private float _blackTimer = 1f;
 
     public GameDeathState(GameManager gameManager, bool fromFall) : base(gameManager)
@@ -22,6 +21,7 @@ public class GameDeathState : GameState
 
     public override void Enter()
     {
+        GameManager.GameCanvas.gameObject.SetActive(false);
         _currentDeathState = DeathState.Pause;
     }
 
@@ -52,6 +52,8 @@ public class GameDeathState : GameState
                 {
                     GameManager.Player.MeshAnimator.speed = 1;
                     GameManager.Player.MeshAnimator.CrossFade("Player Death", 0f);
+                    GameManager.Player.Mesh.transform.position = new Vector3(GameManager.Player.Mesh.transform.position.x, GameManager.Player.Mesh.transform.position.y, -7);
+                    GameManager.BlackBackground.gameObject.SetActive(true);
                     CameraManager.Instance.ChangeCamera(GameManager.DeathAnimationCam);
                 }
             }
@@ -59,21 +61,12 @@ public class GameDeathState : GameState
         {
             _animationTimer -= Time.deltaTime;
 
+            GameManager.BlackBackground.material.SetFloat("_Fade", Mathf.Abs(_animationTimer * 2 / 2.333f - 2f));
+
             if (_animationTimer <= 0f)
             {
-                _currentDeathState = DeathState.Negative;
-                CameraManager.Instance.ChangeCamera(GameManager.DeathNegativeCam);
-                GameManager.InvertVolume.gameObject.SetActive(true);
-            }
-        } else if (_currentDeathState == DeathState.Negative)
-        {
-            _negativeTimer -= Time.deltaTime;
-
-            if (_negativeTimer <= 0f)
-            {
-                _currentDeathState = DeathState.Black;
-                GameManager.InvertVolume.gameObject.SetActive(false);
                 GameManager.BlackScreen.gameObject.SetActive(true);
+                _currentDeathState = DeathState.Black;
             }
         } else if (_currentDeathState == DeathState.Black)
         {

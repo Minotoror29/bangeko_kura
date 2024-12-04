@@ -12,19 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b3d386ba5cd94485973aee1479b272e, type: 3}
   m_Name: MeshesHidden
   m_EditorClassIdentifier: 
-  m_Active: 1
+  m_Active: 0
   settings:
     passTag: MeshesHidden
-    Event: 300
+    Event: 500
     filterSettings:
       RenderQueueType: 0
       LayerMask:
         serializedVersion: 2
-        m_Bits: 640
+        m_Bits: 128
       PassNames: []
-    overrideMaterial: {fileID: 2100000, guid: f5e038e731b99984cb540ab8c03e6d06, type: 2}
+    overrideMaterial: {fileID: 0}
     overrideMaterialPassIndex: 0
-    overrideDepthState: 1
+    overrideDepthState: 0
     depthCompareFunction: 5
     enableWrite: 0
     stencilSettings:
@@ -51,15 +51,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b3d386ba5cd94485973aee1479b272e, type: 3}
   m_Name: MeshesVisible
   m_EditorClassIdentifier: 
-  m_Active: 1
+  m_Active: 0
   settings:
     passTag: MeshesVisible
-    Event: 300
+    Event: 500
     filterSettings:
       RenderQueueType: 0
       LayerMask:
         serializedVersion: 2
-        m_Bits: 640
+        m_Bits: 128
       PassNames: []
     overrideMaterial: {fileID: 0}
     overrideMaterialPassIndex: 0
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_AssetVersion: 2
   m_OpaqueLayerMask:
     serializedVersion: 2
-    m_Bits: 130423
+    m_Bits: 131063
   m_TransparentLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
