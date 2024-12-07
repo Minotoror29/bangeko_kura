@@ -23,6 +23,7 @@ public class SwordController : Weapon
 
     [SerializeField] private GameObject swordEffectPrefab;
     [SerializeField] private float swordEffectTime = 0.2f;
+    [SerializeField] private GameObject swordImpactParticles;
     private GameObject _swordEffect;
     private float _swordEffectTimer;
 
@@ -108,6 +109,8 @@ public class SwordController : Weapon
         foreach (HealthSystem target in targets)
         {
             target.TakeDamage(damage, Controller.transform, _swordKnockback, DamageCause.Sword);
+            GameObject newParticles = Instantiate(swordImpactParticles, target.transform.position, Quaternion.identity);
+            Destroy(newParticles, 5f);
         }
 
         _cooldownTimer = cooldown;

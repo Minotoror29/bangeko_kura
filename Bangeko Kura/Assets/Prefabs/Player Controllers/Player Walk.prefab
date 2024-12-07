@@ -54,6 +54,8 @@ MonoBehaviour:
   swordEffectPrefab: {fileID: 4396576707297930692, guid: e6e8944860d6eee4a90151795817cf2a,
     type: 3}
   swordEffectTime: 0.2
+  swordImpactParticles: {fileID: 1419070822770586073, guid: 447925401f906a844b6af977f422e50c,
+    type: 3}
 --- !u!58 &83542727448862659
 CircleCollider2D:
   m_ObjectHideFlags: 0

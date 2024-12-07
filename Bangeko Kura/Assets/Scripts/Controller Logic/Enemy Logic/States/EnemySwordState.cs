@@ -20,6 +20,7 @@ public class EnemySwordState : EnemyState
         base.Enter();
 
         _buildingUp = true;
+        Controller.InstantiateEffect(Controller.SwordBuildupEffect, Controller.transform.position + Vector3.back * 3f, Quaternion.identity, 0.745f);
         Controller.MeshAnimator.CrossFade("Enemy Sword Buildup", 0f);
     }
 

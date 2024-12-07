@@ -33,6 +33,7 @@ public class EnemyController : Controller
     [Header("Effects")]
     [SerializeField] private Scrap scrapPrefab;
     //[SerializeField] private List<GameObject> explosionEffects;
+    [SerializeField] private GameObject swordBuildupEffect;
 
     [Header("Land")]
     [SerializeField] private LandMesh landMeshPrefab;
@@ -72,6 +73,7 @@ public class EnemyController : Controller
     public float MovementSpeed { get { return movementSpeed; } }
     public LayerMask VoidLayer { get { return voidLayer; } }
     public List<EnemyBehaviourData> Behaviours { get { return behaviours; } }
+    public GameObject SwordBuildupEffect { get { return swordBuildupEffect; } }
     public LandMesh LandMesh { get { return _landMesh; } }
     public int LandDamage { get { return landDamage; } }
     public float LandDamageRadius { get { return landDamageRadius; } }

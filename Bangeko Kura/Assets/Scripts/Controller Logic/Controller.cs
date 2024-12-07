@@ -104,6 +104,14 @@ public abstract class Controller : MonoBehaviour
         return newEffect;
     }
 
+    public GameObject InstantiateEffect(GameObject effect, Vector3 position, Quaternion rotation, float time)
+    {
+        GameObject newEffect = Instantiate(effect, position, rotation);
+        Destroy(newEffect, time);
+
+        return newEffect;
+    }
+
     public virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
