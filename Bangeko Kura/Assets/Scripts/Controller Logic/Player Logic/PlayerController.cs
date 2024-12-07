@@ -26,6 +26,10 @@ public abstract class PlayerController : Controller
     [SerializeField] private float laserKnockbackSpeed = 1000f;
     [SerializeField] private Transform aim;
     [SerializeField] private GameObject laserOriginEffect;
+    [SerializeField] private GameObject laserOriginParticles;
+    [SerializeField] private GameObject laserImpactWallParticles;
+    [SerializeField] private GameObject laserImpactEnemyParticles;
+    [SerializeField] private GameObject laserReloadParticles;
     [SerializeField] private Texture2D whiteCursor;
     [SerializeField] private Texture2D redCursor;
     private float _laserCooldownTimer;
@@ -162,15 +166,21 @@ public abstract class PlayerController : Controller
                 if (healthSystem.Source != transform)
                 {
                     healthSystem.TakeDamage(laserDamage, transform, _laserKnockback, DamageCause.Laser);
+                    InstantiateEffect(laserImpactEnemyParticles, enemyHit.transform.position, Quaternion.identity, 5f);
                 }
             }
         }
 
         //Visuals
         Laser newLaser = Instantiate(laserPrefab);
-        newLaser.Initialize((Vector2)laserFirePoint.position + _lookDirection.normalized * 0.75f, (Vector2)laserFirePoint.position + (_mousePosition - (Vector2)laserFirePoint.position).normalized * rayDistance, laserWidth);
+        Vector2 endPosition = (Vector2)laserFirePoint.position + (_mousePosition - (Vector2)laserFirePoint.position).normalized * rayDistance;
+        newLaser.Initialize((Vector2)laserFirePoint.position + _lookDirection.normalized * 0.75f, endPosition, laserWidth);
 
         InstantiateEffect(laserOriginEffect, laserFirePoint.position, Quaternion.LookRotation(Vector3.forward, _lookDirection), 0.367f);
+        InstantiateEffect(laserOriginParticles, laserFirePoint.position, Quaternion.identity, 5f);
+        InstantiateEffect(laserImpactWallParticles, endPosition, Quaternion.identity, 5f);
+        GameObject newLaserReloadParticles = InstantiateEffect(laserReloadParticles, laserFirePoint.position, Quaternion.identity, 2f);
+        newLaserReloadParticles.GetComponent<Follow>().FollowTarget = laserFirePoint;
 
         _laserReloadSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         _laserSound.start();

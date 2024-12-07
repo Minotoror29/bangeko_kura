@@ -303,6 +303,14 @@ MonoBehaviour:
   aim: {fileID: 83542728683750082}
   laserOriginEffect: {fileID: 546793271799657349, guid: 4ba966aba2f38bb40b70d3ce6e63c979,
     type: 3}
+  laserOriginParticles: {fileID: 3606537445245145088, guid: ab2094fdc6cd23e438c9c2da6d310ffa,
+    type: 3}
+  laserImpactWallParticles: {fileID: 6515298674890429482, guid: 0bfd090f0b4b2824a803b288d5938fec,
+    type: 3}
+  laserImpactEnemyParticles: {fileID: 6515298674890429482, guid: 51b715767289f984787ddc36011fa63b,
+    type: 3}
+  laserReloadParticles: {fileID: 1237421662156352702, guid: 5c118b19586d5cf4db2146f51502a2bd,
+    type: 3}
   whiteCursor: {fileID: 2800000, guid: a012cbc27275d6d41847623223c9eed4, type: 3}
   redCursor: {fileID: 2800000, guid: 73e2302c2ceeb2e48b7b02ad69012b96, type: 3}
   fallSpritePrefab: {fileID: 5307921919700816351, guid: 16f2489f5664d994ab3017ebcdd38379,

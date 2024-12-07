@@ -36,6 +36,10 @@ public class BulletController : MonoBehaviour
     [SerializeField] private GameObject smokeEffect;
     [SerializeField] private float smokeEffectLifetime = 0.183f;
 
+    [Space]
+    [SerializeField] private GameObject fireParticles;
+    [SerializeField] private GameObject impactParticles;
+
     [Header("Audio")]
     [SerializeField] private string bulletSoundPath;
     private EventInstance _bulletSound;
@@ -49,12 +53,13 @@ public class BulletController : MonoBehaviour
 
         _lifeTimer = 0f;
 
-        transform.position = (Vector2)transform.position + direction * 0.015f;
-        transform.rotation = Quaternion.LookRotation(transform.forward, direction.normalized);
-
+        transform.SetPositionAndRotation((Vector2)transform.position + direction * 0.015f, Quaternion.LookRotation(transform.forward, direction.normalized));
         int randomFireEffect = Random.Range(0, fireEffects.Count);
         GameObject newFireEffect = Instantiate(fireEffects[randomFireEffect], transform.position, transform.rotation);
         Destroy(newFireEffect, fireEffectLifetime);
+
+        GameObject newFireParticles = Instantiate(fireParticles, transform.position, transform.rotation);
+        Destroy(newFireParticles, 5f);
 
         GameObject newSmokeEffect = Instantiate(smokeEffect, transform.position, transform.rotation);
         Destroy(newSmokeEffect, smokeEffectLifetime);
@@ -99,6 +104,9 @@ public class BulletController : MonoBehaviour
                 int randomImpactEffect = Random.Range(0, impactEffects.Count);
                 GameObject newImpactEffect = Instantiate(impactEffects[randomImpactEffect], transform.position, transform.rotation);
                 Destroy(newImpactEffect, impactEffectLifetime);
+
+                GameObject newImpactParticles = Instantiate(impactParticles, transform.position, transform.rotation);
+                Destroy(newImpactParticles, 5f);
 
                 healthSystem.TakeDamage(damage, _source, _knockback, DamageCause.Turret);
                 gameObject.SetActive(false);

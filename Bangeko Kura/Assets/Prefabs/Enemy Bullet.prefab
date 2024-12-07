@@ -149,6 +149,10 @@ MonoBehaviour:
   smokeEffect: {fileID: 1543596384095219198, guid: 9b967501143f93d49b7175d562aa85b7,
     type: 3}
   smokeEffectLifetime: 0.183
+  fireParticles: {fileID: 3449145340789867261, guid: dca1f6edcfc949740a0f29dbe0cdebc8,
+    type: 3}
+  impactParticles: {fileID: 7915265854689249960, guid: 451189cb9d825314481e4c77b6251fa9,
+    type: 3}
   bulletSoundPath: event:/Weapons/Enemy Bullet
 --- !u!50 &5907398816516013800
 Rigidbody2D:

@@ -5243,6 +5243,7 @@ MonoBehaviour:
   - {fileID: 5702711411668398849}
   changeColorTime: 0.1
   damageColor: {r: 0.81960785, g: 0.1882353, b: 0.1882353, a: 1}
+  baseColor: {r: 0, g: 0, b: 0, a: 1}
   movementSpeed: 100
   laserFirePoint: {fileID: 5997316095907754612}
   laserMaxDistance: 50
@@ -5258,6 +5259,14 @@ MonoBehaviour:
   laserKnockbackSpeed: 1000
   aim: {fileID: 7421424802786709529}
   laserOriginEffect: {fileID: 546793271799657349, guid: 4ba966aba2f38bb40b70d3ce6e63c979,
+    type: 3}
+  laserOriginParticles: {fileID: 3606537445245145088, guid: ab2094fdc6cd23e438c9c2da6d310ffa,
+    type: 3}
+  laserImpactWallParticles: {fileID: 6515298674890429482, guid: 0bfd090f0b4b2824a803b288d5938fec,
+    type: 3}
+  laserImpactEnemyParticles: {fileID: 6515298674890429482, guid: 51b715767289f984787ddc36011fa63b,
+    type: 3}
+  laserReloadParticles: {fileID: 1237421662156352702, guid: 5c118b19586d5cf4db2146f51502a2bd,
     type: 3}
   whiteCursor: {fileID: 2800000, guid: a012cbc27275d6d41847623223c9eed4, type: 3}
   redCursor: {fileID: 2800000, guid: 73e2302c2ceeb2e48b7b02ad69012b96, type: 3}

@@ -32,7 +32,7 @@ public class EnemyController : Controller
 
     [Header("Effects")]
     [SerializeField] private Scrap scrapPrefab;
-    [SerializeField] private List<GameObject> explosionEffects;
+    //[SerializeField] private List<GameObject> explosionEffects;
 
     [Header("Land")]
     [SerializeField] private LandMesh landMeshPrefab;
@@ -160,12 +160,12 @@ public class EnemyController : Controller
 
     public void Die(HealthSystem healthSystem, Transform deathSource, DamageCause deathCause)
     {
-        int randomExplosion = UnityEngine.Random.Range(0, explosionEffects.Count);
-        float randomExplosionRotation = UnityEngine.Random.Range(0f, 360f);
-        float randomExplosionScale = UnityEngine.Random.Range(0.75f, 1f);
-        GameObject newExplosion = Instantiate(explosionEffects[randomExplosion], transform.position, Quaternion.Euler(0f, 0f, randomExplosionRotation));
-        newExplosion.transform.localScale = new Vector3(randomExplosionScale, randomExplosionScale, 1f);
-        Destroy(newExplosion, 0.367f);
+        //int randomExplosion = UnityEngine.Random.Range(0, explosionEffects.Count);
+        //float randomExplosionRotation = UnityEngine.Random.Range(0f, 360f);
+        //float randomExplosionScale = UnityEngine.Random.Range(0.75f, 1f);
+        //GameObject newExplosion = Instantiate(explosionEffects[randomExplosion], transform.position, Quaternion.Euler(0f, 0f, randomExplosionRotation));
+        //newExplosion.transform.localScale = new Vector3(randomExplosionScale, randomExplosionScale, 1f);
+        //Destroy(newExplosion, 0.367f);
 
         GameObject newDeathMesh;
         switch (deathCause)
