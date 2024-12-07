@@ -54,6 +54,7 @@ MonoBehaviour:
   swordEffectPrefab: {fileID: 4396576707297930692, guid: e6e8944860d6eee4a90151795817cf2a,
     type: 3}
   swordEffectTime: 0.2
+  swordImpactParticles: {fileID: 0}
 --- !u!58 &83542727448862659
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -307,7 +308,7 @@ MonoBehaviour:
     type: 3}
   laserImpactWallParticles: {fileID: 6515298674890429482, guid: 0bfd090f0b4b2824a803b288d5938fec,
     type: 3}
-  laserImpactEnemyParticles: {fileID: 6515298674890429482, guid: 51b715767289f984787ddc36011fa63b,
+  laserImpactEnemyParticles: {fileID: 6515298674890429482, guid: 0bfd090f0b4b2824a803b288d5938fec,
     type: 3}
   laserReloadParticles: {fileID: 1237421662156352702, guid: 5c118b19586d5cf4db2146f51502a2bd,
     type: 3}
