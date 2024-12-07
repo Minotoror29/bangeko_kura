@@ -3200,7 +3200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 144edb283a21b7c47a45925040c847b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frameTime: 1
+  frameTime: 2
   shake: 0
 --- !u!1001 &353450010
 PrefabInstance:
@@ -4684,7 +4684,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 144edb283a21b7c47a45925040c847b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frameTime: 1
+  frameTime: 2
   shake: 0
 --- !u!1 &598609367
 GameObject:
@@ -4776,7 +4776,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 144edb283a21b7c47a45925040c847b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frameTime: 0.5
+  frameTime: 1
   shake: 0
 --- !u!114 &602448215
 MonoBehaviour:
@@ -5550,7 +5550,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 144edb283a21b7c47a45925040c847b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frameTime: 0.5
+  frameTime: 1
   shake: 0
 --- !u!4 &720346190 stripped
 Transform:
@@ -6808,7 +6808,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 144edb283a21b7c47a45925040c847b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frameTime: 1
+  frameTime: 2
   shake: 0
 --- !u!1001 &888742322
 PrefabInstance:
@@ -7478,7 +7478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 144edb283a21b7c47a45925040c847b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frameTime: 1
+  frameTime: 2
   shake: 0
 --- !u!1 &984701405
 GameObject:
@@ -8972,7 +8972,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 144edb283a21b7c47a45925040c847b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frameTime: 0.5
+  frameTime: 1
   shake: 0
 --- !u!1 &1308367343
 GameObject:
@@ -10794,7 +10794,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 144edb283a21b7c47a45925040c847b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frameTime: 0.5
+  frameTime: 1
   shake: 0
 --- !u!1 &1537835741
 GameObject:
@@ -14480,7 +14480,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 144edb283a21b7c47a45925040c847b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frameTime: 1
+  frameTime: 2
   shake: 0
 --- !u!1001 &2074762849
 PrefabInstance:
