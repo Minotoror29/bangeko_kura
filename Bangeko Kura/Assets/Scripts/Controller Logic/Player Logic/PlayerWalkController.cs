@@ -12,6 +12,7 @@ public class PlayerWalkController : PlayerController
     [SerializeField] private float dashDistance = 6f;
     [SerializeField] private float dashCooldown = 0.5f;
     [SerializeField] private GameObject dashEffect;
+    [SerializeField] private List<ParticleSystem> dashParticles;
     private float _dashCooldownTimer;
 
     [Header("Weapons")]
@@ -25,6 +26,7 @@ public class PlayerWalkController : PlayerController
     public float DashSpeed { get { return dashSpeed; } }
     public float DashDistance { get { return dashDistance; } }
     public GameObject DashEffect { get { return dashEffect; } }
+    public List<ParticleSystem> DashParticles { get { return dashParticles; } }
     public EventInstance DashSound { get { return _dashSound; } }
     #endregion
 
@@ -38,7 +40,13 @@ public class PlayerWalkController : PlayerController
         _dashCooldownTimer = 0f;
 
         turret.Initialize(this, HealthSystem);
-        sword.Initialize(this, HealthSystem);        
+        sword.Initialize(this, HealthSystem);
+
+        foreach (ParticleSystem particle in dashParticles)
+        {
+            ParticleSystem.EmissionModule emission = particle.emission;
+            emission.enabled = false;
+        }
 
         //Initialize Audio
         _dashSound = RuntimeManager.CreateInstance("event:/Movement/Dash");
@@ -78,6 +86,22 @@ public class PlayerWalkController : PlayerController
     public override bool SwordAttack(float builupTime)
     {
         return CurrentState.CanAttackSword();
+    }
+
+    public override void PlayParticles(bool play)
+    {
+        base.PlayParticles(play);
+
+        foreach (ParticleSystem particle in dashParticles)
+        {
+            if (play)
+            {
+                particle.Play();
+            } else
+            {
+                particle.Pause();
+            }
+        }
     }
 
     public override void UpdateLogic()

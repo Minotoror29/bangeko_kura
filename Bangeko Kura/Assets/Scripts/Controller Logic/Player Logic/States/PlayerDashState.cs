@@ -41,6 +41,11 @@ public class PlayerDashState : PlayerState
         }
 
         Controller.InstantiateEffect(_controller.DashEffect, Controller.transform.position, Quaternion.LookRotation(Vector3.forward, _dashDirection.normalized), 0.367f);
+        foreach (ParticleSystem particle in _controller.DashParticles)
+        {
+            ParticleSystem.EmissionModule emission = particle.emission;
+            emission.enabled = true;
+        }
 
         _controller.DashSound.start();
     }
@@ -48,6 +53,12 @@ public class PlayerDashState : PlayerState
     public override void Exit()
     {
         Controller.OnTakeDamage -= PreventDamage;
+
+        foreach (ParticleSystem particle in _controller.DashParticles)
+        {
+            ParticleSystem.EmissionModule emission = particle.emission;
+            emission.enabled = false;
+        }
     }
 
     public override bool CanBeKnockbacked()
@@ -79,6 +90,14 @@ public class PlayerDashState : PlayerState
 
     public override void UpdateLogic()
     {
+        foreach (ParticleSystem particle in _controller.DashParticles)
+        {
+            if (!particle.isPlaying)
+            {
+                particle.Play();
+            }
+        }
+
         Controller.UpdateWeapons();
 
         if (((Vector2)Controller.transform.position - _dashOrigin).magnitude >= _controller.DashDistance)
