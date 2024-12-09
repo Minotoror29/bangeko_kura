@@ -54,6 +54,8 @@ MonoBehaviour:
   swordEffectPrefab: {fileID: 4396576707297930692, guid: e6e8944860d6eee4a90151795817cf2a,
     type: 3}
   swordEffectTime: 0.2
+  swordSmokePrefab: {fileID: 4396576707297930692, guid: 61bc9235c99263445a2c151c07e40281,
+    type: 3}
   swordImpactParticles: {fileID: 1419070822770586073, guid: 0d4e6d8946846cf42b6de1a584f42b76,
     type: 3}
 --- !u!58 &83542727448862659
