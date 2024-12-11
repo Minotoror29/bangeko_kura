@@ -32,16 +32,16 @@ public class Laser : MonoBehaviour
         _lineRenderer.startWidth = width;
         _lineRenderer.endWidth = width;
 
-        _lifeTimer = 0f;
-
-        
+        _lifeTimer = lifeTime;
     }
 
     public void UpdateLogic()
     {
-        if (_lifeTimer < lifeTime)
+        if (_lifeTimer > 0f)
         {
-            _lifeTimer += Time.deltaTime;
+            _lifeTimer -= Time.deltaTime;
+
+            _lineRenderer.widthMultiplier = _lifeTimer * (1 / lifeTime);
         } else
         {
             Vector3 laserDirection = (_endPosition - _startPosition).normalized;
