@@ -110,7 +110,7 @@ MonoBehaviour:
   - {fileID: 4511209060302146073}
   scrapPrefab: {fileID: 375830838884171308, guid: e3b0b9b5b283651489d3f4d21f0b25b7,
     type: 3}
-  swordBuildupEffect: {fileID: 4396576707297930692, guid: c1c968094ffe2f14493f2b576b8cb681,
+  swordBuildupEffect: {fileID: -426625044907983937, guid: c1c968094ffe2f14493f2b576b8cb681,
     type: 3}
   landMeshPrefab: {fileID: 7221558351107121482, guid: e9e32fa8ba84e294ebd7d8e501b10bd7,
     type: 3}
@@ -118,7 +118,7 @@ MonoBehaviour:
   landDamageRadius: 2.25
   landKnockbackDistance: 3
   landKnockbackSpeed: 1000
-  shadowPrefab: {fileID: 1518433040841752098, guid: d10ef6c8cf1b3634fb3176259e73b05f,
+  shadowPrefab: {fileID: 4923624833509281266, guid: d10ef6c8cf1b3634fb3176259e73b05f,
     type: 3}
   startGround: {fileID: 0}
   fallSpritePrefab: {fileID: 5307921919700816351, guid: 13acce79450980b46adb1e889c7f0e61,
@@ -302,12 +302,11 @@ MonoBehaviour:
   buildupTime: 0.4
   swordKnockbackDistance: 0.2
   swordKnockbackSpeed: 225
-  swordEffectPrefab: {fileID: 4396576707297930692, guid: e6e8944860d6eee4a90151795817cf2a,
+  swordEffectPrefab: {fileID: 5491688944607025385, guid: e6e8944860d6eee4a90151795817cf2a,
     type: 3}
-  swordEffectTime: 0.2
-  swordSmokePrefab: {fileID: 4396576707297930692, guid: 61bc9235c99263445a2c151c07e40281,
+  swordSmokePrefab: {fileID: -4046819180650130021, guid: 61bc9235c99263445a2c151c07e40281,
     type: 3}
-  swordImpactParticles: {fileID: 1419070822770586073, guid: 447925401f906a844b6af977f422e50c,
+  swordImpactParticles: {fileID: -5828083465230657845, guid: 447925401f906a844b6af977f422e50c,
     type: 3}
 --- !u!58 &5784316147245816219
 CircleCollider2D:

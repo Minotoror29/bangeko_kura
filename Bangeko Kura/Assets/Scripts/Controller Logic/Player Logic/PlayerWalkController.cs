@@ -11,7 +11,7 @@ public class PlayerWalkController : PlayerController
     [SerializeField] private float dashSpeed = 1500f;
     [SerializeField] private float dashDistance = 6f;
     [SerializeField] private float dashCooldown = 0.5f;
-    [SerializeField] private GameObject dashEffect;
+    [SerializeField] private Effect dashEffect;
     [SerializeField] private List<ParticleSystem> dashParticles;
     private float _dashCooldownTimer;
 
@@ -25,7 +25,7 @@ public class PlayerWalkController : PlayerController
     #region Getters / Setters
     public float DashSpeed { get { return dashSpeed; } }
     public float DashDistance { get { return dashDistance; } }
-    public GameObject DashEffect { get { return dashEffect; } }
+    public Effect DashEffect { get { return dashEffect; } }
     public List<ParticleSystem> DashParticles { get { return dashParticles; } }
     public EventInstance DashSound { get { return _dashSound; } }
     #endregion

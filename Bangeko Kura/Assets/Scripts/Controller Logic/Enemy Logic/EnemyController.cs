@@ -33,7 +33,7 @@ public class EnemyController : Controller
     [Header("Effects")]
     [SerializeField] private Scrap scrapPrefab;
     //[SerializeField] private List<GameObject> explosionEffects;
-    [SerializeField] private GameObject swordBuildupEffect;
+    [SerializeField] private Effect swordBuildupEffect;
 
     [Header("Land")]
     [SerializeField] private LandMesh landMeshPrefab;
@@ -41,7 +41,7 @@ public class EnemyController : Controller
     [SerializeField] private float landDamageRadius = 2.25f;
     [SerializeField] private float landKnockbackDistance;
     [SerializeField] private float landKnockbackSpeed;
-    [SerializeField] private GameObject shadowPrefab;
+    [SerializeField] private Effect shadowPrefab;
     [SerializeField] private GameObject startGround;
     private Knockback _landKnockback;
     private LandMesh _landMesh;
@@ -73,11 +73,11 @@ public class EnemyController : Controller
     public float MovementSpeed { get { return movementSpeed; } }
     public LayerMask VoidLayer { get { return voidLayer; } }
     public List<EnemyBehaviourData> Behaviours { get { return behaviours; } }
-    public GameObject SwordBuildupEffect { get { return swordBuildupEffect; } }
+    public Effect SwordBuildupEffect { get { return swordBuildupEffect; } }
     public LandMesh LandMesh { get { return _landMesh; } }
     public int LandDamage { get { return landDamage; } }
     public float LandDamageRadius { get { return landDamageRadius; } }
-    public GameObject ShadowPrefab { get { return shadowPrefab; } }
+    public Effect ShadowPrefab { get { return shadowPrefab; } }
     public Knockback LandKnockback { get { return _landKnockback; } }
     public GameObject FallSprite { get { return _fallSprite; } }
     public bool DamagedByPlayer { get { return _damagedByPlayer; } set { _damagedByPlayer = value; } }

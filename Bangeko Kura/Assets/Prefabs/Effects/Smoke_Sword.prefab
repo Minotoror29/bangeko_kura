@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2505877309445092483}
   - component: {fileID: 4879251868619506118}
+  - component: {fileID: -4046819180650130021}
   m_Layer: 0
   m_Name: Smoke_Sword
   m_TagString: Untagged
@@ -138,3 +139,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-4046819180650130021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4396576707297930692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5136a07c0b033fd4aa9089b17cfa22cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectTime: 0.25

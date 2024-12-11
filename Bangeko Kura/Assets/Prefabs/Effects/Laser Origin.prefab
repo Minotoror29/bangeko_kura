@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 304632876083564191}
   - component: {fileID: 3365515483716195784}
+  - component: {fileID: -8480374473597947581}
   m_Layer: 0
   m_Name: Laser Origin
   m_TagString: Untagged
@@ -54,6 +55,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-8480374473597947581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546793271799657349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5136a07c0b033fd4aa9089b17cfa22cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectTime: 0.367
 --- !u!1 &1925478018598449392
 GameObject:
   m_ObjectHideFlags: 0

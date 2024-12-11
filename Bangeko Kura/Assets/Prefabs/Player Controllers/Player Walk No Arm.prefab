@@ -53,7 +53,6 @@ MonoBehaviour:
   swordKnockbackSpeed: 0
   swordEffectPrefab: {fileID: 4396576707297930692, guid: e6e8944860d6eee4a90151795817cf2a,
     type: 3}
-  swordEffectTime: 0.2
   swordSmokePrefab: {fileID: 0}
   swordImpactParticles: {fileID: 0}
 --- !u!58 &83542727448862659
@@ -306,15 +305,15 @@ MonoBehaviour:
   laserKnockbackDistance: 2
   laserKnockbackSpeed: 1000
   aim: {fileID: 83542728683750082}
-  laserOriginEffect: {fileID: 546793271799657349, guid: 4ba966aba2f38bb40b70d3ce6e63c979,
+  laserOriginEffect: {fileID: -8480374473597947581, guid: 4ba966aba2f38bb40b70d3ce6e63c979,
     type: 3}
-  laserOriginParticles: {fileID: 3606537445245145088, guid: ab2094fdc6cd23e438c9c2da6d310ffa,
+  laserOriginParticles: {fileID: 826760937470209289, guid: ab2094fdc6cd23e438c9c2da6d310ffa,
     type: 3}
-  laserImpactWallParticles: {fileID: 6515298674890429482, guid: 0bfd090f0b4b2824a803b288d5938fec,
+  laserImpactWallParticles: {fileID: -3034961321814958414, guid: 0bfd090f0b4b2824a803b288d5938fec,
     type: 3}
-  laserImpactEnemyParticles: {fileID: 6515298674890429482, guid: 0bfd090f0b4b2824a803b288d5938fec,
+  laserImpactEnemyParticles: {fileID: -705187083063390810, guid: 51b715767289f984787ddc36011fa63b,
     type: 3}
-  laserReloadParticles: {fileID: 1237421662156352702, guid: 5c118b19586d5cf4db2146f51502a2bd,
+  laserReloadParticles: {fileID: -2015317209747785948, guid: 5c118b19586d5cf4db2146f51502a2bd,
     type: 3}
   whiteCursor: {fileID: 2800000, guid: a012cbc27275d6d41847623223c9eed4, type: 3}
   redCursor: {fileID: 2800000, guid: 73e2302c2ceeb2e48b7b02ad69012b96, type: 3}
@@ -324,9 +323,8 @@ MonoBehaviour:
     type: 3}
   landMeshPrefab: {fileID: 8119634437791927223, guid: 483dbf57321995147bcbbcfb9bb2ea4a,
     type: 3}
-  landEffect: {fileID: 4310220037457896771, guid: 70296c780681ce04c982d8ca3fe31e1a,
+  landEffect: {fileID: 5433222397558406341, guid: 70296c780681ce04c982d8ca3fe31e1a,
     type: 3}
-  landEffectLifetime: 0.3
   landDamage: 3
   landDamageRadius: 2.25
   landKnockbackDistance: 3
@@ -335,12 +333,12 @@ MonoBehaviour:
   landCameraShakeTime: 0.1
   landTime: 1.333
   landEffectTime: 0.75
-  damageParticles: {fileID: 4979761201205644177, guid: 842f2666ae7f8b34192bd96c7ba3d152,
+  damageParticles: {fileID: 3396166362680388098, guid: 842f2666ae7f8b34192bd96c7ba3d152,
     type: 3}
   dashSpeed: 1500
   dashDistance: 6
   dashCooldown: 0.5
-  dashEffect: {fileID: 812327942000203491, guid: fc67148725f210346b87012a70ff8cb9,
+  dashEffect: {fileID: 1291502509038580381, guid: fc67148725f210346b87012a70ff8cb9,
     type: 3}
   dashParticles:
   - {fileID: 2322967517228917867}

@@ -72,7 +72,7 @@ public class PlayerLandState : PlayerState
             if (!_landEffectSpawned)
             {
                 //Effect
-                Controller.InstantiateEffect(Controller.LandEffect, _spawnPosition, Quaternion.identity, Controller.LandEffectLifetime);
+                Controller.InstantiateEffect(Controller.LandEffect, _spawnPosition, Quaternion.identity);
                 _landEffectSpawned = true;
 
                 //Deal Damage

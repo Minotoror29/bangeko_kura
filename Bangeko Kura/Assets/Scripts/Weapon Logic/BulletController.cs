@@ -25,20 +25,17 @@ public class BulletController : MonoBehaviour
     private Knockback _knockback;
 
     [Header("Effects")]
-    [SerializeField] private List<GameObject> fireEffects;
-    [SerializeField] private float fireEffectLifetime = 0.1f;
+    [SerializeField] private List<Effect> fireEffects;
 
     [Space]
-    [SerializeField] private List<GameObject> impactEffects;
-    [SerializeField] private float impactEffectLifetime = 0.2f;
+    [SerializeField] private List<Effect> impactEffects;
 
     [Space]
-    [SerializeField] private GameObject smokeEffect;
-    [SerializeField] private float smokeEffectLifetime = 0.183f;
+    [SerializeField] private Effect smokeEffect;
 
     [Space]
-    [SerializeField] private GameObject fireParticles;
-    [SerializeField] private GameObject impactParticles;
+    [SerializeField] private Effect fireParticles;
+    [SerializeField] private Effect impactParticles;
 
     [Header("Audio")]
     [SerializeField] private string bulletSoundPath;
@@ -55,14 +52,14 @@ public class BulletController : MonoBehaviour
 
         transform.SetPositionAndRotation((Vector2)transform.position + direction * 0.015f, Quaternion.LookRotation(transform.forward, direction.normalized));
         int randomFireEffect = Random.Range(0, fireEffects.Count);
-        GameObject newFireEffect = Instantiate(fireEffects[randomFireEffect], transform.position, transform.rotation);
-        Destroy(newFireEffect, fireEffectLifetime);
+        Effect newFireEffect = Instantiate(fireEffects[randomFireEffect], transform.position, transform.rotation);
+        newFireEffect.Initialize();
 
-        GameObject newFireParticles = Instantiate(fireParticles, transform.position, transform.rotation);
-        Destroy(newFireParticles, 5f);
+        Effect newFireParticles = Instantiate(fireParticles, transform.position, transform.rotation);
+        newFireParticles.Initialize();
 
-        GameObject newSmokeEffect = Instantiate(smokeEffect, transform.position, transform.rotation);
-        Destroy(newSmokeEffect, smokeEffectLifetime);
+        Effect newSmokeEffect = Instantiate(smokeEffect, transform.position, transform.rotation);
+        newSmokeEffect.Initialize();
 
         _knockback = new Knockback
         {
@@ -102,11 +99,11 @@ public class BulletController : MonoBehaviour
             if (_source != healthSystem.Source)
             {
                 int randomImpactEffect = Random.Range(0, impactEffects.Count);
-                GameObject newImpactEffect = Instantiate(impactEffects[randomImpactEffect], transform.position, transform.rotation);
-                Destroy(newImpactEffect, impactEffectLifetime);
+                Effect newImpactEffect = Instantiate(impactEffects[randomImpactEffect], transform.position, transform.rotation);
+                newImpactEffect.Initialize();
 
-                GameObject newImpactParticles = Instantiate(impactParticles, transform.position, transform.rotation);
-                Destroy(newImpactParticles, 5f);
+                Effect newImpactParticles = Instantiate(impactParticles, transform.position, transform.rotation);
+                newImpactParticles.Initialize();
 
                 healthSystem.TakeDamage(damage, _source, _knockback, DamageCause.Turret);
                 gameObject.SetActive(false);

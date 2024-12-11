@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyLandState : EnemyState
 {
-    private GameObject _shadow;
+    private Effect _shadow;
     private float _landTimer = 1f;
     private float _landAnimationTime = 1.167f;
     private float _landDamageTime = 1f;
@@ -27,7 +27,7 @@ public class EnemyLandState : EnemyState
         
         Controller.Mesh.gameObject.SetActive(false);
         Controller.SetCollidersActive(false);
-        _shadow = Controller.InstantiateEffect(Controller.ShadowPrefab, Controller.transform.position, Quaternion.identity, 3);
+        _shadow = Controller.InstantiateEffect(Controller.ShadowPrefab, Controller.transform.position, Quaternion.identity);
     }
 
     public override void Exit()
@@ -95,7 +95,7 @@ public class EnemyLandState : EnemyState
         {
             if (_ground.TryGetComponent(out SwitchPlatform platform))
             {
-                _shadow.SetActive(platform.Active);
+                _shadow.gameObject.SetActive(platform.Active);
             }
         }
 
@@ -110,7 +110,7 @@ public class EnemyLandState : EnemyState
                     if (!platform.Active)
                     {
                         Controller.ChangeState(new EnemyFallState(Controller));
-                        _shadow.SetActive(false);
+                        _shadow.gameObject.SetActive(false);
                         return;
                     }
                 }
@@ -129,7 +129,7 @@ public class EnemyLandState : EnemyState
                     }
                 }
 
-                _shadow.SetActive(false);
+                _shadow.gameObject.SetActive(false);
 
                 Controller.SetCollidersActive(true);
             }

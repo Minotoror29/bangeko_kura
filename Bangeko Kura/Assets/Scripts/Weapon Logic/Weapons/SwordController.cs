@@ -21,10 +21,9 @@ public class SwordController : Weapon
     private List<HealthSystem> _enemiesInRange;
     private List<HealthSystem> _alliesInRange;
 
-    [SerializeField] private GameObject swordEffectPrefab;
-    [SerializeField] private float swordEffectTime = 0.2f;
-    [SerializeField] private GameObject swordSmokePrefab;
-    [SerializeField] private GameObject swordImpactParticles;
+    [SerializeField] private Effect swordEffectPrefab;
+    [SerializeField] private Effect swordSmokePrefab;
+    [SerializeField] private Effect swordImpactParticles;
 
     private EventInstance _swordSound;
 
@@ -90,19 +89,19 @@ public class SwordController : Weapon
         foreach (HealthSystem target in targets)
         {
             target.TakeDamage(damage, Controller.transform, _swordKnockback, DamageCause.Sword);
-            GameObject newParticles = Instantiate(swordImpactParticles, target.transform.position, Quaternion.identity);
-            Destroy(newParticles, 5f);
+            Effect newParticles = Instantiate(swordImpactParticles, target.transform.position, Quaternion.identity);
+            newParticles.Initialize();
         }
 
         _cooldownTimer = cooldown;
 
         _swordSound.start();
 
-        GameObject newSwordEffect = Instantiate(swordEffectPrefab, Controller.transform.position, Quaternion.Euler(new Vector3(0f, 0f, -Controller.Mesh.transform.rotation.eulerAngles.y)));
-        Destroy(newSwordEffect, swordEffectTime);
+        Effect newSwordEffect = Instantiate(swordEffectPrefab, Controller.transform.position, Quaternion.Euler(new Vector3(0f, 0f, -Controller.Mesh.transform.rotation.eulerAngles.y)));
+        newSwordEffect.Initialize();
 
-        GameObject newSwordSmoke = Instantiate(swordSmokePrefab, Controller.transform.position, Quaternion.Euler(new Vector3(0f, 0f, -Controller.Mesh.transform.rotation.eulerAngles.y)));
-        Destroy(newSwordSmoke, 0.25f);
+        Effect newSwordSmoke = Instantiate(swordSmokePrefab, Controller.transform.position, Quaternion.Euler(new Vector3(0f, 0f, -Controller.Mesh.transform.rotation.eulerAngles.y)));
+        newSwordSmoke.Initialize();
     }
 
     private void RemoveTarget(HealthSystem target, Transform deathSource, DamageCause damageCause)

@@ -40,7 +40,7 @@ public class PlayerDashState : PlayerState
             Controller.MeshAnimator.CrossFade("Player Dash Left", 0f);
         }
 
-        Controller.InstantiateEffect(_controller.DashEffect, Controller.transform.position, Quaternion.LookRotation(Vector3.forward, _dashDirection.normalized), 0.367f);
+        Controller.InstantiateEffect(_controller.DashEffect, Controller.transform.position, Quaternion.LookRotation(Vector3.forward, _dashDirection.normalized));
         foreach (ParticleSystem particle in _controller.DashParticles)
         {
             ParticleSystem.EmissionModule emission = particle.emission;

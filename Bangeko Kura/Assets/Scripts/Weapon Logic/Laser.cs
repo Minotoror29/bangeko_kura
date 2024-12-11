@@ -9,7 +9,7 @@ public class Laser : MonoBehaviour
     [SerializeField] private float lifeTime = 1f;
     private float _lifeTimer;
 
-    [SerializeField] private GameObject laserParticles;
+    [SerializeField] private Effect laserParticles;
 
     private Vector3 _startPosition;
     private Vector3 _endPosition;
@@ -48,8 +48,8 @@ public class Laser : MonoBehaviour
             float laserLength = (_endPosition - _startPosition).magnitude;
             for (int i = 0; i < laserLength; i++)
             {
-                GameObject newParticle = Instantiate(laserParticles, _startPosition + laserDirection * i, Quaternion.LookRotation(_endPosition, Vector3.back));
-                Destroy(newParticle, 4f);
+                Effect newParticle = Instantiate(laserParticles, _startPosition + laserDirection * i, Quaternion.LookRotation(_endPosition, Vector3.back));
+                newParticle.Initialize();
             }
             Destroy(gameObject);
         }

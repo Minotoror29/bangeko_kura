@@ -26,11 +26,11 @@ public abstract class PlayerController : Controller
     [SerializeField] private float laserKnockbackDistance = 2f;
     [SerializeField] private float laserKnockbackSpeed = 1000f;
     [SerializeField] private Transform aim;
-    [SerializeField] private GameObject laserOriginEffect;
-    [SerializeField] private GameObject laserOriginParticles;
-    [SerializeField] private GameObject laserImpactWallParticles;
-    [SerializeField] private GameObject laserImpactEnemyParticles;
-    [SerializeField] private GameObject laserReloadParticles;
+    [SerializeField] private Effect laserOriginEffect;
+    [SerializeField] private Effect laserOriginParticles;
+    [SerializeField] private Effect laserImpactWallParticles;
+    [SerializeField] private Effect laserImpactEnemyParticles;
+    [SerializeField] private Effect laserReloadParticles;
     [SerializeField] private Texture2D whiteCursor;
     [SerializeField] private Texture2D redCursor;
     private float _laserCooldownTimer;
@@ -47,8 +47,7 @@ public abstract class PlayerController : Controller
 
     [Header("Land")]
     [SerializeField] private GameObject landMeshPrefab;
-    [SerializeField] private GameObject landEffect;
-    [SerializeField] private float landEffectLifetime = 0.3f;
+    [SerializeField] private Effect landEffect;
     [SerializeField] private int landDamage = 3;
     [SerializeField] private float landDamageRadius = 2.25f;
     [SerializeField] private float landKnockbackDistance = 3f;
@@ -61,7 +60,7 @@ public abstract class PlayerController : Controller
     private Knockback _landKnockback;
 
     [Header("Damage")]
-    [SerializeField] private GameObject damageParticles;
+    [SerializeField] private Effect damageParticles;
 
     private EventInstance _laserSound;
     private EventInstance _laserReloadSound;
@@ -81,8 +80,7 @@ public abstract class PlayerController : Controller
     public GameObject FallSprite { get { return _fallSprite; } }
     public GameObject FallDownSprite { get { return _fallDownSprite; } }
     public GameObject LandMesh { get { return _landMesh; } }
-    public GameObject LandEffect { get { return landEffect; } }
-    public float LandEffectLifetime { get { return landEffectLifetime; } }
+    public Effect LandEffect { get { return landEffect; } }
     public int LandDamage { get { return landDamage; } }
     public float LandDamageRadius { get { return landDamageRadius; } }
     public Knockback LandKnockback { get { return _landKnockback; } }
@@ -173,7 +171,7 @@ public abstract class PlayerController : Controller
                 if (healthSystem.Source != transform)
                 {
                     healthSystem.TakeDamage(laserDamage, transform, _laserKnockback, DamageCause.Laser);
-                    InstantiateEffect(laserImpactEnemyParticles, enemyHit.transform.position, Quaternion.identity, 5f);
+                    InstantiateEffect(laserImpactEnemyParticles, enemyHit.transform.position, Quaternion.identity);
                 }
             }
         }
@@ -183,10 +181,10 @@ public abstract class PlayerController : Controller
         Vector2 endPosition = (Vector2)laserFirePoint.position + (_mousePosition - (Vector2)laserFirePoint.position).normalized * rayDistance;
         newLaser.Initialize((Vector2)laserFirePoint.position + _lookDirection.normalized * 0.75f, endPosition, laserWidth);
 
-        InstantiateEffect(laserOriginEffect, laserFirePoint.position, Quaternion.LookRotation(Vector3.forward, _lookDirection), 0.367f);
-        InstantiateEffect(laserOriginParticles, laserFirePoint.position, Quaternion.identity, 5f);
-        InstantiateEffect(laserImpactWallParticles, endPosition, Quaternion.identity, 5f);
-        GameObject newLaserReloadParticles = InstantiateEffect(laserReloadParticles, laserFirePoint.position, Quaternion.identity, 2f);
+        InstantiateEffect(laserOriginEffect, laserFirePoint.position, Quaternion.LookRotation(Vector3.forward, _lookDirection));
+        InstantiateEffect(laserOriginParticles, laserFirePoint.position, Quaternion.identity);
+        InstantiateEffect(laserImpactWallParticles, endPosition, Quaternion.identity);
+        Effect newLaserReloadParticles = InstantiateEffect(laserReloadParticles, laserFirePoint.position, Quaternion.identity);
         newLaserReloadParticles.GetComponent<Follow>().FollowTarget = laserFirePoint;
 
         _laserReloadSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
@@ -220,8 +218,7 @@ public abstract class PlayerController : Controller
 
         if (damageCause != DamageCause.Fall)
         {
-            GameObject newDamageParticles = Instantiate(damageParticles, new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, 0f), Quaternion.identity);
-            Destroy(newDamageParticles, 1f);
+            InstantiateEffect(damageParticles, new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, 0f), Quaternion.identity);
             GameManager.NegativeVolume.gameObject.SetActive(true);
             GameManager.ChangeState(new GamePauseState(GameManager, 0.1f));
         }

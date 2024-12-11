@@ -139,20 +139,17 @@ MonoBehaviour:
   knockbackDistance: 0.1
   knockbackSpeed: 225
   fireEffects:
-  - {fileID: 3851610267540276633, guid: ddf7c4b9945e5c5448e8adbd730fe409, type: 3}
-  - {fileID: 3851610267540276633, guid: 41bfa9f1ea3069c4496cea7651426ff8, type: 3}
-  - {fileID: 3851610267540276633, guid: d65c8d050d3dab34ca72a2c68092358c, type: 3}
-  fireEffectLifetime: 0.1
+  - {fileID: -1453398681143989451, guid: ddf7c4b9945e5c5448e8adbd730fe409, type: 3}
+  - {fileID: -1904662775249126144, guid: 41bfa9f1ea3069c4496cea7651426ff8, type: 3}
+  - {fileID: -4000865719824060704, guid: d65c8d050d3dab34ca72a2c68092358c, type: 3}
   impactEffects:
-  - {fileID: 2476454190481163344, guid: 3fd25ca02542e424fa03e06fed3168eb, type: 3}
-  - {fileID: 2476454190481163344, guid: 235b96f8ffb43494a9c280feda41bba0, type: 3}
-  impactEffectLifetime: 0.2
-  smokeEffect: {fileID: 1543596384095219198, guid: 9b967501143f93d49b7175d562aa85b7,
+  - {fileID: 4454987367590483746, guid: 3fd25ca02542e424fa03e06fed3168eb, type: 3}
+  - {fileID: -7335552072322285186, guid: 235b96f8ffb43494a9c280feda41bba0, type: 3}
+  smokeEffect: {fileID: 4534223867857361529, guid: 9b967501143f93d49b7175d562aa85b7,
     type: 3}
-  smokeEffectLifetime: 0.183
-  fireParticles: {fileID: 9032442316768020726, guid: 43c7ee505e3440646866748fdba03307,
+  fireParticles: {fileID: 3390663622424512779, guid: 43c7ee505e3440646866748fdba03307,
     type: 3}
-  impactParticles: {fileID: 1264828147435555478, guid: e041496eb0d49cb4c885d105f831c3f4,
+  impactParticles: {fileID: 819332609057427967, guid: e041496eb0d49cb4c885d105f831c3f4,
     type: 3}
   bulletSoundPath: event:/Weapons/Player Bullet
 --- !u!50 &5907398816516013800

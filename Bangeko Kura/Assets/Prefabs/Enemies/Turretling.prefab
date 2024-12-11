@@ -176,16 +176,14 @@ MonoBehaviour:
   - {fileID: 1336000479979701973}
   scrapPrefab: {fileID: 375830838884171308, guid: e3b0b9b5b283651489d3f4d21f0b25b7,
     type: 3}
-  explosionEffects:
-  - {fileID: 7688115154114750695, guid: b42ceb097a6a2a541ab82d88356387e6, type: 3}
-  - {fileID: 7688115154114750695, guid: c1ff6de5a538ecb4a98eef7badfa7d1a, type: 3}
+  swordBuildupEffect: {fileID: 0}
   landMeshPrefab: {fileID: 8496007176438931284, guid: 90b331de8ae02f24f96956c850a3ce26,
     type: 3}
   landDamage: 3
   landDamageRadius: 2.25
   landKnockbackDistance: 3
   landKnockbackSpeed: 1000
-  shadowPrefab: {fileID: 1518433040841752098, guid: d10ef6c8cf1b3634fb3176259e73b05f,
+  shadowPrefab: {fileID: 4923624833509281266, guid: d10ef6c8cf1b3634fb3176259e73b05f,
     type: 3}
   startGround: {fileID: 0}
   fallSpritePrefab: {fileID: 5307921919700816351, guid: 79853256a2d5baa489de612baaed502b,
@@ -195,6 +193,7 @@ MonoBehaviour:
   deathLaserPrefab: {fileID: 5407051139659638411, guid: dc423c6f7e746d64db8fdfd32825ae8e,
     type: 3}
   deathSwordPrefab: {fileID: 0}
+  deathMeshTime: 0.5
   spawnIdle: 1
   canBeKnockedback: 0
 --- !u!50 &6286139187828219420

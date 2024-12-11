@@ -96,18 +96,18 @@ public abstract class Controller : MonoBehaviour
         _changeColorTimer = changeColorTime;
     }
 
-    public GameObject InstantiateEffect(GameObject effect, Vector2 position, Quaternion rotation, float time)
+    public Effect InstantiateEffect(Effect effect, Vector2 position, Quaternion rotation)
     {
-        GameObject newEffect = Instantiate(effect, position, rotation);
-        Destroy(newEffect, time);
+        Effect newEffect = Instantiate(effect, position, rotation);
+        newEffect.Initialize();
 
         return newEffect;
     }
 
-    public GameObject InstantiateEffect(GameObject effect, Vector3 position, Quaternion rotation, float time)
+    public Effect InstantiateEffect(Effect effect, Vector3 position, Quaternion rotation)
     {
-        GameObject newEffect = Instantiate(effect, position, rotation);
-        Destroy(newEffect, time);
+        Effect newEffect = Instantiate(effect, position, rotation);
+        newEffect.Initialize();
 
         return newEffect;
     }
