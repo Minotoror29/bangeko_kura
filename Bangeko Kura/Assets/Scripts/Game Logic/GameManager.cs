@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
@@ -38,6 +39,7 @@ public class GameManager : MonoBehaviour
 
     private List<BulletController> _bullets;
 
+    public UnityEvent OnStart;
     public event Action OnInitialize;
 
     public PlayerController Player { get { return player; } }
@@ -86,6 +88,8 @@ public class GameManager : MonoBehaviour
         }
 
         _bullets = new();
+
+        OnStart?.Invoke();
 
         ChangeState(new GamePlayState(this));
     }
