@@ -27,7 +27,7 @@ public class ScreenManager : MonoBehaviour
     public event Action<bool> OnEnter;
     public event Action<bool> OnExit;
     public event Action<PlayerController> OnChangePlayerController;
-    public event Action OnPauseScreen;
+    public event Action<bool> OnPauseScreen;
 
     //Audio
     private EventInstance _switchPlatformEnterSound;
@@ -122,9 +122,9 @@ public class ScreenManager : MonoBehaviour
         vCam.gameObject.SetActive(true);
     }
 
-    public void PauseScreen()
+    public void PauseScreen(bool pause)
     {
-        OnPauseScreen?.Invoke();
+        OnPauseScreen?.Invoke(pause);
     }
 
     public void PlaySwitchPlatformSound(bool enter)

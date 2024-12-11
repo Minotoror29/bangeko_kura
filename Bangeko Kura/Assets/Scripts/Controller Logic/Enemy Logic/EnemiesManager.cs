@@ -112,11 +112,18 @@ public class EnemiesManager : MonoBehaviour
         }
     }
 
-    public void PauseEnemies()
+    public void PauseEnemies(bool pause)
     {
         foreach (EnemyController enemy in _enemies)
         {
-            enemy.Rb.velocity = Vector2.zero;
+            if (pause)
+            {
+                enemy.Rb.velocity = Vector2.zero;
+                enemy.MeshAnimator.speed = 0f;
+            } else
+            {
+                enemy.MeshAnimator.speed = 1f;
+            }
         }
     }
 

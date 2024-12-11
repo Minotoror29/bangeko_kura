@@ -6,8 +6,6 @@ using UnityEngine.UI;
 
 public class CustomButton : MonoBehaviour, IPointerEnterHandler
 {
-    [SerializeField] private float scaleFactor = 1.25f;
-
     [SerializeField] private float maxUnderlineWidth;
     [SerializeField] private float underlineSpeed = 10f;
     [SerializeField] private Image underlineMask;

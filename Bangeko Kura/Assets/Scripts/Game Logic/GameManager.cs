@@ -155,6 +155,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
+    public ParticleSystem[] GetAllParticles()
+    {
+        return FindObjectsOfType<ParticleSystem>();
+    }
+
     private void Update()
     {
         _currentState.UpdateLogic();

@@ -12,6 +12,14 @@ public class GamePlayState : GameState
     {
         GameManager.Player.MeshAnimator.speed = 1;
         GameManager.Player.HealthSystem.GetComponent<CapsuleCollider2D>().enabled = true;
+        GameManager.CurrentScreen.PauseScreen(false);
+        foreach (ParticleSystem particle in GameManager.GetAllParticles())
+        {
+            if (particle.gameObject.activeSelf)
+            {
+                particle.Play();
+            }
+        }
     }
 
     public override void Exit()
@@ -19,12 +27,20 @@ public class GamePlayState : GameState
         GameManager.Player.Rb.velocity = Vector2.zero;
         GameManager.Player.MeshAnimator.speed = 0;
         GameManager.Player.PlayParticles(false);
-        GameManager.CurrentScreen.PauseScreen();
+        GameManager.CurrentScreen.PauseScreen(true);
         GameManager.Player.HealthSystem.GetComponent<CapsuleCollider2D>().enabled = false;
 
         foreach (BulletController bullet in GameManager.Bullets)
         {
             bullet.Rb.velocity = Vector2.zero;
+        }
+
+        foreach (ParticleSystem particle in GameManager.GetAllParticles())
+        {
+            if (particle.gameObject.activeSelf)
+            {
+                particle.Pause();
+            }
         }
     }
 
