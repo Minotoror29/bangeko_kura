@@ -46,6 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 0.25
+  laserParticles: {fileID: 3621094078690279814, guid: 0ba6eb45d3acc074ea2ab438085b8142,
+    type: 3}
 --- !u!120 &5183516080315772203
 LineRenderer:
   m_ObjectHideFlags: 0
