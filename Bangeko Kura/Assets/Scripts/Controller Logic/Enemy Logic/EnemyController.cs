@@ -5,7 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum DamageCause { Turret, Laser, Sword, Other }
+public enum DamageCause { Turret, Laser, Sword, Fall, Other }
 
 public class EnemyController : Controller
 {
@@ -158,6 +158,16 @@ public class EnemyController : Controller
         if (!_currentState.CanBeKnockedBack() || !canBeKnockedback) return;
 
         ChangeState(new EnemyKnockBackState(this, (Vector2)(transform.position - source.position).normalized, knockback));
+    }
+
+    public override void TakeDamage(int amount, DamageCause damageCause)
+    {
+        base.TakeDamage(amount, damageCause);
+
+        if (damageCause == DamageCause.Sword)
+        {
+            GameManager.ChangeState(new GamePauseState(GameManager, 0.1f));
+        }
     }
 
     public void Die(HealthSystem healthSystem, Transform deathSource, DamageCause deathCause)

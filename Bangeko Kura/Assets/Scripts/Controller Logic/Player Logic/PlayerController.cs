@@ -209,19 +209,20 @@ public abstract class PlayerController : Controller
         ChangeState(new PlayerKnockbackState(this, (transform.position - damageSource.position).normalized, knockback));
     }
 
-    public override void TakeDamage(int damage, bool fromFall)
+    public override void TakeDamage(int damage, DamageCause damageCause)
     {
-        base.TakeDamage(damage, fromFall);
+        base.TakeDamage(damage, damageCause);
 
         if (HealthSystem.CurrentHealth <= 3)
         {
             MusicManager.Instance.PlayMusicLayer(MusicLayer.LowLife, true);
         }
 
-        if (!fromFall)
+        if (damageCause == DamageCause.Fall)
         {
             GameObject newDamageParticles = Instantiate(damageParticles, new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, 0f), Quaternion.identity);
             Destroy(newDamageParticles, 1f);
+            GameManager.NegativeVolume.gameObject.SetActive(true);
             GameManager.ChangeState(new GamePauseState(GameManager, 0.1f));
         }
     }

@@ -39,7 +39,6 @@ public class SwordController : Weapon
 
         _swordKnockback = new Knockback { knockbackDistance = swordKnockbackDistance, knockbackSpeed = swordKnockbackSpeed };
 
-
         _swordSound = RuntimeManager.CreateInstance("event:/Weapons/Sword");
     }
 

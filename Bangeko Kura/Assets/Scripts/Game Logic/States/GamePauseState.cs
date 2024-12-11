@@ -14,7 +14,6 @@ public class GamePauseState : GameState
     public override void Enter()
     {
         GameManager.Player.Controls.Disable();
-        GameManager.NegativeVolume.gameObject.SetActive(true);
     }
 
     public override void Exit()

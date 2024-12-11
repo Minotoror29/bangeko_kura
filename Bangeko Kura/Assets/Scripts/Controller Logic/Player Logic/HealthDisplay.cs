@@ -47,7 +47,7 @@ public class HealthDisplay : MonoBehaviour
         _removedBars.Clear();
     }
 
-    public void TakeDamage(int amount, bool fromFall)
+    public void TakeDamage(int amount, DamageCause damageCause)
     {
         if (_bars.Count == 0) return;
 

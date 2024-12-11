@@ -29,7 +29,7 @@ public class DummyController : MonoBehaviour
         }
     }
 
-    private void TakeDamage(int amount, bool fromFall)
+    private void TakeDamage(int amount, DamageCause damageCause)
     {
         ChangeColor();
         Squish();
