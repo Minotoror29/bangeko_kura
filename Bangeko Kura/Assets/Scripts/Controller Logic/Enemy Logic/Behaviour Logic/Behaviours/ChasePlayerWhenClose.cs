@@ -25,7 +25,8 @@ public class ChasePlayerWhenClose : EnemyBehaviour
     {
         if (Controller.DistanceToPlayer <= _chasingDistance && Controller.Player.Mesh.gameObject.activeSelf)
         {
-            Ray ray = new(Controller.transform.position, Controller.Player.transform.position - Controller.transform.position);
+            Vector3 startPosition = Controller.transform.position + Controller.GetComponent<CircleCollider2D>().radius * Controller.transform.localScale.x * (Controller.Player.transform.position - Controller.transform.position).normalized;
+            Ray ray = new(startPosition, Controller.Player.transform.position - startPosition);
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, (Controller.Player.transform.position - Controller.transform.position).magnitude, Controller.VoidLayer);
             if (hit.collider == null)
             {
