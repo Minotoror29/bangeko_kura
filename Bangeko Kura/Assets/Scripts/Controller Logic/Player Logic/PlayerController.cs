@@ -13,6 +13,7 @@ public abstract class PlayerController : Controller
 
     [Header("Movement")]
     [SerializeField] private float movementSpeed = 325f;
+    [SerializeField] private ParticleSystem movementParticles;
 
     [Header("Laser")]
     [SerializeField] private Transform laserFirePoint;
@@ -71,6 +72,7 @@ public abstract class PlayerController : Controller
     public PlayerState CurrentState { get { return _currentState; } }
     public PlayerControls Controls { get { return _controls; } }
     public float MovementSpeed { get { return movementSpeed; } }
+    public ParticleSystem MovementParticles { get { return movementParticles; } }
     public Vector2 LookDirection { get { return _lookDirection; } }
     public float LaserCooldownTimer { get { return _laserCooldownTimer; } }
     public GameObject FallSprite { get { return _fallSprite; } }
@@ -114,6 +116,9 @@ public abstract class PlayerController : Controller
         _landMesh = Instantiate(landMeshPrefab);
         _landMesh.SetActive(false);
         _landKnockback = new Knockback { knockbackDistance = landKnockbackDistance, knockbackSpeed = landKnockbackSpeed };
+
+        ParticleSystem.EmissionModule emission = movementParticles.emission;
+        emission.enabled = false;
 
         _laserSound = RuntimeManager.CreateInstance("event:/Weapons/Laser");
         _laserReloadSound = RuntimeManager.CreateInstance("event:/Weapons/Laser Reload");
@@ -224,6 +229,17 @@ public abstract class PlayerController : Controller
         MusicManager.Instance.PlayMusicLayer(MusicLayer.Battle, false);
 
         ChangeState(new PlayerDeathState(this, true));
+    }
+
+    public virtual void PlayParticles(bool play)
+    {
+        if (play)
+        {
+            movementParticles.Play();
+        } else
+        {
+            movementParticles.Pause();
+        }
     }
 
     public override void UpdateLogic()

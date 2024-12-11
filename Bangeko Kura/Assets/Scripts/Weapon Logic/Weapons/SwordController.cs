@@ -23,9 +23,8 @@ public class SwordController : Weapon
 
     [SerializeField] private GameObject swordEffectPrefab;
     [SerializeField] private float swordEffectTime = 0.2f;
+    [SerializeField] private GameObject swordSmokePrefab;
     [SerializeField] private GameObject swordImpactParticles;
-    private GameObject _swordEffect;
-    private float _swordEffectTimer;
 
     private EventInstance _swordSound;
 
@@ -40,9 +39,6 @@ public class SwordController : Weapon
 
         _swordKnockback = new Knockback { knockbackDistance = swordKnockbackDistance, knockbackSpeed = swordKnockbackSpeed };
 
-        _swordEffect = Instantiate(swordEffectPrefab);
-        _swordEffect.SetActive(false);
-        _swordEffectTimer = 0f;
 
         _swordSound = RuntimeManager.CreateInstance("event:/Weapons/Sword");
     }
@@ -50,20 +46,6 @@ public class SwordController : Weapon
     public override void UpdateLogic()
     {
         base.UpdateLogic();
-
-        _swordEffect.transform.position = Controller.transform.position;
-        _swordEffect.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, -Controller.Mesh.transform.rotation.eulerAngles.y));
-
-        if (_swordEffect.activeSelf)
-        {
-            if (_swordEffectTimer > 0f)
-            {
-                _swordEffectTimer -= Time.deltaTime;
-            } else
-            {
-                _swordEffect.SetActive(false);
-            }
-        }
 
         if (_cooldownTimer > 0f)
         {
@@ -117,8 +99,11 @@ public class SwordController : Weapon
 
         _swordSound.start();
 
-        _swordEffect.SetActive(true);
-        _swordEffectTimer = swordEffectTime;
+        GameObject newSwordEffect = Instantiate(swordEffectPrefab, Controller.transform.position, Quaternion.Euler(new Vector3(0f, 0f, -Controller.Mesh.transform.rotation.eulerAngles.y)));
+        Destroy(newSwordEffect, swordEffectTime);
+
+        GameObject newSwordSmoke = Instantiate(swordSmokePrefab, Controller.transform.position, Quaternion.Euler(new Vector3(0f, 0f, -Controller.Mesh.transform.rotation.eulerAngles.y)));
+        Destroy(newSwordSmoke, 0.25f);
     }
 
     private void RemoveTarget(HealthSystem target, Transform deathSource, DamageCause damageCause)

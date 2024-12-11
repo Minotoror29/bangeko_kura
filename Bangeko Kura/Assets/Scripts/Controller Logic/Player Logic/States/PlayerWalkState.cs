@@ -8,19 +8,23 @@ public class PlayerWalkState : PlayerState
 {
     private Vector2 _walkAnimDirection;
     private Direction _currentDirection;
+    private ParticleSystem.EmissionModule _emission;
 
     public PlayerWalkState(PlayerController controller) : base(controller)
     {
+        _emission = Controller.MovementParticles.emission;
     }
 
     public override void Enter()
     {
         _currentDirection = Direction.Forward;
         Animator.CrossFade("Player Walk Forward", 0.1f);
+        _emission.enabled = true;
     }
 
     public override void Exit()
     {
+        _emission.enabled = false;
     }
 
     public override void OnCollisionEnter(Collision2D collision)
@@ -46,6 +50,11 @@ public class PlayerWalkState : PlayerState
 
     public override void UpdateLogic()
     {
+        if (!Controller.MovementParticles.isPlaying)
+        {
+            Controller.MovementParticles.Play();
+        }
+
         Controller.UpdateWeapons();
 
         Controller.RotateMesh();
