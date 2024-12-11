@@ -5288,6 +5288,8 @@ MonoBehaviour:
   landCameraShakeTime: 0.1
   landTime: 0.7
   landEffectTime: 0.366
+  damageParticles: {fileID: 4979761201205644177, guid: 842f2666ae7f8b34192bd96c7ba3d152,
+    type: 3}
   turret: {fileID: 7421424803913910617}
 --- !u!50 &7421424803343104424
 Rigidbody2D:

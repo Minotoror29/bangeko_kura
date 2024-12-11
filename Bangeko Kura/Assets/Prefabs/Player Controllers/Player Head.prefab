@@ -362,6 +362,8 @@ MonoBehaviour:
   landCameraShakeTime: 0.1
   landTime: 1.333
   landEffectTime: 0.75
+  damageParticles: {fileID: 4979761201205644177, guid: 842f2666ae7f8b34192bd96c7ba3d152,
+    type: 3}
   laserKnockbackPlayerDistance: 2
   laserKnockbackPlayerSpeed: 500
   knockbackParticles:

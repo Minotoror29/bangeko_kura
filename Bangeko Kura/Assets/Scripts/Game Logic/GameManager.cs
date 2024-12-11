@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera deathAnimationCam;
     [SerializeField] private SpriteRenderer blackBackground;
     [SerializeField] private Canvas blackScreen;
+    [SerializeField] private Volume negativeVolume;
 
     private List<BulletController> _bullets;
 
@@ -49,6 +50,7 @@ public class GameManager : MonoBehaviour
     public CinemachineVirtualCamera DeathAnimationCam {  get { return deathAnimationCam; } }
     public SpriteRenderer BlackBackground { get { return blackBackground; } }
     public Canvas BlackScreen { get { return blackScreen; } }
+    public Volume NegativeVolume {  get { return negativeVolume; } }
     public List<BulletController> Bullets { get { return _bullets; } }
 
     private void Start()

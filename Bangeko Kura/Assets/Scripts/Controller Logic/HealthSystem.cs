@@ -18,7 +18,7 @@ public class HealthSystem : MonoBehaviour
     public int HealthRatio { get { return _currentHealth * 100 / maxHealth; } }
 
     public event Action<Transform, Knockback> OnHit;
-    public event Action<int> OnDamage;
+    public event Action<int, bool> OnDamage;
     public event Action<HealthSystem, Transform, DamageCause> OnDeath;
     public event Action OnDeathFromFall;
 
@@ -47,7 +47,7 @@ public class HealthSystem : MonoBehaviour
         {
             _currentHealth = 0;
         }
-        OnDamage?.Invoke(damage);
+        OnDamage?.Invoke(damage, false);
         if (_currentHealth <= 0)
         {
             OnDeath?.Invoke(this, damageSource, damageCause);
@@ -57,7 +57,7 @@ public class HealthSystem : MonoBehaviour
     public void TakeDamageFromFall(int damage)
     {
         _currentHealth -= damage;
-        OnDamage?.Invoke(damage);
+        OnDamage?.Invoke(damage, true);
 
         if (_currentHealth <= 0)
         {

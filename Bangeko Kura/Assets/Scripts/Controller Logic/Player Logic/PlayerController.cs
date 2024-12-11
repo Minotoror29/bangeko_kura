@@ -60,6 +60,9 @@ public abstract class PlayerController : Controller
     private GameObject _landMesh;
     private Knockback _landKnockback;
 
+    [Header("Damage")]
+    [SerializeField] private GameObject damageParticles;
+
     private EventInstance _laserSound;
     private EventInstance _laserReloadSound;
     private EventInstance _damageSound;
@@ -99,7 +102,6 @@ public abstract class PlayerController : Controller
         _controls.InGame.Laser.performed += ctx => FireLaser();
 
         HealthSystem.OnHit += TakeHit;
-        HealthSystem.OnDamage += TakeDamage;
         HealthSystem.OnDeath += Die;
         HealthSystem.OnDeathFromFall += DieFromFall;
         gameManager.HealthDisplay.Initialize(HealthSystem);
@@ -207,11 +209,20 @@ public abstract class PlayerController : Controller
         ChangeState(new PlayerKnockbackState(this, (transform.position - damageSource.position).normalized, knockback));
     }
 
-    private void TakeDamage(int damage)
+    public override void TakeDamage(int damage, bool fromFall)
     {
+        base.TakeDamage(damage, fromFall);
+
         if (HealthSystem.CurrentHealth <= 3)
         {
             MusicManager.Instance.PlayMusicLayer(MusicLayer.LowLife, true);
+        }
+
+        if (!fromFall)
+        {
+            GameObject newDamageParticles = Instantiate(damageParticles, new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, 0f), Quaternion.identity);
+            Destroy(newDamageParticles, 1f);
+            GameManager.ChangeState(new GamePauseState(GameManager, 0.1f));
         }
     }
 

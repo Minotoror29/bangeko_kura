@@ -80,7 +80,7 @@ public abstract class Controller : MonoBehaviour
         return false;
     }
 
-    private void TakeDamage(int amount)
+    public virtual void TakeDamage(int amount, bool fromFall)
     {
         GeneralAnimator.SetTrigger("Squish");
         ChangeColor();
