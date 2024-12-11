@@ -218,7 +218,7 @@ public abstract class PlayerController : Controller
             MusicManager.Instance.PlayMusicLayer(MusicLayer.LowLife, true);
         }
 
-        if (damageCause == DamageCause.Fall)
+        if (damageCause != DamageCause.Fall)
         {
             GameObject newDamageParticles = Instantiate(damageParticles, new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, 0f), Quaternion.identity);
             Destroy(newDamageParticles, 1f);
