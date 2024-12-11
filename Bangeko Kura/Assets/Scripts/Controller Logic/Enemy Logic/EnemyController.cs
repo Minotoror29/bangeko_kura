@@ -166,19 +166,12 @@ public class EnemyController : Controller
 
         if (damageCause == DamageCause.Sword)
         {
-            GameManager.ChangeState(new GamePauseState(GameManager, 0.1f));
+            GameManager.ChangeState(new GamePauseState(GameManager, 0.15f));
         }
     }
 
     public void Die(HealthSystem healthSystem, Transform deathSource, DamageCause deathCause)
     {
-        //int randomExplosion = UnityEngine.Random.Range(0, explosionEffects.Count);
-        //float randomExplosionRotation = UnityEngine.Random.Range(0f, 360f);
-        //float randomExplosionScale = UnityEngine.Random.Range(0.75f, 1f);
-        //GameObject newExplosion = Instantiate(explosionEffects[randomExplosion], transform.position, Quaternion.Euler(0f, 0f, randomExplosionRotation));
-        //newExplosion.transform.localScale = new Vector3(randomExplosionScale, randomExplosionScale, 1f);
-        //Destroy(newExplosion, 0.367f);
-
         GameObject newDeathMesh;
         switch (deathCause)
         {
