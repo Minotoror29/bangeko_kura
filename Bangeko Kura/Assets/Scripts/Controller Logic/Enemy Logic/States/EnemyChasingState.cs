@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class EnemyChasingState : EnemyState
 {
+    private ParticleSystem.EmissionModule _emission;
+
     public EnemyChasingState(EnemyController controller) : base(controller)
     {
         Id = EnemyStateId.Chasing;
+        _emission = Controller.WalkParticles.emission;
     }
 
     public override void Enter()
@@ -14,11 +17,14 @@ public class EnemyChasingState : EnemyState
         base.Enter();
 
         Controller.MeshAnimator.CrossFade("Enemy Walk", 0f);
+        _emission.enabled = true;
     }
 
     public override void Exit()
     {
         base.Exit();
+
+        _emission.enabled = false;
     }
 
     public override void OnCollisionEnter(Collision2D collision)
