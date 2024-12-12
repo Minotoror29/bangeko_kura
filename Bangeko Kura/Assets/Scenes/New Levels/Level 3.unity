@@ -9420,6 +9420,9 @@ MonoBehaviour:
   blackBackground: {fileID: 40846357}
   blackScreen: {fileID: 736846383}
   negativeVolume: {fileID: 1824765716}
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &897902914
 Transform:
   m_ObjectHideFlags: 0

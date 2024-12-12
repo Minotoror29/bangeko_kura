@@ -95,6 +95,8 @@ MonoBehaviour:
   changeColorTime: 0.1
   damageColor: {r: 1, g: 1, b: 1, a: 1}
   baseColor: {r: 0, g: 0, b: 0, a: 1}
+  swordDamageParticles: {fileID: -5906686120975963507, guid: 0d4e6d8946846cf42b6de1a584f42b76,
+    type: 3}
   minIdleTime: 3
   maxIdleTime: 7
   patrolTime: 4

@@ -164,6 +164,11 @@ public class GameManager : MonoBehaviour
         return FindObjectsOfType<ParticleSystem>();
     }
 
+    public Effect[] GetAllEffects()
+    {
+        return FindObjectsOfType<Effect>();
+    }
+
     private void Update()
     {
         _currentState.UpdateLogic();

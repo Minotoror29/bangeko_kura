@@ -5244,6 +5244,8 @@ MonoBehaviour:
   changeColorTime: 0.1
   damageColor: {r: 0.81960785, g: 0.1882353, b: 0.1882353, a: 1}
   baseColor: {r: 0, g: 0, b: 0, a: 1}
+  swordDamageParticles: {fileID: -5828083465230657845, guid: 447925401f906a844b6af977f422e50c,
+    type: 3}
   movementSpeed: 100
   movementParticles: {fileID: 4380908395495212306}
   laserFirePoint: {fileID: 5997316095907754612}

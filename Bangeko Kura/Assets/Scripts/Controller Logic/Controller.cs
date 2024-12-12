@@ -19,6 +19,8 @@ public abstract class Controller : MonoBehaviour
     [SerializeField] private Color baseColor = Color.black;
     private float _changeColorTimer = 0f;
 
+    [SerializeField] private Effect swordDamageParticles;
+
     private bool _dashing;
 
     private List<GameObject> _grounds;
@@ -84,6 +86,11 @@ public abstract class Controller : MonoBehaviour
     {
         GeneralAnimator.SetTrigger("Squish");
         ChangeColor();
+
+        if (damageCause == DamageCause.Sword)
+        {
+            InstantiateEffect(swordDamageParticles, transform.position, Quaternion.identity);
+        }
     }
 
     private void ChangeColor()
