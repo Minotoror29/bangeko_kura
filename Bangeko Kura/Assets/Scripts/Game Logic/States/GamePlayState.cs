@@ -20,6 +20,13 @@ public class GamePlayState : GameState
                 particle.Play();
             }
         }
+        foreach (Effect effect in GameManager.GetAllEffects())
+        {
+            if (effect.gameObject.activeSelf)
+            {
+                effect.PlayEffect(true);
+            }
+        }
     }
 
     public override void Exit()
@@ -40,6 +47,13 @@ public class GamePlayState : GameState
             if (particle.gameObject.activeSelf)
             {
                 particle.Pause();
+            }
+        }
+        foreach (Effect effect in GameManager.GetAllEffects())
+        {
+            if (effect.gameObject.activeSelf)
+            {
+                effect.PlayEffect(false);
             }
         }
     }

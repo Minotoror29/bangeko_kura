@@ -115,6 +115,8 @@ public class EnemyLandState : EnemyState
                     }
                 }
 
+                Controller.InstantiateEffect(Controller.LandEffect, Controller.transform.position, Quaternion.identity);
+
                 List<Collider2D> results = new();
                 ContactFilter2D contactFilter = new() { useTriggers = true, layerMask = Controller.HealthSystemLayer };
                 Physics2D.OverlapCircle(Controller.transform.position, Controller.LandDamageRadius, contactFilter, results);

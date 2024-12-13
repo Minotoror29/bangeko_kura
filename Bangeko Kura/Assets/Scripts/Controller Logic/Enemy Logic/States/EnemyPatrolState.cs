@@ -6,10 +6,12 @@ public class EnemyPatrolState : EnemyState
 {
     private Vector2 _direction;
     private float _patrolTimer;
+    private ParticleSystem.EmissionModule _emission;
 
     public EnemyPatrolState(EnemyController controller) : base(controller)
     {
         Id = EnemyStateId.Patrol;
+        _emission = Controller.WalkParticles.emission;
     }
 
     public override void Enter()
@@ -21,21 +23,20 @@ public class EnemyPatrolState : EnemyState
         FindPatrolDirection();
 
         _patrolTimer = Controller.PatrolTime;
+
+        _emission.enabled = true;
     }
 
     public void FindPatrolDirection()
     {
         _direction = Random.insideUnitCircle;
-        //RaycastHit2D ray = Physics2D.Raycast(Controller.transform.position, _direction, _direction.magnitude, Controller.VoidLayer);
-        //if (ray.collider != null)
-        //{
-        //    FindPatrolDirection();
-        //}
     }
 
     public override void Exit()
     {
         base.Exit();
+
+        _emission.enabled = false;
     }
 
     public override void OnCollisionEnter(Collision2D collision)

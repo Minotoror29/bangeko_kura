@@ -23,7 +23,6 @@ public class SwordController : Weapon
 
     [SerializeField] private Effect swordEffectPrefab;
     [SerializeField] private Effect swordSmokePrefab;
-    [SerializeField] private Effect swordImpactParticles;
 
     private EventInstance _swordSound;
 
@@ -86,22 +85,20 @@ public class SwordController : Weapon
             targets.Add(ally);
         }
 
-        foreach (HealthSystem target in targets)
-        {
-            target.TakeDamage(damage, Controller.transform, _swordKnockback, DamageCause.Sword);
-            Effect newParticles = Instantiate(swordImpactParticles, target.transform.position, Quaternion.identity);
-            newParticles.Initialize();
-        }
-
-        _cooldownTimer = cooldown;
-
-        _swordSound.start();
-
         Effect newSwordEffect = Instantiate(swordEffectPrefab, Controller.transform.position, Quaternion.Euler(new Vector3(0f, 0f, -Controller.Mesh.transform.rotation.eulerAngles.y)));
         newSwordEffect.Initialize();
 
         Effect newSwordSmoke = Instantiate(swordSmokePrefab, Controller.transform.position, Quaternion.Euler(new Vector3(0f, 0f, -Controller.Mesh.transform.rotation.eulerAngles.y)));
         newSwordSmoke.Initialize();
+
+        foreach (HealthSystem target in targets)
+        {
+            target.TakeDamage(damage, Controller.transform, _swordKnockback, DamageCause.Sword);
+        }
+
+        _cooldownTimer = cooldown;
+
+        _swordSound.start();
     }
 
     private void RemoveTarget(HealthSystem target, Transform deathSource, DamageCause damageCause)

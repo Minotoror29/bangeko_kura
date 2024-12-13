@@ -7,12 +7,14 @@ public class EnemyFleeFromState : EnemyState
     private Transform _target;
 
     private float _fleeingTimer;
+    private ParticleSystem.EmissionModule _emission;
 
     public EnemyFleeFromState(EnemyController controller, Transform target, float fleeingTime) : base(controller)
     {
         Id = EnemyStateId.Fleeing;
         _target = target;
         _fleeingTimer = fleeingTime;
+        _emission = Controller.WalkParticles.emission;
     }
 
     public override void Enter()
@@ -20,11 +22,14 @@ public class EnemyFleeFromState : EnemyState
         base.Enter();
 
         Controller.MeshAnimator.CrossFade("Enemy Walk", 0f);
+        _emission.enabled = true;
     }
 
     public override void Exit()
     {
         base.Exit();
+
+        _emission.enabled = false;
     }
 
     public override void OnTriggerEnter(Collider2D collision)

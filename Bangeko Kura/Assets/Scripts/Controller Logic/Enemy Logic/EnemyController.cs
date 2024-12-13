@@ -24,6 +24,7 @@ public class EnemyController : Controller
     [SerializeField] private float patrolTime = 4f;
     [SerializeField] private float movementSpeed = 250f;
     [SerializeField] private LayerMask voidLayer;
+    [SerializeField] private ParticleSystem walkParticles;
 
     [SerializeField] private List<EnemyBehaviourData> behaviours;
     [SerializeField] private float fleeingZoneRadius = 10f;
@@ -32,7 +33,6 @@ public class EnemyController : Controller
 
     [Header("Effects")]
     [SerializeField] private Scrap scrapPrefab;
-    //[SerializeField] private List<GameObject> explosionEffects;
     [SerializeField] private Effect swordBuildupEffect;
 
     [Header("Land")]
@@ -43,6 +43,7 @@ public class EnemyController : Controller
     [SerializeField] private float landKnockbackSpeed;
     [SerializeField] private Effect shadowPrefab;
     [SerializeField] private GameObject startGround;
+    [SerializeField] private Effect landEffect;
     private Knockback _landKnockback;
     private LandMesh _landMesh;
 
@@ -72,12 +73,14 @@ public class EnemyController : Controller
     public float PatrolTime { get { return patrolTime; } }
     public float MovementSpeed { get { return movementSpeed; } }
     public LayerMask VoidLayer { get { return voidLayer; } }
+    public ParticleSystem WalkParticles { get { return walkParticles; } }
     public List<EnemyBehaviourData> Behaviours { get { return behaviours; } }
     public Effect SwordBuildupEffect { get { return swordBuildupEffect; } }
     public LandMesh LandMesh { get { return _landMesh; } }
     public int LandDamage { get { return landDamage; } }
     public float LandDamageRadius { get { return landDamageRadius; } }
     public Effect ShadowPrefab { get { return shadowPrefab; } }
+    public Effect LandEffect { get { return landEffect; } }
     public Knockback LandKnockback { get { return _landKnockback; } }
     public GameObject FallSprite { get { return _fallSprite; } }
     public bool DamagedByPlayer { get { return _damagedByPlayer; } set { _damagedByPlayer = value; } }
@@ -117,6 +120,9 @@ public class EnemyController : Controller
             _landMesh.gameObject.SetActive(false);
             ChangeState(new EnemyLandState(this, startGround));
         }
+
+        ParticleSystem.EmissionModule emission = walkParticles.emission;
+        emission.enabled = false;
     }
 
     public void ChangeState(EnemyState nextState)
