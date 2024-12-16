@@ -184,21 +184,18 @@ public class EnemyController : Controller
             case DamageCause.Turret:
                 newDeathMesh = Instantiate(deathExplosionPrefab, transform.position, Quaternion.identity);
                 newDeathMesh.transform.GetChild(0).GetChild(0).localRotation = Mesh.localRotation;
-                Destroy(newDeathMesh, 0.542f);
                 break;
             case DamageCause.Laser:
                 newDeathMesh = Instantiate(deathLaserPrefab, transform.position, Quaternion.identity);
                 Vector2 direction = _player.transform.position - transform.position;
                 Quaternion meshRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.y));
                 newDeathMesh.transform.GetChild(0).GetChild(0).localRotation = meshRotation;
-                Destroy(newDeathMesh, 0.292f);
                 break;
             case DamageCause.Sword:
                 if (deathSwordPrefab == null) break;
 
                 newDeathMesh = Instantiate(deathSwordPrefab, transform.position, Quaternion.identity);
                 newDeathMesh.transform.GetChild(0).GetChild(0).localRotation = Mesh.localRotation;
-                Destroy(newDeathMesh, 0.375f + deathMeshTime);
                 break;
         }
 

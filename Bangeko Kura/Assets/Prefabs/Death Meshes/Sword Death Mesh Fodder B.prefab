@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2300923892186047074}
+  - component: {fileID: 4839995652845384880}
   m_Layer: 0
   m_Name: Sword Death Mesh Fodder B
   m_TagString: Untagged
@@ -32,6 +33,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4839995652845384880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5407051139659638411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 015b4807f0781e54fb22d72737c4c1b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshRenderers:
+  - {fileID: 6086642526991799765}
+  startFadeTime: 1
+  fadeTime: 0.5
 --- !u!1 &8478172211087977437
 GameObject:
   m_ObjectHideFlags: 0
@@ -153,6 +170,12 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 92c4409aaf6e2c94f8acef454536fc9d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a590f2af9c283484ba268533f412cdba, type: 3}
+--- !u!137 &6086642526991799765 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4141254304914963084, guid: a590f2af9c283484ba268533f412cdba,
+    type: 3}
+  m_PrefabInstance: {fileID: 7854464633172832089}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7044122578758111752 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a590f2af9c283484ba268533f412cdba,
