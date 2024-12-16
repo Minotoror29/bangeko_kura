@@ -94,11 +94,23 @@ public class SwordController : Weapon
         foreach (HealthSystem target in targets)
         {
             target.TakeDamage(damage, Controller.transform, _swordKnockback, DamageCause.Sword);
+
+            if (target.CompareTag("Enemy") && Controller.CompareTag("Player"))
+            {
+                StartCoroutine(FreezeGame());
+            }
         }
 
         _cooldownTimer = cooldown;
 
         _swordSound.start();
+    }
+
+    private IEnumerator FreezeGame()
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        Controller.GameManager.ChangeState(new GamePauseState(Controller.GameManager, 0.15f));
     }
 
     private void RemoveTarget(HealthSystem target, Transform deathSource, DamageCause damageCause)
