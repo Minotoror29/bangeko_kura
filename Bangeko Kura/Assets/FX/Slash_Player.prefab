@@ -5139,7 +5139,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startColor:
       serializedVersion: 2
-      minMaxState: 2
+      minMaxState: 0
       minColor: {r: 0, g: 0, b: 0, a: 1}
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
@@ -5202,8 +5202,8 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     startSize:
       serializedVersion: 2
-      minMaxState: 3
-      scalar: 7
+      minMaxState: 0
+      scalar: 5
       minScalar: 0.5
       maxCurve:
         serializedVersion: 2
@@ -5255,7 +5255,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeY:
       serializedVersion: 2
-      minMaxState: 3
+      minMaxState: 0
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -5308,7 +5308,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeZ:
       serializedVersion: 2
-      minMaxState: 3
+      minMaxState: 0
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -5894,8 +5894,8 @@ ParticleSystem:
       time: 0
       countCurve:
         serializedVersion: 2
-        minMaxState: 3
-        scalar: 5
+        minMaxState: 0
+        scalar: 1
         minScalar: 1
         maxCurve:
           serializedVersion: 2
@@ -6348,9 +6348,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
   UVModule:
     serializedVersion: 2
-    enabled: 0
-    mode: 0
-    timeMode: 0
+    enabled: 1
+    mode: 1
+    timeMode: 1
     fps: 30
     frameOverTime:
       serializedVersion: 2
@@ -6407,8 +6407,8 @@ ParticleSystem:
         m_RotationOrder: 4
     startFrame:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 0
+      minMaxState: 3
+      scalar: 0.8
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -6467,7 +6467,11 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 0}
+    - sprite: {fileID: 1438106566, guid: 39c7105ace2aa5645a08defdf00c9306, type: 3}
+    - sprite: {fileID: 1501676100, guid: 39c7105ace2aa5645a08defdf00c9306, type: 3}
+    - sprite: {fileID: 947280932, guid: 39c7105ace2aa5645a08defdf00c9306, type: 3}
+    - sprite: {fileID: -1570769578, guid: 39c7105ace2aa5645a08defdf00c9306, type: 3}
+    - sprite: {fileID: -1188355657, guid: 39c7105ace2aa5645a08defdf00c9306, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
