@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [Serializable]
-public class MainMenuEvent
+public class TimedAction
 {
     [SerializeField] private float time;
     [SerializeField] private UnityEvent events;

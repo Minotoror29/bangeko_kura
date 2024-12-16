@@ -21,8 +21,6 @@ public class MeshFade : MonoBehaviour
         {
             _timer += Time.deltaTime;
 
-            Debug.Log(Mathf.Abs((_timer - startFadeTime) / fadeTime - 1));
-
             foreach (Renderer renderer in meshRenderers)
             {
                 renderer.material.SetFloat("_Fade", Mathf.Abs((_timer - startFadeTime) / fadeTime - 1));

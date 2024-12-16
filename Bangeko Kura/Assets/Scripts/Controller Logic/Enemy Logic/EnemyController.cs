@@ -56,7 +56,6 @@ public class EnemyController : Controller
     [SerializeField] private GameObject deathExplosionPrefab;
     [SerializeField] private GameObject deathLaserPrefab;
     [SerializeField] private GameObject deathSwordPrefab;
-    [SerializeField] private float deathMeshTime = 0.5f;
 
     [Space]
     [SerializeField] private bool spawnIdle = true;

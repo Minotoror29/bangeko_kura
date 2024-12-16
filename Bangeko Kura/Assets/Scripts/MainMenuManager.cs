@@ -5,19 +5,30 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
-    [SerializeField] private List<MainMenuEvent> menuEvents;
+    [SerializeField] private List<TimedAction> menuEvents;
+    [SerializeField] private ActionSequence onPlaySequence;
 
     private MenuControls _menuControls;
 
     private int _currentEvent = 0;
     private float _eventTimer = 0f;
 
+    private void OnEnable()
+    {
+        onPlaySequence.OnSequenceEnd += LoadFirstLevel;
+    }
+
+    private void OnDisable()
+    {
+        onPlaySequence.OnSequenceEnd -= LoadFirstLevel;
+    }
+
     private void Start()
     {
         _menuControls = new MenuControls();
         _menuControls.Menu.Enable();
         _menuControls.Menu.Skip.performed += ctx => SkipIntro();
-
+        
         PlayEvent(0);
     }
 
@@ -51,9 +62,16 @@ public class MainMenuManager : MonoBehaviour
                 }
             }
         }
+
+        onPlaySequence.UpdateLogic();
     }
 
     public void Play()
+    {
+        onPlaySequence.StartSequence();
+    }
+
+    private void LoadFirstLevel()
     {
         SceneManager.LoadScene(1);
     }
