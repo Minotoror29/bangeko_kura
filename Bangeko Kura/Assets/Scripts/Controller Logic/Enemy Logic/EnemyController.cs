@@ -170,10 +170,10 @@ public class EnemyController : Controller
     {
         base.TakeDamage(amount, damageCause);
 
-        if (damageCause == DamageCause.Sword)
-        {
-            GameManager.ChangeState(new GamePauseState(GameManager, 0.15f));
-        }
+        //if (damageCause == DamageCause.Sword)
+        //{
+        //    GameManager.ChangeState(new GamePauseState(GameManager, 0.15f));
+        //}
     }
 
     public void Die(HealthSystem healthSystem, Transform deathSource, DamageCause deathCause)
