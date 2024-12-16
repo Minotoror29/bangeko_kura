@@ -198,8 +198,6 @@ public abstract class PlayerController : Controller
 
     private void TakeHit(Transform damageSource, Knockback knockback)
     {
-        _damageSound.start();
-
         OnTakeDamage?.Invoke();
 
         if (!_currentState.CanBeKnockbacked()) return;
@@ -218,6 +216,8 @@ public abstract class PlayerController : Controller
 
         if (damageCause != DamageCause.Fall)
         {
+            _damageSound.start();
+
             InstantiateEffect(damageParticles, new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, 0f), Quaternion.identity);
             GameManager.NegativeVolume.gameObject.SetActive(true);
             GameManager.ChangeState(new GamePauseState(GameManager, 0.1f));
