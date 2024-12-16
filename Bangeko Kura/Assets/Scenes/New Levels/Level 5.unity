@@ -2480,7 +2480,7 @@ GameObject:
   - component: {fileID: 258460307}
   - component: {fileID: 258460308}
   m_Layer: 0
-  m_Name: Wave 5
+  m_Name: Wave 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2507,7 +2507,7 @@ Transform:
   - {fileID: 48744809}
   - {fileID: 1859765923}
   m_Father: {fileID: 953439174}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &258460308
 MonoBehaviour:
@@ -4995,8 +4995,8 @@ MonoBehaviour:
   - {fileID: 583662301}
   - {fileID: 321312050}
   - {fileID: 1776357672}
-  - {fileID: 1317604839}
   - {fileID: 258460308}
+  - {fileID: 1317604839}
   waveDelay: 1
   switchPlatforms:
   - {fileID: 1615010817}
@@ -7341,8 +7341,8 @@ Transform:
   - {fileID: 583662300}
   - {fileID: 321312049}
   - {fileID: 1776357671}
-  - {fileID: 1317604838}
   - {fileID: 258460307}
+  - {fileID: 1317604838}
   m_Father: {fileID: 637564266}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9161,7 +9161,7 @@ GameObject:
   - component: {fileID: 1317604838}
   - component: {fileID: 1317604839}
   m_Layer: 0
-  m_Name: Wave 4
+  m_Name: Wave 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9190,7 +9190,7 @@ Transform:
   - {fileID: 676555392}
   - {fileID: 349611326}
   m_Father: {fileID: 953439174}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1317604839
 MonoBehaviour:
