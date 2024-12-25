@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class ArenaManager : ScreenManager
 {
@@ -17,6 +18,10 @@ public class ArenaManager : ScreenManager
 
     [Space]
     [SerializeField] private List<SwitchPlatform> switchPlatforms;
+
+    [Space]
+    [SerializeField] private bool definiteSpawnPoints = false;
+    [SerializeField] private List<SpawnPoint> spawnPoints;
 
     private ScreenControls _controls;
     private Transform _spawnCursor;
@@ -59,10 +64,19 @@ public class ArenaManager : ScreenManager
             base.DetermineSpawnPoint();
         } else
         {
-            CurrentState = ScreenState.Spawn;
-            _controls.Spawn.Enable();
-            _spawnCursor = Instantiate(spawnCursorPrefab, DefaultSpawnPoint.position, Quaternion.identity);
-            Cursor.visible = false;
+            if (!definiteSpawnPoints)
+            {
+                CurrentState = ScreenState.Spawn;
+                _controls.Spawn.Enable();
+                _spawnCursor = Instantiate(spawnCursorPrefab, DefaultSpawnPoint.position, Quaternion.identity);
+                Cursor.visible = false;
+            } else
+            {
+                Vector2 spawnPosition = spawnPoints[waves.IndexOf(_currentWave)].SpawnPosition.position;
+                GameObject spawnGround = spawnPoints[waves.IndexOf(_currentWave)].Ground;
+
+                Player.ChangeState(new PlayerLandState(Player, spawnPosition, spawnGround));
+            }
         }
     }
 
