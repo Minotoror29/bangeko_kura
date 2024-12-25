@@ -467,6 +467,9 @@ MonoBehaviour:
   blackBackground: {fileID: 555006448}
   blackScreen: {fileID: 479794303}
   negativeVolume: {fileID: 1508830231}
+  OnStart:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &118596939
 Transform:
   m_ObjectHideFlags: 0
@@ -540,7 +543,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Peter Barn
+  m_text: 'Pierre Scheuer
 
 
     Music -
@@ -1061,7 +1064,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Peter Barn
+  m_text: 'Pierre Scheuer
 
 
     Music -
@@ -2478,7 +2481,7 @@ GameObject:
   - component: {fileID: 689476943}
   - component: {fileID: 689476942}
   m_Layer: 0
-  m_Name: Peter Barn
+  m_Name: Pierre Scheuer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2657,7 +2660,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Peter Barn
+  m_text: 'Pierre Scheuer
 
 
     Music -
