@@ -19,9 +19,9 @@ public class CutsceneManager : MonoBehaviour
     private float _frameTimer;
     private int _currentFrameindex;
 
-    [SerializeField] private int soundIndex;
-    [SerializeField] private string soundPath;
-    private EventInstance _sound;
+    //[SerializeField] private int soundIndex;
+    //[SerializeField] private string soundPath;
+    //private EventInstance _sound;
 
     [SerializeField] private bool stayLastFrame = false;
 
@@ -53,9 +53,14 @@ public class CutsceneManager : MonoBehaviour
     {
         _frameTimer = 0f;
 
-        if (soundPath != "")
+        //if (soundPath != "")
+        //{
+        //    _sound = RuntimeManager.CreateInstance(soundPath);
+        //}
+
+        foreach (CutsceneFrame frame in frames)
         {
-            _sound = RuntimeManager.CreateInstance(soundPath);
+            frame.Initialize();
         }
     }
 
@@ -86,10 +91,10 @@ public class CutsceneManager : MonoBehaviour
             {
                 frames[_currentFrameindex].gameObject.SetActive(true);
 
-                if (soundIndex == 0)
-                {
-                    _sound.start();
-                }
+                //if (soundIndex == 0)
+                //{
+                //    _sound.start();
+                //}
 
                 _frameTimer = frames[0].FrameTime;
             } else
@@ -110,10 +115,10 @@ public class CutsceneManager : MonoBehaviour
         {
             frames[_currentFrameindex].StartShake();
         }
-        if (soundIndex == _currentFrameindex && soundPath != "")
-        {
-            _sound.start();
-        }
+        //if (soundIndex == _currentFrameindex && soundPath != "")
+        //{
+        //    _sound.start();
+        //}
     }
 
     public void UpdateLogic()
@@ -133,10 +138,10 @@ public class CutsceneManager : MonoBehaviour
 
                     frames[0].gameObject.SetActive(true);
 
-                    if (soundIndex == 0)
-                    {
-                        _sound.start();
-                    }
+                    //if (soundIndex == 0)
+                    //{
+                    //    _sound.start();
+                    //}
 
                     _frameTimer = frames[0].FrameTime;
                 }

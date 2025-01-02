@@ -14,6 +14,8 @@ public abstract class PlayerController : Controller
     [Header("Movement")]
     [SerializeField] private float movementSpeed = 325f;
     [SerializeField] private ParticleSystem movementParticles;
+    [SerializeField] private string movementSoundPath = "";
+    private EventInstance _movementSound;
 
     [Header("Laser")]
     [SerializeField] private Transform laserFirePoint;
@@ -67,6 +69,7 @@ public abstract class PlayerController : Controller
     private EventInstance _damageSound;
     private EventInstance _landingSound;
     private EventInstance _fallingSound;
+    private EventInstance _deathSound;
     private bool _reloadSoundTriggered = false;
 
     public event Action OnTakeDamage;
@@ -90,6 +93,8 @@ public abstract class PlayerController : Controller
     public float LandEffectTime { get { return landEffectTime; } }
     public EventInstance LandingSound { get { return _landingSound; } }
     public EventInstance FallingSound { get { return _fallingSound; } }
+    public string MovementSoundPath { get { return movementSoundPath; } }
+    public EventInstance MovementSound { get { return _movementSound; } }
 
     public override void Initialize(GameManager gameManager)
     {
@@ -125,6 +130,11 @@ public abstract class PlayerController : Controller
         _damageSound = RuntimeManager.CreateInstance("event:/Weapons/Player Hit");
         _landingSound = RuntimeManager.CreateInstance("event:/Movement/Landing");
         _fallingSound = RuntimeManager.CreateInstance("event:/Movement/Fall");
+        _deathSound = RuntimeManager.CreateInstance("event:/Music/MortSFX");
+        if (movementSoundPath != "")
+        {
+            _movementSound = RuntimeManager.CreateInstance(movementSoundPath);
+        }
     }
 
     private void OnDisable()
@@ -228,6 +238,7 @@ public abstract class PlayerController : Controller
     {
         MusicManager.Instance.PlayMusicLayer(MusicLayer.LowLife, false);
         MusicManager.Instance.PlayMusicLayer(MusicLayer.Battle, false);
+        _deathSound.start();
 
         ChangeState(new PlayerDeathState(this, false));
     }
@@ -236,6 +247,7 @@ public abstract class PlayerController : Controller
     {
         MusicManager.Instance.PlayMusicLayer(MusicLayer.LowLife, false);
         MusicManager.Instance.PlayMusicLayer(MusicLayer.Battle, false);
+        _deathSound.start();
 
         ChangeState(new PlayerDeathState(this, true));
     }

@@ -1,3 +1,5 @@
+using FMOD.Studio;
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +14,15 @@ public class CustomButton : MonoBehaviour, IPointerEnterHandler
 
     private float _currentUnderlineWidth = 0f;
 
+    private EventInstance _selectSound;
+    private EventInstance _clickSound;
+
+    private void Start()
+    {
+        _selectSound = RuntimeManager.CreateInstance("event:/UI/SelectUI");
+        _clickSound = RuntimeManager.CreateInstance("event:/UI/Click UI");
+    }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         Select();
@@ -19,7 +30,13 @@ public class CustomButton : MonoBehaviour, IPointerEnterHandler
 
     public void Select()
     {
+        _selectSound.start();
         EventSystem.current.SetSelectedGameObject(gameObject);
+    }
+
+    public void PlayClickSound()
+    {
+        _clickSound.start();
     }
 
     private void Update()

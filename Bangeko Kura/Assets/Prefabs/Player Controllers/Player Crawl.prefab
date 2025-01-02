@@ -5248,6 +5248,7 @@ MonoBehaviour:
     type: 3}
   movementSpeed: 100
   movementParticles: {fileID: 4380908395495212306}
+  movementSoundPath: 
   laserFirePoint: {fileID: 5997316095907754612}
   laserMaxDistance: 50
   laserWidth: 0.25

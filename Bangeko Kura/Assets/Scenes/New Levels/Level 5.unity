@@ -752,6 +752,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frameTime: 0.5
   shake: 0
+  soundPaths: []
 --- !u!1 &60807610
 GameObject:
   m_ObjectHideFlags: 0
@@ -1466,6 +1467,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frameTime: 1
   shake: 0
+  soundPaths:
+  - event:/UI/Changement Page Cinematiques
 --- !u!4 &126688934 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4008852262506105973, guid: 4605dcf73ed493644b07a8e533f712bc,
@@ -1883,6 +1886,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frameTime: 1
   shake: 0
+  soundPaths:
+  - event:/UI/Changement Page Cinematiques
 --- !u!4 &209152329 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2480372348846178565, guid: 58899c06d6bbee84aa61e1df449aaf12,
@@ -1980,6 +1985,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frameTime: 1
   shake: 0
+  soundPaths:
+  - event:/UI/Changement Page Cinematiques
 --- !u!1 &215714267
 GameObject:
   m_ObjectHideFlags: 0
@@ -2240,6 +2247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frameTime: 0.5
   shake: 0
+  soundPaths: []
 --- !u!1001 &233243628
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3273,6 +3281,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frameTime: 2
   shake: 0
+  soundPaths:
+  - event:/UI/Changement Page Cinematiques
 --- !u!1001 &353450010
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4758,6 +4768,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frameTime: 2
   shake: 0
+  soundPaths:
+  - event:/UI/Changement Page Cinematiques
 --- !u!1 &598609367
 GameObject:
   m_ObjectHideFlags: 0
@@ -4850,6 +4862,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frameTime: 1
   shake: 0
+  soundPaths: []
 --- !u!114 &602448215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5001,6 +5014,8 @@ MonoBehaviour:
   waveDelay: 1
   switchPlatforms:
   - {fileID: 1615010817}
+  definiteSpawnPoints: 0
+  spawnPoints: []
   OnStartArena:
     m_PersistentCalls:
       m_Calls: []
@@ -5495,6 +5510,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frameTime: 2
   shake: 0
+  soundPaths: []
 --- !u!114 &716066286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5624,6 +5640,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frameTime: 1
   shake: 0
+  soundPaths: []
 --- !u!4 &720346190 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1114052894230267602, guid: 2e962c991e9f24847a48adc07b7827a5,
@@ -5721,6 +5738,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frameTime: 0.5
   shake: 0
+  soundPaths: []
 --- !u!4 &737473629 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1114052894230267602, guid: 2e962c991e9f24847a48adc07b7827a5,
@@ -6679,10 +6697,7 @@ MonoBehaviour:
   - {fileID: 717636436}
   - {fileID: 1518240779}
   - {fileID: 602448214}
-  - {fileID: 602448214}
   - {fileID: 716066285}
-  soundIndex: 0
-  soundPath: 
   stayLastFrame: 1
   OnCutsceneStart:
     m_PersistentCalls:
@@ -6882,6 +6897,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frameTime: 2
   shake: 0
+  soundPaths: []
 --- !u!1001 &888742322
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7598,6 +7614,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frameTime: 2
   shake: 0
+  soundPaths:
+  - event:/UI/Changement Page Cinematiques
 --- !u!1 &984701405
 GameObject:
   m_ObjectHideFlags: 0
@@ -9092,6 +9110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frameTime: 1
   shake: 0
+  soundPaths: []
 --- !u!1 &1308367343
 GameObject:
   m_ObjectHideFlags: 0
@@ -9754,6 +9773,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frameTime: 2
   shake: 0
+  soundPaths:
+  - event:/UI/Changement Page Cinematiques
 --- !u!1 &1394534773
 GameObject:
   m_ObjectHideFlags: 0
@@ -11027,6 +11048,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frameTime: 1
   shake: 0
+  soundPaths: []
 --- !u!1 &1537835741
 GameObject:
   m_ObjectHideFlags: 0
@@ -11308,6 +11330,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frameTime: 2
   shake: 0
+  soundPaths: []
 --- !u!1 &1593201539
 GameObject:
   m_ObjectHideFlags: 0
@@ -12235,6 +12258,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frameTime: 1
   shake: 0
+  soundPaths:
+  - event:/UI/Changement Page Cinematiques
 --- !u!1 &1693692279
 GameObject:
   m_ObjectHideFlags: 0
@@ -12473,6 +12498,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frameTime: 0.5
   shake: 0
+  soundPaths: []
 --- !u!1 &1732469404
 GameObject:
   m_ObjectHideFlags: 0
@@ -12965,6 +12991,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frameTime: 0.5
   shake: 0
+  soundPaths: []
 --- !u!1001 &1795171150
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14000,6 +14027,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frameTime: 0.5
   shake: 0
+  soundPaths: []
 --- !u!1 &1905953824
 GameObject:
   m_ObjectHideFlags: 0
@@ -14091,6 +14119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frameTime: 0.5
   shake: 0
+  soundPaths: []
 --- !u!1 &1912486058
 GameObject:
   m_ObjectHideFlags: 0
@@ -14846,6 +14875,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frameTime: 2
   shake: 0
+  soundPaths:
+  - event:/UI/Changement Page Cinematiques
 --- !u!1001 &2074762849
 PrefabInstance:
   m_ObjectHideFlags: 0

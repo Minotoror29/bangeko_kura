@@ -20,11 +20,21 @@ public class PlayerWalkState : PlayerState
         _currentDirection = Direction.Forward;
         Animator.CrossFade("Player Walk Forward", 0.1f);
         _emission.enabled = true;
+
+        if (Controller.MovementSoundPath != "")
+        {
+            Controller.MovementSound.start();
+        }
     }
 
     public override void Exit()
     {
         _emission.enabled = false;
+
+        if (Controller.MovementSoundPath != "")
+        {
+            Controller.MovementSound.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        }
     }
 
     public override void OnCollisionEnter(Collision2D collision)

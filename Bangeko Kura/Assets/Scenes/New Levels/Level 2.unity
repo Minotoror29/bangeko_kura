@@ -272,6 +272,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frameTime: 2
   shake: 0
+  soundPaths:
+  - event:/UI/Changement Page Cinematiques
 --- !u!1 &6107638
 GameObject:
   m_ObjectHideFlags: 0
@@ -563,6 +565,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frameTime: 2
   shake: 0
+  soundPaths:
+  - event:/UI/Changement Page Cinematiques
 --- !u!1001 &47155460
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1880,6 +1884,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frameTime: 0.2
   shake: 0
+  soundPaths: []
 --- !u!1 &221608267
 GameObject:
   m_ObjectHideFlags: 0
@@ -1971,6 +1976,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frameTime: 0.2
   shake: 0
+  soundPaths: []
 --- !u!1 &224382601
 GameObject:
   m_ObjectHideFlags: 0
@@ -2481,6 +2487,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frameTime: 2
   shake: 0
+  soundPaths: []
 --- !u!1 &262599144
 GameObject:
   m_ObjectHideFlags: 0
@@ -8295,6 +8302,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frameTime: 1
   shake: 0
+  soundPaths: []
 --- !u!1 &425484019
 GameObject:
   m_ObjectHideFlags: 0
@@ -8945,8 +8953,6 @@ MonoBehaviour:
   - {fileID: 624449076}
   - {fileID: 424413813}
   - {fileID: 1085262148}
-  soundIndex: 0
-  soundPath: 
   stayLastFrame: 0
   OnCutsceneStart:
     m_PersistentCalls:
@@ -9656,6 +9662,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frameTime: 0.2
   shake: 0
+  soundPaths: []
 --- !u!1 &636966386
 GameObject:
   m_ObjectHideFlags: 0
@@ -12091,6 +12098,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frameTime: 2
   shake: 0
+  soundPaths:
+  - event:/Cutscenes/Arm
 --- !u!1 &990390307
 GameObject:
   m_ObjectHideFlags: 0
@@ -12723,6 +12732,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frameTime: 3
   shake: 1
+  soundPaths:
+  - "event:/Cutscenes/Perte capacite\u0301"
 --- !u!114 &1085262149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13630,6 +13641,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frameTime: 0.2
   shake: 0
+  soundPaths: []
 --- !u!4 &1249753174 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1114052894230267602, guid: 2e962c991e9f24847a48adc07b7827a5,
@@ -16654,6 +16666,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frameTime: 0.2
   shake: 0
+  soundPaths: []
 --- !u!1 &1738745268
 GameObject:
   m_ObjectHideFlags: 0
@@ -16899,6 +16912,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frameTime: 0.2
   shake: 0
+  soundPaths: []
 --- !u!4 &1794207881 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1114052894230267602, guid: 2e962c991e9f24847a48adc07b7827a5,
@@ -17938,6 +17952,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frameTime: 0.2
   shake: 0
+  soundPaths: []
 --- !u!1 &1977358268
 GameObject:
   m_ObjectHideFlags: 0
@@ -18723,8 +18738,6 @@ MonoBehaviour:
   - {fileID: 46315344}
   - {fileID: 983143726}
   - {fileID: 4194386}
-  soundIndex: 2
-  soundPath: event:/Cutscenes/Arm
   stayLastFrame: 0
   OnCutsceneStart:
     m_PersistentCalls:

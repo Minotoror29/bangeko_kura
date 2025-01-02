@@ -10,6 +10,8 @@ public class Follow : MonoBehaviour
 
     private void Update()
     {
+        if (_followTarget == null) Destroy(gameObject);
+
         transform.position = new Vector2(_followTarget.position.x, _followTarget.position.y);
     }
 }

@@ -1,3 +1,5 @@
+using FMOD.Studio;
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +9,7 @@ public class CutsceneFrame : MonoBehaviour
 {
     [SerializeField] private float frameTime = 2f;
     [SerializeField] private bool shake = false;
+    [SerializeField] private List<string> soundPaths;
 
     private float _shakeAmount = 10f;
     private float _shakeTime = 0f;
@@ -14,8 +17,28 @@ public class CutsceneFrame : MonoBehaviour
 
     private float _fadeTimer = 0f;
 
+    private List<EventInstance> _sounds;
+
     public float FrameTime { get { return frameTime; } }
     public bool Shake { get { return shake; } }
+
+    public void Initialize()
+    {
+        _sounds = new();
+        foreach (string soundPath in soundPaths)
+        {
+            EventInstance sound = RuntimeManager.CreateInstance(soundPath);
+            _sounds.Add(sound);
+        }
+    }
+
+    private void Start()
+    {
+        foreach (EventInstance sound in _sounds)
+        {
+            sound.start();
+        }
+    }
 
     public void StartShake()
     {

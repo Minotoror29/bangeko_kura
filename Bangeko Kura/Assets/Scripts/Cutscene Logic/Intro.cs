@@ -1,3 +1,5 @@
+using FMOD.Studio;
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,11 +9,17 @@ public class Intro : MonoBehaviour
 {
     [SerializeField] private Canvas blackCanvas;
 
+    private float _soundTimer = 11f;
     private float _timer = 16f;
+
+    private EventInstance _doorSound;
 
     private void Start()
     {
         Cursor.visible = false;
+
+        _doorSound = RuntimeManager.CreateInstance("event:/Cutscenes/OuverturePorteIntro");
+        _doorSound.start();
     }
 
     private void Update()
@@ -24,6 +32,16 @@ public class Intro : MonoBehaviour
             blackCanvas.gameObject.SetActive(true);
             Cursor.visible = true;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+
+        if (_soundTimer > 0f)
+        {
+            _soundTimer -= Time.deltaTime;
+
+            if (_soundTimer <= 0f)
+            {
+                _doorSound.start();
+            }
         }
     }
 }
