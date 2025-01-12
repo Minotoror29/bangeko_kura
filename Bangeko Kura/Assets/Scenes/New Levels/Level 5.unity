@@ -11048,7 +11048,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frameTime: 1
   shake: 0
-  soundPaths: []
+  soundPaths:
+  - event:/Cutscenes/Outro Door
 --- !u!1 &1537835741
 GameObject:
   m_ObjectHideFlags: 0

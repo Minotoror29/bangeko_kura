@@ -472,7 +472,7 @@ MonoBehaviour:
   Path: Assets/Sound/1bit_jam/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638722955012549701
+  lastModified: 638722958251125774
   FileSizes:
   - Name: Desktop
     Value: 5636512
@@ -693,6 +693,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-937443544681152068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Cutscenes/Outro Door
+  m_EditorClassIdentifier: 
+  Path: event:/Cutscenes/Outro Door
+  Guid:
+    Data1: -1165801937
+    Data2: 1237846471
+    Data3: 1544618149
+    Data4: -590261491
+  Banks:
+  - {fileID: 1589832365939916333}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 7921
 --- !u!114 &-60674337218942141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -779,12 +806,13 @@ MonoBehaviour:
   - {fileID: 7381958053488248237}
   - {fileID: -3776738784010053983}
   - {fileID: -6250588631417674007}
+  - {fileID: -937443544681152068}
   EditorParameters: []
   MasterBanks:
   - {fileID: 780826937757828281}
   StringsBanks:
   - {fileID: 905448090654457532}
-  cacheTime: 638722955013091022
+  cacheTime: 638722958251913690
   cacheVersion: 131609
 --- !u!114 &780826937757828281
 MonoBehaviour:
@@ -801,7 +829,7 @@ MonoBehaviour:
   Path: Assets/Sound/1bit_jam/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638722955012047388
+  lastModified: 638722958250387367
   FileSizes:
   - Name: Desktop
     Value: 507140
@@ -821,10 +849,10 @@ MonoBehaviour:
   Path: Assets/Sound/1bit_jam/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638722955012067406
+  lastModified: 638722958250402373
   FileSizes:
   - Name: Desktop
-    Value: 2992
+    Value: 3044
   Exists: 1
 --- !u!114 &933272810296468547
 MonoBehaviour:
@@ -895,10 +923,10 @@ MonoBehaviour:
   Path: Assets/Sound/1bit_jam/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638722955013091022
+  lastModified: 638722958251913690
   FileSizes:
   - Name: Desktop
-    Value: 1154176
+    Value: 1155424
   Exists: 1
 --- !u!114 &2185684127286894087
 MonoBehaviour:
