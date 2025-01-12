@@ -13,6 +13,10 @@ public class GamePlayState : GameState
         GameManager.Player.MeshAnimator.speed = 1;
         GameManager.Player.HealthSystem.GetComponent<CapsuleCollider2D>().enabled = true;
         GameManager.CurrentScreen.PauseScreen(false);
+        if (GameManager.Player.MovementSoundPath != "")
+        {
+            GameManager.Player.MovementSound.setVolume(1f);
+        }
         foreach (ParticleSystem particle in GameManager.GetAllParticles())
         {
             if (particle.gameObject.activeSelf)
@@ -36,6 +40,10 @@ public class GamePlayState : GameState
         GameManager.Player.PlayParticles(false);
         GameManager.CurrentScreen.PauseScreen(true);
         GameManager.Player.HealthSystem.GetComponent<CapsuleCollider2D>().enabled = false;
+        if (GameManager.Player.MovementSoundPath != "")
+        {
+            GameManager.Player.MovementSound.setVolume(0f);
+        }
 
         foreach (BulletController bullet in GameManager.Bullets)
         {
