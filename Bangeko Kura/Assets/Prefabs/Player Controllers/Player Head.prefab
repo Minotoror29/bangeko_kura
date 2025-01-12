@@ -313,8 +313,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8192
   mesh: {fileID: 6181342927311374529}
-  meshRenderers:
-  - {fileID: 5927357067102471502}
+  meshRenderers: []
+  replacementMeshRenderers:
+  - {fileID: 5009030248203514798}
   changeColorTime: 0.1
   damageColor: {r: 0.81960785, g: 0.1882353, b: 0.1882353, a: 1}
   baseColor: {r: 0, g: 0, b: 0, a: 1}
@@ -681,9 +682,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: -7511558181221131132, guid: 177ea8a656aa12049b3b3e4f9add8b7a, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 177ea8a656aa12049b3b3e4f9add8b7a, type: 3}
+--- !u!23 &5009030248203514798 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 177ea8a656aa12049b3b3e4f9add8b7a,
+    type: 3}
+  m_PrefabInstance: {fileID: 5927357067076169514}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6181342927311374529 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 177ea8a656aa12049b3b3e4f9add8b7a,
@@ -696,59 +702,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5927357067076169514}
   m_PrefabAsset: {fileID: 0}
---- !u!137 &5927357067102471502
-SkinnedMeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6810386056013468283}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 3
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 92c4409aaf6e2c94f8acef454536fc9d, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  serializedVersion: 2
-  m_Quality: 0
-  m_UpdateWhenOffscreen: 0
-  m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 1433033915591635768, guid: 177ea8a656aa12049b3b3e4f9add8b7a, type: 3}
-  m_Bones: []
-  m_BlendShapeWeights: []
-  m_RootBone: {fileID: 0}
-  m_AABB:
-    m_Center: {x: 0.00005716365, y: -0.0014549093, z: -0.000999403}
-    m_Extent: {x: 0.008359279, y: 0.009775206, z: 0.008637399}
-  m_DirtyAABB: 0
 --- !u!95 &5927357067102471503
 Animator:
   serializedVersion: 5

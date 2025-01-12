@@ -13,6 +13,7 @@ public abstract class Controller : MonoBehaviour
     [SerializeField] private LayerMask healthSystemLayer;
     [SerializeField] private Transform mesh;
     [SerializeField] private List<SkinnedMeshRenderer> meshRenderers;
+    [SerializeField] private List<MeshRenderer> replacementMeshRenderers;
 
     [SerializeField] private float changeColorTime = 0.1f;
     [SerializeField] private Color damageColor;
@@ -63,9 +64,18 @@ public abstract class Controller : MonoBehaviour
         }
         else
         {
-            foreach (SkinnedMeshRenderer renderer in MeshRenderers)
+            if (meshRenderers.Count > 0)
             {
-                renderer.material.SetColor("_Dark_Color", baseColor);
+                foreach (SkinnedMeshRenderer renderer in meshRenderers)
+                {
+                    renderer.material.SetColor("_Dark_Color", baseColor);
+                }
+            } else
+            {
+                foreach (MeshRenderer renderer in replacementMeshRenderers)
+                {
+                    renderer.material.SetColor("_Dark_Color", baseColor);
+                }
             }
         }
     }
@@ -95,9 +105,18 @@ public abstract class Controller : MonoBehaviour
 
     private void ChangeColor()
     {
-        foreach (SkinnedMeshRenderer renderer in meshRenderers)
+        if (meshRenderers.Count > 0)
         {
-            renderer.material.SetColor("_Dark_Color", damageColor);
+            foreach (SkinnedMeshRenderer renderer in meshRenderers)
+            {
+                renderer.material.SetColor("_Dark_Color", damageColor);
+            }
+        } else
+        {
+            foreach (MeshRenderer renderer in replacementMeshRenderers)
+            {
+                renderer.material.SetColor("_Dark_Color", damageColor);
+            }
         }
 
         _changeColorTimer = changeColorTime;
