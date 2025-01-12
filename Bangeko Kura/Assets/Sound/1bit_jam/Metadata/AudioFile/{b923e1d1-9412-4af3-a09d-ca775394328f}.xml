@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{b923e1d1-9412-4af3-a09d-ca775394328f}">
+		<property name="assetPath">
+			<value>RampementSFX3 [2025-01-06 201522].wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.57445833333333329</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{d9f36d8b-17e2-4d18-a73b-11da721f2eff}</destination>
+		</relationship>
+	</object>
+</objects>

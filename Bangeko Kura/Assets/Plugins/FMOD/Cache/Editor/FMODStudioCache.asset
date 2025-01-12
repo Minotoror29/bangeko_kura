@@ -445,7 +445,7 @@ MonoBehaviour:
   Path: Assets/Sound/1bit_jam/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638714482939690030
+  lastModified: 638722881005645040
   FileSizes:
   - Name: Desktop
     Value: 5636512
@@ -727,7 +727,7 @@ MonoBehaviour:
   - {fileID: 780826937757828281}
   StringsBanks:
   - {fileID: 905448090654457532}
-  cacheTime: 638714482940304210
+  cacheTime: 638722881006178669
   cacheVersion: 131609
 --- !u!114 &780826937757828281
 MonoBehaviour:
@@ -744,7 +744,7 @@ MonoBehaviour:
   Path: Assets/Sound/1bit_jam/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638714482939089623
+  lastModified: 638722881005156764
   FileSizes:
   - Name: Desktop
     Value: 507140
@@ -764,7 +764,7 @@ MonoBehaviour:
   Path: Assets/Sound/1bit_jam/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638714482939104638
+  lastModified: 638722881005176784
   FileSizes:
   - Name: Desktop
     Value: 2862
@@ -838,10 +838,10 @@ MonoBehaviour:
   Path: Assets/Sound/1bit_jam/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638714482940304210
+  lastModified: 638722881006178669
   FileSizes:
   - Name: Desktop
-    Value: 1041568
+    Value: 1028864
   Exists: 1
 --- !u!114 &2185684127286894087
 MonoBehaviour:
@@ -1132,11 +1132,11 @@ MonoBehaviour:
   - {fileID: 1589832365939916333}
   IsStream: 0
   Is3D: 0
-  IsOneShot: 0
+  IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 1227
+  Length: 574
 --- !u!114 &6968109079627154856
 MonoBehaviour:
   m_ObjectHideFlags: 0
