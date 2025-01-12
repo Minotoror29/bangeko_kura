@@ -1,3 +1,5 @@
+using FMOD.Studio;
+using FMODUnity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,6 +14,10 @@ public class EnemiesManager : MonoBehaviour
     private List<EnemyController> _enemies;
 
     private PlayerController _player;
+
+    private bool _isArena = false;
+
+    private EventInstance _landingSound;
 
     public event Action OnAllEnemiesDead;
 
@@ -46,6 +52,12 @@ public class EnemiesManager : MonoBehaviour
             _enemies.Add(enemy);
             enemy.Initialize(this, _player, gameManager);
             enemy.gameObject.SetActive(isArena);
+        }
+
+        if (isArena)
+        {
+            _landingSound = RuntimeManager.CreateInstance("event:/Movement/Enemy Landing");
+            _landingSound.start();
         }
 
         screenManager.OnPlayerDeath += PlayerDied;

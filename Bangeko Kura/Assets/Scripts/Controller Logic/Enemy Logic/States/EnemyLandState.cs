@@ -28,6 +28,10 @@ public class EnemyLandState : EnemyState
         Controller.Mesh.gameObject.SetActive(false);
         Controller.SetCollidersActive(false);
         _shadow = Controller.InstantiateEffect(Controller.ShadowPrefab, Controller.transform.position, Quaternion.identity);
+        if (Controller.PlayLandingSound)
+        {
+            Controller.LandingSound.start();
+        }
     }
 
     public override void Exit()

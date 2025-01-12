@@ -445,7 +445,7 @@ MonoBehaviour:
   Path: Assets/Sound/1bit_jam/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638722906539322705
+  lastModified: 638722919161760805
   FileSizes:
   - Name: Desktop
     Value: 5636512
@@ -722,12 +722,13 @@ MonoBehaviour:
   - {fileID: 4920069086448694146}
   - {fileID: -3590161245117996962}
   - {fileID: 6222117043376203239}
+  - {fileID: 7381958053488248237}
   EditorParameters: []
   MasterBanks:
   - {fileID: 780826937757828281}
   StringsBanks:
   - {fileID: 905448090654457532}
-  cacheTime: 638722906539844011
+  cacheTime: 638722919162302018
   cacheVersion: 131609
 --- !u!114 &780826937757828281
 MonoBehaviour:
@@ -744,7 +745,7 @@ MonoBehaviour:
   Path: Assets/Sound/1bit_jam/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638722906538818364
+  lastModified: 638722919161347229
   FileSizes:
   - Name: Desktop
     Value: 507140
@@ -764,10 +765,10 @@ MonoBehaviour:
   Path: Assets/Sound/1bit_jam/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638722906538837049
+  lastModified: 638722919161367253
   FileSizes:
   - Name: Desktop
-    Value: 2862
+    Value: 2906
   Exists: 1
 --- !u!114 &933272810296468547
 MonoBehaviour:
@@ -838,10 +839,10 @@ MonoBehaviour:
   Path: Assets/Sound/1bit_jam/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638722906539844011
+  lastModified: 638722919162302018
   FileSizes:
   - Name: Desktop
-    Value: 1029280
+    Value: 1057664
   Exists: 1
 --- !u!114 &2185684127286894087
 MonoBehaviour:
@@ -1188,6 +1189,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 9250
+--- !u!114 &7381958053488248237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Movement/Enemy Landing
+  m_EditorClassIdentifier: 
+  Path: event:/Movement/Enemy Landing
+  Guid:
+    Data1: 482998244
+    Data2: 1191737704
+    Data3: -324133992
+    Data4: -326218788
+  Banks:
+  - {fileID: 1589832365939916333}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2539
 --- !u!114 &7691041837514805795
 MonoBehaviour:
   m_ObjectHideFlags: 0

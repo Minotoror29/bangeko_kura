@@ -44,6 +44,7 @@ public class EnemyController : Controller
     [SerializeField] private Effect shadowPrefab;
     [SerializeField] private GameObject startGround;
     [SerializeField] private Effect landEffect;
+    [SerializeField] private bool playLandingSound = false;
     private Knockback _landKnockback;
     private LandMesh _landMesh;
 
@@ -65,6 +66,7 @@ public class EnemyController : Controller
 
     private EventInstance _deathSound;
     private EventInstance _damageSound;
+    private EventInstance _landingSound;
 
     public EnemiesManager EnemiesManager { get { return _enemiesManager; } }
     public PlayerController Player { get { return _player; } }
@@ -83,6 +85,8 @@ public class EnemyController : Controller
     public Knockback LandKnockback { get { return _landKnockback; } }
     public GameObject FallSprite { get { return _fallSprite; } }
     public bool DamagedByPlayer { get { return _damagedByPlayer; } set { _damagedByPlayer = value; } }
+    public EventInstance LandingSound { get { return _landingSound; } }
+    public bool PlayLandingSound { get { return playLandingSound; } }
 
     public event Action<Transform> OnAllyDiedClose;
 
@@ -108,6 +112,7 @@ public class EnemyController : Controller
 
         _deathSound = RuntimeManager.CreateInstance("event:/Weapons/Enemy Explosion");
         _damageSound = RuntimeManager.CreateInstance("event:/Weapons/Enemy Hit");
+        _landingSound = RuntimeManager.CreateInstance("event:/Movement/Enemy Landing");
 
         if (spawnIdle)
         {
