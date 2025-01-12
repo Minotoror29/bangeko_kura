@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private SpriteRenderer blackBackground;
     [SerializeField] private Canvas blackScreen;
     [SerializeField] private Volume negativeVolume;
+    [SerializeField] private Canvas pauseCanvas;
 
     private List<BulletController> _bullets;
 
@@ -167,6 +168,12 @@ public class GameManager : MonoBehaviour
     public Effect[] GetAllEffects()
     {
         return FindObjectsOfType<Effect>();
+    }
+
+    public void PauseGame()
+    {
+        pauseCanvas.gameObject.SetActive(true);
+        ChangeState(new GamePauseState(this, -1));
     }
 
     public void Quit()

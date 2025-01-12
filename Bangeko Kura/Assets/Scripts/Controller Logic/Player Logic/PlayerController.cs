@@ -103,6 +103,7 @@ public abstract class PlayerController : Controller
         _controls = new PlayerControls();
         _controls.InGame.Enable();
         _controls.InGame.Laser.performed += ctx => FireLaser();
+        _controls.InGame.Pause.performed += ctx => gameManager.PauseGame();
 
         HealthSystem.OnHit += TakeHit;
         HealthSystem.OnDeath += Die;
@@ -140,11 +141,13 @@ public abstract class PlayerController : Controller
     private void OnDisable()
     {
         _controls.InGame.Laser.performed -= ctx => FireLaser();
+        _controls.InGame.Pause.performed -= ctx => GameManager.PauseGame();
     }
 
     public virtual void UnsubscribeEvents()
     {
         _controls.InGame.Laser.performed -= ctx => FireLaser();
+        _controls.InGame.Pause.performed -= ctx => GameManager.PauseGame();
         _controls.InGame.Disable();
     }
 

@@ -71,6 +71,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""e81eb4fe-09c4-4a60-b8e7-d51c9d4138e4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -227,6 +236,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Sword"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""aece6188-7480-4bba-9435-c3b215370c0e"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -240,6 +260,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_InGame_Laser = m_InGame.FindAction("Laser", throwIfNotFound: true);
         m_InGame_Dash = m_InGame.FindAction("Dash", throwIfNotFound: true);
         m_InGame_Sword = m_InGame.FindAction("Sword", throwIfNotFound: true);
+        m_InGame_Pause = m_InGame.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -306,6 +327,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_InGame_Laser;
     private readonly InputAction m_InGame_Dash;
     private readonly InputAction m_InGame_Sword;
+    private readonly InputAction m_InGame_Pause;
     public struct InGameActions
     {
         private @PlayerControls m_Wrapper;
@@ -315,6 +337,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @Laser => m_Wrapper.m_InGame_Laser;
         public InputAction @Dash => m_Wrapper.m_InGame_Dash;
         public InputAction @Sword => m_Wrapper.m_InGame_Sword;
+        public InputAction @Pause => m_Wrapper.m_InGame_Pause;
         public InputActionMap Get() { return m_Wrapper.m_InGame; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -339,6 +362,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Sword.started += instance.OnSword;
             @Sword.performed += instance.OnSword;
             @Sword.canceled += instance.OnSword;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
         private void UnregisterCallbacks(IInGameActions instance)
@@ -358,6 +384,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Sword.started -= instance.OnSword;
             @Sword.performed -= instance.OnSword;
             @Sword.canceled -= instance.OnSword;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
         public void RemoveCallbacks(IInGameActions instance)
@@ -382,5 +411,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnLaser(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
         void OnSword(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }
