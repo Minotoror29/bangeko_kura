@@ -12,14 +12,14 @@ public class Intro : MonoBehaviour
     private float _soundTimer = 11f;
     private float _timer = 16f;
 
-    private EventInstance _doorSound;
+    private EventInstance _introSound;
 
     private void Start()
     {
         Cursor.visible = false;
 
-        _doorSound = RuntimeManager.CreateInstance("event:/Cutscenes/OuverturePorteIntro");
-        _doorSound.start();
+        _introSound = RuntimeManager.CreateInstance("event:/Cutscenes/Intro");
+        _introSound.start();
     }
 
     private void Update()
@@ -34,14 +34,14 @@ public class Intro : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 
-        if (_soundTimer > 0f)
-        {
-            _soundTimer -= Time.deltaTime;
+        //if (_soundTimer > 0f)
+        //{
+        //    _soundTimer -= Time.deltaTime;
 
-            if (_soundTimer <= 0f)
-            {
-                _doorSound.start();
-            }
-        }
+        //    if (_soundTimer <= 0f)
+        //    {
+        //        _introSound.start();
+        //    }
+        //}
     }
 }
