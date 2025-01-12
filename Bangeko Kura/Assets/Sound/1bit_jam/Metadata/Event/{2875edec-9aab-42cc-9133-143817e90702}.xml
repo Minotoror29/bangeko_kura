@@ -120,6 +120,9 @@
 		<property name="lowGain">
 			<value>-7</value>
 		</property>
+		<property name="midGain">
+			<value>4</value>
+		</property>
 		<property name="highGain">
 			<value>10</value>
 		</property>
