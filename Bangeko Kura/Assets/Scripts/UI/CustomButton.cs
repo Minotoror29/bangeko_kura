@@ -30,8 +30,11 @@ public class CustomButton : MonoBehaviour, IPointerEnterHandler
 
     public void Select()
     {
-        _selectSound.start();
-        EventSystem.current.SetSelectedGameObject(gameObject);
+        if (EventSystem.current.currentSelectedGameObject != gameObject)
+        {
+            _selectSound.start();
+            EventSystem.current.SetSelectedGameObject(gameObject);
+        }
     }
 
     public void PlayClickSound()
