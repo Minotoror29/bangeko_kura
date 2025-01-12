@@ -169,6 +169,11 @@ public class GameManager : MonoBehaviour
         return FindObjectsOfType<Effect>();
     }
 
+    public void Quit()
+    {
+        Application.Quit();
+    }
+
     private void Update()
     {
         _currentState.UpdateLogic();
