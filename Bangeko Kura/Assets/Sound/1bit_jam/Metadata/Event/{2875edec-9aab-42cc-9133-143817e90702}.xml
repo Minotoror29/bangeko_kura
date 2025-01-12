@@ -95,8 +95,6 @@
 	<object class="MixerBusPanner" id="{d013d4d5-8c24-4c85-b661-7e6ca66d2f18}" />
 	<object class="MixerBusEffectChain" id="{9f263166-8be0-40da-8f64-370a2cefbd38}">
 		<relationship name="effects">
-			<destination>{2f603581-cf13-45aa-9ada-4eba55d7b771}</destination>
-			<destination>{83899f54-79b2-4192-94c2-201bd86ce30e}</destination>
 			<destination>{72703753-265b-4398-bffb-387d479fe70b}</destination>
 		</relationship>
 	</object>
@@ -111,19 +109,6 @@
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{ec39fb4f-01c0-422b-8bec-0a4cbdee1275}" />
-	<object class="DistortionEffect" id="{2f603581-cf13-45aa-9ada-4eba55d7b771}">
-		<property name="level">
-			<value>0.479999989</value>
-		</property>
-	</object>
-	<object class="ThreeEQEffect" id="{83899f54-79b2-4192-94c2-201bd86ce30e}">
-		<property name="lowGain">
-			<value>-7</value>
-		</property>
-		<property name="highGain">
-			<value>10</value>
-		</property>
-	</object>
 	<object class="MixerBusFader" id="{72703753-265b-4398-bffb-387d479fe70b}" />
 	<object class="RandomizerModulator" id="{0a6e7ff6-cffb-4109-b635-d5543044dfdb}">
 		<property name="nameOfPropertyBeingModulated">
